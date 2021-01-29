@@ -582,14 +582,13 @@ class DltkAiClient:
             features = ['face_locations']
         features = [feature.lower() for feature in features]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert mtcnn is True or azure is True or dlib is True or opencv is True, "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
+        assert any(
+            (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
         assert "face_locations" in features, "Please select at least one feature ['face_locations']"
         load = {
             "image_url": image_url,
 
-            "input_method": None,
-            "base64_img": None,
             "tasks": {"face_detection": False},
 
             "configs": {
@@ -620,7 +619,6 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/face_analytics/'
 
         task_response = requests.post(url, json=load, headers=headers)
-        print(task_response.text)
         response = self.check_cv_job_status(task_response)
 
         return response
