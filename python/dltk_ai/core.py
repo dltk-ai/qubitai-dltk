@@ -41,8 +41,7 @@ class DltkAiClient:
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
-        # Todo: assert whether sources given are correct or not
-        # Todo: assert whether text is not None or ""
+
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/sentiment/compare'
@@ -58,7 +57,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing POS analysis response.
         """
-        # Todo: assert whether text is not None, ""
+
         supported_sources = ['spacy', 'ibm_watson']
         assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
@@ -76,9 +75,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing NER Tagger response.
         """
-        # Todo: add default sources='spacy'
-        # Todo: assert whether sources are valid or not
-        # Todo: assert whether text is not None or ""
+
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
@@ -95,7 +92,7 @@ class DltkAiClient:
         :return
             obj: A json obj containing dependency Parser response.
         """
-        # Todo: assert whether text is not None or ""
+
         assert text is not None, "Please ensure text is not empty"
         body = {'text': text}
         body = json.dumps(body)
@@ -111,8 +108,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing tags response.
         """
-        # Todo: assert whether sources given are correct or not
-        # Todo: assert whether text is not None or ""
+
         supported_sources = ['rake', 'azure', 'ibm_watson']
         assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
