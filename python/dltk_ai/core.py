@@ -1,11 +1,12 @@
 from __future__ import print_function
 
+import base64
 import json
 import time
-import requests
-import base64
-from dltk_ai.dataset_types import Dataset
 from time import sleep, time
+
+import requests
+from dltk_ai.dataset_types import Dataset
 
 
 class DltkAiClient:
@@ -252,7 +253,7 @@ class DltkAiClient:
         return response
 
     def image_classification(self, image_url=None, image_path=None, top_n=3, tensorflow=True, azure=False, ibm=False,
-                                output_types=["json"]):
+                             output_types=["json"]):
         """
         This function is for image classification
         Args:
@@ -560,4 +561,64 @@ class DltkAiClient:
         url = self.base_url + '/s3/file/download?url={0}'.format(file_url)
         headers = {'ApiKey': self.api_key}
         response = requests.get(url=url, headers=headers)
+        return response
+
+    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=False,
+                       azure=False, mtcnn=False,
+                       output_types=["json"]):
+        """
+        This function is for image classification
+        Args:
+            output_types (list): Type of output requested by client: "json", "image"
+            image_url: Image URL
+            image_path: Local Image Path
+            tensorflow: if True, uses tensorflow for object detection
+            azure: if True, returns azure results of object detection on given image
+
+        Returns:
+        Image classification response
+        """
+        if features is None:
+            features = ['face_locations']
+        features = [feature.lower() for feature in features]
+        assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
+        assert any(
+            (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
+        assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
+        assert "face_locations" in features, "Please select at least one feature ['face_locations']"
+        load = {
+            "image_url": image_url,
+
+            "tasks": {"face_detection": False},
+
+            "configs": {
+                "output_types": output_types,
+
+                "face_detection_config": {
+                    "dlib": dlib,
+                    "opencv": opencv,
+                    "mtcnn": mtcnn,
+                    "azure": azure
+                }
+            }
+        }
+
+        if 'face_locations' in features:
+            load['tasks']['face_detection'] = True
+        if image_url is not None and image_path is None:
+            load["input_method"] = "image_url"
+            load["image_url"] = image_url
+
+        elif image_url is None and image_path is not None:
+            with open(image_path, "rb") as image_file:
+                base64_img = base64.b64encode(image_file.read()).decode('utf-8')
+            load["base64_img"] = base64_img
+            load["input_method"] = "base64_img"
+
+        headers = {'ApiKey': self.api_key}
+        url = self.base_url + '/computer_vision/face_analytics/'
+
+        task_response = requests.post(url, json=load, headers=headers)
+        response = self.check_cv_job_status(task_response)
+
         return response
