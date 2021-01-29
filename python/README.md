@@ -2,7 +2,7 @@
 [![Python 3.5](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
 
 
-[![DLTK Logo](python/dltk.png)](https://dltk.ai/)
+[![DLTK Logo](dltk.png)](https://dltk.ai/)
 
 DLTK renders a comprehensive spectrum of solutions that can be accessed by users on-demand from our pool of transformational technologies.
 
