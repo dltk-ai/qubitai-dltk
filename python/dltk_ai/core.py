@@ -168,7 +168,7 @@ class DltkAiClient:
         """
 
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True, "please choose at least 1 processor ['tensorflow', 'azure']"
+        assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
         load = {
@@ -220,7 +220,7 @@ class DltkAiClient:
         """
 
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 processor ['tensorflow', 'azure','ibm']"
+        assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
         load = {
