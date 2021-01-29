@@ -31,8 +31,7 @@ class DltkAiClient:
 
     # Note: NLP functions
 
-    # TODO: combine above:
-    def sentiment_analysis_compare(self, text, sources=['spacy']):
+    def sentiment_analysis(self, text, sources=['spacy']):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :param sources: algorithm to use for the analysis - azure/ibm_watson/spacy
@@ -40,7 +39,7 @@ class DltkAiClient:
             obj:A json obj containing sentiment analysis response.
         """
         supported_sources = ['spacy', 'azure', 'ibm_watson']
-        assert any(i in supported_sources for i in sources), f"Please enter supported source{supported_sources}"
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
         # Todo: assert whether sources given are correct or not
         # Todo: assert whether text is not None or ""
@@ -52,7 +51,6 @@ class DltkAiClient:
 
         return response
 
-    # TODO: combine above
     def pos_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which POS analysis is to be applied.
@@ -62,7 +60,7 @@ class DltkAiClient:
         """
         # Todo: assert whether text is not None, ""
         supported_sources = ['spacy', 'ibm_watson']
-        assert any(i in supported_sources for i in sources), f"Please enter supported source{supported_sources}"
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
@@ -71,7 +69,6 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers)
         return response
 
-    # TODO: combine above
     def ner_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which NER Tagger is to be applied.
@@ -83,7 +80,7 @@ class DltkAiClient:
         # Todo: assert whether sources are valid or not
         # Todo: assert whether text is not None or ""
         supported_sources = ['spacy', 'azure', 'ibm_watson']
-        assert any(i in supported_sources for i in sources), f"Please enter supported source{supported_sources}"
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
@@ -107,8 +104,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
-    # TODO: combine above
-    def tags_compare(self, text, sources=['rake']):
+    def tags(self, text, sources=['rake']):
         """
         :param str text: The text on which tags is to be applied.
         :param sources: algorithm to use for tagging - azure/ibm_watson/rake
@@ -118,7 +114,7 @@ class DltkAiClient:
         # Todo: assert whether sources given are correct or not
         # Todo: assert whether text is not None or ""
         supported_sources = ['rake', 'azure', 'ibm_watson']
-        assert any(i in supported_sources for i in sources), f"Please enter supported source{supported_sources}"
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None, "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
