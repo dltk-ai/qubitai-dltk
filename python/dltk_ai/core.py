@@ -71,7 +71,7 @@ class DltkAiClient:
     def ner_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which NER Tagger is to be applied.
-        "param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
+        :param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
         :return:
             obj:A json obj containing NER Tagger response.
         """
@@ -168,7 +168,7 @@ class DltkAiClient:
         """
 
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True, "please choose at least 1 processor ['tensorflow', 'azure']"
+        assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
         load = {
@@ -206,18 +206,21 @@ class DltkAiClient:
         """
         This function is for image classification
         Args:
+
+            top_n: get top n predictions
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
             tensorflow: if True, uses tensorflow for object detection
             azure: if True, returns azure results of object detection on given image
+            ibm: if True, returns ibm results of object detection on given image
 
         Returns:
         Image classification response
         """
 
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True, "please choose at least 1 processor ['tensorflow', 'azure']"
+        assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
         load = {
