@@ -71,7 +71,7 @@ class DltkAiClient:
     def ner_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which NER Tagger is to be applied.
-        "param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
+        :param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
         :return:
             obj:A json obj containing NER Tagger response.
         """
