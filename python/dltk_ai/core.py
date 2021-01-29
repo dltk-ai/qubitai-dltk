@@ -30,31 +30,18 @@ class DltkAiClient:
         self.base_url = "https://prod-kong.dltk.ai"
 
     # Note: NLP functions
-    def sentiment_analysis(self, text):
-        """
-        :param str text: The text on which sentiment analysis is to be applied.
-        :return:
-            obj:A json obj containing sentiment analysis response.
-        """
-        assert text is not None, "Please ensure text is not empty"
-        body = {'text': text}
-        body = json.dumps(body)
-        url = self.base_url + '/core/nlp/sentiment/'
-        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers)
-        return response
 
-    # TODO: combine above:
-    def sentiment_analysis_compare(self, text, sources):
+    def sentiment_analysis(self, text, sources=['spacy']):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :param sources: algorithm to use for the analysis - azure/ibm_watson/spacy
         :return:
             obj:A json obj containing sentiment analysis response.
         """
-        assert text is not None, "Please ensure text is not empty"
-        # Todo: assert whether sources given are correct or not
-        # Todo: assert whether text is not None or ""
+        supported_sources = ['spacy', 'azure', 'ibm_watson']
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
+        assert text is not None and text is not '', "Please ensure text is not empty"
+
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/sentiment/compare'
@@ -63,29 +50,17 @@ class DltkAiClient:
 
         return response
 
-    def pos_tagger(self, text):
-        """
-        :param str text: The text on which POS analysis is to be applied.
-        :return
-            obj: A json obj containing POS tagger response.
-        """
-        # todo: assert whether text is not None & ""
-        body = {'text': text}
-        body = json.dumps(body)
-        url = self.base_url + '/core/nlp/pos/'
-        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
-        return response
-
-    # TODO: combine above
-    def pos_tagger_compare(self, text, sources):
+    def pos_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which POS analysis is to be applied.
         :param sources: algorithm to use for POS analysis - ibm_watson/spacy
         :return:
             obj:A json obj containing POS analysis response.
         """
-        # Todo: assert whether text is not None, ""
+
+        supported_sources = ['spacy', 'ibm_watson']
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
+        assert text is not None and text is not '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/pos/compare'
@@ -93,31 +68,17 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers)
         return response
 
-    def ner_tagger(self, text):
-        """
-        :param str text: The text on which NER Tagger is to be applied.
-        :return
-            obj: A json obj containing NER tagger response.
-        """
-        # Todo: assert whether text is not None, ""
-        body = {'text': text}
-        body = json.dumps(body)
-        url = self.base_url + '/core/nlp/ner/'
-        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
-        return response
-
-    # TODO: combine above
-    def ner_tagger_compare(self, text, sources):
+    def ner_tagger(self, text, sources=['spacy']):
         """
         :param str text: The text on which NER Tagger is to be applied.
         "param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
         :return:
             obj:A json obj containing NER Tagger response.
         """
-        # Todo: add default sources='spacy'
-        # Todo: assert whether sources are valid or not
-        # Todo: assert whether text is not None or ""
+
+        supported_sources = ['spacy', 'azure', 'ibm_watson']
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
+        assert text is not None and text is not '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/ner/compare'
@@ -131,7 +92,8 @@ class DltkAiClient:
         :return
             obj: A json obj containing dependency Parser response.
         """
-        # Todo: assert whether text is not None or ""
+
+        assert text is not None and text is not '', "Please ensure text is not empty"
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/dependency-parser/'
@@ -139,30 +101,17 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
-    def tags(self, text):
-        """
-        :param str text: The text on which tags is to be applied.
-        :return
-            obj: A json obj containing tags response.
-        """
-        # Todo: assert whether text is not None or ""
-        body = {'text': text}
-        body = json.dumps(body)
-        url = self.base_url + '/core/nlp/tags/'
-        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
-        return response
-
-    # TODO: combine above
-    def tags_compare(self, text, sources):
+    def tags(self, text, sources=['rake']):
         """
         :param str text: The text on which tags is to be applied.
         :param sources: algorithm to use for tagging - azure/ibm_watson/rake
         :return:
             obj:A json obj containing tags response.
         """
-        # Todo: assert whether sources given are correct or not
-        # Todo: assert whether text is not None or ""
+
+        supported_sources = ['rake', 'azure', 'ibm_watson']
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
+        assert text is not None and text is not '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/tags/compare'
@@ -563,7 +512,7 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         return response
 
-    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=False,
+    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=True,
                        azure=False, mtcnn=False,
                        output_types=["json"]):
         """
