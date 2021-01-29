@@ -520,7 +520,7 @@ class DltkAiClient:
             mtcnn: if True, uses mtcnn for face analytics
 
         Returns:
-        Image classification response
+        face analytics response dependent on the features requested by client
         """
         if features is None:
             features = ['face_locations']
