@@ -253,26 +253,18 @@ class DltkAiClient:
         return response
 
     # Note: Speech Processing function
-    def speech_to_text(self, audio_path):
-        """
-        :param str audio_path: the path of the audio file.
-        :return:
-            obj: A json obj containing transcript of the audio file.
-        """
-        body = {'audio': (audio_path, open(audio_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/speech-to-text/'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
 
-    # TODO: combine above
-    def speech_to_text_compare(self, audio_path, sources):
+    def speech_to_text(self, audio_path, sources):
         """
         :param str audio_path: the path of the audio file.
         :param sources: algorithm to use for speech to text conversion - google/ibm_watson
         :return:
             obj: A json obj containing transcript of the audio file.
         """
+        supported_audio_format = '.wav'
+        supported_sources = ['google', 'ibm_watson']
+        assert '.wav' in audio_path, f'Please use supported audio format {supported_audio_format}'
+        assert any(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         body = {'audio': (audio_path, open(audio_path, 'rb'), 'multipart/form-data')}
         payload = {'sources': sources}
         url = self.base_url + '/speech-to-text/compare'
@@ -516,13 +508,16 @@ class DltkAiClient:
                        azure=False, mtcnn=False,
                        output_types=["json"]):
         """
-        This function is for image classification
+        This function is for face analytics
         Args:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for object detection
-            azure: if True, returns azure results of object detection on given image
+            features (list) : Type of features requested by client
+            dlib: if True, uses dlib for face analytics
+            opencv: if True, uses opencv for face analytics
+            azure: if True, returns azure results of face analytics on given image
+            mtcnn: if True, uses mtcnn for face analytics
 
         Returns:
         Image classification response
