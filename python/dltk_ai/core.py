@@ -520,7 +520,7 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         return response
 
-    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=False,
+    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=True,
                        azure=False, mtcnn=False,
                        output_types=["json"]):
         """
