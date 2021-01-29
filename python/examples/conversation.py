@@ -1,5 +1,4 @@
 import dltk_ai
-import base64
 
 
 def main():
@@ -12,9 +11,9 @@ def main():
     print(response)
 
     # speech to text compare
-    # specify the algothim (google/ibm_watson) you would like to use for converting speech to text
+    # specify the algorithm (google/ibm_watson) you would like to use for converting speech to text
     path = 'audio.wav'
-    response = c.speech_to_text_compare(path,'google')
+    response = c.speech_to_text_compare(path, 'google')
     print(response)
 
 

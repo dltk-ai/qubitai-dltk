@@ -43,6 +43,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers)
         return response
 
+    # TODO: combine above:
     def sentiment_analysis_compare(self, text, sources):
         """
         :param str text: The text on which sentiment analysis is to be applied.
@@ -50,6 +51,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing sentiment analysis response.
         """
+        assert text is not None, "Please ensure text is not empty"
         # Todo: assert whether sources given are correct or not
         # Todo: assert whether text is not None or ""
         body = {'text': text, 'sources': sources}
@@ -74,6 +76,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
+    # TODO: combine above
     def pos_tagger_compare(self, text, sources):
         """
         :param str text: The text on which POS analysis is to be applied.
@@ -103,6 +106,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
+    # TODO: combine above
     def ner_tagger_compare(self, text, sources):
         """
         :param str text: The text on which NER Tagger is to be applied.
@@ -110,6 +114,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing NER Tagger response.
         """
+        # Todo: add default sources='spacy'
         # Todo: assert whether sources are valid or not
         # Todo: assert whether text is not None or ""
         body = {'text': text, 'sources': sources}
@@ -147,6 +152,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
+    # TODO: combine above
     def tags_compare(self, text, sources):
         """
         :param str text: The text on which tags is to be applied.
@@ -196,121 +202,6 @@ class DltkAiClient:
         else:
             print(f"FAILED due to {task_creation_response.content}")
         return task_status_response
-
-    def face_detection_image(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            text : A base64 decoded image with face detected.
-        """
-        # todo: whichever one is main out of face_detection_image and face_detection_image_core retain that, remove other
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/face-detection/image'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers)
-        return response.content
-
-    def face_detection_image_core(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            text : A base64 decoded image with face detected.
-        """
-        # todo: whichever one is main out of face_detection_image and face_detection_image_core retain that, remove other
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/face-detection/image'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers)
-        return response.content
-
-    def face_detection_json(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of co-ordinates for all faces detected in the image.
-        """
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/face-detection/json'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
-
-    def face_detection_json_core(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of co-ordinates for all faces detected in the image.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/face-detection/json'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
-
-    def face_detection_compare(self, image_path, sources):
-        """
-        :param str image_path: The path of the image file.
-        :param sources: algorithm to use for face detection - azure/opencv
-        :return
-            obj : A base64 decoded image with face detected.
-        """
-        # Todo: assert whether sources given are correct or not
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        payload = {'sources': sources}
-        url = self.base_url + '/core/vision/face-detection/compare'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers, data=payload)
-        return response
-
-    def eye_detection_image(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            text : A base64 decoded image with eye detected.
-        """
-
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/eye-detection/image'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers)
-        return response.content
-
-    def eye_detection_json(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of co-ordinates for all eyes detected in the image.
-        """
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/eye-detection/json'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
-
-    def smile_detection_image(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            text : A base64 decoded image with smile detected.
-        """
-
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/smile-detection/image'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers)
-        return response.content
-
-    def smile_detection_json(self, image_path):
-        """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of co-ordinates for all smiles detected in the image.
-        """
-        body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/vision/smile-detection/json'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
 
     def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"]):
         """
@@ -411,62 +302,6 @@ class DltkAiClient:
 
         return response
 
-    def folder_upload(self, image_folder, folder_name):
-        """
-        :param str image_folder: list of image paths to be uploaded
-        :param str folder_name: name of the folder for storing
-        :return
-            obj : A json obj containing list of image linkes stored.
-        """
-        files = []
-        for i in range(len(image_folder)):
-            files.append(('files', open(image_folder[i], 'rb')))
-        url = self.base_url + '/s3/folder'
-        payload = {}
-        headers = {'label': folder_name, 'ApiKey': self.api_key}
-        response = requests.post(url=url, headers=headers, data=payload, files=files).json()
-        return response
-
-    def visual_search(self, url1, url2):
-        """
-        :param str url1: url of a webpage
-        :param str url2: url of other webpage
-        :return
-            obj : A json obj containing list source image string and matched image strings
-        """
-        body = {'url1': url1, 'url2': url2}
-        payload = json.dumps(body)
-        url = self.base_url + '/core/visual_search/'
-        headers = {'ApiKey': self.api_key, 'Content-Type': 'application/json'}
-        response = requests.post(url=url, data=payload, headers=headers).json()
-        return response
-
-    def helmet_detection(self, image_path):
-        """
-        :param str image_path: The path of the image file
-        :return
-            obj : A json object containing bounding boxes and image string
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/helmet-detection/'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, headers=headers, files=body).json()
-        return response
-
-    def serial_number_extraction(self, image_path, color):
-        """
-        :param str image_path: path of the image
-        :param str color: B,G,R format color values in string
-        :return
-            obj : A json obj serial number, bounding box values and image string
-        """
-        body = {'color': color}
-        files = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/serial_number/'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, headers=headers, data=body, files=files).json()
-        return response
-
     # Note: Speech Processing function
     def speech_to_text(self, audio_path):
         """
@@ -480,6 +315,7 @@ class DltkAiClient:
         response = requests.post(url=url, files=body, headers=headers).json()
         return response
 
+    # TODO: combine above
     def speech_to_text_compare(self, audio_path, sources):
         """
         :param str audio_path: the path of the audio file.
@@ -714,6 +550,7 @@ class DltkAiClient:
         response = response.json()
         return response
 
+    # Todo: debug
     def download(self, file_url):
         """
         :param file_url: location url of file stored in cloud storage.
