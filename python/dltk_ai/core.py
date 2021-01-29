@@ -3,8 +3,9 @@ from __future__ import print_function
 import json
 import time
 import requests
-
+import base64
 from dltk_ai.dataset_types import Dataset
+from time import sleep, time
 
 
 class DltkAiClient:
@@ -27,19 +28,19 @@ class DltkAiClient:
         self.api_key = api_key
         self.base_url = "https://prod-kong.dltk.ai"
 
+    # Note: NLP functions
     def sentiment_analysis(self, text):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :return:
             obj:A json obj containing sentiment analysis response.
         """
-
+        assert text is not None, "Please ensure text is not empty"
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/sentiment/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-        print(response.text)
         return response
 
     def sentiment_analysis_compare(self, text, sources):
@@ -49,13 +50,14 @@ class DltkAiClient:
         :return:
             obj:A json obj containing sentiment analysis response.
         """
-
+        # Todo: assert whether sources given are correct or not
+        # Todo: assert whether text is not None or ""
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/sentiment/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-        print(response.text)
+
         return response
 
     def pos_tagger(self, text):
@@ -64,7 +66,7 @@ class DltkAiClient:
         :return
             obj: A json obj containing POS tagger response.
         """
-
+        # todo: assert whether text is not None & ""
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/pos/'
@@ -79,13 +81,12 @@ class DltkAiClient:
         :return:
             obj:A json obj containing POS analysis response.
         """
-
+        # Todo: assert whether text is not None, ""
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/pos/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-        print(response.text)
         return response
 
     def ner_tagger(self, text):
@@ -94,7 +95,7 @@ class DltkAiClient:
         :return
             obj: A json obj containing NER tagger response.
         """
-
+        # Todo: assert whether text is not None, ""
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/ner/'
@@ -109,13 +110,13 @@ class DltkAiClient:
         :return:
             obj:A json obj containing NER Tagger response.
         """
-
+        # Todo: assert whether sources are valid or not
+        # Todo: assert whether text is not None or ""
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/ner/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-        print(response.text)
         return response
 
     def dependency_parser(self, text):
@@ -124,7 +125,7 @@ class DltkAiClient:
         :return
             obj: A json obj containing dependency Parser response.
         """
-
+        # Todo: assert whether text is not None or ""
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/dependency-parser/'
@@ -138,7 +139,7 @@ class DltkAiClient:
         :return
             obj: A json obj containing tags response.
         """
-
+        # Todo: assert whether text is not None or ""
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/tags/'
@@ -153,14 +154,48 @@ class DltkAiClient:
         :return:
             obj:A json obj containing tags response.
         """
-
+        # Todo: assert whether sources given are correct or not
+        # Todo: assert whether text is not None or ""
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/tags/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-        print(response.text)
+
         return response
+
+    # Note: Computer vision functions
+    def check_cv_job_status(self, task_creation_response):
+        """
+        This function check status of the job
+        Args:
+            task_creation_response: response from task creation function
+
+        Returns:
+
+        """
+        task_url = f"{self.base_url}/computer_vision/task?task_id="
+        task_status_response = {}
+        # ensure the request was successful
+        if task_creation_response.status_code == 200:
+            task_creation_response = task_creation_response.json()
+            task_status = "PENDING"
+
+            start_time = time()
+            while task_status != "SUCCESS":
+                task_status_response = requests.get(task_url + task_creation_response['job_id']).json()
+                task_status = task_status_response["task_status"]
+                # wait for some time before checking status of the job again
+                sleep(1)
+
+                # check if execution time is more than
+                if time() - start_time > 10:
+                    print("It's taking too long than expected!!")
+                    break
+
+        else:
+            print(f"FAILED due to {task_creation_response.content}")
+        return task_status_response
 
     def face_detection_image(self, image_path):
         """
@@ -168,7 +203,7 @@ class DltkAiClient:
         :return
             text : A base64 decoded image with face detected.
         """
-
+        # todo: whichever one is main out of face_detection_image and face_detection_image_core retain that, remove other
         body = {'file': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
         url = self.base_url + '/vision/face-detection/image'
         headers = {'ApiKey': self.api_key}
@@ -181,7 +216,7 @@ class DltkAiClient:
         :return
             text : A base64 decoded image with face detected.
         """
-
+        # todo: whichever one is main out of face_detection_image and face_detection_image_core retain that, remove other
         body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
         url = self.base_url + '/core/vision/face-detection/image'
         headers = {'ApiKey': self.api_key}
@@ -219,6 +254,7 @@ class DltkAiClient:
         :return
             obj : A base64 decoded image with face detected.
         """
+        # Todo: assert whether sources given are correct or not
         body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
         payload = {'sources': sources}
         url = self.base_url + '/core/vision/face-detection/compare'
@@ -276,68 +312,103 @@ class DltkAiClient:
         response = requests.post(url=url, files=body, headers=headers).json()
         return response
 
-    def object_detection_image(self, image_path):
+    def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"]):
         """
-        :param str image_path: The path of the image file.
-        :return
-            text : A base64 decoded image with objects detected.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/object-detection/image'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers)
-        return response.content
+        This function is for object detection
+        Args:
+            output_types (list): Type of output requested by client: "json", "image"
+            image_url: Image URL
+            image_path: Local Image Path
+            tensorflow: if True, uses tensorflow for object detection
+            azure: if True, returns azure results of object detection on given image
 
-    def object_detection_json(self, image_path):
+        Returns:
+        Object_detection
         """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of co-ordinates for all objects detected in the image.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/object-detection/json'
+
+        assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
+        assert tensorflow is True or azure is True, "please choose at least 1 processor ['tensorflow', 'azure']"
+        assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+
+        load = {
+            "tasks": {"object_detection": True},
+            "configs": {
+                "output_types": output_types,
+                "object_detection_config": {
+                    "tensorflow": tensorflow,
+                    "azure": azure
+                }
+
+            }
+        }
+
+        if image_url is not None and image_path is None:
+            load["input_method"] = "image_url"
+            load["image_url"] = image_url
+
+        elif image_url is None and image_path is not None:
+            with open(image_path, "rb") as image_file:
+                base64_img = base64.b64encode(image_file.read()).decode('utf-8')
+                load["base64_img"] = base64_img
+                load["input_method"] = "base64_img"
+
         headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
+        url = self.base_url + '/computer_vision/object_detection/'
+
+        task_response = requests.post(url, json=load, headers=headers)
+        response = self.check_cv_job_status(task_response)
+
         return response
 
-    def object_detection_compare(self, image_path, sources):
+    def image_classification(self, image_url=None, image_path=None, top_n=3, tensorflow=True, azure=False, ibm=False,
+                                output_types=["json"]):
         """
-        :param str image_path: The path of the image file.
-        :param sources: algorithm to use for object detection - tensorflow/azure
-        :return
-            obj : A base64 decoded image with objects detected.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        payload = {'sources': sources}
-        url = self.base_url + '/core/vision/object-detection/image/compare'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers, data=payload)
-        return response
+        This function is for image classification
+        Args:
+            output_types (list): Type of output requested by client: "json", "image"
+            image_url: Image URL
+            image_path: Local Image Path
+            tensorflow: if True, uses tensorflow for object detection
+            azure: if True, returns azure results of object detection on given image
 
-    def image_classification(self, image_path):
+        Returns:
+        Image classification response
         """
-        :param str image_path: The path of the image file.
-        :return
-            obj : A list of all classes detected in the image.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        url = self.base_url + '/core/vision/image-classification'
-        headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers).json()
-        return response
 
-    def image_classification_compare(self, image_path, sources):
-        """
-        :param str image_path: The path of the image file.
-        :param sources: algorithm to use for image classification - azure/ibm_watson/tensorflow
-        :return
-            obj : A list of all classes detected in the image.
-        """
-        body = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
-        payload = {'sources': sources}
-        url = self.base_url + '/core/vision/image-classification/compare'
+        assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
+        assert tensorflow is True or azure is True, "please choose at least 1 processor ['tensorflow', 'azure']"
+        assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+
+        load = {
+            "tasks": {"image_classification": True},
+
+            "configs": {
+                "output_types": ["json"],
+                "img_classification_config": {
+                    "top_n": top_n,
+                    "tensorflow": tensorflow,
+                    "ibm": ibm,
+                    "azure": azure
+                }
+            }
+        }
+
+        if image_url is not None and image_path is None:
+            load["input_method"] = "image_url"
+            load["image_url"] = image_url
+
+        elif image_url is None and image_path is not None:
+            with open(image_path, "rb") as image_file:
+                base64_img = base64.b64encode(image_file.read()).decode('utf-8')
+            load["base64_img"] = base64_img
+            load["input_method"] = "base64_img"
+
         headers = {'ApiKey': self.api_key}
-        response = requests.post(url=url, files=body, headers=headers, data=payload)
+        url = self.base_url + '/computer_vision/image_classification'
+
+        task_response = requests.post(url, json=load, headers=headers)
+        response = self.check_cv_job_status(task_response)
+
         return response
 
     def folder_upload(self, image_folder, folder_name):
@@ -381,7 +452,7 @@ class DltkAiClient:
         headers = {'ApiKey': self.api_key}
         response = requests.post(url=url, headers=headers, files=body).json()
         return response
-    
+
     def serial_number_extraction(self, image_path, color):
         """
         :param str image_path: path of the image
@@ -389,14 +460,14 @@ class DltkAiClient:
         :return
             obj : A json obj serial number, bounding box values and image string
         """
-        body={'color': color}
+        body = {'color': color}
         files = {'image': (image_path, open(image_path, 'rb'), 'multipart/form-data')}
         url = self.base_url + '/core/vision/serial_number/'
         headers = {'ApiKey': self.api_key}
         response = requests.post(url=url, headers=headers, data=body, files=files).json()
         return response
 
-
+    # Note: Speech Processing function
     def speech_to_text(self, audio_path):
         """
         :param str audio_path: the path of the audio file.
@@ -423,7 +494,7 @@ class DltkAiClient:
         response = requests.post(url=url, files=body, headers=headers, data=payload).json()
         return response
 
-
+    # Note: ML functions
     def train(self, service, algorithm, dataset_url, label, features, model_name=None, lib="weka", train_percentage=80,
               save_model=True, params=None):
         """
@@ -653,4 +724,3 @@ class DltkAiClient:
         headers = {'ApiKey': self.api_key}
         response = requests.get(url=url, headers=headers)
         return response
-        
