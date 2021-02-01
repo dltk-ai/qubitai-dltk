@@ -7,7 +7,7 @@ setuptools.setup(
     name="dltk_ai",
     version="1.1.8",
     author="DLTK",
-    install_requires=['pandas==1.1.3','xlrd==1.2.0','numpy==1.19.5','requests==2.25.1',"openpyxl==3.0.6"]
+    install_requires=["pandas==1.1.3","xlrd==1.2.0","numpy==1.19.5","requests==2.25.1","openpyxl==3.0.6"],
     author_email="connect@qubitai.tech",
     description="Python Client for DLTK.",
     long_description=long_description,
