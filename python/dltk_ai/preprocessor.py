@@ -355,35 +355,36 @@ def treat_outliers(dataframe, column, **kwargs):
         raise ValueError('Contains missing values - please use missing_data function to fill missing values')
 
     remove = kwargs.get('remove', False)  # takes the given value of remove flag
-    # print(remove)
+
     upper = kwargs.get('upper', True)
-    # print(upper)
+
     lower = kwargs.get('lower', True)
-    # print(lower)
+
     new_column = []
     for i in column:
 
         higher_outlier = dataframe_duplicate[i].quantile(0.75) + 1.5 * (
                 dataframe_duplicate[i].quantile(0.75) - dataframe_duplicate[i].quantile(0.25))
-        # print(higher_outlier)
+
         lower_outlier = dataframe_duplicate[i].quantile(0.25) - 1.5 * (
                 dataframe_duplicate[i].quantile(0.75) - dataframe_duplicate[i].quantile(0.25))
-        # print(lower_outlier)
+
         if remove:
-            # print('in remove')
-            # print(kwargs['remove'])
+
             if kwargs['remove'] not in [True, False]: raise ValueError('remove should be either True/False')
-            # print(dataframe_duplicate[i])
+
             if upper:
                 dataframe_duplicate = dataframe_duplicate[dataframe_duplicate[i] <= higher_outlier]
             if lower:
                 dataframe_duplicate = dataframe_duplicate[dataframe_duplicate[i] >= lower_outlier]
         else:
             if 'value' in kwargs:
-                if type(kwargs['value']) != int: raise ValueError('value should be a interger')
+        
+                if type(kwargs['value']) == str: 
+                    raise ValueError('value should be a integer or float')
                 value = kwargs['value']
             elif 'statistic' in kwargs:
-                if kwargs['statistic'] in ['min', 'max', 'mean', 'median'] or type(kwargs['statistic']) == int:
+                if kwargs['statistic'] in ['min', 'max', 'mean', 'median'] or type(kwargs['statistic']) == int or type(kwargs['statistic']) == float:
                     pass
                 else:
                     raise ValueError('statistic should be min/max/mean/median or a quantile value between 0 and 1')
@@ -404,7 +405,7 @@ def treat_outliers(dataframe, column, **kwargs):
                                                                                     'statistic'] == 'maximum' else mean if \
                     kwargs['statistic'] == 'mean' else median if kwargs[
                                                                      'statistic'] == 'median' else quantile_value if type(
-                    kwargs['statistic']) == int else 0
+                    kwargs['statistic']) == int or type(kwargs['statistic']) == float else 0
             else:
                 value = dataframe_duplicate[i][
                     (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].mean()
