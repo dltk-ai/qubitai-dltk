@@ -43,7 +43,7 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
-        assert text is not None and text is not '', "Please ensure text is not empty"
+        assert text is not None and text != '', "Please ensure text is not empty"
 
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
@@ -63,7 +63,7 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
-        assert text is not None and text is not '', "Please ensure text is not empty"
+        assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/pos/compare'
@@ -81,7 +81,7 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
-        assert text is not None and text is not '', "Please ensure text is not empty"
+        assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/ner/compare'
@@ -96,7 +96,7 @@ class DltkAiClient:
             obj: A json obj containing dependency Parser response.
         """
 
-        assert text is not None and text is not '', "Please ensure text is not empty"
+        assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/dependency-parser/'
@@ -114,7 +114,7 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_sources = ['rake', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
-        assert text is not None and text is not '', "Please ensure text is not empty"
+        assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/tags/compare'

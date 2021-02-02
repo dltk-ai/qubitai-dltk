@@ -3,7 +3,8 @@ supported_algorithm = {'regression':
                            {'scikit': ['LinearRegression', 'DecisionTrees', 'Bagging', 'RandomForest',
                                        'GradientBoostingMachines', 'XGradientBoosting', 'AdaBoost', 'ExtraTrees',
                                        'SupportVectorMachines'],
-                            'h2o': ['LinearRegression', 'GradientBoostingMachines', 'RandomForest'],
+                            'h2o': ['LinearRegression', 'GradientBoostingMachines', 'RandomForest',
+                                    'GradientBoostingMachine'],
                             'weka': ['LinearRegression', 'RandomForest', 'AdditiveRegression']
                             },
 
@@ -11,15 +12,16 @@ supported_algorithm = {'regression':
                            'scikit': ['NaiveBayesMultinomial', 'LogisticRegression', 'DecisionTrees', 'Bagging',
                                       'RandomForest', 'GradientBoostingMachines', 'XGradientBoosting', 'AdaBoost',
                                       'ExtraTrees', 'SupportVectorMachines', 'KNearestNeighbour'],
-                           'h2o': [],
+                           'h2o': ['NaiveBayesBinomial', 'DeepLearning'],
                            'weka': ['LibSVM', 'NaiveBayesMultinomial', 'KStar', 'AdaBoostM1',
                                     'AttributeSelectedClassifier', 'Bagging', 'DecisionTable', 'RandomTree', 'SMO',
                                     'Logistic', 'MultilayerPerceptron']
                        },
 
                        'clustering': {
-                           'scikit': ['AgglomerativeClustering', 'KMeansClustering', 'MiniBatchKMeans', 'Birch'],
-                           'h2o': [],
+                           'scikit': ['AgglomerativeClustering', 'KMeansClustering', 'MiniBatchKMeans', 'Birch',
+                                      'DBScan', 'SpectralClustering'],
+                           'h2o': ['NaiveBayesBinomial', 'DeepLearning'],
                            'weka': ['SimpleKMeans']
                        }
                        }
