@@ -234,9 +234,9 @@ class DltkAiClient:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for object detection
-            azure: if True, returns azure results of object detection on given image
-            ibm: if True, returns ibm results of object detection on given image
+            tensorflow: if True, uses tensorflow for image classification
+            azure: if True, returns azure results of image classification on given image
+            ibm: if True, returns ibm results of image classification on given image
 
         Returns:
         Image classification response
