@@ -9,6 +9,10 @@ image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_
 response = client.image_classification(image_path=file_path)
 print(response)
 
+# Note: using image_url
+response = client.image_classification(image_url=image_url, azure=True)
+print(response)
+
 # Note: top_n=4 predictions, image classification
 response = client.image_classification(image_path=file_path, top_n=4)
 print(response)

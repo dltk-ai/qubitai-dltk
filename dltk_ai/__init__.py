@@ -3,8 +3,8 @@
 __author__ = 'DLTK'
 __email__ = 'connect@qubitai.tech'
 __copyright__ = 'Copyright (c) 2019-2020 The QubitAI Technologies LLC'
-__version__ = '1.1.8'
-__url__ = 'https://github.com/dltk-ai/dltk-ai-sdk'
+__version__ = '1.0.0'
+__url__ = 'https://github.com/dltk-ai/qubitai-dltk'
 __download_url__ = ''
 __description__ = 'A Python wrapper around the DLTK API'
 
@@ -15,7 +15,7 @@ import requests
 import warnings
 
 try:
-    url = f"https://pypi.org/pypi/dltk-ai/json"
+    url = f"https://pypi.org/pypi/qubitai-dltk/json"
     data = json.loads(requests.get(url).text)
     latest_version = data['info']['version']
     installed_version = __version__
