@@ -6,6 +6,7 @@ import time
 from time import sleep, time
 
 import requests
+
 from dltk_ai.assertions import validate_parameters
 from dltk_ai.dataset_types import Dataset
 
@@ -39,6 +40,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing sentiment analysis response.
         """
+        sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text is not '', "Please ensure text is not empty"
@@ -58,7 +60,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing POS analysis response.
         """
-
+        sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text is not '', "Please ensure text is not empty"
@@ -76,7 +78,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing NER Tagger response.
         """
-
+        sources = [feature.lower() for feature in sources]
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text is not '', "Please ensure text is not empty"
@@ -109,7 +111,7 @@ class DltkAiClient:
         :return:
             obj:A json obj containing tags response.
         """
-
+        sources = [feature.lower() for feature in sources]
         supported_sources = ['rake', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text is not '', "Please ensure text is not empty"
@@ -122,6 +124,23 @@ class DltkAiClient:
         return response
 
     # Note: Computer vision functions
+    def check_cv_job(self, job_id):
+        """
+               This function check status of the job
+               Args:
+                   job_id: job_id from check_cv_job_status will be returned if its taking too long
+
+               Returns:
+                   task_status_response: contains the result requested by the cv methods (only used when cv_job_status
+                    crosses 10 second threshold)
+
+               """
+
+        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
+        task_url = f"{self.base_url}/computer_vision/task?task_id="
+        task_status_response = requests.get(task_url + str(job_id), headers=headers).json()
+        return task_status_response
+
     def check_cv_job_status(self, task_creation_response):
         """
         This function check status of the job
@@ -148,7 +167,9 @@ class DltkAiClient:
 
                 # check if execution time is more than
                 if time() - start_time > 10:
-                    print("It's taking too long than expected!!")
+                    print("It's taking too long than expected!!",
+                          'you can use this function to check status dltkai.check_cv_job(',
+                          task_creation_response['job_id'], ')')
                     break
 
         else:
@@ -168,7 +189,7 @@ class DltkAiClient:
         Returns:
         Object_detection
         """
-
+        output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
         assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
@@ -220,7 +241,7 @@ class DltkAiClient:
         Returns:
         Image classification response
         """
-
+        output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
         assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
@@ -266,6 +287,7 @@ class DltkAiClient:
         :return:
             obj: A json obj containing transcript of the audio file.
         """
+        sources = [feature.lower() for feature in sources]
         supported_audio_format = '.wav'
         supported_sources = ['google', 'ibm_watson']
         assert '.wav' in audio_path, f'Please use supported audio format {supported_audio_format}'
@@ -314,7 +336,7 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
-        validate_parameters(
+        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label, train_percentage,
             save_model)
 
@@ -384,7 +406,7 @@ class DltkAiClient:
         :return:
             A json obj containing feedback model info.
         """
-        validate_parameters(
+        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label,
             save_model)
         url = self.base_url + '/machine/' + service + '/feedback'
@@ -436,8 +458,12 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
-        validate_parameters(
-            service, lib, features, cluster=True, predict=True)
+        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+            service, lib, algorithm=None,
+            features=features,
+            label=None,
+            cluster=True,
+            predict=True)
         url = self.base_url + '/machine/' + service + '/predict'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
@@ -494,7 +520,7 @@ class DltkAiClient:
                 None: Dataset file will from DLTK storage will be used
                 database: Query from connected database will be used
         """
-        validate_parameters(
+        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features,
             save_model, cluster=True)
         url = self.base_url + '/machine/cluster/'
