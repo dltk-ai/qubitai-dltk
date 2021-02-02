@@ -21,7 +21,6 @@ supported_algorithm = {'regression':
                        'clustering': {
                            'scikit': ['AgglomerativeClustering', 'KMeansClustering', 'MiniBatchKMeans', 'Birch',
                                       'DBScan', 'SpectralClustering'],
-                           'h2o': ['NaiveBayesBinomial', 'DeepLearning'],
                            'weka': ['SimpleKMeans']
                        }
                        }
