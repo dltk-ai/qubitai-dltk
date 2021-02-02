@@ -6,6 +6,7 @@ import time
 from time import sleep, time
 
 import requests
+from dltk_ai.assertions import validate_parameters
 from dltk_ai.dataset_types import Dataset
 
 
@@ -130,7 +131,7 @@ class DltkAiClient:
         Returns:
 
         """
-        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'} 
+        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         task_url = f"{self.base_url}/computer_vision/task?task_id="
         task_status_response = {}
         # ensure the request was successful
@@ -291,7 +292,7 @@ class DltkAiClient:
         return response
 
     def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80,
-              save_model=True, params=None,dataset_source=None):
+              save_model=True, params=None, dataset_source=None):
         """
         :param lib: Library for training the model. Currently we are supporting DLTK and weka libraries.
         :param service: Valid parameter values are classification, regression.
@@ -313,6 +314,10 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
+        validate_parameters(
+            service, lib, algorithm, features, label, train_percentage,
+            save_model)
+
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
         if params is None:
@@ -379,7 +384,9 @@ class DltkAiClient:
         :return:
             A json obj containing feedback model info.
         """
-
+        validate_parameters(
+            service, lib, algorithm, features, label,
+            save_model)
         url = self.base_url + '/machine/' + service + '/feedback'
 
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
@@ -411,7 +418,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers)
         return response.json()
 
-    def predict(self, service, dataset, model_url, features, lib='weka', params=None,dataset_source=None):
+    def predict(self, service, dataset, model_url, features, lib='weka', params=None, dataset_source=None):
         """
         :param lib: Library for training the model. Currently we are supporting DLTK and weka libraries.
         :param service: Valid parameter values are classification, regression.
@@ -429,6 +436,8 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
+        validate_parameters(
+            service, lib, features, cluster=True, predict=True)
         url = self.base_url + '/machine/' + service + '/predict'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
@@ -461,28 +470,33 @@ class DltkAiClient:
         return response
 
     def cluster(self, service, algorithm, dataset, features, lib='weka', number_of_clusters=2, model_name=None,
-                save_model=True, params=None,dataset_source=None):
+                save_model=True, params=None, dataset_source=None):
         """
         :param lib: Library for clustering the model. Currently we are supporting DLTK, weka, H2O, scikit-learn
                     libraries. Valid values for this parameter: DLTK, weka, h2o, scikit
         :param service: Valid parameter values are CLUSTER.
         :param model_name: Model name and with this name model will be saved.
         :param algorithm: algorithm by which model will be trained.
-        :param epsilon: epsilon is algorithm specific constant.
-        :param dataset_url: dataset file location in DLTK storage.
+        :param dataset: dataset file location in DLTK storage.
         :param features: column name list which is used to train classification model.
         :param number_of_clusters: the dataset will be clustered into number of clusters.
         :param save_model: If true model will saved
+        :param dataset_source : metabase address for dataset
         :param params:
         :return:
             obj: A json obj containing model info.
 
         Args:
+            dataset_source:
+            dataset_source:
             features: Feature list used while model training
             dataset_source: To specify data source,
                 None: Dataset file will from DLTK storage will be used
                 database: Query from connected database will be used
         """
+        validate_parameters(
+            service, lib, algorithm, features,
+            save_model, cluster=True)
         url = self.base_url + '/machine/cluster/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
@@ -541,7 +555,7 @@ class DltkAiClient:
         if response.status_code == 200:
             response = response.json()
             while response[STATE] == 'RUN':
-                time.sleep(JOB_STATUS_CHECK_INTERVAL)
+                sleep(JOB_STATUS_CHECK_INTERVAL)
                 response = requests.get(url=url, headers=headers).json()
             if response[STATE] == 'FAIL':
                 raise Exception('Prediction job failed!')
@@ -570,7 +584,6 @@ class DltkAiClient:
         """
         if not isinstance(dataset_type, Dataset):
             raise TypeError('dataset type must be an instance of Dataset Enum')
-
         url = self.base_url + '/s3/file'
         headers = {'ApiKey': self.api_key, 'label': dataset_type.value}
         files = {'file': open(str(file_path), 'rb')}
