@@ -8,19 +8,26 @@
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
-DLTK Unified Open-Source Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
+DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
 
 ## Getting Started
 
 1. Creating a new Account on https://cloud.dltk.ai/ to start consuming services.
+
     a. Click on Sign Up and create a new account.
+
     b. A popup appears to enter the details, after entering the details click on "Sign Up Now" button.
+
     c. After creating your new account, enter your credentials to gain access
 
 2. DLTK Cloud - Creating an App
+
     a. Once you login, to access DLTK Cloud, click on the Console button or the console tab available in the menu bar.
+
     b. Click on the Projects menu dropdown and select Create App
+
     c. Enter the name of the app and a short description
+
     d. The dashboard will be visible with the given name and description along with an API key
 
 ## Installation
