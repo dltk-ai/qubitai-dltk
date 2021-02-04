@@ -35,12 +35,14 @@ DLTK Unified Deep Learning platform can be leveraged to build solutions that are
 ## Installing from Source
 
 1. Clone the repo
+
 ```sh
    git clone https://github.com/dltk-ai/qubitai-dltk.git
-```
+``` 
 2. Set working directory to qubitai-dltk folder
 
 3. Install requirements from requirements.txt file
+
 ```sh
     pip install -r requirements.txt
 ```
