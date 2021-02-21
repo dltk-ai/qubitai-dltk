@@ -7,12 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Machine Learning &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>Uploading a Dataset &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,14 +33,16 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Classification" href="classification.html" />
-    <link rel="prev" title="Welcome to Qubitai-dltk’s documentation!" href="../index.html" /> 
+    <link rel="next" title="Preprocessing" href="preprocessing.html" />
+    <link rel="prev" title="Creating an Account" href="../getting_started/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,27 +87,40 @@
               
             
             
-              <p class="caption"><span class="caption-text">Machine Learning</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Machine Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#initializing-the-dltk-client">Initializing the DLTK Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uploading-a-dataset">Uploading a Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#check-job-status">Check Job Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#check-job-output">Check Job Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#downloading-a-file">Downloading a File</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-app">Creating an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#setup-guide">Setup Guide</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#check-job-status">Check Job Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#check-job-output">Check Job Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#downloading-a-file">Downloading a File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Preprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classification.html">Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regression.html">Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Conversation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">Speech to Text</a></li>
 </ul>
 
             
@@ -153,7 +169,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Machine Learning</li>
+      <li>Uploading a Dataset</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,20 +188,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="machine-learning">
-<h1>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="initializing-the-dltk-client">
-<h2>Initializing the DLTK Client<a class="headerlink" href="#initializing-the-dltk-client" title="Permalink to this headline">¶</a></h2>
-<p>This is a simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="uploading-a-dataset">
-<h2>Uploading a Dataset<a class="headerlink" href="#uploading-a-dataset" title="Permalink to this headline">¶</a></h2>
-<p>We use store method which has 2 parameters to upload a dataset. The first parameter is used to give the path of Dataset and the second parameter is used to mention whether it is train or test dataset. When we call this store the method, we will get a response object</p>
+  <div class="section" id="uploading-a-dataset">
+<h1>Uploading a Dataset<a class="headerlink" href="#uploading-a-dataset" title="Permalink to this headline">¶</a></h1>
+<p>Used to store file on cloud storage.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">client.store(file_path, dataset_type):</code></dt>
@@ -209,7 +214,7 @@
 </div>
 </div>
 <div class="section" id="check-job-status">
-<h2>Check Job Status<a class="headerlink" href="#check-job-status" title="Permalink to this headline">¶</a></h2>
+<h1>Check Job Status<a class="headerlink" href="#check-job-status" title="Permalink to this headline">¶</a></h1>
 <p>After model training, a job is created with given details. It takes some time to train a model. To check the job status, we use the following function.</p>
 <dl class="py function">
 <dt id="client.job_status">
@@ -232,7 +237,7 @@
 </div>
 </div>
 <div class="section" id="check-job-output">
-<h2>Check Job Output<a class="headerlink" href="#check-job-output" title="Permalink to this headline">¶</a></h2>
+<h1>Check Job Output<a class="headerlink" href="#check-job-output" title="Permalink to this headline">¶</a></h1>
 <p>Gives the output of training job which included model evaluation metrics, path where model is saved, etc.</p>
 <dl class="py function">
 <dt id="client.job_output">
@@ -255,7 +260,26 @@
 </div>
 </div>
 <div class="section" id="downloading-a-file">
-<h2>Downloading a File<a class="headerlink" href="#downloading-a-file" title="Permalink to this headline">¶</a></h2>
+<h1>Downloading a File<a class="headerlink" href="#downloading-a-file" title="Permalink to this headline">¶</a></h1>
+<p>Function used to download a file from cloud storage.</p>
+<dl class="py function">
+<dt id="client.download">
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.download" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_url</strong> – url of file stored in cloud storage.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>file content in text format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction_file_url</span> <span class="o">=</span> <span class="n">predict_job_output_response</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;predFileUrl&#39;</span><span class="p">]</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">prediction_file_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 
@@ -265,8 +289,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="classification.html" class="btn btn-neutral float-right" title="Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Qubitai-dltk’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="preprocessing.html" class="btn btn-neutral float-right" title="Preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../getting_started/index.html" class="btn btn-neutral float-left" title="Creating an Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

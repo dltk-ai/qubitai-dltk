@@ -1,15 +1,14 @@
-Computer Vision
-================
-
+****************
 Object Detection
------------------
+****************
+
 Identifies and locates objects in an Image.
 
 Usage: Tracking objects, Counting people, Vehicle Detection, etc.
 
 
-.. code-block:: python
-    client.object_detection(image_url=None, image_path=None, tensorflow=True,
+
+.. function:: client.object_detection(image_url=None, image_path=None, tensorflow=True,
                                     azure=False, output_types=["json"]):
 
 
@@ -22,6 +21,9 @@ Usage: Tracking objects, Counting people, Vehicle Detection, etc.
     """
 Example::
 
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
     image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"
 
     object_detection_response = client.object_detection(image_url=image_url, azure=True)
@@ -29,8 +31,10 @@ Example::
     print(object_detection_response)
 
 
+**************
 Face Detection
----------------
+**************
+
 Analyses an individual's face in an image.
 
 Usage: Automated identity verification.
@@ -54,6 +58,9 @@ Usage: Automated identity verification.
 
 Example::
 
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
     image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"
 
     face_analytics_response = client.face_analytics(image_url=image_url, azure=True)
@@ -61,8 +68,10 @@ Example::
     print(face_analytics_response)
 
 
+********************
 Image Classification
----------------------
+********************
+
 Classifies an image according to its visual content.
 
 Usage: Identifying the category of the image, Image organisation, etc,
@@ -80,7 +89,10 @@ Usage: Identifying the category of the image, Image organisation, etc,
    :rtype: Image classification response
 
 
-.. code-block:: python
+Example:: 
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     file_path = "../image_classification_sample.jpg"
 

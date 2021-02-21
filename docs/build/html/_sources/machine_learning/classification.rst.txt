@@ -4,20 +4,46 @@ Classification
 Supported Libraries and Algorithms
 ----------------------------------
 
-.. csv-table::
-   :header: "scikit", "weka", "h2o"
-   :widths: 30, 30, 30
+.. list-table:: Supported Libraries and Algorithms
+   :widths: 25 25 25
+   :header-rows: 1
 
-   "NaiveBayesMultinomial", "LibSVM", "NaiveBayesBinomial"
-   "LogisticRegression", "NaiveBayesMultinomial", "DeepLearning"
-   "DecisionTrees","KStar"
-   "Bagging","AdaBoostM1"
-   "RandomForest","AttributeSelectedClassifier"
-   "GradientBoostingMachines","Bagging"
-   "XGradientBoosting","CostSensitiveClassifier"
-   "AdaBoost","DecisionTable"
-
-
+   * - scikit
+     - h2o
+     - weka
+   * - NaiveBayesMultinomial
+     - NaiveBayesBinomial
+     - LibSVM
+   * - LogisticRegression
+     - DeepLearning
+     - NaiveBayesMultinomial
+   * - DecisionTrees
+     - 
+     - KStar
+   * - Bagging
+     - 
+     - AdaBoostM1
+   * - RandomForest 
+     - 
+     - AttributeSelectedClassifier
+   * - GradientBoostingMachines
+     - 
+     - Bagging
+   * - XGradientBoosting
+     - 
+     - DecisionTable
+   * - AdaBoost
+     - 
+     - RandomTree
+   * - ExtraTrees
+     - 
+     - SMO
+   * - SupportVectorMachines
+     - 
+     - Logistic
+   * - KNearestNeighbour
+     - 
+     - MultilayerPerceptron
 
 Training a model
 -----------------
@@ -43,6 +69,10 @@ Training a model
 
 Example::
 
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
     task = "classification"
     library = "weka"
     algorithm = "Logistic"
@@ -58,7 +88,6 @@ Example::
 
 Predictions
 ------------
-
 
 .. function:: client.predict(service, dataset, model_url, features, lib='weka', 
                             params=None, dataset_source=None):

@@ -1,18 +1,25 @@
 Clustering
 ===========
 
-Supported Libraries and Algorithms
-----------------------------------
+.. list-table:: Supported Libraries and Algorithms
+   :widths: 25 25
+   :header-rows: 1
 
-.. csv-table::
-   :header: "scikit", "weka"
-   :widths: 30, 30
-
-   "AgglomerativeClustering", "SimpleKMeans"
-   "KMeansClustering"
-   "MiniBatchKMeans"
-   "Birch"
-
+   * - scikit
+     - weka
+   * - AgglomerativeClustering
+     - SimpleKMeans
+   * - KMeansClustering 
+     - 
+   * - DBScan
+     - 
+   * - MiniBatchKMeans
+     - 
+   * - Birch
+     - 
+   * - SpectralClustering
+     - 
+    
 Cluster
 -------
 
@@ -35,6 +42,10 @@ Cluster
     :rtype: A json obj containing model info.
 
 example::
+
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     task = "cluster"
     library = "scikit"

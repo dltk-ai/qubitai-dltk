@@ -1,21 +1,40 @@
 Regression
 ===========
 
-Supported Libraries and Algorithms
------------------------------------
+.. list-table:: Supported Libraries and Algorithms
+   :widths: 25 25 25
+   :header-rows: 1
 
-.. csv-table::
-   :header: "scikit", "weka", "h2o"
-   :widths: 30, 30, 30
-
-   "NaiveBayesMultinomial", "LibSVM", "NaiveBayesBinomial"
-   "LogisticRegression", "NaiveBayesMultinomial", "DeepLearning"
-   "DecisionTrees","KStar"
-   "Bagging","AdaBoostM1"
-   "RandomForest","AttributeSelectedClassifier"
-   "GradientBoostingMachines","Bagging"
-   "XGradientBoosting","CostSensitiveClassifier"
-   "AdaBoost","DecisionTable"
+   * - scikit
+     - h2o
+     - weka
+   * - LinearRegression
+     - LinearRegression
+     - LinearRegression
+   * - DecisionTrees
+     - GradientBoostingMachines
+     - RandomForest
+   * - Bagging
+     - RandomForest
+     - AdditiveRegression
+   * - RandomForest
+     - GradientBoostingMachines
+     - 
+   * - GradientBoostingMachine
+     - 
+     - 
+   * - XGradientBoosting
+     - 
+     - 
+   * - AdaBoost
+     - 
+     - 
+   * - ExtraTrees
+     - 
+     - 
+   * - SupportVectorMachines
+     - 
+     - 
 
 
 Training a model
@@ -41,9 +60,13 @@ Training a model
 
 example::
 
-    task = "classification"
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
+    task = "regression"
     library = "weka"
-    algorithm = "Logistic"
+    algorithm = "LinearRegression"
     features = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
     label = 'MEDV'
     train_percentage = 80
@@ -56,7 +79,6 @@ example::
 
 Predictions
 -----------------
-
 
 .. function:: client.predict(service, dataset, model_url, features, lib='weka',
                             params=None, dataset_source=None):
@@ -109,9 +131,9 @@ Feedback
 
 example::
 
-    task = "classification"
+    task = "regression"
     library = "weka"
-    algorithm = "Logistic"
+    algorithm = "LinearRegression"
     train_data = '/dltk-ai/train_data.csv'
     feedback_data = '/dltk-ai/train_data.csv'
     job_id = '2457'
