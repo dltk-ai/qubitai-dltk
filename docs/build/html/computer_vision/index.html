@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Computer Vision &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Natural Language Processing" href="../natural_language_processing/index.html" />
+    <link rel="prev" title="Clustering" href="../machine_learning/clustering.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qubitai-dltk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Computer Vision</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Computer Vision</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#object-detection">Object Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#face-detection">Face Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-classification">Image Classification</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">NLP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Natural Language Processing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubitai-dltk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Computer Vision</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/computer_vision/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="computer-vision">
+<h1>Computer Vision<a class="headerlink" href="#computer-vision" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="object-detection">
+<h2>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h2>
+<p>Identifies and locates objects in an Image.</p>
+<p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+
+<span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="face-detection">
+<h2>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h2>
+<p>Analyses an individual’s face in an image.</p>
+<p>Usage: Automated identity verification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Presently supports Face Detection only.</p>
+</div>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">client.face_analytics(image_url=None, features=None, image_path=None, dlib=False,</code></dt>
+<dt>
+<code class="sig-name descname">opencv=True,azure=False, mtcnn=False,output_types=[&quot;json&quot;]):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_url</strong> – Image URL</p></li>
+<li><p><strong>features</strong> – Type of features requested by client. Presently supports “face_detection”.</p></li>
+<li><p><strong>image_path</strong> – Local Image Path</p></li>
+<li><p><strong>dlib</strong> – if True, uses dlib for face analytics</p></li>
+<li><p><strong>opencv</strong> – if True, uses opencv for face analytics</p></li>
+<li><p><strong>azure</strong> – if True, returns azure results of face analytics on given image</p></li>
+<li><p><strong>mtcnn</strong> – if True, uses mtcnn for face analytics</p></li>
+<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>output_types</em>) – Type of output requested by client: “json”, “image”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A json obj containing the output of object detection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+
+<span class="n">face_analytics_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">face_analytics</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">face_analytics_response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="image-classification">
+<h2>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h2>
+<p>Classifies an image according to its visual content.</p>
+<p>Usage: Identifying the category of the image, Image organisation, etc,</p>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
+<dt>
+<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_url</strong> – Image URL</p></li>
+<li><p><strong>image_path</strong> – Local Image Path</p></li>
+<li><p><strong>top_n</strong> – if True, uses dlib for face analyticsget top n predictions</p></li>
+<li><p><strong>tensorflow</strong> – if True, uses tensorflow for image classification</p></li>
+<li><p><strong>azure</strong> – if True, returns azure results of image classification on given image</p></li>
+<li><p><strong>ibm</strong> – if True, uses mtcnn for face analyticsif True, returns ibm results of image classification on given image</p></li>
+<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>output_types</em>) – Type of output requested by client: “json”, “image”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Image classification response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
+
+<span class="c1"># Note: top_n=4 predictions, image classification</span>
+<span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">image_classification</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../natural_language_processing/index.html" class="btn btn-neutral float-right" title="Natural Language Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../machine_learning/clustering.html" class="btn btn-neutral float-left" title="Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QubitAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
