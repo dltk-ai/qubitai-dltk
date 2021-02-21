@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Clustering &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Computer Vision" href="../computer_vision/index.html" />
+    <link rel="prev" title="Regression" href="regression.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qubitai-dltk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">Regression</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-libraries-and-algorithms">Supported Libraries and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cluster">Cluster</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Computer Vision</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">Computer Vision</a></li>
+</ul>
+<p class="caption"><span class="caption-text">NLP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Natural Language Processing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubitai-dltk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Clustering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/machine_learning/clustering.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clustering">
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="supported-libraries-and-algorithms">
+<h2>Supported Libraries and Algorithms<a class="headerlink" href="#supported-libraries-and-algorithms" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>scikit</p></th>
+<th class="head"><p>weka</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AgglomerativeClustering</p></td>
+<td><p>SimpleKMeans</p></td>
+</tr>
+<tr class="row-odd"><td><p>KMeansClustering</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>MiniBatchKMeans</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Birch</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cluster">
+<h2>Cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">client.cluster(service, algorithm, dataset, features, lib='weka'</code></dt>
+<dt>
+<code class="sig-name descname">, number_of_clusters=2, model_name=None,</code></dt>
+<dt>
+<code class="sig-name descname">save_model=True, params=None, dataset_source=None):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service</strong> – clustering</p></li>
+<li><p><strong>algorithm</strong> – algorithm to use for clustering</p></li>
+<li><p><strong>dataset</strong> – dataset file location in DLTK storage.</p></li>
+<li><p><strong>features</strong> – List of features to use for clustering.</p></li>
+<li><p><strong>lib</strong> – Library for clustering the model.</p></li>
+<li><p><strong>number_of_clusters</strong> – number of clusters to divide the data into.</p></li>
+<li><p><strong>model_name</strong> – Model will be saved with the name specified in this parameter.</p></li>
+<li><p><strong>save_model</strong> – If True, the model will be saved in DLTK Storage.</p></li>
+<li><p><strong>params</strong> – additional parameters</p></li>
+<li><p><strong>dataset_source</strong> – To specify data source,
+None: Dataset file will from DLTK storage will be used
+database: Query from connected database will be used</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A json obj containing model info.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;cluster&quot;</span>
+<span class="n">library</span> <span class="o">=</span> <span class="s2">&quot;scikit&quot;</span>
+<span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;KMeansClustering&quot;</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MEDV&#39;</span>
+<span class="n">train_percentage</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;HousePricePrediction&quot;</span>
+<span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+
+<span class="n">train_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span><span class="n">features</span><span class="p">,</span><span class="n">model_name</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">train_percentage</span><span class="p">,</span> <span class="n">save_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../computer_vision/index.html" class="btn btn-neutral float-right" title="Computer Vision" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="regression.html" class="btn btn-neutral float-left" title="Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QubitAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
