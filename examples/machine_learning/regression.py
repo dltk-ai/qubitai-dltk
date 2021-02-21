@@ -1,7 +1,6 @@
 import dltk_ai
 from dltk_ai.dataset_types import Dataset
 
-
 client = dltk_ai.DltkAiClient('YOUR_APIKEY')  # put your app key here.
 
 # upload dataset - train
@@ -28,11 +27,13 @@ save_model = "true"
 
 # model training
 train_response = client.train(task, algorithm, train_data, label, features,
-                            "Housing Price Model", library, train_percentage, save_model)  
+                              "Housing Price Model", library, train_percentage, save_model)
 print(train_response)
 
 # check status of train job
-# As training a model might take lot of time depending on size of dataset, we can check current status of model training using below functions
+# As training a model might take lot of time depending on size of dataset,
+# we can check current status of model training using below functions
+
 train_job_status_response = client.job_status(train_response['data']['jobId'])
 print(train_job_status_response)
 
@@ -75,7 +76,7 @@ feedback_data = feedback_data_store_response['fileUrl']
 
 # initiate feedback training
 feedback_response = client.feedback(task, algorithm, train_data, feedback_data, job_id, model,
-                                label, features, library, "Housing Price Model", 80, True)
+                                    label, features, library, "Housing Price Model", 80, True)
 
 print(feedback_response)
 
@@ -106,4 +107,3 @@ print(feedback_predict_job_output_response)
 pred_file = feedback_predict_job_output_response['output']['predFileUrl']
 response = client.download(pred_file)
 print(response.text)
-
