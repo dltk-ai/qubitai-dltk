@@ -1,3 +1,8 @@
+*****
+About
+*****
+
+DLTK's Machine Learning service provides leverage to Train models, deploy them and use them for predictions, where the heavy lifting of training the models and deploying is done on DLTK's cloud server. The 3 widely used libraries (scikit, weka & h2o) for training models can be used under one platform.
 
 *******************
 Uploading a Dataset
@@ -5,13 +10,17 @@ Uploading a Dataset
 
 Used to store file on cloud storage.
 
-.. function:: client.store(file_path, dataset_type):
+.. function:: client.store(file_path, dataset_type)
 
    :param file_path: The path of the dataset file.
    :param dataset_type: Type of dataset. valid Values TEST_DATA, TRAIN_DATA.
    :rtype: A json obj containing the file path in storage.
 
 example::
+
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     train_data_store_response = c.store('../train_data.csv',Dataset.TRAIN_DATA)
     print(train_data_store_response)
@@ -20,7 +29,8 @@ example::
 ****************
 Check Job Status
 ****************
-After model training, a job is created with given details. It takes some time to train a model. To check the job status, we use the following function.
+
+Training a model is done on DLTK's cloud server. A job is triggered as soon as the train function is called. To check the status of the job, the following function can be used by giving job_id, response form train function as input.
 
 .. function:: client.job_status(job_id)
 
@@ -28,6 +38,10 @@ After model training, a job is created with given details. It takes some time to
    :rtype: A json obj containing the status details.
 
 example::
+
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
    
     train_job_id = train_response['data']['jobId']
     train_job_status_response = client.job_status(train_job_id)
@@ -36,7 +50,7 @@ example::
 ****************
 Check Job Output
 ****************
-Gives the output of training job which included model evaluation metrics, path where model is saved, etc.
+Gives the output of training job which includes model evaluation metrics, path where model is saved, etc.
 
 .. function:: client.job_output(job_id)
 
@@ -44,14 +58,18 @@ Gives the output of training job which included model evaluation metrics, path w
    :rtype: A json obj containing the job output.
 
 example::
+
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
    
     train_job_id = train_response['data']['jobId']
     train_job_output_response = client.job_output(train_job_id)
     print(train_job_output_response)
 
-*****
+******************
 Downloading a File
-*****
+******************
 
 Function used to download a file from cloud storage.
 
@@ -61,6 +79,10 @@ Function used to download a file from cloud storage.
    :rtype: file content in text format.
 
 example::
+
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
    
     prediction_file_url = predict_job_output_response['output']['predFileUrl']
     response = client.download(prediction_file_url)

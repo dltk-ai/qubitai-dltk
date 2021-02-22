@@ -1,9 +1,6 @@
 Classification
 ================
 
-Supported Libraries and Algorithms
-----------------------------------
-
 .. list-table:: Supported Libraries and Algorithms
    :widths: 25 25 25
    :header-rows: 1
@@ -50,7 +47,7 @@ Training a model
 
 .. function:: client.train(service, algorithm, dataset, label, features, model_name=None,
                             lib="weka", train_percentage=80, save_model=True,params=None, 
-                            dataset_source=None):
+                            dataset_source=None)
 
    :param service: Training task to perform. Valid parameter values are classification, regression.
    :param algorithm: Algorithm to use for training the model.
@@ -62,7 +59,7 @@ Training a model
    :param train_percentage: % of data to use for training the model. Rest of the data will be used to test the model.
    :param save_model: If True, the model will be saved in DLTK Storage.
    :param dataset_source: To specify data source,
-        None: Dataset file will from DLTK storage will be used
+        None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
    :rtype: A json obj containing the file path in storage.
 
@@ -77,7 +74,7 @@ Example::
     library = "weka"
     algorithm = "Logistic"
     features = ["Pregnancies","Glucose","BloodPressure","SkinThickness","Insulin","BMI", "DiabetesPedigreeFunction","Age"]
-    label = 'Outcome'
+    label = "Outcome"
     train_percentage = 80
     model_name = "DiabetesDetection"
     save_model = "true"
@@ -90,7 +87,7 @@ Predictions
 ------------
 
 .. function:: client.predict(service, dataset, model_url, features, lib='weka', 
-                            params=None, dataset_source=None):
+                            params=None, dataset_source=None)
     
     :param service: Service used in training the model. Valid parameter values are classification, regression.
     :param dataset: dataset file location in DLTK storage.
@@ -98,7 +95,7 @@ Predictions
     :param features: List of features used for training.
     :param lib: Library used for training the model. Currently we are supporting scikit, h2o and weka.
     :param dataset_source: To specify data source,
-        None: Dataset file will from DLTK storage will be used
+        None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
     :rtype: A json obj containing the file info which has the predictions.
 

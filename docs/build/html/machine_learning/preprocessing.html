@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Preprocessing &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>Preprocessor &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Classification" href="classification.html" />
-    <link rel="prev" title="Uploading a Dataset" href="index.html" /> 
+    <link rel="prev" title="About" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,17 +89,19 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-account">Creating an Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-app">Creating an App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#setup-guide">Setup Guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index.html">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#uploading-a-dataset">Uploading a Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#check-job-status">Check Job Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#check-job-output">Check Job Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#downloading-a-file">Downloading a File</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Preprocessing</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preprocessor</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#read-data">Read Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-profile">Data Profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#missing-values">Missing Values</a></li>
@@ -114,13 +116,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
@@ -128,7 +132,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Conversation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">Speech to Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 
             
@@ -177,7 +182,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Preprocessing</li>
+      <li>Preprocessor</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,8 +201,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="preprocessing">
-<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="preprocessor">
+<h1>Preprocessor<a class="headerlink" href="#preprocessor" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="read-data">
 <h2>Read Data<a class="headerlink" href="#read-data" title="Permalink to this headline">¶</a></h2>
 <p>Function for reading data from csv or excel to dataframe.</p>
@@ -213,7 +218,7 @@
 <dt>
 <code class="sig-name descname">na_filter=True,verbose=False,parse_dates=False,date_parser=None,</code></dt>
 <dt>
-<code class="sig-name descname">thousands=None,comment=None):</code></dt>
+<code class="sig-name descname">thousands=None,comment=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -263,8 +268,8 @@
 <h2>Data Profile<a class="headerlink" href="#data-profile" title="Permalink to this headline">¶</a></h2>
 <p>Information describing the statistics of variables in the data.</p>
 <dl class="py function">
-<dt>
-<code class="sig-name descname">preprocessor.data_profile(dataframe):</code></dt>
+<dt id="preprocessor.data_profile">
+<code class="sig-prename descclassname">preprocessor.</code><code class="sig-name descname">data_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocessor.data_profile" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>dataframe</strong> – dataframe</p>
@@ -276,7 +281,10 @@
 </dd></dl>
 
 <p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_profile</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">data_profile</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">dltk_ai</span> <span class="kn">import</span> <span class="n">preprocessor</span>
+
+<span class="n">df_profile</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">data_profile</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_profile</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -316,7 +324,10 @@
 For categorical variables, most repeated value is default value for filling missing values.</p>
 </div>
 <p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">handling_missing_data</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">treat_missing_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col_A&#39;</span><span class="p">,</span><span class="s1">&#39;col_B&#39;</span><span class="p">],</span> <span class="n">statistic</span> <span class="o">=</span> <span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">dltk_ai</span> <span class="kn">import</span> <span class="n">preprocessor</span>
+
+<span class="n">handling_missing_data</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">treat_missing_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col_A&#39;</span><span class="p">,</span><span class="s1">&#39;col_B&#39;</span><span class="p">],</span> <span class="n">statistic</span> <span class="o">=</span> <span class="s1">&#39;min&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">handling_missing_data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -351,14 +362,17 @@ For categorical variables, most repeated value is default value for filling miss
 </dd></dl>
 
 <p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_outliers_removed</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">treat_outliers</span><span class="p">(</span><span class="n">player_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col_D&#39;</span><span class="p">,</span><span class="s1">&#39;col_E&#39;</span><span class="p">],</span> <span class="n">remove</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">dltk_ai</span> <span class="kn">import</span> <span class="n">preprocessor</span>
+
+<span class="n">df_outliers_removed</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">treat_outliers</span><span class="p">(</span><span class="n">player_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col_D&#39;</span><span class="p">,</span><span class="s1">&#39;col_E&#39;</span><span class="p">],</span> <span class="n">remove</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">df_outliers_removed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="feature-creation">
 <h2>Feature Creation<a class="headerlink" href="#feature-creation" title="Permalink to this headline">¶</a></h2>
-<p>Creates new features based on existing columns using methods such as binning, one-hot-encoding &amp; groupby transform</p>
+<p>Creates new features based on existing columns using methods such as binning, one-hot-encoding &amp; groupby transform.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10,</code></dt>
@@ -371,7 +385,7 @@ For categorical variables, most repeated value is default value for filling miss
 <dt>
 <code class="sig-name descname">dummies_dummy_na=False, dummies_column=None, dummies_sparse=False, dummies_drop_first=False,</code></dt>
 <dt>
-<code class="sig-name descname">groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean'):</code></dt>
+<code class="sig-name descname">groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean')</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -384,7 +398,7 @@ For categorical variables, most repeated value is default value for filling miss
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>binning_column</strong> – </p></li>
+<li><p><strong>binning_column</strong> – dataframe column for binning.</p></li>
 <li><p><strong>bins</strong> – Number of equal width bins. Default - 10</p></li>
 <li><p><strong>binning_right</strong> – bool, default True. Indicates if the bins should include the right most value.</p></li>
 <li><p><strong>binning_labels</strong> – array or bool, optional. Labels for the returned bins</p></li>
@@ -413,14 +427,17 @@ For categorical variables, most repeated value is default value for filling miss
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>groupby_column</strong> – list of columns to groupby in the dataframe</p></li>
 <li><p><strong>groupby_transform_column</strong> – column to perform the transform operation on</p></li>
-<li><p><strong>groupby_transform_metric</strong> – metric to use for transformation - min/max/mean/median</p></li>
+<li><p><strong>groupby_transform_metric</strong> – metric to use for transformation - min/max/mean/median. Default - ‘mean’</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># groupby transform</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">dltk_ai</span> <span class="kn">import</span> <span class="n">preprocessor</span>
+
+<span class="c1"># groupby transform</span>
 <span class="n">preprocessor</span><span class="o">.</span><span class="n">feature_creation</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">feature_method</span><span class="o">=</span><span class="s1">&#39;groupby&#39;</span><span class="p">,</span><span class="n">groupby_column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;col_A&#39;</span><span class="p">,</span><span class="s1">&#39;col_B&#39;</span><span class="p">],</span><span class="n">groupby_transform_column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;col_C&#39;</span><span class="p">])</span>
 
 <span class="c1"># binning</span>
@@ -436,7 +453,11 @@ For categorical variables, most repeated value is default value for filling miss
 <p>Transforms data from one format to another</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None, pivot_values=None, melt_id_vars=None, melt_value_vars=None, crosstab_columns=None, crosstab_rows=None</code></dt>
+<code class="sig-name descname">preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None,</code></dt>
+<dt>
+<code class="sig-name descname">pivot_values=None, melt_id_vars=None, melt_value_vars=None,</code></dt>
+<dt>
+<code class="sig-name descname">crosstab_columns=None, crosstab_rows=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -479,7 +500,10 @@ For categorical variables, most repeated value is default value for filling miss
 </dd></dl>
 
 <p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pivot</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">dltk_ai</span> <span class="kn">import</span> <span class="n">preprocessor</span>
+
+<span class="c1"># pivot</span>
 <span class="n">preprocessor</span><span class="o">.</span><span class="n">data_transformation</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">transform_method</span><span class="o">=</span><span class="s1">&#39;pivot&#39;</span><span class="p">,</span><span class="n">pivot_index</span><span class="o">=</span><span class="s1">&#39;col_B&#39;</span><span class="p">,</span><span class="n">pivot_columns</span><span class="o">=</span><span class="s1">&#39;col_A&#39;</span><span class="p">)</span>
 
 <span class="c1"># melt</span>
@@ -499,7 +523,7 @@ For categorical variables, most repeated value is default value for filling miss
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="classification.html" class="btn btn-neutral float-right" title="Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Uploading a Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

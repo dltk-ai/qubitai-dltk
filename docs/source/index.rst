@@ -36,12 +36,6 @@ Welcome to Qubitai-dltk's documentation!
 
 .. toctree::
    :maxdepth: 4
-   :caption: Preprocessing
-
-   preprocessing/index
-
-.. toctree::
-   :maxdepth: 4
    :caption: Conversation
 
    conversation/index

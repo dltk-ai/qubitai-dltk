@@ -89,17 +89,24 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-account">Creating an Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-app">Creating an App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#setup-guide">Setup Guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index.html">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#uploading-a-dataset">Uploading a Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#check-job-status">Check Job Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#check-job-output">Check Job Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#downloading-a-file">Downloading a File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Read Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html#data-profile">Data Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html#missing-values">Missing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html#treat-outliers">Treat Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html#feature-creation">Feature Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html#data-transformation">Data Transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classification.html">Classification</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Regression</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#training-a-model">Training a model</a></li>
@@ -111,13 +118,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
@@ -125,7 +134,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Conversation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">Speech to Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 
             
@@ -255,7 +265,7 @@
 <dt>
 <code class="sig-name descname">lib=&quot;weka&quot;, train_percentage=80, save_model=True,params=None,</code></dt>
 <dt>
-<code class="sig-name descname">dataset_source=None):</code></dt>
+<code class="sig-name descname">dataset_source=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -269,7 +279,7 @@
 <li><p><strong>train_percentage</strong> – % of data to use for training the model. Rest of the data will be used to test the model.</p></li>
 <li><p><strong>save_model</strong> – If True, the model will be saved in DLTK Storage.</p></li>
 <li><p><strong>dataset_source</strong> – To specify data source,
-None: Dataset file will from DLTK storage will be used
+None: Dataset file from DLTK storage will be used
 database: Query from connected database will be used</p></li>
 </ul>
 </dd>
@@ -304,7 +314,7 @@ database: Query from connected database will be used</p></li>
 <dt>
 <code class="sig-name descname">client.predict(service, dataset, model_url, features, lib='weka',</code></dt>
 <dt>
-<code class="sig-name descname">params=None, dataset_source=None):</code></dt>
+<code class="sig-name descname">params=None, dataset_source=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -314,7 +324,7 @@ database: Query from connected database will be used</p></li>
 <li><p><strong>features</strong> – List of features used for training.</p></li>
 <li><p><strong>lib</strong> – Library used for training the model. Currently we are supporting scikit, h2o and weka.</p></li>
 <li><p><strong>dataset_source</strong> – To specify data source,
-None: Dataset file will from DLTK storage will be used
+None: Dataset file from DLTK storage will be used
 database: Query from connected database will be used</p></li>
 </ul>
 </dd>
@@ -375,12 +385,12 @@ database: Query from connected database will be used</p></li>
 <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;LinearRegression&quot;</span>
 <span class="n">train_data</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/train_data.csv&#39;</span>
 <span class="n">feedback_data</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/train_data.csv&#39;</span>
-<span class="n">job_id</span> <span class="o">=</span> <span class="s1">&#39;2457&#39;</span>
+<span class="n">job_id</span> <span class="o">=</span> <span class="s1">&#39;2459&#39;</span>
 <span class="n">model_url</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/HousePricePrediction.mdl&#39;</span>
 <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Outcome&#39;</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MEDV&#39;</span>
 <span class="n">train_percentage</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;DiabetesDetection&quot;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;HousePricePrediction&quot;</span>
 <span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
 
 <span class="n">feedback_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">feedback_data</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">model_url</span><span class="p">,</span><span class="n">label</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">split_perc</span><span class="p">,</span> <span class="n">save_model</span><span class="p">)</span>

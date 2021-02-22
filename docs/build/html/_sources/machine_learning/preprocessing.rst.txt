@@ -1,9 +1,9 @@
-Preprocessing
-==========
+************
+Preprocessor
+************
 
-**********
 Read Data
-**********
+---------
 
 Function for reading data from csv or excel to dataframe.
 
@@ -12,7 +12,7 @@ Function for reading data from csv or excel to dataframe.
                                     converters=None,true_values=None,false_values=None,skiprows=None,
                                     skipfooter=0,nrows=None,na_values=None,keep_default_na=True,
                                     na_filter=True,verbose=False,parse_dates=False,date_parser=None,
-                                    thousands=None,comment=None):
+                                    thousands=None,comment=None)
 
 
     :param data_path: path for data file - csv or excel
@@ -50,25 +50,28 @@ example::
     df = preprocessor.read_data(../data.csv)
     print(df)
 
-************
+
 Data Profile
-************
+------------
 Information describing the statistics of variables in the data. 
 
-.. function:: preprocessor.data_profile(dataframe):
+.. function:: preprocessor.data_profile(dataframe)
 
    :param dataframe: dataframe
    :rtype: A dataframe with data dictionary
 
 example::
 
+    import dltk_ai
+    from dltk_ai import preprocessor
+
     df_profile = preprocessor.data_profile(df)
     print(df_profile)
 
 
-**************
+
 Missing Values
-**************
+---------------
 
 Function to handle missing values by replacing them with a statistic or user specified value or methods such as back fill and front fill.
 
@@ -91,12 +94,15 @@ Function to handle missing values by replacing them with a statistic or user spe
 
 example::
 
+    import dltk_ai
+    from dltk_ai import preprocessor
+
     handling_missing_data = preprocessor.treat_missing_data(df, ['col_A','col_B'], statistic = 'min')
     print(handling_missing_data)
 
-**************
+
 Treat Outliers
-**************
+--------------
 
 Function to handle outliers in the data by either removing them or replacing them with a specific value (user specified value or statistic)
 
@@ -114,21 +120,24 @@ Function to handle outliers in the data by either removing them or replacing the
 
 example::
 
+    import dltk_ai
+    from dltk_ai import preprocessor
+
     df_outliers_removed = preprocessor.treat_outliers(player_df, ['col_D','col_E'], remove = True)
     df_outliers_removed.head()
 
-****************
-Feature Creation
-****************
 
-Creates new features based on existing columns using methods such as binning, one-hot-encoding & groupby transform
+Feature Creation
+----------------
+
+Creates new features based on existing columns using methods such as binning, one-hot-encoding & groupby transform.
 
 .. function:: preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10, 
                             binning_right=True, binning_labels=None,
                      binning_retbins=False, binning_precision=3, binning_include_lowest=False,
                      binning_duplicates='raise', binning_ordered=True, dummies_prefix=None, dummies_prefix_sep='_',
                      dummies_dummy_na=False, dummies_column=None, dummies_sparse=False, dummies_drop_first=False,
-                     groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean'):
+                     groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean')
 
     
     :param dataframe: dataframe
@@ -136,7 +145,7 @@ Creates new features based on existing columns using methods such as binning, on
 
     binning - bins a numerical variable based on user specified value.
     
-    :param binning_column:
+    :param binning_column: dataframe column for binning.
     :param bins: Number of equal width bins. Default - 10
     :param binning_right: bool, default True. Indicates if the bins should include the right most value.
     :param binning_labels: array or bool, optional. Labels for the returned bins
@@ -157,9 +166,12 @@ Creates new features based on existing columns using methods such as binning, on
 
     :param groupby_column: list of columns to groupby in the dataframe
     :param groupby_transform_column: column to perform the transform operation on 
-    :param groupby_transform_metric: metric to use for transformation - min/max/mean/median
+    :param groupby_transform_metric: metric to use for transformation - min/max/mean/median. Default - 'mean'
 
 example::
+
+    import dltk_ai
+    from dltk_ai import preprocessor
 
     # groupby transform
     preprocessor.feature_creation(df,feature_method='groupby',groupby_column=['col_A','col_B'],groupby_transform_column=['col_C'])
@@ -171,14 +183,15 @@ example::
     preprocessor.feature_creation(df,feature_method='one-hot-encoding')
 
 
-*******************
 Data Transformation
-*******************
+-------------------
 
 Transforms data from one format to another
 
 
-.. function:: preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None, pivot_values=None, melt_id_vars=None, melt_value_vars=None, crosstab_columns=None, crosstab_rows=None
+.. function:: preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None, 
+                                            pivot_values=None, melt_id_vars=None, melt_value_vars=None, 
+                                            crosstab_columns=None, crosstab_rows=None)
 
 
     :param dataframe: dataframe
@@ -204,6 +217,9 @@ Transforms data from one format to another
 
 
 example::
+
+    import dltk_ai
+    from dltk_ai import preprocessor
 
     # pivot 
     preprocessor.data_transformation(df,transform_method='pivot',pivot_index='col_B',pivot_columns='col_A')

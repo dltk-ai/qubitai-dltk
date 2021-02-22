@@ -87,30 +87,34 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-account">Creating an Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-app">Creating an App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#setup-guide">Setup Guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html#uploading-a-dataset">Uploading a Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html#check-job-status">Check Job Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html#check-job-output">Check Job Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning/preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning/preprocessing.html">Preprocessor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/classification.html">Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/regression.html">Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#face-detection">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#image-classification">Image Classification</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
@@ -118,7 +122,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Conversation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="conversation/index.html">Speech to Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 
             
@@ -190,6 +195,7 @@
 <div class="genindex-jumpbox">
  <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  
 </div>
 <h2 id="B">B</h2>
@@ -204,6 +210,18 @@
         <li><a href="machine_learning/index.html#client.job_output">client.job_output()</a>
 </li>
         <li><a href="machine_learning/index.html#client.job_status">client.job_status()</a>
+</li>
+        <li><a href="natural_language_processing/index.html#client.ner_tagger">client.ner_tagger()</a>
+</li>
+        <li><a href="natural_language_processing/index.html#client.pos_tagger">client.pos_tagger()</a>
+</li>
+        <li><a href="natural_language_processing/index.html#client.sentiment_analysis">client.sentiment_analysis()</a>
+</li>
+        <li><a href="machine_learning/index.html#client.store">client.store()</a>
+</li>
+        <li><a href="natural_language_processing/index.html#client.tags">client.tags()</a>
+</li>
+        <li><a href="machine_learning/preprocessing.html#preprocessor.data_profile">preprocessor.data_profile()</a>
 </li>
       </ul></li>
   </ul></td>
@@ -226,13 +244,61 @@
         <li><a href="machine_learning/index.html#client.job_output">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     client.job_status()
 
       <ul>
         <li><a href="machine_learning/index.html#client.job_status">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    client.ner_tagger()
+
+      <ul>
+        <li><a href="natural_language_processing/index.html#client.ner_tagger">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    client.pos_tagger()
+
+      <ul>
+        <li><a href="natural_language_processing/index.html#client.pos_tagger">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    client.sentiment_analysis()
+
+      <ul>
+        <li><a href="natural_language_processing/index.html#client.sentiment_analysis">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    client.store()
+
+      <ul>
+        <li><a href="machine_learning/index.html#client.store">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    client.tags()
+
+      <ul>
+        <li><a href="natural_language_processing/index.html#client.tags">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    preprocessor.data_profile()
+
+      <ul>
+        <li><a href="machine_learning/preprocessing.html#preprocessor.data_profile">built-in function</a>
 </li>
       </ul></li>
   </ul></td>
