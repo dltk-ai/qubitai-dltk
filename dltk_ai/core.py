@@ -18,7 +18,7 @@ class DltkAiClient:
             api_key (str): API Key Generated for an app in DltkAi.
     """
 
-    def __init__(self, api_key):
+    def __init__(self, api_key=None, base_url="https://prod-kong.dltk.ai"):
         """
             The constructor for DltkAi Client.
 
@@ -28,8 +28,9 @@ class DltkAiClient:
             Returns:
                 DltkAiClient: Client object for DltkAi.
         """
+        assert api_key is not None, "Please provide a valid API key"
         self.api_key = api_key
-        self.base_url = "https://prod-kong.dltk.ai"
+        self.base_url = base_url
 
     # Note: NLP functions
 

@@ -4,13 +4,13 @@ from dltk_ai.dataset_types import Dataset
 client = dltk_ai.DltkAiClient('YOUR_APIKEY')
 
 # upload dataset - train
-train_data_store_response = client.store('../examples/data/csv/player_train.csv', Dataset.TRAIN_DATA)
+train_data_store_response = client.store('../data/csv/player_train.csv', Dataset.TRAIN_DATA)
 print(train_data_store_response)
 # get dataset url
 train_data = train_data_store_response['fileUrl']
 
 # upload dataset - prediction
-test_file_store_response = client.store('../examples/data/csv/player_test.csv', Dataset.TEST_DATA)
+test_file_store_response = client.store('../data/csv/player_test.csv', Dataset.TEST_DATA)
 print(test_file_store_response)
 # get dataset url
 test_data = test_file_store_response['fileUrl']
@@ -24,7 +24,7 @@ features = ["stamina", "challenges", "achievements"]
 train_percentage = 80
 save_model = "true"
 
-train_response = c.train(task, algorithm, train_data, label,features,"Player_churn_detection", library, train_percentage, save_model)
+train_response = client.train(task, algorithm, train_data, label,features,"Player_churn_detection", library, train_percentage, save_model)
 print(train_response)
 
 # check status of train job
@@ -40,7 +40,7 @@ print(train_job_output_response)
 model = train_job_output_response['output']['modelUrl']
 
 # predictions using the saved model on predictions data
-predict_response = c.predict(task, test_data, features,model, library, )
+predict_response = client.predict(task, test_data, features,model, library, )
 print(predict_response)
 
 # check prediction job status
