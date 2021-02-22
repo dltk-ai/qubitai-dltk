@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>About &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>History &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
@@ -41,8 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="History" href="../history/index.html" />
-    <link rel="prev" title="About" href="../natural_language_processing/index.html" /> 
+    <link rel="prev" title="About" href="../conversation/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -123,13 +122,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Conversation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#speech-to-text">Speech to Text</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 <p class="caption"><span class="caption-text">History</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../history/index.html">History</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.0.0</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -178,13 +180,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>About</li>
+      <li>History</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/conversation/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/history/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,64 +199,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="about">
-<h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>DLTK’s Conversation service enables enables transcription of audio files into text. We have third party APIs like IBM &amp; Azure integrated.</p>
-</div>
-<div class="section" id="speech-to-text">
-<h1>Speech to Text<a class="headerlink" href="#speech-to-text" title="Permalink to this headline">¶</a></h1>
-<p>Extracts text from given audio file.</p>
-<p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Documentation Link</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Azure</p></td>
-<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-to-text">https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-to-text</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>IBM</p></td>
-<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/speech-to-text">https://cloud.ibm.com/apidocs/speech-to-text</a></p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+  <div class="section" id="history">
+<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>1.0.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Supported Languages - English</p></li>
-<li><p>Supported Audio File - .wav</p></li>
+<li><dl class="simple">
+<dt>Machine Learning</dt><dd><ul>
+<li><p>Preprocessor</p></li>
+<li><p>Classification</p></li>
+<li><p>Regression</p></li>
+<li><p>Clustering</p></li>
 </ul>
-</div>
-<dl class="py function">
-<dt>
-<code class="sig-name descname">client.speech_to_text(audio, sources):</code></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>audio</strong> – path of audio file to extract text from</p></li>
-<li><p><strong>sources</strong> – list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson. Default - google</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>A json object containing text returned from respective Algorithm</p>
 </dd>
 </dl>
-</dd></dl>
-
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-<span class="n">audio_path</span> <span class="o">=</span> <span class="s2">&quot;../recording.wav&quot;</span>
-
-<span class="n">speech_to_text_reponse</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">speech_to_text</span><span class="p">(</span><span class="n">audio_path</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;google&#39;</span><span class="p">,</span><span class="s1">&#39;ibm_watson&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">speech_to_text_reponse</span><span class="p">)</span>
-</pre></div>
+</li>
+<li><dl class="simple">
+<dt>Computer Vision</dt><dd><ul>
+<li><p>Object Detection</p></li>
+<li><p>Face Detection</p></li>
+<li><p>Image Classification</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Natural Language Processing</dt><dd><ul>
+<li><p>Sentiment Analysis</p></li>
+<li><p>Parts of Speech Tagger</p></li>
+<li><p>Named Entity Recognition</p></li>
+<li><p>Dependancy Parser</p></li>
+<li><p>Tags Recognition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Conversation</dt><dd><ul>
+<li><p>Speech to Text</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 </div>
 
@@ -264,8 +251,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../history/index.html" class="btn btn-neutral float-right" title="History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../natural_language_processing/index.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../conversation/index.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

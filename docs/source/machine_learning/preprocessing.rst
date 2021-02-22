@@ -110,6 +110,7 @@ Function to handle outliers in the data by either removing them or replacing the
 
     :param dataframe: dataframe
     :param column: list of columns/column to treat outliers
+    
     `**kwargs`
 
     :keyword bool remove: True if the outliers should be removed form the data
