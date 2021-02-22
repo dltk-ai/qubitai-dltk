@@ -16,7 +16,7 @@ Used to store file on cloud storage.
    :param dataset_type: Type of dataset. valid Values TEST_DATA, TRAIN_DATA.
    :rtype: A json obj containing the file path in storage.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai.dataset_types import Dataset
@@ -37,7 +37,7 @@ Training a model is done on DLTK's cloud server. A job is triggered as soon as t
    :param job_id: jobId from the train function response.
    :rtype: A json obj containing the status details.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai.dataset_types import Dataset
@@ -57,7 +57,7 @@ Gives the output of training job which includes model evaluation metrics, path w
    :param job_id: jobId from train function response.
    :rtype: A json obj containing the job output.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai.dataset_types import Dataset
@@ -78,7 +78,7 @@ Function used to download a file from cloud storage.
    :param file_url: url of file stored in cloud storage.
    :rtype: file content in text format.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai.dataset_types import Dataset

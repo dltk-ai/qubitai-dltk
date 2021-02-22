@@ -42,7 +42,7 @@ Function for reading data from csv or excel to dataframe.
 
 .. note:: Supports csv, xls & xlsx formats only.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor
@@ -60,7 +60,7 @@ Information describing the statistics of variables in the data.
    :param dataframe: dataframe
    :rtype: A dataframe with data dictionary
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor
@@ -92,7 +92,7 @@ Function to handle missing values by replacing them with a statistic or user spe
     Only one param can be used in statistic, value & fill_method.
     For categorical variables, most repeated value is default value for filling missing values.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor
@@ -118,7 +118,7 @@ Function to handle outliers in the data by either removing them or replacing the
 
     :rtype: Dataframe with outliers treated.
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor
@@ -168,7 +168,7 @@ Creates new features based on existing columns using methods such as binning, on
     :param groupby_transform_column: column to perform the transform operation on 
     :param groupby_transform_metric: metric to use for transformation - min/max/mean/median. Default - 'mean'
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor
@@ -216,7 +216,7 @@ Transforms data from one format to another
     :rtype: reshaped dataframe
 
 
-example::
+**Example**::
 
     import dltk_ai
     from dltk_ai import preprocessor

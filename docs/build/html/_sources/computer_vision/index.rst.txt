@@ -8,7 +8,9 @@ DLTK's Computer Vision service includes advanced image processing algorithms whi
 Object Detection
 ****************
 
-.. list-table:: Supported Open Source Models
+*Supported Open Source Models*
+
+.. list-table:: 
    :widths: 25 25 25
    :header-rows: 1
 
@@ -19,8 +21,9 @@ Object Detection
      - ResNet50
      - https://cocodataset.org/#explore
 
+*Supported Third Party Classifiers*
 
-.. list-table:: Supported Third Party Classifiers
+.. list-table:: 
    :widths: 25 25
    :header-rows: 1
 
@@ -45,7 +48,7 @@ Usage: Tracking objects, Counting people, Vehicle Detection, etc.
    :param output_types: Type of output requested by client: "json" (bounding box coordinates for each object found), "image" (base64 encoded object)
    :rtype: A json obj containing the output of object detection
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -61,7 +64,9 @@ Example::
 Face Detection
 **************
 
-.. list-table:: Supported Open Source Models
+*Supported Open Source Models*
+
+.. list-table::
    :widths: 25 25
    :header-rows: 1
 
@@ -73,6 +78,8 @@ Face Detection
      - http://dlib.net/python/index.html#dlib.get_frontal_face_detector
    * - OpenCV - DNN
      - https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector
+
+*Supported Third Party Classifiers*
 
 .. list-table:: Supported Third Party Classifiers
    :widths: 25 25
@@ -105,7 +112,7 @@ Usage: Automated identity verification.
    :param output_types (list): Type of output requested by client: "json", "image"
    :rtype: A json obj containing the output of object detection
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -121,7 +128,9 @@ Example::
 Image Classification
 ********************
 
-.. list-table:: Supported Open Source Models
+*Supported Open Source Models*
+
+.. list-table:: 
    :widths: 25 25
    :header-rows: 1
 
@@ -132,7 +141,10 @@ Image Classification
    * - ImageNet
      - https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
 
-.. list-table:: Supported Third Party Classifiers
+
+*Supported Third Party Classifiers*
+
+.. list-table:: 
    :widths: 25 25
    :header-rows: 1
 
@@ -160,7 +172,7 @@ Usage: Identifying the category of the image, Image organisation, etc,
    :rtype: Image classification response
 
 
-Example:: 
+**Example**:: 
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')

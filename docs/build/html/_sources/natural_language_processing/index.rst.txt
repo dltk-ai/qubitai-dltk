@@ -18,7 +18,7 @@ Usage: social media monitoring, Brand reputation analysis, etc.
    :param sources: algorithm to use - azure/ibm_watson/spacy. Default is spacy.
    :rtype: A json object containing the sentiment analysis response
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -42,7 +42,7 @@ Identifies and marks a word in a text as corresponding to a particular part of s
    :param sources: algorithm to use - ibm_watson/spacy
    :rtype: A json object containing the Parts of Speech of the words in the sentence.
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -66,7 +66,7 @@ Identifies key information (entities) in text. Each token is given an appropriat
    :param sources: algorithm to use - azure/ibm_watson/spacy
    :rtype: A json object with Entities identified in the given text.
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -91,7 +91,7 @@ Usage: Grammar monitoring.
    :param text: text for dependency parser
    :rtype: A json object with Entities identified in the given text.
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -114,7 +114,7 @@ Identifies the important words in a sentence.
    :param text: text for tags recognotion
    :rtype: A json object with Tags identified in the given text.
 
-Example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')

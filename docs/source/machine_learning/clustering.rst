@@ -1,7 +1,9 @@
 Clustering
 ===========
 
-.. list-table:: Supported Libraries and Algorithms
+*Supported Libraries and Algorithms*
+
+.. list-table::
    :widths: 25 25
    :header-rows: 1
 

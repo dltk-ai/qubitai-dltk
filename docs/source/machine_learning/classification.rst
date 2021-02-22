@@ -1,7 +1,9 @@
 Classification
 ================
 
-.. list-table:: Supported Libraries and Algorithms
+*Supported Libraries and Algorithms*
+
+.. list-table:: 
    :widths: 25 25 25
    :header-rows: 1
 
@@ -64,7 +66,7 @@ Training a model
    :rtype: A json obj containing the file path in storage.
 
 
-Example::
+**Example**::
 
     import dltk_ai
     from dltk_ai.dataset_types import Dataset
@@ -99,7 +101,7 @@ Predictions
         database: Query from connected database will be used
     :rtype: A json obj containing the file info which has the predictions.
 
-Example::
+**Example**::
 
     task = "classification"
     library = "weka"
@@ -135,7 +137,7 @@ Feedback
    :param params: additional parameters.
    :rtype: A json obj containing the file path in storage.
 
-Example::
+**Example**::
 
     task = "classification"
     library = "weka"

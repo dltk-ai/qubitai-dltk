@@ -10,7 +10,9 @@ Speech to Text
 
 Extracts text from given audio file.
 
-.. list-table:: Supported Third Party Classifiers
+*Supported Third Party Classifiers*
+
+.. list-table:: 
    :widths: 25 25
    :header-rows: 1
 
@@ -32,7 +34,7 @@ Extracts text from given audio file.
    :param sources: list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson. Default - google 
    :rtype: A json object containing text returned from respective Algorithm
 
-example::
+**Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')

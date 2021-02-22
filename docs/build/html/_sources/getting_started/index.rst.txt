@@ -60,7 +60,7 @@ Installing through pip
 Initializing the DLTK Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Setting up your ApiKey::
+**Setting up your ApiKey**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
