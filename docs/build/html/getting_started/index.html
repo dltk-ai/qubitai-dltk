@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>About DLTK &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About" href="../machine_learning/index.html" />
+    <link rel="prev" title="Welcome to Qubitai-dltk’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qubitai-dltk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#creating-an-app">Creating an App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#apikey-generation">ApiKey Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#setup-guide">Setup Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-from-source">Installing From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-through-pip">Installing through pip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initializing-the-dltk-client">Initializing the DLTK Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#uploading-a-dataset">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-status">Check Job Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-output">Check Job Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/preprocessing.html">Preprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Computer Vision</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">NLP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Conversation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubitai-dltk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>About DLTK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/getting_started/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="about-dltk">
+<h1>About DLTK<a class="headerlink" href="#about-dltk" title="Permalink to this headline">¶</a></h1>
+<p>DLTK is an enterprise ready cloud platform that offers self-service AI capabilities. Qubit AI’s philosophy is to empower businesses with cutting edge technologies.</p>
+</div>
+<div class="section" id="creating-an-account">
+<h1>Creating an Account<a class="headerlink" href="#creating-an-account" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Click on Sign Up and create a new account on <a class="reference external" href="https://cloud.dltk.ai/">https://cloud.dltk.ai/</a></p></li>
+<li><p>You will be getting a verification email to the registered mail id. Please click on “Verify Now” button in the mail.</p></li>
+<li><p>After verifying the email, you will be redirected to dltk login page.</p></li>
+<li><p>Enter your credentials to gain access</p></li>
+</ol>
+</div>
+<div class="section" id="creating-an-app">
+<h1>Creating an App<a class="headerlink" href="#creating-an-app" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="apikey-generation">
+<h2>ApiKey Generation<a class="headerlink" href="#apikey-generation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Once you login, to access DLTK Cloud, click on the Console button or the console tab available in the menu bar.</p></li>
+<li><p>Click on the Projects menu dropdown and select Create App</p></li>
+<li><p>Enter the name of the app and a short description</p></li>
+<li><p>The dashboard will be visible with the given name and description along with an API key</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="setup-guide">
+<h1>Setup Guide<a class="headerlink" href="#setup-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-from-source">
+<h3>Installing From Source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Clone the repo</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/dltk-ai/qubitai-dltk.git</span></code></p>
+<ul class="simple">
+<li><p>Set working directory to qubitai-dltk folder</p></li>
+<li><p>Install requirements from requirements.txt file</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
+</div>
+<div class="section" id="installing-through-pip">
+<h3>Installing through pip<a class="headerlink" href="#installing-through-pip" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">qubitai-dltk</span></code></p>
+</div>
+<div class="section" id="initializing-the-dltk-client">
+<h3>Initializing the DLTK Client<a class="headerlink" href="#initializing-the-dltk-client" title="Permalink to this headline">¶</a></h3>
+<p><strong>Setting up your ApiKey</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../machine_learning/index.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Qubitai-dltk’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QubitAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

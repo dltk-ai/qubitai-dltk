@@ -1,15 +1,43 @@
-Computer Vision
-================
+*****
+About
+*****
 
+DLTK's Computer Vision service includes advanced image processing algorithms which return required information from the given image. We also have third party APIs like IBM & Azure integrated.
+
+****************
 Object Detection
------------------
+****************
+
+*Supported Open Source Models*
+
+.. list-table:: 
+   :widths: 25 25 25
+   :header-rows: 1
+
+   * - Model
+     - Feature Extractor     
+     - Data Trained on 
+   * - Single Shot Detector
+     - ResNet50
+     - https://cocodataset.org/#explore
+
+*Supported Third Party Classifiers*
+
+.. list-table:: 
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Name
+     - Documentation Link
+   * - Azure
+     - https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection
+
+
 Identifies and locates objects in an Image.
 
 Usage: Tracking objects, Counting people, Vehicle Detection, etc.
 
-
-.. code-block:: python
-    client.object_detection(image_url=None, image_path=None, tensorflow=True,
+.. function:: client.object_detection(image_url=None, image_path=None, tensorflow=True,
                                     azure=False, output_types=["json"]):
 
 
@@ -17,10 +45,13 @@ Usage: Tracking objects, Counting people, Vehicle Detection, etc.
    :param image_path: Local Image Path
    :param tensorflow: if True, uses tensorflow for object detection
    :param azure: if True, returns azure results of object detection on given image
-   :param output_types: Type of output requested by client: "json", "image"
+   :param output_types: Type of output requested by client: "json" (bounding box coordinates for each object found), "image" (base64 encoded object)
    :rtype: A json obj containing the output of object detection
-    """
-Example::
+
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"
 
@@ -29,8 +60,37 @@ Example::
     print(object_detection_response)
 
 
+**************
 Face Detection
----------------
+**************
+
+*Supported Open Source Models*
+
+.. list-table::
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Model
+     - Data Trained on 
+   * - MTCNN
+     - https://github.com/ipazc/mtcnn
+   * - DLIB-HoG
+     - http://dlib.net/python/index.html#dlib.get_frontal_face_detector
+   * - OpenCV - DNN
+     - https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector
+
+*Supported Third Party Classifiers*
+
+.. list-table:: Supported Third Party Classifiers
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Name
+     - Documentation Link
+   * - Azure
+     - https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection
+
+
 Analyses an individual's face in an image.
 
 Usage: Automated identity verification.
@@ -52,7 +112,10 @@ Usage: Automated identity verification.
    :param output_types (list): Type of output requested by client: "json", "image"
    :rtype: A json obj containing the output of object detection
 
-Example::
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"
 
@@ -61,8 +124,37 @@ Example::
     print(face_analytics_response)
 
 
+********************
 Image Classification
----------------------
+********************
+
+*Supported Open Source Models*
+
+.. list-table:: 
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Model
+     - Data Trained on 
+   * - ResNet50
+     - http://www.image-net.org/
+   * - ImageNet
+     - https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
+
+
+*Supported Third Party Classifiers*
+
+.. list-table:: 
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Name
+     - Documentation Link
+   * - Azure
+     - https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images
+   * - IBM
+     - https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify
+
 Classifies an image according to its visual content.
 
 Usage: Identifying the category of the image, Image organisation, etc,
@@ -80,7 +172,10 @@ Usage: Identifying the category of the image, Image organisation, etc,
    :rtype: Image classification response
 
 
-.. code-block:: python
+**Example**:: 
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     file_path = "../image_classification_sample.jpg"
 

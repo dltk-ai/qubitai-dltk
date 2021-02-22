@@ -1,20 +1,27 @@
-Natural Language Processing
-=============================
+*****
+About
+*****
 
+DLTK's NLP service has pre built Models for various Natural Language Processing tasks, which can be leveraged to predict on your text. We also have third party APIs like IBM & Azure integrated.
 
+******************
 Sentiment Analysis
--------------------
+******************
+
 Detects positive or negative sentiment in text.
 
 Usage: social media monitoring, Brand reputation analysis, etc.
 
-.. py:function:: client.sentiment_analysis(text, sources = ['spacy']):
+.. py:function:: client.sentiment_analysis(text, sources = ['spacy'])
 
    :param text: text for analysing the sentiment
    :param sources: algorithm to use - azure/ibm_watson/spacy. Default is spacy.
    :rtype: A json object containing the sentiment analysis response
 
-Example::
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     text = "The product is very easy to use and has got a really good life expectancy.
 
@@ -23,17 +30,22 @@ Example::
     print(sentiment_analysis_response)
 
 
+**********************
 Parts of Speech Tagger
------------------------
+**********************
+
 Identifies and marks a word in a text as corresponding to a particular part of speech, based on both its definition and its context.
 
-.. py:function:: client.pos_tagger(text, sources = ['spacy']):
+.. py:function:: client.pos_tagger(text, sources = ['spacy'])
 
    :param text: text for Parts of Speech Tagging
    :param sources: algorithm to use - ibm_watson/spacy
    :rtype: A json object containing the Parts of Speech of the words in the sentence.
 
-Example::
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     text = "They refuse to permit us to obtain the refuse permit.
 
@@ -42,18 +54,22 @@ Example::
     print(pos_tagger_response)
 
 
-
+************************
 Named Entity Recognition
--------------------------
+************************
+
 Identifies key information (entities) in text. Each token is given an appropriate tag such as Person, Location, Organisation, etc.
 
-.. py:function:: client.ner_tagger(text, sources = ['spacy']):
+.. py:function:: client.ner_tagger(text, sources = ['spacy'])
 
    :param text: text for Named Entity Recognition
    :param sources: algorithm to use - azure/ibm_watson/spacy
    :rtype: A json object with Entities identified in the given text.
 
-Example::
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     text = "John has moved to California recently.
 
@@ -62,8 +78,10 @@ Example::
     print(ner_tagger_response)
 
 
+*****************
 Dependancy Parser
-------------------
+*****************
+
 Analyses the grammatical structure of a sentence, establishing relationships between "head" words and words which modify those heads.
 
 Usage: Grammar monitoring.
@@ -73,7 +91,10 @@ Usage: Grammar monitoring.
    :param text: text for dependency parser
    :rtype: A json object with Entities identified in the given text.
 
-Example::
+**Example**::
+
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
     text = "And now for something completely different.
 
@@ -82,19 +103,23 @@ Example::
     print(dependency_parser_response)
 
 
+****************
 Tags Recognition
-------------------
+****************
 
-Identifies the important words in a sentence
+Identifies the important words in a sentence.
 
-.. py:function:: client.tags(text):
+.. py:function:: client.tags(text)
 
    :param text: text for tags recognotion
    :rtype: A json object with Tags identified in the given text.
 
-Example::
+**Example**::
 
-    text = "Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuitâ€™s full-body look..
+    import dltk_ai
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
+    text = "Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit full-body look.."
 
     tags_response = client.tags(text)
 

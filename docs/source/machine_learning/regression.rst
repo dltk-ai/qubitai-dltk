@@ -1,21 +1,42 @@
 Regression
 ===========
 
-Supported Libraries and Algorithms
------------------------------------
+*Supported Libraries and Algorithms*
 
-.. csv-table::
-   :header: "scikit", "weka", "h2o"
-   :widths: 30, 30, 30
+.. list-table::
+   :widths: 25 25 25
+   :header-rows: 1
 
-   "NaiveBayesMultinomial", "LibSVM", "NaiveBayesBinomial"
-   "LogisticRegression", "NaiveBayesMultinomial", "DeepLearning"
-   "DecisionTrees","KStar"
-   "Bagging","AdaBoostM1"
-   "RandomForest","AttributeSelectedClassifier"
-   "GradientBoostingMachines","Bagging"
-   "XGradientBoosting","CostSensitiveClassifier"
-   "AdaBoost","DecisionTable"
+   * - scikit
+     - h2o
+     - weka
+   * - LinearRegression
+     - LinearRegression
+     - LinearRegression
+   * - DecisionTrees
+     - GradientBoostingMachines
+     - RandomForest
+   * - Bagging
+     - RandomForest
+     - AdditiveRegression
+   * - RandomForest
+     - GradientBoostingMachines
+     - 
+   * - GradientBoostingMachine
+     - 
+     - 
+   * - XGradientBoosting
+     - 
+     - 
+   * - AdaBoost
+     - 
+     - 
+   * - ExtraTrees
+     - 
+     - 
+   * - SupportVectorMachines
+     - 
+     - 
 
 
 Training a model
@@ -23,7 +44,7 @@ Training a model
 
 .. function:: client.train(service, algorithm, dataset, label, features, model_name=None,
                             lib="weka", train_percentage=80, save_model=True,params=None,
-                            dataset_source=None):
+                            dataset_source=None)
 
    :param service: Training task to perform. Valid parameter values are classification, regression.
    :param algorithm: Algorithm to use for training the model.
@@ -35,15 +56,19 @@ Training a model
    :param train_percentage: % of data to use for training the model. Rest of the data will be used to test the model.
    :param save_model: If True, the model will be saved in DLTK Storage.
    :param dataset_source: To specify data source,
-        None: Dataset file will from DLTK storage will be used
+        None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
    :rtype: A json obj containing the file path in storage.
 
 example::
 
-    task = "classification"
+    import dltk_ai
+    from dltk_ai.dataset_types import Dataset
+    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+
+    task = "regression"
     library = "weka"
-    algorithm = "Logistic"
+    algorithm = "LinearRegression"
     features = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
     label = 'MEDV'
     train_percentage = 80
@@ -57,9 +82,8 @@ example::
 Predictions
 -----------------
 
-
 .. function:: client.predict(service, dataset, model_url, features, lib='weka',
-                            params=None, dataset_source=None):
+                            params=None, dataset_source=None)
 
     :param service: Service used in training the model. Valid parameter values are classification, regression.
     :param dataset: dataset file location in DLTK storage.
@@ -67,7 +91,7 @@ Predictions
     :param features: List of features used for training.
     :param lib: Library used for training the model. Currently we are supporting scikit, h2o and weka.
     :param dataset_source: To specify data source,
-        None: Dataset file will from DLTK storage will be used
+        None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
     :rtype: A json obj containing the file info which has the predictions.
 
@@ -109,17 +133,17 @@ Feedback
 
 example::
 
-    task = "classification"
+    task = "regression"
     library = "weka"
-    algorithm = "Logistic"
+    algorithm = "LinearRegression"
     train_data = '/dltk-ai/train_data.csv'
     feedback_data = '/dltk-ai/train_data.csv'
-    job_id = '2457'
+    job_id = '2459'
     model_url = '/dltk-ai/HousePricePrediction.mdl'
     features = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
-    label = 'Outcome'
+    label = 'MEDV'
     train_percentage = 80
-    model_name = "DiabetesDetection"
+    model_name = "HousePricePrediction"
     save_model = "true"
 
     feedback_response = client.feedback(task, algorithm, train_data, feedback_data, job_id, model_url,label, features, library, model_name, split_perc, save_model)

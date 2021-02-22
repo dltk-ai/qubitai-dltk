@@ -7,12 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Computer Vision &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>About &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
   
@@ -32,13 +33,15 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Natural Language Processing" href="../natural_language_processing/index.html" />
+    <link rel="next" title="About" href="../natural_language_processing/index.html" />
     <link rel="prev" title="Clustering" href="../machine_learning/clustering.html" /> 
 </head>
 
@@ -84,24 +87,45 @@
               
             
             
-              <p class="caption"><span class="caption-text">Machine Learning</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-app">Creating an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#setup-guide">Setup Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#uploading-a-dataset">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-status">Check Job Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-output">Check Job Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/preprocessing.html">Preprocessor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Computer Vision</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#object-detection">Object Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#face-detection">Face Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#image-classification">Image Classification</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#object-detection">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#face-detection">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#image-classification">Image Classification</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Conversation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 
             
@@ -150,7 +174,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Computer Vision</li>
+      <li>About</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,14 +193,77 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="computer-vision">
-<h1>Computer Vision<a class="headerlink" href="#computer-vision" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="about">
+<h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
+<p>DLTK’s Computer Vision service includes advanced image processing algorithms which return required information from the given image. We also have third party APIs like IBM &amp; Azure integrated.</p>
+</div>
 <div class="section" id="object-detection">
-<h2>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h2>
+<h1>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
+<p><em>Supported Open Source Models</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Feature Extractor</p></th>
+<th class="head"><p>Data Trained on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Shot Detector</p></td>
+<td><p>ResNet50</p></td>
+<td><p><a class="reference external" href="https://cocodataset.org/#explore">https://cocodataset.org/#explore</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Supported Third Party Classifiers</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Documentation Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Azure</p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection</a></p></td>
+</tr>
+</tbody>
+</table>
 <p>Identifies and locates objects in an Image.</p>
 <p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">client.object_detection(image_url=None, image_path=None, tensorflow=True,</code></dt>
+<dt>
+<code class="sig-name descname">azure=False, output_types=[&quot;json&quot;]):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_url</strong> – Image URL</p></li>
+<li><p><strong>image_path</strong> – Local Image Path</p></li>
+<li><p><strong>tensorflow</strong> – if True, uses tensorflow for object detection</p></li>
+<li><p><strong>azure</strong> – if True, returns azure results of object detection on given image</p></li>
+<li><p><strong>output_types</strong> – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A json obj containing the output of object detection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Example</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
 
 <span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -185,7 +272,48 @@
 </div>
 </div>
 <div class="section" id="face-detection">
-<h2>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h2>
+<h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h1>
+<p><em>Supported Open Source Models</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Data Trained on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MTCNN</p></td>
+<td><p><a class="reference external" href="https://github.com/ipazc/mtcnn">https://github.com/ipazc/mtcnn</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DLIB-HoG</p></td>
+<td><p><a class="reference external" href="http://dlib.net/python/index.html#dlib.get_frontal_face_detector">http://dlib.net/python/index.html#dlib.get_frontal_face_detector</a></p></td>
+</tr>
+<tr class="row-even"><td><p>OpenCV - DNN</p></td>
+<td><p><a class="reference external" href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Supported Third Party Classifiers</em></p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Supported Third Party Classifiers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Documentation Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Azure</p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection">https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection</a></p></td>
+</tr>
+</tbody>
+</table>
 <p>Analyses an individual’s face in an image.</p>
 <p>Usage: Automated identity verification.</p>
 <div class="admonition note">
@@ -216,8 +344,11 @@
 </dl>
 </dd></dl>
 
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+<p><strong>Example</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
 
 <span class="n">face_analytics_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">face_analytics</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -226,7 +357,47 @@
 </div>
 </div>
 <div class="section" id="image-classification">
-<h2>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h2>
+<h1>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h1>
+<p><em>Supported Open Source Models</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Data Trained on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ResNet50</p></td>
+<td><p><a class="reference external" href="http://www.image-net.org/">http://www.image-net.org/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ImageNet</p></td>
+<td><p><a class="reference external" href="https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json">https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Supported Third Party Classifiers</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Documentation Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Azure</p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IBM</p></td>
+<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify">https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify</a></p></td>
+</tr>
+</tbody>
+</table>
 <p>Classifies an image according to its visual content.</p>
 <p>Usage: Identifying the category of the image, Image organisation, etc,</p>
 <dl class="py function">
@@ -252,14 +423,17 @@
 </dl>
 </dd></dl>
 
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
+<p><strong>Example</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
 
 <span class="c1"># Note: top_n=4 predictions, image classification</span>
 <span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">image_classification</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 
@@ -269,7 +443,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../natural_language_processing/index.html" class="btn btn-neutral float-right" title="Natural Language Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../natural_language_processing/index.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../machine_learning/clustering.html" class="btn btn-neutral float-left" title="Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
