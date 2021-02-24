@@ -28,11 +28,11 @@ Extracts text from given audio file.
     * Supported Audio File - .wav
 
 
-.. function:: client.speech_to_text(audio, sources):
+.. function:: client.speech_to_text(audio, sources=['google']):
 
    :param audio: path of audio file to extract text from
-   :param sources: list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson. Default - google 
-   :rtype: A json object containing text returned from respective Algorithm
+   :param sources: list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson.
+   :rtype: A json object containing text returned from respective algorithm
 
 **Example**::
 

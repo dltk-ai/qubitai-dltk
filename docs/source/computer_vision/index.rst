@@ -8,6 +8,10 @@ DLTK's Computer Vision service includes advanced image processing algorithms whi
 Object Detection
 ****************
 
+Identifies and locates objects in an Image.
+
+Usage: Tracking objects, Counting people, Vehicle Detection, etc.
+
 *Supported Open Source Models*
 
 .. list-table:: 
@@ -16,7 +20,7 @@ Object Detection
 
    * - Model
      - Feature Extractor     
-     - Data Trained on 
+     - Pretrained Models
    * - Single Shot Detector
      - ResNet50
      - https://cocodataset.org/#explore
@@ -32,10 +36,6 @@ Object Detection
    * - Azure
      - https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection
 
-
-Identifies and locates objects in an Image.
-
-Usage: Tracking objects, Counting people, Vehicle Detection, etc.
 
 .. function:: client.object_detection(image_url=None, image_path=None, tensorflow=True,
                                     azure=False, output_types=["json"]):
@@ -64,6 +64,10 @@ Usage: Tracking objects, Counting people, Vehicle Detection, etc.
 Face Detection
 **************
 
+Analyses an individual's face in an image.
+
+Usage: Automated identity verification.
+
 *Supported Open Source Models*
 
 .. list-table::
@@ -71,7 +75,7 @@ Face Detection
    :header-rows: 1
 
    * - Model
-     - Data Trained on 
+     - Implementations
    * - MTCNN
      - https://github.com/ipazc/mtcnn
    * - DLIB-HoG
@@ -81,7 +85,7 @@ Face Detection
 
 *Supported Third Party Classifiers*
 
-.. list-table:: Supported Third Party Classifiers
+.. list-table::
    :widths: 25 25
    :header-rows: 1
 
@@ -90,10 +94,6 @@ Face Detection
    * - Azure
      - https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection
 
-
-Analyses an individual's face in an image.
-
-Usage: Automated identity verification.
 
 .. note::
     Presently supports Face Detection only.
@@ -128,19 +128,23 @@ Usage: Automated identity verification.
 Image Classification
 ********************
 
+Classifies an image according to its visual content.
+
+Usage: Identifying the category of the image, Image organisation, etc,
+
+
 *Supported Open Source Models*
 
 .. list-table:: 
-   :widths: 25 25
+   :widths: 25 25 25
    :header-rows: 1
 
    * - Model
-     - Data Trained on 
+     - Implementations
+     - Classes
    * - ResNet50
      - http://www.image-net.org/
-   * - ImageNet
      - https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
-
 
 *Supported Third Party Classifiers*
 
@@ -154,10 +158,6 @@ Image Classification
      - https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images
    * - IBM
      - https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify
-
-Classifies an image according to its visual content.
-
-Usage: Identifying the category of the image, Image organisation, etc,
 
 .. function:: client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,
                                         azure=False, ibm=False,output_types=["json"]):
@@ -183,4 +183,6 @@ Usage: Identifying the category of the image, Image organisation, etc,
     image_classification = client.image_classification(image_path=file_path, top_n=4)
 
     print(image_classification)
+
+    
 

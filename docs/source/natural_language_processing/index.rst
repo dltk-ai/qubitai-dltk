@@ -2,7 +2,7 @@
 About
 *****
 
-DLTK's NLP service has pre built Models for various Natural Language Processing tasks, which can be leveraged to predict on your text. We also have third party APIs like IBM & Azure integrated.
+DLTK's NLP service has pre built Models for various Natural Language Processing tasks, which can be leveraged to predict on input text. We also have third party APIs like IBM & Azure integrated.
 
 ******************
 Sentiment Analysis
