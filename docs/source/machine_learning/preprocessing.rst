@@ -2,6 +2,8 @@
 Preprocessor
 ************
 
+DLTK's preprocessor consists of various data transformation techniques used before model building.
+
 Read Data
 ---------
 

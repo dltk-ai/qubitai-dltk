@@ -1,6 +1,8 @@
 Classification
 ================
 
+Classification is used to predict class of a given data point based on the target variable.
+
 *Supported Libraries and Algorithms*
 
 .. list-table:: 
@@ -126,8 +128,8 @@ Feedback
    :param algorithm: Algorithm to use for training the model.
    :param train_data: dataset file location in DLTK storage.
    :param feedback_data: dataset file location in DLTK storage.
-   :param job_id:
-   :param model_url:
+   :param job_id: job id from the train function used to train the model.
+   :param model_url: model url returned from job output function.
    :param label: Target variable.
    :param features: List of features to use for training the model.
    :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.

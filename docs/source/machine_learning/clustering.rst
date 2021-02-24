@@ -1,6 +1,8 @@
 Clustering
 ===========
 
+Clustering is a technique used in grouping data points into desired number of groups (clusters), based on similarity of data points.
+
 *Supported Libraries and Algorithms*
 
 .. list-table::
@@ -43,21 +45,4 @@ Cluster
         database: Query from connected database will be used
     :rtype: A json obj containing model info.
 
-example::
-
-    import dltk_ai
-    from dltk_ai.dataset_types import Dataset
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
-
-    task = "cluster"
-    library = "scikit"
-    algorithm = "KMeansClustering"
-    features = ['LSTAT', 'INDUS', 'NOX', 'PTRATIO', 'RM', 'TAX', 'DIS', 'AGE']
-    label = 'MEDV'
-    train_percentage = 80
-    model_name = "HousePricePrediction"
-    save_model = "true"
-
-    train_response = client.train(task, algorithm, train_data, label,features,model_name, library, train_percentage, save_model)
-    print(train_response)
 
