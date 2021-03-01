@@ -9,6 +9,7 @@ __download_url__ = ''
 __description__ = 'A Python wrapper around the DLTK API'
 
 from .core import DltkAiClient
+from .barcode_extraction import barcode_extractor
 
 import json
 import requests

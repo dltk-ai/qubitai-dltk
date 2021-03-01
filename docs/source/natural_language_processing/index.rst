@@ -12,10 +12,11 @@ Detects positive or negative sentiment in text.
 
 Usage: social media monitoring, Brand reputation analysis, etc.
 
+
 .. py:function:: client.sentiment_analysis(text, sources = ['spacy'])
 
    :param text: text for analysing the sentiment
-   :param sources: algorithm to use - azure/ibm_watson/spacy. Default is spacy.
+   :param sources: algorithm to use - azure/ibm_watson/spacy/model_1. Default is spacy.
    :rtype: A json object containing the sentiment analysis response
 
 **Example**::
