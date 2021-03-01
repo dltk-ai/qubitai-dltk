@@ -1,7 +1,8 @@
 from pyzbar import pyzbar as pyzbar
 import cv2
+import numpy as np
 
-def extract(image):
+def barcode_extractor(image):
     '''
     Extract the serial number or encoded text from the barcode or QR code image 
     Parameters:
@@ -11,10 +12,15 @@ def extract(image):
         bboxes : list of bounding boxes
         code_type : list of detected codes 
     '''
-    image_read = cv2.imread(image)
+    if type(image) == str:
+        image_array = cv2.imread(image)
+    elif type(image) == np.ndarray:
+        image_array = image
+    else:
+        raise ValueError("Input should either be a path to image file or numpy array of the image")
     response = None
     try:
-        decode = pyzbar.decode(image_read) 
+        decode = pyzbar.decode(image_array) 
         
         if len(decode) < 1:
             return None

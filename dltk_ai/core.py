@@ -42,7 +42,7 @@ class DltkAiClient:
             obj:A json obj containing sentiment analysis response.
         """
         sources = [feature.lower() for feature in sources]
-        supported_sources = ['spacy', 'azure', 'ibm_watson']
+        supported_sources = ['spacy', 'azure', 'ibm_watson','model_1']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
 
