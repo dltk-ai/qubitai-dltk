@@ -2,7 +2,7 @@
 About
 *****
 
-DLTK's Conversation service enables enables transcription of audio files into text. We have third party APIs like IBM & Azure integrated.
+DLTK's Conversation service enables transcription of audio files into text. We have third party APIs like IBM & Azure integrated.
 
 **************
 Speech to Text
@@ -30,15 +30,23 @@ Extracts text from given audio file.
 
 .. function:: client.speech_to_text(audio, sources=['google']):
 
-   :param audio: path of audio file to extract text from
+   :param audio: Path of audio file to extract text from
    :param sources: list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson.
-   :rtype: A json object containing text returned from respective algorithm
+   :rtype: A json object containing text returned from respective Algorithm
 
 **Example**::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
-    audio_path = "../recording.wav"
+    audio_path = "../harvard.wav"
    
-    speech_to_text_reponse = client.speech_to_text(audio_path, sources=['google','ibm_watson'])
+    speech_to_text_reponse = client.speech_to_text(audio_path)
     print(speech_to_text_reponse)
+
+  **Output**
+
+.. code-block:: JSON
+
+    {
+      'google': {'transcript': 'the stale smell of old beer lingers it takes heat to bring out the odor a cold dip restores health and zest a salt pickle taste fine with ham tacos al pastor are my favorite a zestful food is the hot cross bun'}
+      }

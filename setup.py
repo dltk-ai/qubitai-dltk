@@ -12,7 +12,11 @@ setuptools.setup(
         "xlrd==1.2.0",
         "numpy==1.19.5",
         "requests==2.25.1",
-        "openpyxl==3.0.6"
+        "openpyxl==3.0.6",
+        "certifi==2020.12.5",
+        "opencv-python==4.5.1.480",
+        "pyzbar==0.1.8",
+        "wincertstore==0.2"
         ],
     author_email="connect@qubitai.tech",
     description="Python Client for DLTK.",

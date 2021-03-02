@@ -2,7 +2,7 @@
 About DLTK
 **********
 
-DLTK is an enterprise ready cloud platform that offers self-service AI capabilities. Qubit AI’s philosophy is to empower businesses with cutting edge technologies.
+DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities. Qubit AIâ€™s philosophy is to empower businesses with cutting edge technologies.
 
 *******************
 Creating an Account
@@ -10,9 +10,9 @@ Creating an Account
 
 1. Click on Sign Up and create a new account on https://cloud.dltk.ai/
 
-2. You will be getting a verification email to the registered mail id. Please click on "Verify Now" button in the mail.
+2. You will receive a verification email to the registered email id. Please click on the "Verify Now" button in the mail.
 
-3. After verifying the email, you will be redirected to dltk login page. 
+3. After verifying the email, you will be redirected to the dltk login page.
 
 4. Enter your credentials to gain access
 
@@ -24,7 +24,7 @@ Creating an App
 ApiKey Generation
 -----------------
 
-1. Once you login, to access DLTK Cloud, click on the Console button or the console tab available in the menu bar.
+1. Once you login, to access DLTK Cloud, click on the Console button or the Console tab available in the menu bar.
 
 2. Click on the Projects menu dropdown and select Create App
 

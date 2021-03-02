@@ -120,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -207,6 +208,7 @@
             
   <div class="section" id="preprocessor">
 <h1>Preprocessor<a class="headerlink" href="#preprocessor" title="Permalink to this headline">¶</a></h1>
+<p>DLTK’s preprocessor consists of various data transformation techniques used before model building.</p>
 <div class="section" id="read-data">
 <h2>Read Data<a class="headerlink" href="#read-data" title="Permalink to this headline">¶</a></h2>
 <p>Function for reading data from csv or excel to dataframe.</p>
@@ -226,12 +228,12 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_path</strong> – path for data file - csv or excel</p></li>
-<li><p><strong>file_name</strong> – complete path of the data file</p></li>
+<li><p><strong>data_path</strong> – Path for data file - csv or excel</p></li>
+<li><p><strong>file_name</strong> – Complete path of the data file</p></li>
 <li><p><strong>header</strong> – Row number(s) to use as the column names. default 0 (first row)</p></li>
 <li><p><strong>names</strong> – List of column names to use. array-like, optional.</p></li>
 <li><p><strong>index_col</strong> – Column(s) to use as the row labels of the DataFrame. int, str, sequence of int / str, or False, default None.</p></li>
-<li><p><strong>usecols</strong> – a list of subset of columns</p></li>
+<li><p><strong>usecols</strong> – A list of subset of columns</p></li>
 <li><p><strong>squeeze</strong> – If the parsed data only contains one column then return a Series. bool, default False</p></li>
 <li><p><strong>mangle_dupe_cols</strong> – Duplicate columns will be specified with extension such as 1,2..etc. bool, default True</p></li>
 <li><p><strong>dtype</strong> – specify datatype of particular column while reading eg: {‘a’: ‘Int64’}</p></li>
@@ -246,7 +248,7 @@
 <li><p><strong>keep_default_na</strong> – Whether or not to include the default NaN values when parsing the data. bool, default True.</p></li>
 <li><p><strong>na_filter</strong> – Detect missing value markers. bool, default True.</p></li>
 <li><p><strong>verbose</strong> – Indicate number of NA values placed in non-numeric columns. bool, default False.</p></li>
-<li><p><strong>parse_dates</strong> – bool or list of int or names or list of lists or dict, default False</p></li>
+<li><p><strong>parse_dates</strong> – Bool or list of int or names or list of lists or dict, default False</p></li>
 <li><p><strong>date_parser</strong> – Function to use for converting a sequence of string columns to an array of datetime instances. function, optional.</p></li>
 <li><p><strong>thousands</strong> – Thousands separator. str, optional.</p></li>
 <li><p><strong>comment</strong> – Indicates remainder of line should not be parsed. str, optional.</p></li>
@@ -270,7 +272,7 @@
 </div>
 <div class="section" id="data-profile">
 <h2>Data Profile<a class="headerlink" href="#data-profile" title="Permalink to this headline">¶</a></h2>
-<p>Information describing the statistics of variables in the data.</p>
+<p>Information to describe the statistics of variables in the data.</p>
 <dl class="py function">
 <dt id="preprocessor.data_profile">
 <code class="sig-prename descclassname">preprocessor.</code><code class="sig-name descname">data_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocessor.data_profile" title="Permalink to this definition">¶</a></dt>
@@ -376,7 +378,7 @@ For categorical variables, most repeated value is default value for filling miss
 </div>
 <div class="section" id="feature-creation">
 <h2>Feature Creation<a class="headerlink" href="#feature-creation" title="Permalink to this headline">¶</a></h2>
-<p>Creates new features based on existing columns using methods such as binning, one-hot-encoding &amp; groupby transform.</p>
+<p>New features created based on existing columns using methods such as binning, one-hot-encoding and group by transform.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10,</code></dt>
@@ -402,14 +404,14 @@ For categorical variables, most repeated value is default value for filling miss
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>binning_column</strong> – dataframe column for binning.</p></li>
+<li><p><strong>binning_column</strong> – Dataframe column for binning.</p></li>
 <li><p><strong>bins</strong> – Number of equal width bins. Default - 10</p></li>
-<li><p><strong>binning_right</strong> – bool, default True. Indicates if the bins should include the right most value.</p></li>
-<li><p><strong>binning_labels</strong> – array or bool, optional. Labels for the returned bins</p></li>
+<li><p><strong>binning_right</strong> – Bool, default True. Indicates if the bins should include the right most value.</p></li>
+<li><p><strong>binning_labels</strong> – Array or bool, optional. Labels for the returned bins</p></li>
 <li><p><strong>binning_retbins</strong> (<em>bool</em>) – Default False. Whether to return the bins or not. Useful when bins is provided as a scalar.</p></li>
-<li><p><strong>binning_precision</strong> – precision to store and display bins labels.</p></li>
+<li><p><strong>binning_precision</strong> – Precision to store and display bins labels.</p></li>
 <li><p><strong>binning_include_lowest</strong> – Whether the first interval should be left-inclusive or not.</p></li>
-<li><p><strong>binning_duplicates</strong> – raises error if bin edges are not unique. can opt for drop. values = ‘raise’,’drop’.</p></li>
+<li><p><strong>binning_duplicates</strong> – Raises error if bin edges are not unique. can opt for drop. values = ‘raise’,’drop’.</p></li>
 </ul>
 </dd>
 </dl>
@@ -417,9 +419,9 @@ For categorical variables, most repeated value is default value for filling miss
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dummies_prefix</strong> – list of prefix strings to name the dataframe columns.</p></li>
-<li><p><strong>dummies_prefix_sep</strong> – if appending prefix, separator to use. default ‘_’</p></li>
-<li><p><strong>dummies_dummy_na</strong> – Add columnt o indicate NaNs. Default - False.</p></li>
+<li><p><strong>dummies_prefix</strong> – List of prefix strings to name the dataframe columns.</p></li>
+<li><p><strong>dummies_prefix_sep</strong> – If appending prefix, separator to use. default ‘_’</p></li>
+<li><p><strong>dummies_dummy_na</strong> – Add column o indicate NaNs. Default - False.</p></li>
 <li><p><strong>dummies_sparse</strong> – Whether the dummy-encoded columns should be backed by a SparseArray (True) or a regular NumPy array (False).</p></li>
 <li><p><strong>dummies_drop_first</strong> – Whether to get k-1 dummies out of k categorical levels by removing the first level.</p></li>
 </ul>
@@ -493,12 +495,12 @@ For categorical variables, most repeated value is default value for filling miss
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>crosstab_columns</strong> – list of variables for columns in transformed data.</p></li>
-<li><p><strong>crosstab_rows</strong> – list of variables for rows in transformed data.</p></li>
+<li><p><strong>crosstab_columns</strong> – List of variables for columns in transformed data.</p></li>
+<li><p><strong>crosstab_rows</strong> – List of variables for rows in transformed data.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>reshaped dataframe</p>
+<dd class="field-even"><p>Reshaped dataframe</p>
 </dd>
 </dl>
 </dd></dl>

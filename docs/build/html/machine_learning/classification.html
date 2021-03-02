@@ -114,9 +114,10 @@
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -204,6 +205,7 @@
             
   <div class="section" id="classification">
 <h1>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
+<p>Classification is used to predict class of a given data point based on the target variable.</p>
 <p><em>Supported Libraries and Algorithms</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -266,6 +268,7 @@
 </table>
 <div class="section" id="training-a-model">
 <h2>Training a model<a class="headerlink" href="#training-a-model" title="Permalink to this headline">¶</a></h2>
+<p>Used to train a model on specific data.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">client.train(service, algorithm, dataset, label, features, model_name=None,</code></dt>
@@ -277,14 +280,14 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>service</strong> – Training task to perform. Valid parameter values are classification, regression.</p></li>
-<li><p><strong>algorithm</strong> – Algorithm to use for training the model.</p></li>
+<li><p><strong>algorithm</strong> – Algorithm used for training the model.</p></li>
 <li><p><strong>dataset</strong> – dataset file location in DLTK storage.</p></li>
 <li><p><strong>label</strong> – Target variable.</p></li>
-<li><p><strong>features</strong> – List of features to use for training the model.</p></li>
+<li><p><strong>features</strong> – List of features used for training the model.</p></li>
 <li><p><strong>model_name</strong> – Model will be saved with the name specified in this parameter.</p></li>
 <li><p><strong>lib</strong> – Library for training the model. Currently we are supporting scikit, h2o and weka.</p></li>
-<li><p><strong>train_percentage</strong> – % of data to use for training the model. Rest of the data will be used to test the model.</p></li>
-<li><p><strong>save_model</strong> – If True, the model will be saved in DLTK Storage.</p></li>
+<li><p><strong>train_percentage</strong> – Percentage of data used for training the model. Rest of the data will be used to test the model.</p></li>
+<li><p><strong>save_model</strong> – If True, the model will be saved in the DLTK Storage.</p></li>
 <li><p><strong>dataset_source</strong> – To specify data source,
 None: Dataset file from DLTK storage will be used
 database: Query from connected database will be used</p></li>
@@ -296,27 +299,10 @@ database: Query from connected database will be used</p></li>
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-<span class="n">library</span> <span class="o">=</span> <span class="s2">&quot;weka&quot;</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;Logistic&quot;</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pregnancies&quot;</span><span class="p">,</span><span class="s2">&quot;Glucose&quot;</span><span class="p">,</span><span class="s2">&quot;BloodPressure&quot;</span><span class="p">,</span><span class="s2">&quot;SkinThickness&quot;</span><span class="p">,</span><span class="s2">&quot;Insulin&quot;</span><span class="p">,</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="s2">&quot;DiabetesPedigreeFunction&quot;</span><span class="p">,</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Outcome&quot;</span>
-<span class="n">train_percentage</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;DiabetesDetection&quot;</span>
-<span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
-
-<span class="n">train_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span><span class="n">features</span><span class="p">,</span><span class="n">model_name</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">train_percentage</span><span class="p">,</span> <span class="n">save_model</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="predictions">
 <h2>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h2>
+<p>Used to predict data using a model object.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">client.predict(service, dataset, model_url, features, lib='weka',</code></dt>
@@ -341,20 +327,10 @@ database: Query from connected database will be used</p></li>
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-<span class="n">library</span> <span class="o">=</span> <span class="s2">&quot;weka&quot;</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/test_data.csv&#39;</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pregnancies&quot;</span><span class="p">,</span><span class="s2">&quot;Glucose&quot;</span><span class="p">,</span><span class="s2">&quot;BloodPressure&quot;</span><span class="p">,</span><span class="s2">&quot;SkinThickness&quot;</span><span class="p">,</span><span class="s2">&quot;Insulin&quot;</span><span class="p">,</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="s2">&quot;DiabetesPedigreeFunction&quot;</span><span class="p">,</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span>
-<span class="n">model_url</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/DiabetesDetection.mdl&#39;</span>
-
-<span class="n">prediction_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">model_url</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">library</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">prediction_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="feedback">
 <h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+<p>Used to retrain a model on new data.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">client.train(service, algorithm, train_data, feedback_data, job_id, model_url,</code></dt>
@@ -366,16 +342,16 @@ database: Query from connected database will be used</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>service</strong> – Training task to perform. Valid parameter values are classification, regression.</p></li>
-<li><p><strong>algorithm</strong> – Algorithm to use for training the model.</p></li>
+<li><p><strong>algorithm</strong> – Algorithm used for training the model.</p></li>
 <li><p><strong>train_data</strong> – dataset file location in DLTK storage.</p></li>
 <li><p><strong>feedback_data</strong> – dataset file location in DLTK storage.</p></li>
-<li><p><strong>job_id</strong> – </p></li>
-<li><p><strong>model_url</strong> – </p></li>
+<li><p><strong>job_id</strong> – job id from the train function used to train the model.</p></li>
+<li><p><strong>model_url</strong> – model url returned from job output function.</p></li>
 <li><p><strong>label</strong> – Target variable.</p></li>
-<li><p><strong>features</strong> – List of features to use for training the model.</p></li>
+<li><p><strong>features</strong> – List of features used for training the model.</p></li>
 <li><p><strong>lib</strong> – Library for training the model. Currently we are supporting scikit, h2o and weka.</p></li>
 <li><p><strong>model_name</strong> – Model will be saved with the name specified in this parameter.</p></li>
-<li><p><strong>split_perc</strong> – % of data to use for training the model. Rest of the data will be used to test the model.</p></li>
+<li><p><strong>split_perc</strong> – Percentage of data to use for training the model. Rest of the data will be used to test the model.</p></li>
 <li><p><strong>save_model</strong> – If True, the model will be saved in DLTK Storage.</p></li>
 <li><p><strong>params</strong> – additional parameters.</p></li>
 </ul>
@@ -386,24 +362,6 @@ database: Query from connected database will be used</p></li>
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-<span class="n">library</span> <span class="o">=</span> <span class="s2">&quot;weka&quot;</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;Logistic&quot;</span>
-<span class="n">train_data</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/train_data.csv&#39;</span>
-<span class="n">feedback_data</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/train_data.csv&#39;</span>
-<span class="n">job_id</span> <span class="o">=</span> <span class="s1">&#39;2457&#39;</span>
-<span class="n">model_url</span> <span class="o">=</span> <span class="s1">&#39;/dltk-ai/DiabetesDetection.mdl&#39;</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pregnancies&quot;</span><span class="p">,</span><span class="s2">&quot;Glucose&quot;</span><span class="p">,</span><span class="s2">&quot;BloodPressure&quot;</span><span class="p">,</span><span class="s2">&quot;SkinThickness&quot;</span><span class="p">,</span><span class="s2">&quot;Insulin&quot;</span><span class="p">,</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="s2">&quot;DiabetesPedigreeFunction&quot;</span><span class="p">,</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Outcome&#39;</span>
-<span class="n">train_percentage</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;DiabetesDetection&quot;</span>
-<span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
-
-<span class="n">feedback_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">feedback_data</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">model_url</span><span class="p">,</span><span class="n">label</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">split_perc</span><span class="p">,</span> <span class="n">save_model</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">feedback_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 
