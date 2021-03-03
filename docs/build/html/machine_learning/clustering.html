@@ -112,9 +112,10 @@
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -202,6 +203,7 @@
             
   <div class="section" id="clustering">
 <h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<p>Clustering is a technique used in grouping data points into desired number of groups (clusters), based on similarity of data points.</p>
 <p><em>Supported Libraries and Algorithms</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -209,8 +211,8 @@
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>scikit</p></th>
-<th class="head"><p>weka</p></th>
+<tr class="row-odd"><th class="head"><p>Scikit</p></th>
+<th class="head"><p>Weka</p></th>
 </tr>
 </thead>
 <tbody>
@@ -246,44 +248,26 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>service</strong> – clustering</p></li>
-<li><p><strong>algorithm</strong> – algorithm to use for clustering</p></li>
-<li><p><strong>dataset</strong> – dataset file location in DLTK storage.</p></li>
+<li><p><strong>service</strong> – Clustering</p></li>
+<li><p><strong>algorithm</strong> – Algorithm to use for clustering</p></li>
+<li><p><strong>dataset</strong> – Dataset file location in DLTK storage.</p></li>
 <li><p><strong>features</strong> – List of features to use for clustering.</p></li>
 <li><p><strong>lib</strong> – Library for clustering the model.</p></li>
-<li><p><strong>number_of_clusters</strong> – number of clusters to divide the data into.</p></li>
+<li><p><strong>number_of_clusters</strong> – Number of clusters to divide the data into.</p></li>
 <li><p><strong>model_name</strong> – Model will be saved with the name specified in this parameter.</p></li>
 <li><p><strong>save_model</strong> – If True, the model will be saved in DLTK Storage.</p></li>
-<li><p><strong>params</strong> – additional parameters</p></li>
+<li><p><strong>params</strong> – Additional parameters</p></li>
 <li><p><strong>dataset_source</strong> – To specify data source,
 None: Dataset file will from DLTK storage will be used
 database: Query from connected database will be used</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>A json obj containing model info.</p>
+<dd class="field-even"><p>A json object containing model info.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<p>example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;cluster&quot;</span>
-<span class="n">library</span> <span class="o">=</span> <span class="s2">&quot;scikit&quot;</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;KMeansClustering&quot;</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MEDV&#39;</span>
-<span class="n">train_percentage</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;HousePricePrediction&quot;</span>
-<span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
-
-<span class="n">train_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span><span class="n">features</span><span class="p">,</span><span class="n">model_name</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">train_percentage</span><span class="p">,</span> <span class="n">save_model</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 

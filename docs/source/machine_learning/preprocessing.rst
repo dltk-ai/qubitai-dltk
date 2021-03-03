@@ -17,12 +17,12 @@ Function for reading data from csv or excel to dataframe.
                                     thousands=None,comment=None)
 
 
-    :param data_path: path for data file - csv or excel
-    :param file_name: complete path of the data file
+    :param data_path: Path for data file - csv or excel
+    :param file_name: Complete path of the data file
     :param header: Row number(s) to use as the column names. default 0 (first row)
     :param names: List of column names to use. array-like, optional.
     :param index_col: Column(s) to use as the row labels of the DataFrame. int, str, sequence of int / str, or False, default None.
-    :param usecols: a list of subset of columns
+    :param usecols: A list of subset of columns
     :param squeeze: If the parsed data only contains one column then return a Series. bool, default False
     :param mangle_dupe_cols: Duplicate columns will be specified with extension such as 1,2..etc. bool, default True
     :param dtype: specify datatype of particular column while reading eg: {‘a’: ‘Int64’}
@@ -37,7 +37,7 @@ Function for reading data from csv or excel to dataframe.
     :param keep_default_na: Whether or not to include the default NaN values when parsing the data. bool, default True.
     :param na_filter: Detect missing value markers. bool, default True.
     :param verbose: Indicate number of NA values placed in non-numeric columns. bool, default False.
-    :param parse_dates: bool or list of int or names or list of lists or dict, default False
+    :param parse_dates: Bool or list of int or names or list of lists or dict, default False
     :param date_parser: Function to use for converting a sequence of string columns to an array of datetime instances. function, optional.
     :param thousands: Thousands separator. str, optional.
     :param comment: Indicates remainder of line should not be parsed. str, optional.
@@ -55,7 +55,7 @@ Function for reading data from csv or excel to dataframe.
 
 Data Profile
 ------------
-Information describing the statistics of variables in the data. 
+Information to describe the statistics of variables in the data.
 
 .. function:: preprocessor.data_profile(dataframe)
 
@@ -133,7 +133,7 @@ Function to handle outliers in the data by either removing them or replacing the
 Feature Creation
 ----------------
 
-Creates new features based on existing columns using methods such as binning, one-hot-encoding & groupby transform.
+New features created based on existing columns using methods such as binning, one-hot-encoding and group by transform.
 
 .. function:: preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10, 
                             binning_right=True, binning_labels=None,
@@ -148,20 +148,20 @@ Creates new features based on existing columns using methods such as binning, on
 
     binning - bins a numerical variable based on user specified value.
     
-    :param binning_column: dataframe column for binning.
+    :param binning_column: Dataframe column for binning.
     :param bins: Number of equal width bins. Default - 10
-    :param binning_right: bool, default True. Indicates if the bins should include the right most value.
-    :param binning_labels: array or bool, optional. Labels for the returned bins
+    :param binning_right: Bool, default True. Indicates if the bins should include the right most value.
+    :param binning_labels: Array or bool, optional. Labels for the returned bins
     :param bool binning_retbins: Default False. Whether to return the bins or not. Useful when bins is provided as a scalar.
-    :param binning_precision: precision to store and display bins labels.
+    :param binning_precision: Precision to store and display bins labels.
     :param binning_include_lowest: Whether the first interval should be left-inclusive or not.
-    :param binning_duplicates: raises error if bin edges are not unique. can opt for drop. values = 'raise','drop'.
+    :param binning_duplicates: Raises error if bin edges are not unique. can opt for drop. values = 'raise','drop'.
 
     one-hot-encoding - Process in the data processing that is applied to categorical data, to convert it into a binary vector representation.
 
-    :param dummies_prefix: list of prefix strings to name the dataframe columns.
-    :param dummies_prefix_sep: if appending prefix, separator to use. default '_'
-    :param dummies_dummy_na: Add columnt o indicate NaNs. Default - False.
+    :param dummies_prefix: List of prefix strings to name the dataframe columns.
+    :param dummies_prefix_sep: If appending prefix, separator to use. default '_'
+    :param dummies_dummy_na: Add column o indicate NaNs. Default - False.
     :param dummies_sparse: Whether the dummy-encoded columns should be backed by a SparseArray (True) or a regular NumPy array (False).
     :param dummies_drop_first: Whether to get k-1 dummies out of k categorical levels by removing the first level.
 
@@ -213,10 +213,10 @@ Transforms data from one format to another
 
     crosstab - Frequency table of factors between 2 or more variables.
 
-    :param crosstab_columns: list of variables for columns in transformed data. 
-    :param crosstab_rows: list of variables for rows in transformed data.
+    :param crosstab_columns: List of variables for columns in transformed data.
+    :param crosstab_rows: List of variables for rows in transformed data.
 
-    :rtype: reshaped dataframe
+    :rtype: Reshaped dataframe
 
 
 **Example**::

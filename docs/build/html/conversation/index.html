@@ -109,9 +109,10 @@
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -199,7 +200,7 @@
             
   <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>DLTK’s Conversation service enables enables transcription of audio files into text. We have third party APIs like IBM &amp; Azure integrated.</p>
+<p>DLTK’s Conversation service enables transcription of audio files into text. We have third party APIs like IBM &amp; Azure integrated.</p>
 </div>
 <div class="section" id="speech-to-text">
 <h1>Speech to Text<a class="headerlink" href="#speech-to-text" title="Permalink to this headline">¶</a></h1>
@@ -233,12 +234,12 @@
 </div>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.speech_to_text(audio, sources):</code></dt>
+<code class="sig-name descname">client.speech_to_text(audio, sources=['google']):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>audio</strong> – path of audio file to extract text from</p></li>
-<li><p><strong>sources</strong> – list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson. Default - google</p></li>
+<li><p><strong>audio</strong> – Path of audio file to extract text from</p></li>
+<li><p><strong>sources</strong> – list - Algorithm to use for extracting text from audio. Supported sources - google, ibm_watson.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -250,10 +251,16 @@
 <p><strong>Example</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-<span class="n">audio_path</span> <span class="o">=</span> <span class="s2">&quot;../recording.wav&quot;</span>
+<span class="n">audio_path</span> <span class="o">=</span> <span class="s2">&quot;../harvard.wav&quot;</span>
 
-<span class="n">speech_to_text_reponse</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">speech_to_text</span><span class="p">(</span><span class="n">audio_path</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;google&#39;</span><span class="p">,</span><span class="s1">&#39;ibm_watson&#39;</span><span class="p">])</span>
+<span class="n">speech_to_text_reponse</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">speech_to_text</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">speech_to_text_reponse</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Output</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;google&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;transcript&quot;</span><span class="p">:</span> <span class="s2">&quot;the stale smell of old beer lingers it takes heat to bring out the odor a cold dip restores health and zest a salt pickle taste fine with ham tacos al pastor are my favorite a zestful food is the hot cross bun&quot;</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>

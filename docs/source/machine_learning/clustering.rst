@@ -9,8 +9,8 @@ Clustering is a technique used in grouping data points into desired number of gr
    :widths: 25 25
    :header-rows: 1
 
-   * - scikit
-     - weka
+   * - Scikit
+     - Weka
    * - AgglomerativeClustering
      - SimpleKMeans
    * - KMeansClustering 
@@ -31,18 +31,18 @@ Cluster
                             , number_of_clusters=2, model_name=None,
                             save_model=True, params=None, dataset_source=None):
 
-    :param service: clustering
-    :param algorithm: algorithm to use for clustering
-    :param dataset: dataset file location in DLTK storage.
+    :param service: Clustering
+    :param algorithm: Algorithm to use for clustering
+    :param dataset: Dataset file location in DLTK storage.
     :param features: List of features to use for clustering.
     :param lib: Library for clustering the model.
-    :param number_of_clusters: number of clusters to divide the data into.
+    :param number_of_clusters: Number of clusters to divide the data into.
     :param model_name: Model will be saved with the name specified in this parameter.
     :param save_model: If True, the model will be saved in DLTK Storage.
-    :param params: additional parameters
+    :param params: Additional parameters
     :param dataset_source: To specify data source,
         None: Dataset file will from DLTK storage will be used
         database: Query from connected database will be used
-    :rtype: A json obj containing model info.
+    :rtype: A json object containing model info.
 
 

@@ -109,9 +109,10 @@
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -201,8 +202,102 @@
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
 <p>DLTK’s Computer Vision service includes advanced image processing algorithms which return required information from the given image. We also have third party APIs like IBM &amp; Azure integrated.</p>
 </div>
+<div class="section" id="image-classification">
+<h1>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h1>
+<p>Classifies an image according to its visual content.</p>
+<p>Usage: Identifying the category of the image, Image organisation, etc,</p>
+<p><em>Supported Open Source Models</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Implementations</p></th>
+<th class="head"><p>Classes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ResNet50</p></td>
+<td><p><a class="reference external" href="http://www.image-net.org/">http://www.image-net.org/</a></p></td>
+<td><p><a class="reference external" href="https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json">https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Supported Third Party Classifiers</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Documentation Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Azure</p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IBM</p></td>
+<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify">https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify</a></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
+<dt>
+<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_url</strong> – Image URL</p></li>
+<li><p><strong>image_path</strong> – Local Image Path</p></li>
+<li><p><strong>top_n</strong> – If True, uses dlib for face analyticsget top n predictions</p></li>
+<li><p><strong>tensorflow</strong> – If True, uses tensorflow for image classification</p></li>
+<li><p><strong>azure</strong> – If True, returns azure results of image classification on given image</p></li>
+<li><p><strong>ibm</strong> – If True, uses mtcnn for face analyticsif True, returns ibm results of image classification on given image</p></li>
+<li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Image classification response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Example</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
+
+<span class="c1"># Note: top_n=4 predictions, image classification</span>
+<span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">image_classification</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Input</strong></p>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg"><img alt="sample-classification-image" src="https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg" style="height: 200px;" /></a>
+<p><strong>Output</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;331348a2-254d-418a-a1b8-9414172f8a86&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;tensorflow_predicted_classes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;quilt&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3350585&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;tiger_cat&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.16452688&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;lynx&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.09777632&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;sleeping_bag&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.06928878&quot;</span><span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="object-detection">
 <h1>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
+<p>Identifies and locates objects in an Image.</p>
+<p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -240,8 +335,6 @@
 </tr>
 </tbody>
 </table>
-<p>Identifies and locates objects in an Image.</p>
-<p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
 <dl class="py function">
 <dt>
 <code class="sig-name descname">client.object_detection(image_url=None, image_path=None, tensorflow=True,</code></dt>
@@ -252,13 +345,13 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>tensorflow</strong> – if True, uses tensorflow for object detection</p></li>
-<li><p><strong>azure</strong> – if True, returns azure results of object detection on given image</p></li>
-<li><p><strong>output_types</strong> – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
+<li><p><strong>tensorflow</strong> – If True, uses tensorflow for object detection</p></li>
+<li><p><strong>azure</strong> – If True, returns azure results of object detection on given image</p></li>
+<li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>A json obj containing the output of object detection</p>
+<dd class="field-even"><p>A json object containing the output of object detection</p>
 </dd>
 </dl>
 </dd></dl>
@@ -269,14 +362,28 @@
 
 <span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
 
-<span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Input</strong></p>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"><img alt="sample-object-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg" style="height: 200px;" /></a>
+<p><strong>Output</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;b37318f5-c657-4e93-a079-f3888fe03717&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;tensorflow_detected_objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.8257747888565063</span><span class="p">,</span> <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">501</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">257</span><span class="p">}}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="face-detection">
 <h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h1>
+<p>Analyses an individual’s face in an image.</p>
+<p>Usage: Automated identity verification.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -285,7 +392,7 @@
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Model</p></th>
-<th class="head"><p>Data Trained on</p></th>
+<th class="head"><p>Implementations</p></th>
 </tr>
 </thead>
 <tbody>
@@ -301,8 +408,7 @@
 </tbody>
 </table>
 <p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">Supported Third Party Classifiers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -318,8 +424,6 @@
 </tr>
 </tbody>
 </table>
-<p>Analyses an individual’s face in an image.</p>
-<p>Usage: Automated identity verification.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Presently supports Face Detection only.</p>
@@ -335,15 +439,15 @@
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>features</strong> – Type of features requested by client. Presently supports “face_detection”.</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>dlib</strong> – if True, uses dlib for face analytics</p></li>
-<li><p><strong>opencv</strong> – if True, uses opencv for face analytics</p></li>
-<li><p><strong>azure</strong> – if True, returns azure results of face analytics on given image</p></li>
-<li><p><strong>mtcnn</strong> – if True, uses mtcnn for face analytics</p></li>
-<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>output_types</em>) – Type of output requested by client: “json”, “image”</p></li>
+<li><p><strong>dlib</strong> – If True, uses dlib for face analytics</p></li>
+<li><p><strong>opencv</strong> – If True, uses opencv for face analytics</p></li>
+<li><p><strong>azure</strong> – If True, returns azure results of face analytics on given image</p></li>
+<li><p><strong>mtcnn</strong> – If True, uses mtcnn for face analytics</p></li>
+<li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>A json obj containing the output of object detection</p>
+<dd class="field-even"><p>A json object containing the output of object detection</p>
 </dd>
 </dl>
 </dd></dl>
@@ -352,91 +456,56 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
-<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://images.financialexpress.com/2020/01/660-3.jpg&quot;</span>
 
 <span class="n">face_analytics_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">face_analytics</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">face_analytics_response</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Input</strong></p>
+<a class="reference internal image-reference" href="https://images.financialexpress.com/2020/01/660-3.jpg"><img alt="sample-face-image" src="https://images.financialexpress.com/2020/01/660-3.jpg" style="height: 200px;" /></a>
+<p><strong>Output</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4e915abe-33da-4add-a325-8a07cf2093c3&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;output&quot;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;opencv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">356</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">134</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">109</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">137</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">111</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">567</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">460</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">126</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}]}},</span>
+      <span class="nt">&quot;azure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">558</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">348</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">151</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">158</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">155</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">453</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">154</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">}]}}</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="image-classification">
-<h1>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h1>
-<p><em>Supported Open Source Models</em></p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Model</p></th>
-<th class="head"><p>Data Trained on</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ResNet50</p></td>
-<td><p><a class="reference external" href="http://www.image-net.org/">http://www.image-net.org/</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>ImageNet</p></td>
-<td><p><a class="reference external" href="https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json">https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json</a></p></td>
-</tr>
-</tbody>
-</table>
-<p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Documentation Link</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Azure</p></td>
-<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>IBM</p></td>
-<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify">https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify</a></p></td>
-</tr>
-</tbody>
-</table>
-<p>Classifies an image according to its visual content.</p>
-<p>Usage: Identifying the category of the image, Image organisation, etc,</p>
+</div>
+<div class="section" id="barcode-detection">
+<h1>Barcode Detection<a class="headerlink" href="#barcode-detection" title="Permalink to this headline">¶</a></h1>
+<p>Detects and extracts barcode or QRcode information in an Image.</p>
+<p>Usage: Tracking product information and details</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
-<dt>
-<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname">client.object_detection(image):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>image_url</strong> – Image URL</p></li>
-<li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>top_n</strong> – if True, uses dlib for face analyticsget top n predictions</p></li>
-<li><p><strong>tensorflow</strong> – if True, uses tensorflow for image classification</p></li>
-<li><p><strong>azure</strong> – if True, returns azure results of image classification on given image</p></li>
-<li><p><strong>ibm</strong> – if True, uses mtcnn for face analyticsif True, returns ibm results of image classification on given image</p></li>
-<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>output_types</em>) – Type of output requested by client: “json”, “image”</p></li>
-</ul>
+<dd class="field-odd"><p><strong>image</strong> – Local Image Path or Numpy array of the image</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Image classification response</p>
+<dd class="field-even"><p>List of dictionaries containing the barcode information</p>
 </dd>
 </dl>
 </dd></dl>
 
 <p><strong>Example</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
-
-<span class="c1"># Note: top_n=4 predictions, image classification</span>
-<span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">image_classification</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">barcode_extractor</span><span class="p">(</span><span class="s1">&#39;../barcode.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Input</strong></p>
+<a class="reference internal image-reference" href="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png"><img alt="sample-barcode-image" src="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png" style="height: 200px;" /></a>
+<p><strong>Output</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>[{&quot;serial_number&quot;: &quot;0020357122682&quot;, &quot;code_type&quot;: &quot;EAN13&quot;, &quot;bbox&quot;: (38, 14, 519, 313)}]
 </pre></div>
 </div>
 </div>

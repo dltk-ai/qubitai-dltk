@@ -2,7 +2,7 @@
 About
 *****
 
-DLTK's NLP service has pre built Models for various Natural Language Processing tasks, which can be leveraged to predict on input text. We also have third party APIs like IBM & Azure integrated.
+DLTK's NLP service has pre-built Models for various Natural Language Processing tasks, which can leverage to predict on input text. Third-party APIs like IBM and Azure, too, are integrated.
 
 ******************
 Sentiment Analysis
@@ -24,18 +24,27 @@ Usage: social media monitoring, Brand reputation analysis, etc.
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    text = "The product is very easy to use and has got a really good life expectancy.
+    text = "The product is very easy to use and has got a really good life expectancy."
 
     sentiment_analysis_response = client.sentiment_analysis(text)
 
-    print(sentiment_analysis_response)
+    print(sentiment_analysis_response.text)
+   
+**Output**
+
+.. code-block:: JSON
+
+    {
+      "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+    }
+
 
 
 **********************
 Parts of Speech Tagger
 **********************
 
-Identifies and marks a word in a text as corresponding to a particular part of speech, based on both its definition and its context.
+It identifies and marks a word in a text as corresponding to a particular part of speech, based on its definition and context.
 
 .. py:function:: client.pos_tagger(text, sources = ['spacy'])
 
@@ -45,21 +54,31 @@ Identifies and marks a word in a text as corresponding to a particular part of s
 
 **Example**::
 
+
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    text = "They refuse to permit us to obtain the refuse permit.
+    >>> text = "They refuse to permit us to obtain the refuse permit."
 
-    pos_tagger_response = client.pos_tagger(text)
+    >>> pos_tagger_response = client.pos_tagger(text)
 
-    print(pos_tagger_response)
+    >>> print(pos_tagger_response)
+
+
+**Output**
+
+.. code-block:: JSON
+
+    {
+      "spacy": {"result": {"They": "PRP", "refuse": "NN", "to": "TO", "permit": "NN", "us": "PRP", "obtain": "VB", "the": "DT", ".": "."}}
+    }
 
 
 ************************
 Named Entity Recognition
 ************************
 
-Identifies key information (entities) in text. Each token is given an appropriate tag such as Person, Location, Organisation, etc.
+It identifies key information (entities) in text. Each token is given an appropriate tag such as Person, Location, Organisation, etc.
 
 .. py:function:: client.ner_tagger(text, sources = ['spacy'])
 
@@ -72,18 +91,26 @@ Identifies key information (entities) in text. Each token is given an appropriat
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    text = "John has moved to California recently.
+    text = "John has moved to California recently."
 
     ner_tagger_response = client.ner_tagger(text)
 
-    print(ner_tagger_response)
+    print(ner_tagger_response.text)
+
+**Output**
+
+.. code-block:: JSON
+
+    {
+      "spacy": {"result": {"John": "PERSON", "California": "GPE"}, "persons": [], "organizations": []}
+    }
 
 
 *****************
 Dependancy Parser
 *****************
 
-Analyses the grammatical structure of a sentence, establishing relationships between "head" words and words which modify those heads.
+It analyses the grammatical structure of a sentence, establishing relationships between "head" words and words which modify those heads.
 
 Usage: Grammar monitoring.
 
@@ -97,22 +124,36 @@ Usage: Grammar monitoring.
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    text = "And now for something completely different.
+    text = "And now for something completely different."
 
     dependency_parser_response = client.dependency_parser(text)
 
     print(dependency_parser_response)
+
+**Output**
+
+.. code-block:: JSON
+
+    {
+     'And': {'dep': 'cc', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
+     'now': {'dep': 'advmod', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
+     'for': {'dep': 'ROOT','headText': 'for', 'headPOS': 'ADP', 'children': ['And', 'now', 'something', '.']},
+     'something': {'dep': 'pobj', 'headText': 'for', 'headPOS': 'ADP', 'children': ['different']},
+     'completely': {'dep': 'advmod', 'headText': 'different', 'headPOS': 'ADJ', 'children': []},
+     'different': {'dep': 'amod','headText': 'something', 'headPOS': 'NOUN', 'children': ['completely']},
+     '.': {'dep': 'punct', 'headText': 'for', 'headPOS': 'ADP', 'children': []}
+     }
 
 
 ****************
 Tags Recognition
 ****************
 
-Identifies the important words in a sentence.
+It identifies the important words in a sentence.
 
 .. py:function:: client.tags(text)
 
-   :param text: text for tags recognotion
+   :param text: text for tags recognition
    :rtype: A json object with Tags identified in the given text.
 
 **Example**::
@@ -124,5 +165,13 @@ Identifies the important words in a sentence.
 
     tags_response = client.tags(text)
 
-    print(tags_response)
+    print(tags_response.text)
+
+**Output**
+
+.. code-block:: JSON
+
+    {
+      "rake": {"tags": ["elon musk", "shared", "photo", "spacesuit designed", "spacex", "image shared", "design", "feature", "spacesuit full", "body"]}
+    }
 

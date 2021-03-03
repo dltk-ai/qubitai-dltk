@@ -109,9 +109,10 @@
 <p class="caption"><span class="caption-text">Computer Vision</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -199,7 +200,7 @@
             
   <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>DLTK’s Machine Learning service provides leverage to Train models, deploy them and use them for predictions, where the heavy lifting of training the models and deploying is done on DLTK’s cloud server. The 3 widely used libraries (scikit, weka &amp; h2o) for training models can be used under one platform.</p>
+<p>DLTK’s Machine Learning service provides leverage to Train models, deploys them and uses them for predictions, where the heavy lifting of training the models and deploying is done on DLTK’s cloud server. The 3 widely used libraries (Scikit, Weka &amp; H2O) for training models can be used under one platform.</p>
 </div>
 <div class="section" id="uploading-a-dataset">
 <h1>Uploading a Dataset<a class="headerlink" href="#uploading-a-dataset" title="Permalink to this headline">¶</a></h1>
@@ -225,14 +226,14 @@
 <span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
-<span class="n">train_data_store_response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="s1">&#39;../train_data.csv&#39;</span><span class="p">,</span><span class="n">Dataset</span><span class="o">.</span><span class="n">TRAIN_DATA</span><span class="p">)</span>
+<span class="n">train_data_store_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="s1">&#39;../train_data.csv&#39;</span><span class="p">,</span><span class="n">Dataset</span><span class="o">.</span><span class="n">TRAIN_DATA</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">train_data_store_response</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="check-job-status">
 <h1>Check Job Status<a class="headerlink" href="#check-job-status" title="Permalink to this headline">¶</a></h1>
-<p>Training a model is done on DLTK’s cloud server. A job is triggered as soon as the train function is called. To check the status of the job, the following function can be used by giving job_id, response form train function as input.</p>
+<p>Training a model is done on DLTK’s cloud server. A job is triggered as soon as the train function is called. To check the job status, you can use the following function by giving job_id and response from the train function as input.</p>
 <dl class="py function">
 <dt id="client.job_status">
 <code class="sig-prename descclassname">client.</code><code class="sig-name descname">job_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">job_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.job_status" title="Permalink to this definition">¶</a></dt>
@@ -246,20 +247,10 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">train_job_id</span> <span class="o">=</span> <span class="n">train_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;jobId&#39;</span><span class="p">]</span>
-<span class="n">train_job_status_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">job_status</span><span class="p">(</span><span class="n">train_job_id</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_job_status_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="check-job-output">
 <h1>Check Job Output<a class="headerlink" href="#check-job-output" title="Permalink to this headline">¶</a></h1>
-<p>Gives the output of training job which includes model evaluation metrics, path where model is saved, etc.</p>
+<p>It gives the training job output, including model evaluation metrics, the path where the model is saved, etc.</p>
 <dl class="py function">
 <dt id="client.job_output">
 <code class="sig-prename descclassname">client.</code><code class="sig-name descname">job_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">job_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.job_output" title="Permalink to this definition">¶</a></dt>
@@ -273,16 +264,6 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">train_job_id</span> <span class="o">=</span> <span class="n">train_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;jobId&#39;</span><span class="p">]</span>
-<span class="n">train_job_output_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">job_output</span><span class="p">(</span><span class="n">train_job_id</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_job_output_response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="downloading-a-file">
 <h1>Downloading a File<a class="headerlink" href="#downloading-a-file" title="Permalink to this headline">¶</a></h1>
@@ -300,16 +281,6 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="kn">from</span> <span class="nn">dltk_ai.dataset_types</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
-
-<span class="n">prediction_file_url</span> <span class="o">=</span> <span class="n">predict_job_output_response</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;predFileUrl&#39;</span><span class="p">]</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">prediction_file_url</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 
 

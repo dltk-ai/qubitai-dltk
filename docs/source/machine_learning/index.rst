@@ -2,7 +2,7 @@
 About
 *****
 
-DLTK's Machine Learning service provides leverage to Train models, deploy them and use them for predictions, where the heavy lifting of training the models and deploying is done on DLTK's cloud server. The 3 widely used libraries (scikit, weka & h2o) for training models can be used under one platform.
+DLTK's Machine Learning service provides leverage to Train models, deploys them and uses them for predictions, where the heavy lifting of training the models and deploying is done on DLTK's cloud server. The 3 widely used libraries (Scikit, Weka & H2O) for training models can be used under one platform.
 
 *******************
 Uploading a Dataset
@@ -22,7 +22,7 @@ Used to store file on cloud storage.
     from dltk_ai.dataset_types import Dataset
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    train_data_store_response = c.store('../train_data.csv',Dataset.TRAIN_DATA)
+    train_data_store_response = client.store('../train_data.csv',Dataset.TRAIN_DATA)
     print(train_data_store_response)
 
 
@@ -30,7 +30,7 @@ Used to store file on cloud storage.
 Check Job Status
 ****************
 
-Training a model is done on DLTK's cloud server. A job is triggered as soon as the train function is called. To check the status of the job, the following function can be used by giving ther job_id as input which is a response from train function.
+Training a model is done on DLTK's cloud server. A job is triggered as soon as the train function is called. To check the job status, you can use the following function by giving job_id and response from the train function as input.
 
 .. function:: client.job_status(job_id)
 
@@ -41,7 +41,7 @@ Training a model is done on DLTK's cloud server. A job is triggered as soon as t
 ****************
 Check Job Output
 ****************
-Gives the output of training job which includes model evaluation metrics, path where model is saved, etc.
+It gives the training job output, including model evaluation metrics, the path where the model is saved, etc.
 
 .. function:: client.job_output(job_id)
 
