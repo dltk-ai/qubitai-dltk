@@ -76,10 +76,10 @@ Usage: Identifying the category of the image, Image organisation, etc,
 .. code-block:: JSON
 
     {
-      'task_status': 'SUCCESS', 
-      'task_id': '331348a2-254d-418a-a1b8-9414172f8a86', 
-      'output': {
-        'tensorflow_predicted_classes': [{'class': 'quilt', 'confidence': '0.3350585'}, {'class': 'tiger_cat', 'confidence': '0.16452688'}, {'class': 'lynx', 'confidence': '0.09777632'}, {'class': 'sleeping_bag', 'confidence': '0.06928878'}]
+      "task_status": "SUCCESS", 
+      "task_id": "331348a2-254d-418a-a1b8-9414172f8a86", 
+      "output": {
+        "tensorflow_predicted_classes": [{"class": "quilt", "confidence": "0.3350585"}, {"class": "tiger_cat", "confidence": "0.16452688"}, {"class": "lynx", "confidence": "0.09777632"}, {"class": "sleeping_bag", "confidence": "0.06928878"}]
         }
     }
 
@@ -150,10 +150,10 @@ Usage: Tracking objects, Counting people, Vehicle Detection, etc.
 .. code-block:: JSON
 
     {
-      'task_status': 'SUCCESS', 
-      'task_id': 'b37318f5-c657-4e93-a079-f3888fe03717', 
-      'output': {
-        'tensorflow_detected_objects': [{'object_name': 'car', 'confidence': 0.8257747888565063, 'bbox': {'x1': 14, 'y1': 23, 'x2': 501, 'y2': 257}}]
+      "task_status": "SUCCESS", 
+      "task_id": "b37318f5-c657-4e93-a079-f3888fe03717", 
+      "output": {
+        "tensorflow_detected_objects": [{"object_name": "car", "confidence": 0.8257747888565063, "bbox": {"x1": 14, "y1": 23, "x2": 501, "y2": 257}}]
         }
     }
 
@@ -232,19 +232,19 @@ Usage: Automated identity verification.
 .. code-block:: JSON
 
     {
-      'task_status': 'SUCCESS', 
-      'task_id': '4e915abe-33da-4add-a325-8a07cf2093c3', 
-      'output': 
+      "task_status": "SUCCESS", 
+      "task_id": "4e915abe-33da-4add-a325-8a07cf2093c3", 
+      "output": 
         {
-          'opencv': {'json': {'face_locations': [{'x': 356, 'y': 129, 'w': 79, 'h': 117}, {'x': 22, 'y': 129, 'w': 81, 'h': 120}, {'x': 123, 'y': 134, 'w': 77, 'h': 109}, {'x': 231, 'y': 137, 'w': 77, 'h': 111}, {'x': 567, 'y': 117, 'w': 74, 'h': 117}, {'x': 460, 'y': 126, 'w': 76, 'h': 123}]}}, 
-          'azure': {'json': {'face_locations': [{'x': 27, 'y': 153, 'w': 87, 'h': 87}, {'x': 558, 'y': 139, 'w': 85, 'h': 85}, {'x': 348, 'y': 151, 'w': 82, 'h': 82}, {'x': 231, 'y': 158, 'w': 79, 'h': 79}, {'x': 121, 'y': 155, 'w': 78, 'h': 78}, {'x': 453, 'y': 154, 'w': 78, 'h': 78}]}}
+          "opencv": {"json": {"face_locations": [{"x": 356, "y": 129, "w": 79, "h": 117}, {"x": 22, "y": 129, "w": 81, "h": 120}, {"x": 123, "y": 134, "w": 77, "h": 109}, {"x": 231, "y": 137, "w": 77, "h": 111}, {"x": 567, "y": 117, "w": 74, "h": 117}, {"x": 460, "y": 126, "w": 76, "h": 123}]}}, 
+          "azure": {"json": {"face_locations": [{"x": 27, "y": 153, "w": 87, "h": 87}, {"x": 558, "y": 139, "w": 85, "h": 85}, {"x": 348, "y": 151, "w": 82, "h": 82}, {"x": 231, "y": 158, "w": 79, "h": 79}, {"x": 121, "y": 155, "w": 78, "h": 78}, {"x": 453, "y": 154, "w": 78, "h": 78}]}}
           }
     }
 
 
-****************
+*****************
 Barcode Detection
-****************
+*****************
 
 Detects and extracts barcode or QRcode information in an Image.
 
@@ -275,7 +275,5 @@ Usage: Tracking product information and details
 
 .. code-block:: JSON
 
-    [{'serial_number': '0020357122682', 'code_type': 'EAN13', 'bbox': (38, 14, 519, 313)}]
-
-    
+    [{"serial_number": "0020357122682", "code_type": "EAN13", "bbox": (38, 14, 519, 313)}]
 

@@ -67,7 +67,7 @@ Used to train a model on specific data.
    :param dataset_source: To specify data source,
         None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
-   :rtype: A json obj containing the file path in storage.
+   :rtype: A json object containing the file path in storage.
 
 
 
@@ -88,7 +88,7 @@ Used to predict data using a model object.
     :param dataset_source: To specify data source,
         None: Dataset file from DLTK storage will be used
         database: Query from connected database will be used
-    :rtype: A json obj containing the file info which has the predictions.
+    :rtype: A json object containing the file info which has the predictions.
 
 
 
@@ -114,5 +114,5 @@ Used to retrain a model on new data.
    :param split_perc: Percentage of data to use for training the model. Rest of the data will be used to test the model.
    :param save_model: If True, the model will be saved in DLTK Storage.
    :param params: additional parameters.
-   :rtype: A json obj containing the file path in storage.
+   :rtype: A json object containing the file path in storage.
 

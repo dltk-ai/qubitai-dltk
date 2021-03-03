@@ -43,6 +43,6 @@ Cluster
     :param dataset_source: To specify data source,
         None: Dataset file will from DLTK storage will be used
         database: Query from connected database will be used
-    :rtype: A json obj containing model info.
+    :rtype: A json object containing model info.
 
 

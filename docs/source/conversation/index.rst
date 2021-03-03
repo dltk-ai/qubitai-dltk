@@ -43,10 +43,11 @@ Extracts text from given audio file.
     speech_to_text_reponse = client.speech_to_text(audio_path)
     print(speech_to_text_reponse)
 
-  **Output**
+
+**Output**
 
 .. code-block:: JSON
 
     {
-      'google': {'transcript': 'the stale smell of old beer lingers it takes heat to bring out the odor a cold dip restores health and zest a salt pickle taste fine with ham tacos al pastor are my favorite a zestful food is the hot cross bun'}
-      }
+      "google": {"transcript": "the stale smell of old beer lingers it takes heat to bring out the odor a cold dip restores health and zest a salt pickle taste fine with ham tacos al pastor are my favorite a zestful food is the hot cross bun"}
+    }

@@ -64,7 +64,6 @@ It identifies and marks a word in a text as corresponding to a particular part o
 
     >>> print(pos_tagger_response)
 
-    {"spacy": {"result": {"They": "PRP", "refuse": "NN", "to": "TO", "permit": "NN", "us": "PRP", "obtain": "VB", "the": "DT", ".": "."}}}
 
 **Output**
 
@@ -154,7 +153,7 @@ It identifies the important words in a sentence.
 
 .. py:function:: client.tags(text)
 
-   :param text: text for tags recognotion
+   :param text: text for tags recognition
    :rtype: A json object with Tags identified in the given text.
 
 **Example**::
