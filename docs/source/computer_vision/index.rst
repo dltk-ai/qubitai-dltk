@@ -253,10 +253,8 @@ Usage: Tracking product information and details
 
 .. function:: client.object_detection(image):
 
-   :param image: Local Image Path or Numpy array of the image
-   :rtype serial_number: list of serial number text extracted
-   :rtype bboxes: list of bounding boxes
-   :rtype code_type: list of detected codes 
+   :param image: Local Image Path or Numpy array of the image.
+   :rtype: List of dictionaries containing the barcode information.
 
 **Example**::
 
