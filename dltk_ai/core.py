@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters
+from dltk_ai.assertions import validate_parameters, is_url_valid
 from dltk_ai.dataset_types import Dataset
 
 
@@ -192,6 +192,8 @@ class DltkAiClient:
         """
         output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
         assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
@@ -244,6 +246,8 @@ class DltkAiClient:
         """
         output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
         assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
 
@@ -656,6 +660,8 @@ class DltkAiClient:
             (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
         assert "face_locations" in features, "Please select at least one feature ['face_locations']"
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
         load = {
             "image_url": image_url,
 
