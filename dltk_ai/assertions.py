@@ -1,3 +1,5 @@
+import re
+
 supported_algorithm = {'regression':
 
                            {'scikit': ['LinearRegression', 'DecisionTrees', 'Bagging', 'RandomForest',
@@ -70,3 +72,40 @@ def validate_dataset(dataset_df, service, library, algorithm, features, target_v
     # Check whether features & target Variables are present in dataset_df or not
     for feature in features:
         assert feature in list(dataset_df.columns), f"*{feature}* not found in Dataset column names"
+
+
+def is_url_valid(string):
+    """
+    This function checks whether input string follow URL format or not
+    Args:
+        string: Input string
+
+    Returns:
+        True: if string follows URL format
+        False: if string doesn't follow URL format
+
+    >>> is_url_valid("C:/users/sample/Desktop/image.jpg")
+    False
+    >>> is_url_valid("/examples/data/image.jpg")
+    False
+    >>> is_url_valid("http://google.com")
+    True
+    >>> is_url_valid("https://images.financialexpress.com/2020/01/660-3.jpg")
+    True
+    >>> is_url_valid("https://images.financialexpress.com 2020/01/660-3.jpg")
+    False
+
+    """
+    match_result = False
+
+    pattern = re.compile(
+        r'^(?:http|ftp)s?://'
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+        r'localhost|'
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+        r'(?::\d+)?'
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+
+    if re.match(pattern, string):
+        match_result = True
+    return match_result
