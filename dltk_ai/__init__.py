@@ -27,6 +27,6 @@ try:
     if str(installed_version) != str(latest_version):
         warnings.filterwarnings('ignore', '.*do not.*')
         warnings.formatwarning = custom_formatwarning
-        warnings.warn(f'New version of dltk_ai ({latest_version}) available, you are still using older ({installed_version}) version of the dltk_ai, Please update using "pip install qubitai-dltk=={latest_version}""', FutureWarning)
+        warnings.warn(f'New version of dltk_ai ({latest_version}) available, you are still using older ({installed_version}) version of the dltk_ai, Please update using "pip install qubitai-dltk=={latest_version}"', FutureWarning)
 except:
     pass
