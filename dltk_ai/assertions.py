@@ -109,3 +109,27 @@ def is_url_valid(string):
     if re.match(pattern, string):
         match_result = True
     return match_result
+
+
+def allowed_file_extension(file_path, allowed_extensions):
+    """
+    To check whether file_path ends with allowed extensions or not
+    Args:
+        file_path: file path string
+        allowed_extensions: set of extensions
+
+    Returns:
+        True: If file has a valid extension
+        False: If file don't have valid extension
+
+    >>> allowed_file_extension('sample.jpeg', ('.jpg', '.png', '.JPEG'))
+    True
+    >>> allowed_file_extension('sample.pdf', '.txt')
+    False
+    >>> allowed_file_extension('examples/sample.mp3', '.wav')
+    False
+    >>> allowed_file_extension('examples/sample.wav', '.wav')
+    True
+    """
+    allowed_extensions = tuple([extension.lower() for extension in allowed_extensions])
+    return file_path.lower().endswith(allowed_extensions)

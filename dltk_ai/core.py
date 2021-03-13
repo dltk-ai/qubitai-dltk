@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters, is_url_valid
+from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension
 from dltk_ai.dataset_types import Dataset
 
 
@@ -169,8 +169,7 @@ class DltkAiClient:
                 # check if execution time is more than
                 if time() - start_time > 10:
                     print("It's taking too long than expected!!",
-                          'you can use this function to check status dltkai.check_cv_job(',
-                          task_creation_response['job_id'], ')')
+                          f'Use check_cv_job({task_creation_response["job_id"]}) to check status of your request')
                     break
 
         else:
@@ -214,6 +213,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
                 load["base64_img"] = base64_img
@@ -270,6 +271,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
             load["base64_img"] = base64_img
@@ -295,7 +298,7 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_audio_format = '.wav'
         supported_sources = ['google', 'ibm_watson']
-        assert '.wav' in audio_path, f'Please use supported audio format {supported_audio_format}'
+        assert allowed_file_extension(audio_path, '.wav'), f'Please use supported audio format {supported_audio_format}'
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         body = {'audio': (audio_path, open(audio_path, 'rb'), 'multipart/form-data')}
         sources_string = ",".join(sources)
@@ -686,6 +689,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
             load["base64_img"] = base64_img
