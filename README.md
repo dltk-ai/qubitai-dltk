@@ -8,13 +8,13 @@
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
-DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Googleâ€™s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
+DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
 
 # Getting Started
 
 ## Pre-requisite
 
-### QubitAI-OpenDLTK
+**QubitAI-OpenDLTK**
 
 Please follow the below links for instructions
 
@@ -23,13 +23,15 @@ a. [Without Authentication](https://github.com/dltk-ai/openDLTK)
 b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
 
 ---
+
 **Note**: To use third party AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
+
 ---
 
 
 # Installation
 
-## Installing from Source
+**Installing from Source**
 
 a. Clone the repo
 
@@ -44,10 +46,13 @@ c. Install requirements from requirements.txt file
     pip install -r requirements.txt
 ```
 
-## Installing through pip
+**Installing through pip**
 ```sh
     pip install qubitai-dltk
 ```
+
+---
+
 ## Usage
 
 ```python
@@ -77,6 +82,8 @@ _Expected Output_
   "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
 }
 ```
+
+---
 
 ## Reference
 
