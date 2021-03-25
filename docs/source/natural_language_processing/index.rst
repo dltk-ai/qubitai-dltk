@@ -16,7 +16,7 @@ Usage: social media monitoring, Brand reputation analysis, etc.
 .. py:function:: client.sentiment_analysis(text, sources = ['spacy'])
 
    :param text: text for analysing the sentiment
-   :param sources: algorithm to use - azure/ibm_watson/spacy/model_1. Default is spacy.
+   :param sources: algorithm to use - azure/ibm_watson/spacy. Default is spacy.
    :rtype: A json object containing the sentiment analysis response
 
 **Example**::
@@ -58,11 +58,11 @@ It identifies and marks a word in a text as corresponding to a particular part o
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    >>> text = "They refuse to permit us to obtain the refuse permit."
+    text = "They refuse to permit us to obtain the refuse permit."
 
-    >>> pos_tagger_response = client.pos_tagger(text)
+    pos_tagger_response = client.pos_tagger(text)
 
-    >>> print(pos_tagger_response)
+    print(pos_tagger_response.text)
 
 
 **Output**
@@ -128,7 +128,7 @@ Usage: Grammar monitoring.
 
     dependency_parser_response = client.dependency_parser(text)
 
-    print(dependency_parser_response)
+    print(dependency_parser_response.text)
 
 **Output**
 

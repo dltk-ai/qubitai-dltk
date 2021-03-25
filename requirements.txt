@@ -3,3 +3,7 @@ xlrd==1.2.0
 numpy==1.19.5
 requests==2.25.1
 openpyxl==3.0.6
+pandas-profiling==2.10.1
+scikit-learn==0.24.1
+autoviz==0.0.81
+dtale==1.40.2

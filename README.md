@@ -1,38 +1,36 @@
 # DLTK SDK (Python)
-[![Python 3.5](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
 
-[![DLTK Logo](dltk.png)](https://cloud.dltk.ai/)
+[![DLTK Logo](dltk.png)](https://dltk.ai/)
 
-## About
+# About
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
 DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
 
-## Getting Started
+# Getting Started
 
-1. Creating a new Account on https://cloud.dltk.ai/ to start consuming services.
+Please install openDLTK as a pre-requisite
 
-    a. Click on Sign Up and create a new account.
+---
+**Note**: To use third part AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
 
-    b. A popup appears to enter the details, after entering the details click on "Sign Up Now" button.
+---
+# Installation
 
-    c. After creating your new account, enter your credentials to gain access
+## QubitAI-OpenDLTK
 
-2. DLTK Cloud - Creating an App
+Please follow the below links for instructions
 
-    a. Once you login, to access DLTK Cloud, click on the Console button or the console tab available in the menu bar.
+a. [Without Authentication](https://github.com/dltk-ai/openDLTK)
 
-    b. Click on the Projects menu dropdown and select Create App
+b. [With Authentication](https://github.com/dltk-ai/openDLTK)
 
-    c. Enter the name of the app and a short description
+## qubitai-dltk
 
-    d. The dashboard will be visible with the given name and description along with an API key
-
-## Installation
-
-## Installing from Source
+### Installing from Source
 
 a. Clone the repo
 
@@ -47,20 +45,40 @@ c. Install requirements from requirements.txt file
     pip install -r requirements.txt
 ```
 
-## Installing through pip
+### Installing through pip
 ```sh
     pip install qubitai-dltk
 ```
-### Usage
+## Usage
 
-```sh
+```python
 import dltk_ai
-client = dltk_ai.DltkAiClient('API Key')
-response = client.sentiment_analysis('I am feeling good.')
-print(response)
+client = dltk_ai.DltkAiClient('YOUR_API_KEY', base_url='http://localhost:8000')
+
+text = "The product is very easy to use and has got a really good life expectancy."
+
+sentiment_analysis_response = client.sentiment_analysis(text)
+
+print(sentiment_analysis_response.text)
 ```
 
+Important Parameters:
+
+**1. API key:**
+If authentication is disabled(default), there is no need to change 'YOUR_APIKEY' input, but if authentication is enabled you will need to provide a valid APIkey. 
+
+For more details on authentication enabling, please refer to [Authentication Documentation](docs/auth.md)
+
+**2. base_url:**
+The base_url is the url for the machine where base service is installed by _default_ its localhost, so base_url needs to be [http://localhost:8000]()
+
+_Expected Output_
+```json
+{
+  "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+}
+```
 
 ## License
 
-The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-3)](https://github.com/dltk-ai/qubitai-dltk/blob/master/python/LICENSE)
+The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-3)](https://github.com/dltk-ai/qubitai-dltk/blob/master/LICENSE)

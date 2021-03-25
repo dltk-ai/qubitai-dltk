@@ -42,13 +42,13 @@ class DltkAiClient:
             obj:A json obj containing sentiment analysis response.
         """
         sources = [feature.lower() for feature in sources]
-        supported_sources = ['spacy', 'azure', 'ibm_watson','model_1']
+        supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
 
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/sentiment/compare'
+        url = self.base_url + '/core/nlp/sentiment/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
 
@@ -67,7 +67,7 @@ class DltkAiClient:
         assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/pos/compare'
+        url = self.base_url + '/core/nlp/pos/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
         return response
@@ -85,7 +85,7 @@ class DltkAiClient:
         assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/ner/compare'
+        url = self.base_url + '/core/nlp/ner/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
         return response
@@ -118,7 +118,7 @@ class DltkAiClient:
         assert text is not None and text != '', "Please ensure text is not empty"
         body = {'text': text, 'sources': sources}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/tags/compare'
+        url = self.base_url + '/core/nlp/tags/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
 
@@ -303,7 +303,7 @@ class DltkAiClient:
         body = {'audio': (audio_path, open(audio_path, 'rb'), 'multipart/form-data')}
         sources_string = ",".join(sources)
         payload = {'sources': sources_string}
-        url = self.base_url + '/speech-to-text/compare'
+        url = self.base_url + '/speech-to-text/'
         headers = {'ApiKey': self.api_key}
         response = requests.post(url=url, files=body, headers=headers, data=payload).json()
         return response
@@ -321,32 +321,30 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80,
-              save_model=True, params=None, dataset_source=None):
+    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, params=None, dataset_source=None, folds=5, cross_validation=False):
+
         """
-        :param lib: Library for training the model. Currently we are supporting DLTK and weka libraries.
-        :param service: Valid parameter values are classification, regression.
-        :param model_name: Model name and with this name model will be saved.
-        :param algorithm: algorithm by which model will be trained.
+        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param algorithm: Algorithm used for training the model.
         :param dataset: dataset file location in DLTK storage.
-        :param label: label of the column in dataset file.
-        :param train_percentage: % of data will be used for training and model will be tested against remaining % of data.
-        :param features: column name list which is used to train classification model.
-        :param save_model: If true model will saved in.
-        :param params: additional parameters.
-        :return:
-            obj: A json obj containing model info.
-
-        Args:
-            features: Feature list used while model training
-            dataset_source: To specify data source,
-                None: Dataset file will from DLTK storage will be used
+        :param label: Target variable.
+        :param features: List of features used for training the model.
+        :param model_name: Model will be saved with the name specified in this parameter.
+        :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+        :param train_percentage: Percentage of data used for training the model. Rest of the data will be used to test the model.
+        :param save_model: If True, the model will be saved in the DLTK Storage.
+        :param dataset_source: To specify data source,
+                None: Dataset file from DLTK storage will be used
                 database: Query from connected database will be used
-
+        :param folds: number of folds for cross validation
+        :param cross_validation: Evaluates model using crossvalidation if set to True.
+        :rtype: A json object containing the file path in storage.
+        
         """
+
+
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label, train_percentage,
-            save_model)
+            service, lib, algorithm, features, label, train_percentage)
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
@@ -354,7 +352,7 @@ class DltkAiClient:
             params = {}
         if model_name is None:
             model_name = algorithm
-
+        
         if dataset_source == "database":
             body = {
                 "library": lib,
@@ -368,7 +366,9 @@ class DltkAiClient:
                     "trainPercentage": train_percentage,
                     "features": features,
                     "saveModel": save_model,
-                    "params": params
+                    "params": params,
+                    "folds" : folds,
+                    "crossValidation" : cross_validation
                 }
             }
         else:
@@ -383,7 +383,9 @@ class DltkAiClient:
                     "trainPercentage": train_percentage,
                     "features": features,
                     "saveModel": save_model,
-                    "params": params
+                    "params": params,
+                    "folds" : folds,
+                    "crossValidation" : cross_validation
                 }
             }
         body = json.dumps(body)
@@ -392,31 +394,28 @@ class DltkAiClient:
         return response
 
     def feedback(self, service, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
-                 model_name=None, split_perc=80, save_model=True, params=None):
+                 model_name=None, split_perc=80,save_model=True, params=None, folds=5, cross_validation=False):
         """
-         The function call to feedback service in DLTK ML.
+        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param algorithm: Algorithm used for training the model.
+        :param train_data: dataset file location in DLTK storage.
+        :param feedback_data: dataset file location in DLTK storage.
+        :param job_id: job id from the train function used to train the model.
+        :param model_url: model url returned from job output function.
+        :param label: Target variable.
+        :param features: List of features used for training the model.
+        :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+        :param model_name: Model will be saved with the name specified in this parameter.
+        :param split_perc: Percentage of data to use for training the model. Rest of the data will be used to test the model.
+        :param save_model: If True, the model will be saved in DLTK Storage.
+        :param params: additional parameters.
+        :param folds: number of folds for cross validation
+        :param cross_validation: Evaluates model using crossvalidation if set to True.
 
-        :param lib: Trained model's library
-        :param service: Trained model's service.
-        :param model_name: Trained model's name.
-        :param algorithm: Trained model's algorithm.
-        :param train_data: Trained model's dataset url.
-        :param feedback_data:
-                a)Dataset (used for feedback) file location in DLTK storage.
-                b)Feedback dataset upload. IMP: Please ensure the dataset has all features used for training the model.
-        :param job_id: Job_id from training API response.
-        :param model_url: Model file location in DLTK storage.
-        :param label: Trained model's label.
-        :param split_perc: % of data will be used for training and model will be tested against remaining % of data.
-        :param features: Trained model's features.
-        :param save_model:If true model will saved in.
-        :param params: Additional parameters.
-        :return:
-            A json obj containing feedback model info.
+        :rtype: A json object containing the file path in storage.
         """
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label,
-            save_model)
+            service, lib, algorithm, features, label)
         url = self.base_url + '/machine/' + service + '/feedback'
 
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
@@ -425,6 +424,7 @@ class DltkAiClient:
             params = {}
         if model_name is None:
             model_name = algorithm
+        
 
         body = {
             'library': lib,
@@ -440,8 +440,10 @@ class DltkAiClient:
                 'label': label,
                 'trainPercentage': split_perc,
                 'features': features,
+                'params': params,
                 'saveModel': save_model,
-                'params': params
+                "folds" : folds,
+                "crossValidation" : cross_validation
             }
         }
         body = json.dumps(body)
