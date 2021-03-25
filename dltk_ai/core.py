@@ -210,6 +210,7 @@ class DltkAiClient:
             assert is_url_valid(image_url), "Enter a valid URL"
         assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
 
         load = {
             "tasks": {"object_detection": True},
@@ -269,6 +270,7 @@ class DltkAiClient:
             assert is_url_valid(image_url), "Enter a valid URL"
         assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
 
         load = {
             "tasks": {"image_classification": True},
@@ -682,6 +684,8 @@ class DltkAiClient:
             (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
         assert "face_locations" in features, "Please select at least one feature ['face_locations']"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+
         if image_url is not None:
             assert is_url_valid(image_url), "Enter a valid URL"
         load = {
