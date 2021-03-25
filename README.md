@@ -1,4 +1,4 @@
-# DLTK SDK (Python)
+# DLTK SDK
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
 
@@ -12,15 +12,9 @@ DLTK Unified Deep Learning platform can be leveraged to build solutions that are
 
 # Getting Started
 
-Please install openDLTK as a pre-requisite
+## Pre-requisite
 
----
-**Note**: To use third party AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
-
----
-# Installation
-
-## QubitAI-OpenDLTK
+### QubitAI-OpenDLTK
 
 Please follow the below links for instructions
 
@@ -28,9 +22,14 @@ a. [Without Authentication](https://github.com/dltk-ai/openDLTK)
 
 b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
 
-## qubitai-dltk
+---
+**Note**: To use third party AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
+---
 
-### Installing from Source
+
+# Installation
+
+## Installing from Source
 
 a. Clone the repo
 
@@ -45,7 +44,7 @@ c. Install requirements from requirements.txt file
     pip install -r requirements.txt
 ```
 
-### Installing through pip
+## Installing through pip
 ```sh
     pip install qubitai-dltk
 ```
@@ -65,7 +64,7 @@ print(sentiment_analysis_response.text)
 Important Parameters:
 
 **1. API key:**
-If authentication is disabled(default), there is no need to change 'YOUR_APIKEY' input, but if authentication is enabled you will need to provide a valid APIkey. 
+If authentication is disabled(default) in openDLTK server, there is no need to change 'YOUR_APIKEY' input, but if authentication is enabled you will need to provide a valid APIkey. 
 
 For more details on authentication enabling, please refer to [Authentication Documentation](docs/auth.md)
 
@@ -79,6 +78,14 @@ _Expected Output_
 }
 ```
 
+## Reference
+
+[DLTK SDK Client Documentation](https://docs.dltk.ai)
+
 ## License
 
 The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-3)](https://github.com/dltk-ai/qubitai-dltk/blob/master/LICENSE)
+
+## Contact
+
+QubitAi - connect@qubitai.tech
