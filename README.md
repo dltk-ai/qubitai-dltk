@@ -15,7 +15,7 @@ DLTK Unified Deep Learning platform can be leveraged to build solutions that are
 Please install openDLTK as a pre-requisite
 
 ---
-**Note**: To use third part AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
+**Note**: To use third party AI engines please provide your credentials. Instructions on getting credentials and configuring are provided below.
 
 ---
 # Installation
@@ -26,7 +26,7 @@ Please follow the below links for instructions
 
 a. [Without Authentication](https://github.com/dltk-ai/openDLTK)
 
-b. [With Authentication](https://github.com/dltk-ai/openDLTK)
+b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
 
 ## qubitai-dltk
 
