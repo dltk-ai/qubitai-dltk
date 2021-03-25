@@ -28,33 +28,35 @@ class DltkAiClient:
             Returns:
                 DltkAiClient: Client object for DltkAi.
         """
-        assert api_key is not None, "Please provide a valid API key"
         self.api_key = api_key
         self.base_url = base_url
 
     # Note: NLP functions
 
-    def sentiment_analysis(self, text, sources=['spacy']):
+    def sentiment_analysis(self, text, sources=['spacy'], **kwargs):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :param sources: algorithm to use for the analysis - azure/ibm_watson/spacy
+        :kwargs reformat: reformat to a common format or not
         :return:
             obj:A json obj containing sentiment analysis response.
         """
         sources = [feature.lower() for feature in sources]
-        supported_sources = ['spacy', 'azure', 'ibm_watson','model_1']
+        supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
 
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/sentiment/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def pos_tagger(self, text, sources=['spacy']):
+    def pos_tagger(self, text, sources=['spacy'], **kwargs):
         """
         :param str text: The text on which POS analysis is to be applied.
         :param sources: algorithm to use for POS analysis - ibm_watson/spacy
@@ -65,14 +67,17 @@ class DltkAiClient:
         supported_sources = ['spacy', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/pos/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def ner_tagger(self, text, sources=['spacy']):
+    def ner_tagger(self, text, sources=['spacy'], **kwargs):
         """
         :param str text: The text on which NER Tagger is to be applied.
         :param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
@@ -83,11 +88,14 @@ class DltkAiClient:
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/ner/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
     def dependency_parser(self, text):
@@ -102,10 +110,12 @@ class DltkAiClient:
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/dependency-parser/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
+        response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def tags(self, text, sources=['rake']):
+    def tags(self, text, sources=['rake'], **kwargs):
         """
         :param str text: The text on which tags is to be applied.
         :param sources: algorithm to use for tagging - azure/ibm_watson/rake
@@ -116,12 +126,14 @@ class DltkAiClient:
         supported_sources = ['rake', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/tags/compare'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-
+        if response.status_code == 200:
+            response = response.json()
         return response
 
     # Note: Computer vision functions
@@ -142,7 +154,7 @@ class DltkAiClient:
         task_status_response = requests.get(task_url + str(job_id), headers=headers).json()
         return task_status_response
 
-    def check_cv_job_status(self, task_creation_response):
+    def check_cv_job_status(self, task_creation_response, wait_time=10):
         """
         This function check status of the job
         Args:
@@ -167,16 +179,17 @@ class DltkAiClient:
                 sleep(1)
 
                 # check if execution time is more than
-                if time() - start_time > 10:
+                if time() - start_time > wait_time:
+                    job_id = task_creation_response["job_id"]
                     print("It's taking too long than expected!!",
-                          f'Use check_cv_job({task_creation_response["job_id"]}) to check status of your request')
+                          f"Use check_cv_job('{job_id}') to check status of your request")
                     break
 
         else:
             print(f"FAILED due to {task_creation_response.content}")
         return task_status_response
 
-    def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"]):
+    def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for object detection
         Args:
@@ -185,6 +198,8 @@ class DltkAiClient:
             image_path: Local Image Path
             tensorflow: if True, uses tensorflow for object detection
             azure: if True, returns azure results of object detection on given image
+            reformat: if True, reformat response to a common format, else not
+            wait_time: wait time to get response
 
         Returns:
         Object_detection
@@ -198,6 +213,7 @@ class DltkAiClient:
 
         load = {
             "tasks": {"object_detection": True},
+            "reformat": reformat,
             "configs": {
                 "output_types": output_types,
                 "object_detection_config": {
@@ -224,12 +240,12 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/object_detection/'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response
 
     def image_classification(self, image_url=None, image_path=None, top_n=3, tensorflow=True, azure=False, ibm=False,
-                             output_types=["json"]):
+                             output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for image classification
         Args:
@@ -241,6 +257,8 @@ class DltkAiClient:
             tensorflow: if True, uses tensorflow for image classification
             azure: if True, returns azure results of image classification on given image
             ibm: if True, returns ibm results of image classification on given image
+            reformat: if True, reformat responses received from azure, ibm to a common format
+            wait_time: wait time to get response from DLTK server
 
         Returns:
         Image classification response
@@ -254,7 +272,7 @@ class DltkAiClient:
 
         load = {
             "tasks": {"image_classification": True},
-
+            "reformat": reformat,
             "configs": {
                 "output_types": ["json"],
                 "img_classification_config": {
@@ -282,7 +300,7 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/image_classification'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response
 
@@ -639,18 +657,19 @@ class DltkAiClient:
 
     def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=True,
                        azure=False, mtcnn=False,
-                       output_types=["json"]):
+                       output_types=["json"], wait_time=10):
         """
         This function is for face analytics
         Args:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            features (list) : Type of features requested by client
+            features: list of features requested by client
             dlib: if True, uses dlib for face analytics
             opencv: if True, uses opencv for face analytics
             azure: if True, returns azure results of face analytics on given image
             mtcnn: if True, uses mtcnn for face analytics
+            wait_time: wait time for server to return response
 
         Returns:
         face analytics response dependent on the features requested by client
@@ -700,6 +719,6 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/face_analytics/'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response
