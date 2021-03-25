@@ -4,15 +4,15 @@
 
 [![DLTK Logo](dltk.png)](https://dltk.ai/)
 
-# About
+## About
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
 DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
 
-# Getting Started
+## Getting Started
 
-## Pre-requisite
+### Pre-requisite
 
 **QubitAI-OpenDLTK**
 
@@ -29,7 +29,7 @@ b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
 ---
 
 
-# Installation
+### Installation
 
 **Installing from Source**
 
@@ -53,7 +53,7 @@ c. Install requirements from requirements.txt file
 
 ---
 
-## Usage
+### Usage
 
 ```python
 import dltk_ai
@@ -87,7 +87,7 @@ _Expected Output_
 
 ## Reference
 
-[DLTK SDK Client Documentation](https://docs.dltk.ai)
+For more detail on DLTK features & usage please refer [DLTK SDK Client Documentation](https://docs.dltk.ai)
 
 ## License
 
