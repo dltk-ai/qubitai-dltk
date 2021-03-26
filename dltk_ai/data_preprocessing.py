@@ -680,6 +680,7 @@ def data_transformation(dataframe, transform_method, pivot_index=None, pivot_col
         crosstab_columns: array-like, Series, or list of arrays/Series.
             Values to group by in the columns.
         """
+    transform_method = transform_method.lower()
     if transform_method not in ['pivot', 'melt', 'crosstab']:
         raise ValueError('transform_method should be either pivot/melt/crosstab')
     if transform_method == 'pivot':
@@ -699,8 +700,6 @@ def data_transformation(dataframe, transform_method, pivot_index=None, pivot_col
             crosstab_rows = crosstab_rows if type(crosstab_rows) != list else crosstab_rows[0]
             crosstab_columns = crosstab_columns if type(crosstab_columns) != list else crosstab_columns[0]
             return pd.crosstab(dataframe[crosstab_rows], dataframe[crosstab_columns])
-    else:
-        pass
 
 
 

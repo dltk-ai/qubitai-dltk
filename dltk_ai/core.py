@@ -321,7 +321,7 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, params=None, dataset_source=None, folds=5, cross_validation=False):
+    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None):
 
         """
         :param service: Training task to perform. Valid parameter values are classification, regression.
@@ -394,7 +394,7 @@ class DltkAiClient:
         return response
 
     def feedback(self, service, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
-                 model_name=None, split_perc=80,save_model=True, params=None, folds=5, cross_validation=False):
+                 model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None):
         """
         :param service: Training task to perform. Valid parameter values are classification, regression.
         :param algorithm: Algorithm used for training the model.
