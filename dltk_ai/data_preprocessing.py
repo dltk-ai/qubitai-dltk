@@ -138,7 +138,7 @@ def data_profile(dataframe,library="dtale",save_html=False,html_path=None):
 
 # Function for Missing Value Imputation with given imputers: "Univariate_Imputation" and "Multivariate_Impuation" and in Multivariate Imputation two different method can be taken method=="Iterative Imputer" or method== KNN Imputer"
 
-def impute_missing_value(dataframe,columns,imputer="univariate_imputation",method="iterative_imputer",replace=True,strategy='mean',
+def impute_missing_value(dataframe,columns,imputer="univariate_imputation",method="iterative_imputer",inplace=True,strategy='mean',
                         missing_values=np.nan,fill_value=None, verbose=0,copy=True, add_indicator=False,estimator=None,
                         sample_posterior=False,max_iter=10,tol=0.001,n_nearest_features=None,initial_strategy='mean',
                         imputation_order='ascending',skip_complete=False,min_value=None,max_value=None,random_state=None,
@@ -154,7 +154,7 @@ def impute_missing_value(dataframe,columns,imputer="univariate_imputation",metho
     imputer : Imputers from sklearn-library for Missing Value Imputation;
               valid values: {"univariate_imputation","multivariate_Imputation"}.
     method :  Method for Multivariate Imputation; valid values: {"Iterative Imputer" and "KNN Imputer"}
-    replace : Boolean parameter; if True replace original values with Dataframe and if False then transformed selected column
+    inplace : Boolean parameter; if True replace original values with Dataframe and if False then transformed selected column
     missing_values: The placeholder for the missing values assigned to be np.nan as default for SimpleImputer function.
     strategy: The imputation strategy; it can be mean,median,most_frequent or constant value for SimpleImputer function.
     fill_value: When strategy == “constant”, fill_value is used to replace all occurrences of missing_values for SimpleImputer function.
@@ -202,7 +202,7 @@ def impute_missing_value(dataframe,columns,imputer="univariate_imputation",metho
                             verbose=verbose, copy= copy, add_indicator=add_indicator) 
     imputer1.fit_transform(dataframe[columns])
     dataframe[columns] = imputer1.transform(dataframe[columns])
-    if replace==True:
+    if inplace==True:
         final_df= dataframe
     else:
         final_df= dataframe[columns]
@@ -237,7 +237,7 @@ def impute_missing_value(dataframe,columns,imputer="univariate_imputation",metho
         tol=tol,n_nearest_features=n_nearest_features,initial_strategy=initial_strategy,imputation_order=imputation_order,skip_complete=skip_complete,min_value=min_value,max_value=max_value,verbose=verbose,random_state=random_state,add_indicator=add_indicator)
         imputer2.fit_transform(dataframe[columns])
         dataframe[columns] = imputer2.transform(dataframe[columns])
-        if replace==True:
+        if inplace==True:
             final_df= dataframe
         else:
             final_df= dataframe[columns]
@@ -247,7 +247,7 @@ def impute_missing_value(dataframe,columns,imputer="univariate_imputation",metho
       imputer3 = KNNImputer(missing_values=missing_values,n_neighbors=n_neighbors,weights=weights,metric=metric,copy=copy,add_indicator=add_indicator)
       imputer3.fit_transform(dataframe[columns])
       dataframe[columns] = imputer3.transform(dataframe[columns])
-      if replace==True:
+      if inplace==True:
         final_df= dataframe
       else:
           final_df= dataframe[columns]
@@ -392,7 +392,7 @@ def convert_dtypes(dataframe,column_datatypes):
 
 # Function for Feature Scaling with given methods:"MinMaxScaler","StandardScaler","MaxAbsScaler","RobustScaler",and "Normalizer"
 
-def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,feature_range=(0,1),copy=True,clip=False,use_mean=True,
+def feature_scaling(dataframe,column_names,method="minmaxscaler",inplace=True,feature_range=(0,1),copy=True,clip=False,use_mean=True,
                     use_std=True,use_centering=True, use_scaling=True, quantile_range=(25.0, 75.0),unit_variance=False,norm='l2'):
     
     """
@@ -403,7 +403,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     dataframe : dataset in the form of pandas Dataframe for all methods
     column_names : User selected features from dataset for Scaling
     method : Methods from sklearn-library for Feature Scaling; valid values:{"MinMaxScaler","StandardScaler","MaxAbsScaler","RobustScaler",and "Normalizer"}.
-    replace : Boolean parameter; if True replace original values with Dataframe,otherwise transformed selected column
+    inplace : Boolean parameter; if True replace original values with Dataframe,otherwise transformed selected column
     feature_range: user-defined range for scaling features given in form of tuple for MinMaxScaler method; by default feature scaled in range of (0,1)
     copy: boolean parameter, if true creates copy and then scale the variables otherwise inplaced in same dataframe.
     clip: Set to True to clip transformed values of held-out data to provided feature range.
@@ -445,7 +445,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     if method=="minmaxscaler":
         scaler1 = MinMaxScaler(feature_range,copy=copy)
         df_scaled[column_names] = scaler1.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -454,7 +454,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     elif method=="standardscaler": 
         scaler2 = StandardScaler(copy=copy, with_mean= use_mean, with_std= use_std)
         df_scaled[column_names] = scaler2.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -463,7 +463,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     elif method=="maxabsscaler": 
         scaler3 = MaxAbsScaler(copy=copy)
         df_scaled[column_names] = scaler3.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -472,7 +472,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     elif method=="robustscaler": 
         scaler4 = RobustScaler(with_centering= use_centering, with_scaling= use_scaling, quantile_range=quantile_range, copy=copy)
         df_scaled[column_names] = scaler4.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -481,7 +481,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
     elif method=="normalizer":
         scaler5 = Normalizer(copy=copy,norm=norm)
         df_scaled[column_names] = scaler5.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -496,7 +496,7 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",replace=True,fe
 def feature_transformation(dataframe,column_names,transformer="quantile_transformer",copy=True,output_distribution='uniform',n_quantiles=1000,
                             ignore_implicit_zeros=False,subsample=1e5,random_state=None,method='yeo-johnson',standardize=True,func=None,
                             inverse_func=None, validate=False, accept_sparse=False,check_inverse=True, kw_args=None, inv_kw_args=None,
-                            replace=True):
+                            inplace=True):
       
     """
     This function is used for transforming set of independent feature in given dataset.
@@ -506,7 +506,7 @@ def feature_transformation(dataframe,column_names,transformer="quantile_transfor
     dataframe : dataset in the form of pandas Dataframe.
     column_names : List of features from dataset for Transformation.
     transformer : Methods from sklearn-library for Feature Transformation; valid values:{"Quantile Transformer","Power Transformation","Custom Transformation"}
-    replace : Boolean parameter; if True replace original values with Dataframe,otherwise transformed selected column
+    inplace : Boolean parameter; if True replace original values with Dataframe,otherwise transformed selected column
     copy: boolean parameter, if true creates copy and then scale the variables otherwise inplaced in same dataframe.
     output_distribution: For marginal distribution for the transformed data used in Quantile Transformer; {'uniform', 'normal'}
     n_quantiles: Number of quantiles to be computed used in Quantile Transformer where default values is 1000
@@ -551,7 +551,7 @@ def feature_transformation(dataframe,column_names,transformer="quantile_transfor
                                            ignore_implicit_zeros=ignore_implicit_zeros,
                                            subsample=subsample, random_state=random_state, copy= copy)
         df_scaled[column_names] = transformer1.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -560,7 +560,7 @@ def feature_transformation(dataframe,column_names,transformer="quantile_transfor
     if transformer=="power_transformer": 
         transformer2 = PowerTransformer(method=method,standardize=standardize)
         df_scaled[column_names] = transformer2.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
@@ -569,7 +569,7 @@ def feature_transformation(dataframe,column_names,transformer="quantile_transfor
     elif transformer=="custom_transformer":
         transformer3 = FunctionTransformer(func, inverse_func=inverse_func, validate=validate, accept_sparse=accept_sparse, check_inverse=check_inverse, kw_args=kw_args, inv_kw_args=inv_kw_args)
         df_scaled[column_names] = transformer3.fit_transform(features.values)
-        if replace==True:
+        if inplace==True:
             final_df= df_scaled
         else:
             final_df= df_scaled[column_names]
