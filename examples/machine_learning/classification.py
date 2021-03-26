@@ -63,7 +63,7 @@ print(response.text)
 job_id = train_response['data']['jobId']
 # IMP: Ensure the dataset has all features and label used for training the model.
 # upload the feedback dataset
-feedback_data_store_response = client.store('../examples/data/csv/player_feedback.csv', Dataset.TRAIN_DATA)
+feedback_data_store_response = client.store('../data/csv/player_feedback.csv', Dataset.TRAIN_DATA)
 print(feedback_data_store_response)
 # get file url
 feedback_data = feedback_data_store_response['fileUrl']

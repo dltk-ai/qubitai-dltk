@@ -3,7 +3,7 @@ from dltk_ai.dataset_types import Dataset
 
 client = dltk_ai.DltkAiClient('YOUR_APIKEY')
 
-cluster_data_store_response = client.store('../examples/data/csv/moon_data.csv', Dataset.TRAIN_DATA)
+cluster_data_store_response = client.store('../data/csv/moon_data.csv', Dataset.TRAIN_DATA)
 print(cluster_data_store_response)
 cluster_data = cluster_data_store_response['fileUrl']
 

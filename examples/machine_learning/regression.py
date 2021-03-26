@@ -4,13 +4,13 @@ from dltk_ai.dataset_types import Dataset
 client = dltk_ai.DltkAiClient('YOUR_APIKEY')  # put your app key here.
 
 # upload dataset - train
-train_data_store_response = client.store('../examples/data/csv/housing_train.csv', Dataset.TRAIN_DATA)
+train_data_store_response = client.store('../data/csv/housing_train.csv', Dataset.TRAIN_DATA)
 print(train_data_store_response)
 # get dataset url
 train_data = train_data_store_response['fileUrl']
 
 # upload dataset - test
-test_file_store_response = client.store('../examples/data/csv/housing_test.csv', Dataset.TEST_DATA)
+test_file_store_response = client.store('../data/csv/housing_test.csv', Dataset.TEST_DATA)
 print(test_file_store_response)
 # get dataset url
 test_data = test_file_store_response['fileUrl']
@@ -68,7 +68,7 @@ job_id = train_response['data']['jobId']
 
 # IMP: Ensure the dataset has all features and label used for training the model.
 # upload the feedback dataset
-feedback_data_store_response = client.store('../examples/data/csv/housing_feedback.csv', Dataset.TRAIN_DATA)
+feedback_data_store_response = client.store('../data/csv/housing_feedback.csv', Dataset.TRAIN_DATA)
 print(feedback_data_store_response)
 
 # upload the feedback dataset

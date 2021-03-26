@@ -41,8 +41,8 @@ Cluster
     :param save_model: If True, the model will be saved in DLTK Storage.
     :param params: Additional parameters
     :param dataset_source: To specify data source,
-        None: Dataset file will from DLTK storage will be used
-        database: Query from connected database will be used
-    :rtype: A json object containing model info.
+         None: Dataset file from DLTK storage will be used
+         database: Query from connected database will be used
+    :rtype: A json object containing the file path in storage.
 
 
