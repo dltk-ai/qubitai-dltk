@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Generate APIkey &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>Create user and Generate APIkey &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
@@ -42,7 +42,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About" href="../machine_learning/index.html" />
+    <link rel="prev" title="Authentication" href="toggle_auth.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,11 +95,21 @@
 <li class="toctree-l1"><a class="reference internal" href="index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">openDLTK on single instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">OpenDLTK on single instance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create user and Generate APIkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sign-up">SIGN UP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#email-verification">EMAIL VERIFICATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sign-in">SIGN IN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-project">CREATE AN PROJECT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-an-api-key">GET AN API KEY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-sdk-with-api-key">USE SDK WITH API KEY</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -184,7 +196,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Generate APIkey</li>
+      <li>Create user and Generate APIkey</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -203,8 +215,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="generate-apikey">
-<h1>Generate APIkey<a class="headerlink" href="#generate-apikey" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="create-user-and-generate-apikey">
+<h1>Create user and Generate APIkey<a class="headerlink" href="#create-user-and-generate-apikey" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sign-up" id="id1">SIGN UP</a></p></li>
+<li><p><a class="reference internal" href="#email-verification" id="id2">EMAIL VERIFICATION</a></p></li>
+<li><p><a class="reference internal" href="#sign-in" id="id3">SIGN IN</a></p></li>
+<li><p><a class="reference internal" href="#create-an-project" id="id4">CREATE AN PROJECT</a></p></li>
+<li><p><a class="reference internal" href="#get-an-api-key" id="id5">GET AN API KEY</a></p></li>
+<li><p><a class="reference internal" href="#use-sdk-with-api-key" id="id6">USE SDK WITH API KEY</a></p></li>
+</ul>
+</div>
+<p>The UI for user creation can be accesed at <a class="reference external" href="http://localhost:8082">http://localhost:8082</a> ,by clicking on <cite>Sign Up</cite> button on top right, user will be able to view below pages</p>
+<div class="section" id="sign-up">
+<h2><a class="toc-backref" href="#id1">SIGN UP</a><a class="headerlink" href="#sign-up" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><a class="reference external" href="http://localhost:8082/sign_up/">Sign Up Page</a></p>
+</div></blockquote>
+<img alt="../_images/signup.png" src="../_images/signup.png" />
+<p>After filling above details, click on <cite>Sign Up</cite> button.
+User will receive an Email for verification, on successful verification of email, user will be redirected to <cite>Sign In</cite> page.</p>
+</div>
+<div class="section" id="email-verification">
+<h2><a class="toc-backref" href="#id2">EMAIL VERIFICATION</a><a class="headerlink" href="#email-verification" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/verification_mail.png" src="../_images/verification_mail.png" />
+</div>
+<div class="section" id="sign-in">
+<h2><a class="toc-backref" href="#id3">SIGN IN</a><a class="headerlink" href="#sign-in" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><a class="reference external" href="http://localhost:8082/sign_in/">Sign In Page</a></p>
+</div></blockquote>
+<img alt="../_images/login.png" src="../_images/login.png" />
+</div>
+<div class="section" id="create-an-project">
+<h2><a class="toc-backref" href="#id4">CREATE AN PROJECT</a><a class="headerlink" href="#create-an-project" title="Permalink to this headline">¶</a></h2>
+<p>After successful login, user will be able to view project list page</p>
+<img alt="../_images/project_list_page.png" src="../_images/project_list_page.png" />
+<p>Next user needs to create a project, by giving details as shown in below image</p>
+<img alt="../_images/create_project.png" src="../_images/create_project.png" />
+</div>
+<div class="section" id="get-an-api-key">
+<h2><a class="toc-backref" href="#id5">GET AN API KEY</a><a class="headerlink" href="#get-an-api-key" title="Permalink to this headline">¶</a></h2>
+<p>After successful creation of project, you can go to Project Details Page to get <cite>API Key</cite></p>
+<img alt="../_images/project_details_page.png" src="../_images/project_details_page.png" />
+</div>
+<div class="section" id="use-sdk-with-api-key">
+<h2><a class="toc-backref" href="#id6">USE SDK WITH API KEY</a><a class="headerlink" href="#use-sdk-with-api-key" title="Permalink to this headline">¶</a></h2>
+<p>Using above generated API key you can use in python SDK client</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;86122578-4b01-418d-80cc-049e283d1e2b&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The product is very easy to use and has got a really good life expectancy.&quot;</span>
+
+<span class="n">sentiment_analysis_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sentiment_analysis</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_analysis_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Expected Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;neg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;neu&quot;</span><span class="p">:</span> <span class="mf">0.653</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="mf">0.347</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="mf">0.7496</span><span class="p">}}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>for more detailed information on <a class="reference external" href="https://github.com/dltk-ai/qubitai-dltk">Qubitai-DLTK python SDK</a> features &amp; usage please refer to this <a class="reference external" href="https://docs.dltk.ai">Documentation</a></p>
+</div>
 </div>
 
 
@@ -212,6 +290,10 @@
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../machine_learning/index.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="toggle_auth.html" class="btn btn-neutral float-left" title="Authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

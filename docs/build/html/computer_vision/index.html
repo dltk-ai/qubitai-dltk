@@ -100,6 +100,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">openDLTK on single instance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/toggle_auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Generate APIkey</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -255,9 +257,9 @@
 </table>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
+<code class="sig-name descname"><span class="pre">client.image_classification(image_url=None,</span> <span class="pre">image_path=None,</span> <span class="pre">top_n=3,</span> <span class="pre">tensorflow=True,</span></code></dt>
 <dt>
-<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname"><span class="pre">azure=False,</span> <span class="pre">ibm=False,output_types=[&quot;json&quot;]):</span></code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -344,9 +346,9 @@
 </table>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.object_detection(image_url=None, image_path=None, tensorflow=True,</code></dt>
+<code class="sig-name descname"><span class="pre">client.object_detection(image_url=None,</span> <span class="pre">image_path=None,</span> <span class="pre">tensorflow=True,</span></code></dt>
 <dt>
-<code class="sig-name descname">azure=False, output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname"><span class="pre">azure=False,</span> <span class="pre">output_types=[&quot;json&quot;]):</span></code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -437,9 +439,9 @@
 </div>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.face_analytics(image_url=None, features=None, image_path=None, dlib=False,</code></dt>
+<code class="sig-name descname"><span class="pre">client.face_analytics(image_url=None,</span> <span class="pre">features=None,</span> <span class="pre">image_path=None,</span> <span class="pre">dlib=False,</span></code></dt>
 <dt>
-<code class="sig-name descname">opencv=True,azure=False, mtcnn=False,output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname"><span class="pre">opencv=True,azure=False,</span> <span class="pre">mtcnn=False,output_types=[&quot;json&quot;]):</span></code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -491,7 +493,7 @@
 <p>Usage: Tracking product information and details</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.object_detection(image):</code></dt>
+<code class="sig-name descname"><span class="pre">client.object_detection(image):</span></code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> – Local Image Path or Numpy array of the image.</p>
