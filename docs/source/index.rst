@@ -13,6 +13,18 @@ Welcome to Qubitai-dltk's documentation!
    getting_started/index
 
 .. toctree::
+   :maxdepth: 3
+   :caption: Installation
+
+   getting_started/openDLTK_setup
+   getting_started/openDLTK_single_instance
+   getting_started/openDLTK_multiple_instance
+   getting_started/pythonClientSDK
+   getting_started/toggle_auth
+   getting_started/generateAPIkey
+
+
+.. toctree::
    :maxdepth: 4
    :caption: Machine Learning
 

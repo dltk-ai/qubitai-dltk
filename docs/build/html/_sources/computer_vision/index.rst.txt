@@ -253,8 +253,8 @@ Usage: Tracking product information and details
 
 .. function:: client.object_detection(image):
 
-   :param image: Local Image Path or Numpy array of the image
-   :rtype: List of dictionaries containing the barcode information
+   :param image: Local Image Path or Numpy array of the image.
+   :rtype: List of dictionaries containing the barcode information.
 
 **Example**::
 

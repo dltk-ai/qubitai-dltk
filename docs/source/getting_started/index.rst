@@ -2,73 +2,29 @@
 About DLTK
 **********
 
-DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities. Qubit AIâ€™s philosophy is to empower businesses with cutting edge technologies.
+DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities. Qubit AI philosophy is to empower businesses with cutting edge technologies.
 
-*******************
-Creating an Account
-*******************
+******************************
+openDLTK and Python SDK client
+******************************
 
-1. Click on Sign Up and create a new account on https://cloud.dltk.ai/
+DLTK comprises of **openDLTK** where processing of images, text or structured tabular data is done using state-of-the-art AI models happen,
+and another component is **python client sdk** which can be used for integration of these AI services in your projects.
 
-2. You will receive a verification email to the registered email id. Please click on the "Verify Now" button in the mail.
-
-3. After verifying the email, you will be redirected to the dltk login page.
-
-4. Enter your credentials to gain access
-
-
-***************
-Creating an App
-***************
-
-ApiKey Generation
------------------
-
-1. Once you login, to access DLTK Cloud, click on the Console button or the Console tab available in the menu bar.
-
-2. Click on the Projects menu dropdown and select Create App
-
-3. Enter the name of the app and a short description
-
-4. The dashboard will be visible with the given name and description along with an API key
+.. image:: ../resources/DLTK_overview_diagram.png
+    :alt: DLTK overview diagram
+    :align: center
+    :height: 250
 
 
-***********
-Setup Guide
-***********
+**openDLTK**
 
-Installation
-------------
+openDLTK are collection of open-source docker images which can be deployed on single or multiple instances
 
-Installing From Source
-^^^^^^^^^^^^^^^^^^^^^^
+    1. openDLTK installation on single machine
+    2. openDLTK docker images
+    3. openDLTK github
 
-* Clone the repo
-``git clone https://github.com/dltk-ai/qubitai-dltk.git``
+**Python Client SDK**
 
-* Set working directory to qubitai-dltk folder
-
-* Install requirements from requirements.txt file
-``pip install -r requirements.txt``
-
-Installing through pip
-^^^^^^^^^^^^^^^^^^^^^^
-
-``pip install qubitai-dltk``
-
-
-Initializing the DLTK Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Setting up your ApiKey**::
-
-    import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
-
-
-
-
-
-
-
-
+openDLTK containers can be used either using REST APIs or using ``qubitai-dltk`` python client sdk, which simplify usage of the cognitive services provided by openDLTK

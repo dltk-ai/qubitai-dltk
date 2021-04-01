@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
 
   
   
@@ -35,6 +36,7 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="_static/tabs.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -89,9 +91,16 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-account">Creating an Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-app">Creating an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#setup-guide">Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_setup.html">Setting Up openDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_single_instance.html">openDLTK on single instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/toggle_auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/generateAPIkey.html">Generate APIkey</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -203,20 +212,38 @@
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-account">Creating an Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#creating-an-app">Creating an App</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#apikey-generation">ApiKey Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_setup.html">Setting Up openDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_single_instance.html">openDLTK on single instance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_single_instance.html#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_single_instance.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_single_instance.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_single_instance.html#stop-services">Stop Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_single_instance.html#uninstall-dltk">Uninstall DLTK</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#setup-guide">Setup Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#installation">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="getting_started/index.html#installing-from-source">Installing From Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started/index.html#installing-through-pip">Installing through pip</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started/index.html#initializing-the-dltk-client">Initializing the DLTK Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/pythonClientSDK.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/pythonClientSDK.html#initializing-the-dltk-client">Initializing the DLTK Client</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/toggle_auth.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/toggle_auth.html#enable-authentication">Enable Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/generateAPIkey.html">Generate APIkey</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">

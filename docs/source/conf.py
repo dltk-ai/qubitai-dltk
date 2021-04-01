@@ -33,8 +33,14 @@ release = 'v1.0.1'
 extensions = ["sphinx_rtd_theme",
               "sphinx.ext.autodoc",
               "sphinx_copybutton",
-              'sphinxcontrib.programoutput'
+              'sphinxcontrib.programoutput',
+              "sphinx_inline_tabs",
+              'sphinx.ext.autosectionlabel',
+              'sphinx.ext.todo'
 ]
+
+autosectionlabel_prefix_document = True
+todo_include_todos = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
