@@ -214,6 +214,12 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
 **5. Install Services**
 
+        **Docker**
+
+        .. code-block::
+
+            sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=home/dltk"
+
         **Database**
 
             .. tab:: Already Existing Postgres
@@ -225,14 +231,14 @@ To verify whether ansible host & roles are setup correctly, we will use followin
                 .. code-block::
 
                     # please go to openDLTK directory
-                    ansible-playbook ansible/playbooks/dltk-ai-postgres.yml
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=home/dltk"
 
 
             To setup InfluxDB and Redis
 
             .. code-block::
 
-                ansible-playbook ansible/playbooks/dltk-ai-db.yml
+                sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=home/dltk"
 
         **Base Services**
 
@@ -240,33 +246,41 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
             .. code-block::
 
-                ansible-playbook ansible/playbooks/dltk-ai-base.yml
+                sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=home/dltk"
 
         .. warning::
 
             Database and Base are necessary to run below services, so proceed to other service deployment after deploying above two services.
 
-        **c. Machine Learning**
+        **Machine Learning**
 
 
 
             ML wrapper installation Steps
 
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars "folderpath=home/dltk"
+
             .. tab:: ML Scikit
 
-                Steps for ML Scikit
+                .. code-block::
+
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars "folderpath=home/dltk"
 
             .. tab:: ML H2O
 
-                Steps for ML H2O
+                .. code-block::
+
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars "folderpath=home/dltk"
 
             .. tab:: ML Weka
 
-                Steps for ML Weka
+                sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars "folderpath=home/dltk"
 
 
 
-        **d. Computer Vision**
+        **Computer Vision**
 
             For running Computer vision services we will first deploy a wrapper which route the Images, client request to right processor
 
@@ -274,7 +288,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
             .. code-block::
 
-                ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml
+                sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=home/dltk"
 
 
             .. tab:: Image Classification
@@ -285,7 +299,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
                 .. code-block::
 
-                    ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=home/dltk"
 
                 .. seealso::
                     For more details on Image Classification features, please refer this section
@@ -299,7 +313,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
                 .. code-block::
 
-                    ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=home/dltk"
 
                 .. seealso::
                         For more details on Object Detection features, please refer this section
@@ -312,19 +326,19 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
                 .. code-block::
 
-                    ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=home/dltk"
 
                 .. seealso::
                         For more details on Face Analytics features, please refer this section
 
 
-        **e. Natural Language Processing**
+        **Natural Language Processing**
 
             This service provide various NLP features like Name Entity Recognition, Part of Speech and Sentiment Analysis using various open source AI models & supported AI Engines
 
             .. code-block::
 
-                        ansible-playbook ansible/playbooks/dltk-ai-nlp.yml
+                sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=home/dltk"
 
             .. seealso::
 

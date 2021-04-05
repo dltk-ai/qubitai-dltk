@@ -277,13 +277,13 @@ $ sudo apt install ansible
 <p>Ansible playbooks &amp; roles, docker-compose files for openDLTK services &amp; configurations files.</p>
 <p><strong>4. Details about Ansible Files</strong></p>
 <dl class="glossary">
-<dt id="term-Ansible-Playbook">Ansible Playbook<a class="headerlink" href="#term-Ansible-Playbook" title="Permalink to this term">¶</a></dt><dd><p>These are a set of instructions that you send to run on a single or group of server hosts.</p>
+<dt id="term-Ansible-Playbook">Ansible Playbook</dt><dd><p>These are a set of instructions that you send to run on a single or group of server hosts.</p>
 <p>The Ansible Playbook contains some basic configuration, including hosts and user information of the provision servers, a task list that will be implemented to deploy openDLTK services.</p>
 <p>Ansible playbooks and roles are present in this repository, which can be used directly.</p>
 </dd>
-<dt id="term-Hosts">Hosts<a class="headerlink" href="#term-Hosts" title="Permalink to this term">¶</a></dt><dd><p>It’s an inventory file that contains pieces of information about managed servers by ansible. It allows you to create a group of servers that make you more easier to manage and scale the inventory file itself.</p>
+<dt id="term-Hosts">Hosts</dt><dd><p>It’s an inventory file that contains pieces of information about managed servers by ansible. It allows you to create a group of servers that make you more easier to manage and scale the inventory file itself.</p>
 </dd>
-<dt id="term-Ansible-role">Ansible role<a class="headerlink" href="#term-Ansible-role" title="Permalink to this term">¶</a></dt><dd><p>It is a set of tasks to configure a host to serve a certain purpose like configuring a service. Roles are defined using YAML files with a predefined directory structure. A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers.</p>
+<dt id="term-Ansible-role">Ansible role</dt><dd><p>It is a set of tasks to configure a host to serve a certain purpose like configuring a service. Roles are defined using YAML files with a predefined directory structure. A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers.</p>
 </dd>
 </dl>
 <p><strong>2. Initialize DLTK setup</strong></p>
@@ -403,7 +403,11 @@ $ sudo apt install ansible
 </div></blockquote>
 <p><strong>5. Install Services</strong></p>
 <blockquote>
-<div><p><strong>Database</strong></p>
+<div><p><strong>Docker</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
+</pre></div>
+</div>
+<p><strong>Database</strong></p>
 <blockquote>
 <div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">Already Existing Postgres</label><div class="tab-content docutils container">
@@ -413,20 +417,20 @@ $ sudo apt install ansible
 </div>
 <input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">Setup Postgres</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># please go to openDLTK directory</span>
-<span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">postgres</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">postgres</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>To setup InfluxDB and Redis</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">db</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">db</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Base Services</strong></p>
 <blockquote>
 <div><p>Base Service will setup Kong, Registry Service (Eureka), Solution Service.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -434,33 +438,40 @@ $ sudo apt install ansible
 <p class="admonition-title">Warning</p>
 <p>Database and Base are necessary to run below services, so proceed to other service deployment after deploying above two services.</p>
 </div>
-<p><strong>c. Machine Learning</strong></p>
+<p><strong>Machine Learning</strong></p>
 <blockquote>
 <div><p>ML wrapper installation Steps</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
+</pre></div>
+</div>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">ML Scikit</label><div class="tab-content docutils container">
-<p>Steps for ML Scikit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">scikit</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
+</pre></div>
+</div>
 </div>
 <input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">ML H2O</label><div class="tab-content docutils container">
-<p>Steps for ML H2O</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">h2o</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
+</pre></div>
+</div>
 </div>
 <input class="tab-input" id="tab-set--4-input--3" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--3">ML Weka</label><div class="tab-content docutils container">
-<p>Steps for ML Weka</p>
+<p>sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml –extra-vars “folderpath=home/dltk”</p>
 </div>
 </div>
 </div></blockquote>
-<p><strong>d. Computer Vision</strong></p>
+<p><strong>Computer Vision</strong></p>
 <blockquote>
 <div><p>For running Computer vision services we will first deploy a wrapper which route the Images, client request to right processor</p>
 <p>To install Computer Vision Wrapper, run below command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">Image Classification</label><div class="tab-content docutils container">
 <p>Image Classification takes Image as an input &amp; return predicted labels as output in JSON format</p>
 <p>To run Image Classification service, run below command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">classification</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">classification</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -471,7 +482,7 @@ $ sudo apt install ansible
 <input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">Object Detection</label><div class="tab-content docutils container">
 <p>Object Detection detects Objects in an Image</p>
 <p>To deploy Object Detection service, run below command in ansible control machine</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detection</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detection</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -482,7 +493,7 @@ $ sudo apt install ansible
 <input class="tab-input" id="tab-set--5-input--3" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--3">Face Analytics</label><div class="tab-content docutils container">
 <p>This service provide state-of-the-art open source AI models &amp; support to various AI engines to provide face analytics on Images</p>
 <p>To deploy Face Analytics services, run below command in ansible control machine</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">face</span><span class="o">-</span><span class="n">analytics</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">face</span><span class="o">-</span><span class="n">analytics</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -492,10 +503,10 @@ $ sudo apt install ansible
 </div>
 </div>
 </div></blockquote>
-<p><strong>e. Natural Language Processing</strong></p>
+<p><strong>Natural Language Processing</strong></p>
 <blockquote>
 <div><p>This service provide various NLP features like Name Entity Recognition, Part of Speech and Sentiment Analysis using various open source AI models &amp; supported AI Engines</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">nlp</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">nlp</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=home/dltk&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">

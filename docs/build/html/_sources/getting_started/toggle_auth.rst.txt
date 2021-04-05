@@ -11,30 +11,69 @@ Enable Authentication
 
         Please update config.env file saved at ``/usr/dltk-ai/config.env``
 
+        .. code-block::
+
+            AUTH_ENABLED="true"
+
+            # SMTP setup
+            SMTP_HOST="YOUR_SMTP_HOST"
+            SMTP_PORT=587
+            SMTP_USERNAME="YOUR_SMTP_USERNAME"
+            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+
+            # UI SERVER URL(replace localhost with server IP in case of remote machine)
+            UI_SERVICE_URL="http://localhost:8082"
+
+        .. code-block::
+
+            sudo python3 setup.py -m update_config
+            sudo python setup.py --mode auth --auth True
+
     .. tab:: Mac
 
         Please update config.env file saved at ``/usr/dltk-ai/config.env``
+
+        .. code-block::
+
+            AUTH_ENABLED="true"
+
+            # SMTP setup
+            SMTP_HOST="YOUR_SMTP_HOST"
+            SMTP_PORT=587
+            SMTP_USERNAME="YOUR_SMTP_USERNAME"
+            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+
+            # UI SERVER URL(replace localhost with server IP in case of remote machine)
+            UI_SERVICE_URL="http://localhost:8082"
+
+        .. code-block::
+
+            sudo python3 setup.py -m update_config
+            sudo python setup.py --mode auth --auth True
 
     .. tab:: Windows
 
         Please update **config.env** file saved at ``C:\Users\{username}\AppData\Local\dltk_ai\config.env``
 
-    .. code-block::
+        .. code-block::
 
-        AUTH_ENABLED="true"
+            AUTH_ENABLED="true"
 
-        # SMTP setup
-        SMTP_HOST="YOUR_SMTP_HOST"
-        SMTP_PORT=587
-        SMTP_USERNAME="YOUR_SMTP_USERNAME"
-        SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+            # SMTP setup
+            SMTP_HOST="YOUR_SMTP_HOST"
+            SMTP_PORT=587
+            SMTP_USERNAME="YOUR_SMTP_USERNAME"
+            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
 
-        # UI SERVER URL(replace localhost with server IP in case of remote machine)
-        UI_SERVICE_URL="http://localhost:8082"
+            # UI SERVER URL(replace localhost with server IP in case of remote machine)
+            UI_SERVICE_URL="http://localhost:8082"
 
-    .. code-block::
+        .. code-block::
 
-        python setup.py --mode auth --auth True
+            python3 setup.py -m update_config
+            python setup.py --mode auth --auth True
+
+
 
 .. tab:: Multiple Instances
 
