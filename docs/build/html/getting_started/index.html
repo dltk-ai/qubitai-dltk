@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -43,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Setting Up openDLTK" href="openDLTK_setup.html" />
+    <link rel="next" title="Setting Up OpenDLTK" href="openDLTK_setup.html" />
     <link rel="prev" title="Welcome to Qubitai-dltk’s documentation!" href="../index.html" /> 
 </head>
 
@@ -92,16 +93,17 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">openDLTK on single instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansibleHostConfig.html">Configure Ansible Hosts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -121,7 +123,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -209,24 +210,27 @@
             
   <div class="section" id="about-dltk">
 <h1>About DLTK<a class="headerlink" href="#about-dltk" title="Permalink to this headline">¶</a></h1>
-<p>DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities. Qubit AI philosophy is to empower businesses with cutting edge technologies.</p>
+<p>DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities.</p>
 </div>
 <div class="section" id="opendltk-and-python-sdk-client">
-<h1>openDLTK and Python SDK client<a class="headerlink" href="#opendltk-and-python-sdk-client" title="Permalink to this headline">¶</a></h1>
-<p>DLTK comprises of <strong>openDLTK</strong> where processing of images, text or structured tabular data is done using state-of-the-art AI models happen,
+<h1>OpenDLTK and Python SDK client<a class="headerlink" href="#opendltk-and-python-sdk-client" title="Permalink to this headline">¶</a></h1>
+<p>DLTK comprises of <strong>OpenDLTK</strong> where processing of images, text or structured tabular data is done using state-of-the-art AI models,
 and another component is <strong>python client sdk</strong> which can be used for integration of these AI services in your projects.</p>
 <a class="reference internal image-reference" href="../_images/DLTK_overview_diagram.png"><img alt="DLTK overview diagram" class="align-center" src="../_images/DLTK_overview_diagram.png" style="height: 250px;" /></a>
-<p><strong>openDLTK</strong></p>
-<p>openDLTK are collection of open-source docker images which can be deployed on single or multiple instances</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>openDLTK installation on single machine</p></li>
-<li><p>openDLTK docker images</p></li>
-<li><p>openDLTK github</p></li>
+<dl class="glossary">
+<dt id="term-OpenDLTK">OpenDLTK</dt><dd><p>OpenDLTK is collection of open-source docker images which can be deployed on single or multiple instances</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ol class="arabic simple">
+<li><p>OpenDLTK Setup Guide</p></li>
+<li><p>OpenDLTK docker Hub</p></li>
+<li><p>OpenDLTK github</p></li>
 </ol>
-</div></blockquote>
-<p><strong>Python Client SDK</strong></p>
-<p>openDLTK containers can be used either using REST APIs or using <code class="docutils literal notranslate"><span class="pre">qubitai-dltk</span></code> python client sdk, which simplify usage of the cognitive services provided by openDLTK</p>
+</div>
+</dd>
+<dt id="term-Python-Client-SDK">Python Client SDK</dt><dd><p>OpenDLTK containers can be used either using REST APIs or using <code class="docutils literal notranslate"><span class="pre">qubitai-dltk</span></code> python client sdk, which simplify usage of the cognitive services provided by OpenDLTK</p>
+</dd>
+</dl>
 </div>
 
 
@@ -235,7 +239,7 @@ and another component is <strong>python client sdk</strong> which can be used fo
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="openDLTK_setup.html" class="btn btn-neutral float-right" title="Setting Up openDLTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="openDLTK_setup.html" class="btn btn-neutral float-right" title="Setting Up OpenDLTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Qubitai-dltk’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

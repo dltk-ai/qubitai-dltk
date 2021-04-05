@@ -241,37 +241,3 @@ Usage: Automated identity verification.
           }
     }
 
-
-*****************
-Barcode Detection
-*****************
-
-Detects and extracts barcode or QRcode information in an Image.
-
-Usage: Tracking product information and details
-
-
-.. function:: client.object_detection(image):
-
-   :param image: Local Image Path or Numpy array of the image.
-   :rtype: List of dictionaries containing the barcode information.
-
-**Example**::
-
-    import dltk_ai
-
-    response = dltk_ai.barcode_extractor('../barcode.png')
-    print(response)
-
-**Input**
-
-.. image:: https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png
-    :alt: sample-barcode-image
-    :height: 200
-
-**Output**
-
-.. code-block:: JSON
-
-    [{"serial_number": "0020357122682", "code_type": "EAN13", "bbox": (38, 14, 519, 313)}]
-

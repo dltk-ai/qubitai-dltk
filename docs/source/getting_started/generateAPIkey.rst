@@ -6,31 +6,35 @@ Create user and Generate APIkey
     :depth: 4
     :local:
 
+.. tab:: local
 
-The UI for user creation can be accesed at `http://localhost:8082 <http://localhost:8082>`__ ,by clicking on `Sign Up` button on top right, user will be able to view below pages
+    The UI for user creation can be accessed at `http://localhost:8082 <http://localhost:8082>`__ ,by clicking on **Sign Up** button on top right, user will be able to view below pages
 
+.. tab:: server
 
-SIGN UP
+    The UI for user creation can be accessed at `http://BASE_SERVICE_IP:8082 <http://BASE_SERVICE_IP:8082>`__ ,by clicking on **Sign Up** button on top right, user will be able to view below pages
+
+Sign Up
 =============================
- `Sign Up Page <http://localhost:8082/sign_up/>`__
 
 .. image:: images/signup.png
 
-After filling above details, click on `Sign Up` button.
-User will receive an Email for verification, on successful verification of email, user will be redirected to `Sign In` page.
+After filling above details, click on **Sign Up** button.
+User will receive an e-mail for verification. On successful verification of email, user will be redirected to **Sign In** page.
 
-EMAIL VERIFICATION
+Email Verification
 =============================
+User will receive a verification email, as shown below
 
 .. image:: images/verification_mail.png
 
-SIGN IN
+Sign in
 =============================
- `Sign In Page <http://localhost:8082/sign_in/>`__
+Next Step is to sign in using the credentials provided while Sign Up process
 
 .. image:: images/login.png
 
-CREATE AN PROJECT
+Create a project
 =============================
 
 After successful login, user will be able to view project list page
@@ -40,17 +44,18 @@ After successful login, user will be able to view project list page
 Next user needs to create a project, by giving details as shown in below image
 
 .. image:: images/create_project.png
+    :align: center
 
 
-GET AN API KEY
+Get an API key
 =============================
 
 After successful creation of project, you can go to Project Details Page to get `API Key`
 
 .. image:: images/project_details_page.png
 
-USE SDK WITH API KEY
-=============================
+Use API Key in SDK client initialization
+==========================================
 
 Using above generated API key you can use in python SDK client
 
@@ -66,13 +71,10 @@ Using above generated API key you can use in python SDK client
 
         print(sentiment_analysis_response.text)
 
-Expected Output:
+**Expected Output:**
 
 .. code-block::
 
         {
           "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
         }
-
-
-for more detailed information on `Qubitai-DLTK python SDK <https://github.com/dltk-ai/qubitai-dltk>`__ features & usage please refer to this `Documentation <https://docs.dltk.ai>`__

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>OpenDLTK on single instance &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>OpenDLTK on single machine &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -43,8 +44,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="openDLTK on multiple instances" href="openDLTK_multiple_instance.html" />
-    <link rel="prev" title="Setting Up openDLTK" href="openDLTK_setup.html" /> 
+    <link rel="next" title="OpenDLTK on multiple machines" href="openDLTK_multiple_instance.html" />
+    <link rel="prev" title="Setting Up OpenDLTK" href="openDLTK_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,12 +93,12 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenDLTK on single instance</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenDLTK on single machine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
@@ -105,10 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#uninstall-dltk">Uninstall DLTK</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansibleHostConfig.html">Configure Ansible Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -128,7 +131,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -195,7 +197,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>OpenDLTK on single instance</li>
+      <li>OpenDLTK on single machine</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -214,41 +216,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="opendltk-on-single-instance">
-<h1>OpenDLTK on single instance<a class="headerlink" href="#opendltk-on-single-instance" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="opendltk-on-single-machine">
+<h1>OpenDLTK on single machine<a class="headerlink" href="#opendltk-on-single-machine" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pre-requisites" id="id5">Pre-requisites</a></p></li>
-<li><p><a class="reference internal" href="#installation" id="id6">Installation</a></p></li>
-<li><p><a class="reference internal" href="#usage" id="id7">Usage</a></p></li>
-<li><p><a class="reference internal" href="#stop-services" id="id8">Stop Services</a></p></li>
-<li><p><a class="reference internal" href="#uninstall-dltk" id="id9">Uninstall DLTK</a></p></li>
+<li><p><a class="reference internal" href="#pre-requisites" id="id3">Pre-requisites</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id4">Installation</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id5">Usage</a></p></li>
+<li><p><a class="reference internal" href="#stop-services" id="id6">Stop Services</a></p></li>
+<li><p><a class="reference internal" href="#uninstall-dltk" id="id7">Uninstall DLTK</a></p></li>
 </ul>
 </div>
 <div class="section" id="pre-requisites">
-<h2><a class="toc-backref" href="#id5">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Linux</label><div class="tab-content docutils container">
-<p><strong>1. Python3</strong> (To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a> )</p>
-<p><strong>2. Virtual Environment</strong> (To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a> )</p>
-<p><strong>3. Docker</strong> (To install docker refer this <a class="reference external" href="https://docs.docker.com/engine/install/">Docker installation guide</a> )</p>
+<p><strong>1. Python 3.6+</strong> : To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a></p>
+<p><strong>2. Virtual Environment</strong> : To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a></p>
+<p><strong>3. Docker</strong> : To install docker refer this <a class="reference external" href="https://docs.docker.com/engine/install/">Docker installation guide</a></p>
 </div>
 <input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Mac</label><div class="tab-content docutils container">
-<p><strong>1. Python3</strong> (To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a> )</p>
-<p><strong>2. Virtual Environment</strong> (To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a> )</p>
-<p><strong>3. Docker</strong> (To install docker refer this <a class="reference external" href="https://docs.docker.com/docker-for-mac/install/">Docker installation guide</a> )</p>
+<p><strong>1. Python3.6</strong> : To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a></p>
+<p><strong>2. Virtual Environment</strong> : To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a></p>
+<p><strong>3. Docker</strong> : To install docker refer this <a class="reference external" href="https://docs.docker.com/docker-for-mac/install/">Docker installation guide</a></p>
 </div>
 <input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Windows</label><div class="tab-content docutils container">
-<p><strong>1. Python3</strong> (To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a> )</p>
-<p><strong>2. Virtual Environment</strong> (To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a> )</p>
-<p><strong>3. Docker</strong> (To install docker refer this <a class="reference external" href="https://docs.docker.com/docker-for-windows/install-windows-home/">Docker installation guide</a> )</p>
+<p><strong>1. Python3</strong> : To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a></p>
+<p><strong>2. Virtual Environment</strong> : To install virtual environment refer this <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Virtual Environment installation guide</a></p>
+<p><strong>3. Docker</strong> : To install docker refer this <a class="reference external" href="https://docs.docker.com/docker-for-windows/install-windows-home/">Docker installation guide</a></p>
 </div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>As these deep learning models are computationally expensive, its recommended to run these docker containers on minimum of 16GB RAM machine.</p>
 </div>
+</div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id6">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Clone OpenDLTK github repository</strong></p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Linux</label><div class="tab-content docutils container">
@@ -286,6 +291,10 @@ sudo usermod -aG docker $(whoami)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Which</span> <span class="n">version</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">install</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">]</span>
+<span class="n">Enter</span> <span class="n">your</span> <span class="nb">input</span><span class="p">:</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
 </div>
 <input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">Mac</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
@@ -312,8 +321,12 @@ Please ensure this version should be compatible with the <a class="reference ext
 <p>Please update <strong>config.env</strong> file saved at <code class="docutils literal notranslate"><span class="pre">C:\Users\{username}\AppData\Local\dltk_ai\config.env</span></code></p>
 </div>
 </div>
-<p><strong>3.a Configuring Storage</strong></p>
-<div class="tab-set docutils container">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>a. Configuring Storage</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">Local</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;local&quot;</span>
 </pre></div>
@@ -365,8 +378,10 @@ Please ensure this version should be compatible with the <a class="reference ext
 <p class="admonition-title">Warning</p>
 <p>In case you decide to switch your initial storage from one source to another, the data migrations has to be handled by you.</p>
 </div>
-<p><strong>3.b Configure supported AI Engines Credentials</strong></p>
-<div class="tab-set docutils container">
+</div></blockquote>
+<p><em>b. Configure supported AI Engines Credentials</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">Azure</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AZURE_LANGUAGE_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
 <span class="n">AZURE_BASE_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
@@ -388,8 +403,10 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div>
 </div>
-<p><strong>3.c Authentication</strong></p>
-<div class="tab-set docutils container">
+</div></blockquote>
+<p><em>c. Authentication</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">Enable Authentication</label><div class="tab-content docutils container">
 <p>In config.env file, update</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
@@ -420,6 +437,7 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div>
 </div>
+</div></blockquote>
 <p><strong>4. Update config</strong></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">update_config</span>
@@ -427,8 +445,7 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div></blockquote>
 <p><strong>5. Install Services</strong></p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>You will get a list of service as shown below, choose the services you want to install using comma separated Ids.</p>
@@ -442,35 +459,24 @@ Please ensure this version should be compatible with the <a class="reference ext
     <span class="mf">7.</span> <span class="n">Face</span> <span class="n">Analytics</span>
     <span class="mf">8.</span> <span class="n">Natural</span> <span class="n">Language</span> <span class="n">Processing</span>
 
-<span class="n">Note</span><span class="p">:</span> <span class="n">Image</span> <span class="n">Classification</span><span class="p">,</span><span class="n">Object</span> <span class="n">Detection</span> <span class="ow">and</span> <span class="n">Face</span> <span class="n">Analytics</span> <span class="n">may</span> <span class="n">take</span> <span class="n">an</span> <span class="n">hour</span> <span class="n">to</span> <span class="n">download</span><span class="o">.</span>
-
-<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">(</span><span class="k">for</span> <span class="n">example</span><span class="p">)</span>
+<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span>
 </pre></div>
 </div>
-<p>You can verify whether installation is successful or not by visiting <a class="reference external" href="http://localhost:8761">Registry service</a> to check status of containers.</p>
-</div></blockquote>
-</div>
-<div class="section" id="usage">
-<h2><a class="toc-backref" href="#id7">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next section here <a class="reference external" href="pythonclientsdk.html#installation">installation</a> .</p>
+<p>Image Classification, Object Detection and Face Analytics may take an hour to download.</p>
+</div>
+<p>You can verify whether installation is successful or not by visiting <a class="reference external" href="http://localhost:8761">Registry service</a> to check status of containers.</p>
+</div>
+<div class="section" id="usage">
+<h2><a class="toc-backref" href="#id5">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>After OpenDLTK is installed, it can be used via DLTK python client SDK, as shown in below example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next <a class="reference external" href="pythonclientsdk.html#installation">section</a> .</p>
 </div>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">with Auth Enabled</label><div class="tab-content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;86122578-4b01-418d-80cc-049e283d1e2b&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The product is very easy to use and has got a really good life expectancy.&quot;</span>
-
-<span class="n">sentiment_analysis_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sentiment_analysis</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_analysis_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">with Auth Disabled</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">with Auth Disabled</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
@@ -479,19 +485,45 @@ Please ensure this version should be compatible with the <a class="reference ext
 
 <span class="n">sentiment_analysis_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sentiment_analysis</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_analysis_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_analysis_response</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;neg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;neu&quot;</span><span class="p">:</span> <span class="mf">0.653</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="mf">0.347</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="mf">0.7496</span><span class="p">}}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">with Auth Enabled</label><div class="tab-content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;86122578-4b01-418d-80cc-049e283d1e2b&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The product is very easy to use and has got a really good life expectancy.&quot;</span>
+
+<span class="n">sentiment_analysis_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sentiment_analysis</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_analysis_response</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;neg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;neu&quot;</span><span class="p">:</span> <span class="mf">0.653</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="mf">0.347</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="mf">0.7496</span><span class="p">}}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>Please check this <a class="reference external" href="http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/toggle_auth.html">link</a> to enable/disable authentication.
-Please check this <a class="reference external" href="http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html">link</a> to check how to Create user and API Key.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ol class="arabic simple">
+<li><p>To enable/disable authentication <a class="reference external" href="toggle_auth.html">link</a> .</p></li>
+<li><p>How to Create user and Generate API Key <a class="reference external" href="generateAPIkey.html">link</a> .</p></li>
+</ol>
 </div>
 </div>
 <div class="section" id="stop-services">
-<h2><a class="toc-backref" href="#id8">Stop Services</a><a class="headerlink" href="#stop-services" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Stop Services</a><a class="headerlink" href="#stop-services" title="Permalink to this headline">¶</a></h2>
+<p>To stop OpenDLTK services, run below commands.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">selected services</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">mode</span> <span class="n">uninstall</span> <span class="o">--</span><span class="n">partial</span> <span class="o">--</span><span class="n">remove</span>
@@ -510,7 +542,8 @@ Please check this <a class="reference external" href="http://localhost:63342/qub
 </div>
 </div>
 <div class="section" id="uninstall-dltk">
-<h2><a class="toc-backref" href="#id9">Uninstall DLTK</a><a class="headerlink" href="#uninstall-dltk" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Uninstall DLTK</a><a class="headerlink" href="#uninstall-dltk" title="Permalink to this headline">¶</a></h2>
+<p>To uninstall OpenDLTK, run below commands.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--9-input--1" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--1">selected services</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">mode</span> <span class="n">uninstall</span> <span class="o">--</span><span class="n">partial</span> <span class="o">--</span><span class="n">purge</span>
@@ -532,8 +565,8 @@ Please check this <a class="reference external" href="http://localhost:63342/qub
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="openDLTK_multiple_instance.html" class="btn btn-neutral float-right" title="openDLTK on multiple instances" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="openDLTK_setup.html" class="btn btn-neutral float-left" title="Setting Up openDLTK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="openDLTK_multiple_instance.html" class="btn btn-neutral float-right" title="OpenDLTK on multiple machines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="openDLTK_setup.html" class="btn btn-neutral float-left" title="Setting Up OpenDLTK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

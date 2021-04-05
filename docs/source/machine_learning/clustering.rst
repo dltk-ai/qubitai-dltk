@@ -3,7 +3,7 @@ Clustering
 
 Clustering is a technique used in grouping data points into desired number of groups (clusters), based on similarity of data points.
 
-*Supported Libraries and Algorithms*
+**Supported Libraries and Algorithms**
 
 .. list-table::
    :widths: 25 25

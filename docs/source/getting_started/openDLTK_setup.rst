@@ -1,10 +1,10 @@
 *******************
-Setting Up openDLTK
+Setting Up OpenDLTK
 *******************
 
-openDLTK can be deployed on single instance or multiple instances as well.
+OpenDLTK can be deployed on single instance or multiple instances as well.
 
-As part of openDLTK
+As part of OpenDLTK
 
 .. warning::
     1. As these deep learning models are computationally expensive,

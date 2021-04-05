@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -92,16 +93,17 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">openDLTK on single instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/toggle_auth.html">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/ansibleHostConfig.html">Configure Ansible Hosts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -121,7 +123,6 @@
 <li class="toctree-l1"><a class="reference internal" href="#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -257,9 +258,9 @@
 </table>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">client.image_classification(image_url=None,</span> <span class="pre">image_path=None,</span> <span class="pre">top_n=3,</span> <span class="pre">tensorflow=True,</span></code></dt>
+<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">azure=False,</span> <span class="pre">ibm=False,output_types=[&quot;json&quot;]):</span></code></dt>
+<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -346,9 +347,9 @@
 </table>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">client.object_detection(image_url=None,</span> <span class="pre">image_path=None,</span> <span class="pre">tensorflow=True,</span></code></dt>
+<code class="sig-name descname">client.object_detection(image_url=None, image_path=None, tensorflow=True,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">azure=False,</span> <span class="pre">output_types=[&quot;json&quot;]):</span></code></dt>
+<code class="sig-name descname">azure=False, output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -439,9 +440,9 @@
 </div>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">client.face_analytics(image_url=None,</span> <span class="pre">features=None,</span> <span class="pre">image_path=None,</span> <span class="pre">dlib=False,</span></code></dt>
+<code class="sig-name descname">client.face_analytics(image_url=None, features=None, image_path=None, dlib=False,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">opencv=True,azure=False,</span> <span class="pre">mtcnn=False,output_types=[&quot;json&quot;]):</span></code></dt>
+<code class="sig-name descname">opencv=True,azure=False, mtcnn=False,output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -484,37 +485,6 @@
       <span class="nt">&quot;azure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">558</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">348</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">151</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">158</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">155</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">453</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">154</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">}]}}</span>
       <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="barcode-detection">
-<h1>Barcode Detection<a class="headerlink" href="#barcode-detection" title="Permalink to this headline">¶</a></h1>
-<p>Detects and extracts barcode or QRcode information in an Image.</p>
-<p>Usage: Tracking product information and details</p>
-<dl class="py function">
-<dt>
-<code class="sig-name descname"><span class="pre">client.object_detection(image):</span></code></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> – Local Image Path or Numpy array of the image.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List of dictionaries containing the barcode information.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">barcode_extractor</span><span class="p">(</span><span class="s1">&#39;../barcode.png&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Input</strong></p>
-<a class="reference internal image-reference" href="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png"><img alt="sample-barcode-image" src="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png" style="height: 200px;" /></a>
-<p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>[{&quot;serial_number&quot;: &quot;0020357122682&quot;, &quot;code_type&quot;: &quot;EAN13&quot;, &quot;bbox&quot;: (38, 14, 519, 313)}]
 </pre></div>
 </div>
 </div>

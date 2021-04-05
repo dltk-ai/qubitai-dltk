@@ -19,7 +19,9 @@ Usage: social media monitoring, Brand reputation analysis, etc.
    :param sources: algorithm to use - azure/ibm_watson/spacy/model_1. Default is spacy.
    :rtype: A json object containing the sentiment analysis response
 
-**Example**::
+**Example**
+
+.. code-block::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -29,7 +31,7 @@ Usage: social media monitoring, Brand reputation analysis, etc.
     sentiment_analysis_response = client.sentiment_analysis(text)
 
     print(sentiment_analysis_response.text)
-   
+
 **Output**
 
 .. code-block:: JSON
@@ -52,17 +54,18 @@ It identifies and marks a word in a text as corresponding to a particular part o
    :param sources: algorithm to use - ibm_watson/spacy
    :rtype: A json object containing the Parts of Speech of the words in the sentence.
 
-**Example**::
+**Example**
 
+.. code-block::
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    >>> text = "They refuse to permit us to obtain the refuse permit."
+    text = "They refuse to permit us to obtain the refuse permit."
 
-    >>> pos_tagger_response = client.pos_tagger(text)
+    pos_tagger_response = client.pos_tagger(text)
 
-    >>> print(pos_tagger_response)
+    print(pos_tagger_response)
 
 
 **Output**

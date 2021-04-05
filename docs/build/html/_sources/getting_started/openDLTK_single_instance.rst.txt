@@ -1,5 +1,5 @@
 *****************************
-OpenDLTK on single instance
+OpenDLTK on single machine
 *****************************
 
 .. contents:: Table of Contents
@@ -12,34 +12,35 @@ Pre-requisites
 
 .. tab:: Linux
 
-    **1. Python3** (To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__ )
+    **1. Python 3.6+** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
 
-    **2. Virtual Environment** (To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__ )
+    **2. Virtual Environment** : To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__
 
-    **3. Docker** (To install docker refer this `Docker installation guide <https://docs.docker.com/engine/install/>`__ )
+    **3. Docker** : To install docker refer this `Docker installation guide <https://docs.docker.com/engine/install/>`__
 
 
 
 .. tab:: Mac
 
-    **1. Python3** (To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__ )
+    **1. Python3.6** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
 
-    **2. Virtual Environment** (To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__ )
+    **2. Virtual Environment** : To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__
 
-    **3. Docker** (To install docker refer this `Docker installation guide <https://docs.docker.com/docker-for-mac/install/>`__ )
+    **3. Docker** : To install docker refer this `Docker installation guide <https://docs.docker.com/docker-for-mac/install/>`__
 
 
 
 .. tab:: Windows
 
-    **1. Python3** (To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__ )
+    **1. Python3** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
 
-    **2. Virtual Environment** (To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__ )
+    **2. Virtual Environment** : To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__
 
-    **3. Docker** (To install docker refer this `Docker installation guide <https://docs.docker.com/docker-for-windows/install-windows-home/>`__ )
+    **3. Docker** : To install docker refer this `Docker installation guide <https://docs.docker.com/docker-for-windows/install-windows-home/>`__
 
+.. warning::
 
-As these deep learning models are computationally expensive, its recommended to run these docker containers on minimum of 16GB RAM machine.
+    As these deep learning models are computationally expensive, its recommended to run these docker containers on minimum of 16GB RAM machine.
 
 Installation
 =============
@@ -88,6 +89,12 @@ Installation
 
         sudo python setup.py -m init
 
+    .. code-block::
+
+       Which version you want to install ['1.0', '1.1']
+       Enter your input: 1.0
+
+
 .. tab:: Mac
 
     .. code-block::
@@ -117,125 +124,126 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     Please update **config.env** file saved at ``C:\Users\{username}\AppData\Local\dltk_ai\config.env``
 
+|
 
-**3.a Configuring Storage**
+*a. Configuring Storage*
 
-.. tab:: Local
+    .. tab:: Local
 
-    .. code-block::
+        .. code-block::
 
-        STORAGE_TYPE="local"
+            STORAGE_TYPE="local"
 
-.. tab:: AWS S3
+    .. tab:: AWS S3
 
-    .. code-block::
+        .. code-block::
 
-        STORAGE_TYPE="aws"
+            STORAGE_TYPE="aws"
 
-        # Values only for reference, replace with your credentials
+            # Values only for reference, replace with your credentials
 
-        S3_ACCESS_KEY="AKIAVKNVW3O4G2YSG"
-        S3_SECRET_KEY="vrJvyZFGSpOFTtZcsDTZTHwJ88Jw"
-        S3_BUCKET="dltk-ai"
-        S3_REGION="ap-south-1"
-        S3_ENDPOINT="https://s3.ap-south-1.amazonaws.com"
+            S3_ACCESS_KEY="AKIAVKNVW3O4G2YSG"
+            S3_SECRET_KEY="vrJvyZFGSpOFTtZcsDTZTHwJ88Jw"
+            S3_BUCKET="dltk-ai"
+            S3_REGION="ap-south-1"
+            S3_ENDPOINT="https://s3.ap-south-1.amazonaws.com"
 
-    Refer this `link <https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html>`__ for creating a bucket in AWS S3.
+        Refer this `link <https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html>`__ for creating a bucket in AWS S3.
 
-.. tab:: Google Cloud Storage
+    .. tab:: Google Cloud Storage
 
-    .. code-block::
+        .. code-block::
 
-        STORAGE_TYPE="gcp"
+            STORAGE_TYPE="gcp"
 
-        # Values only for reference, replace with your details
+            # Values only for reference, replace with your details
 
-        GCP_SERVICE_ACCOUNT_FILE=dltk-ai.json
-        GCP_PRIVATE_BUCKET="dltk-ai-private"
-        GCP_PUBLIC_BUCKET="dltk-ai-public"
+            GCP_SERVICE_ACCOUNT_FILE=dltk-ai.json
+            GCP_PRIVATE_BUCKET="dltk-ai-private"
+            GCP_PUBLIC_BUCKET="dltk-ai-public"
 
-    Replace `base/solution-config/dltk-ai.json <https://github.com/dltk-ai/openDLTK_beta/blob/main/base/solution-config/dltk-ai.json>`__ with your GCS credentials file which you can generate from `GCP service account <https://cloud.google.com/iam/docs/creating-managing-service-accounts>`__
+        Replace `base/solution-config/dltk-ai.json <https://github.com/dltk-ai/openDLTK_beta/blob/main/base/solution-config/dltk-ai.json>`__ with your GCS credentials file which you can generate from `GCP service account <https://cloud.google.com/iam/docs/creating-managing-service-accounts>`__
 
-.. tab:: Digital Ocean
+    .. tab:: Digital Ocean
 
-    .. code-block::
+        .. code-block::
 
-        STORAGE_TYPE="do"
+            STORAGE_TYPE="do"
 
-        # Values only for reference, replace with your credentials
-
-
-        DO_ENDPOINT="sgp1.digitaloceanspaces.com"
-        DO_ACCESS_KEY="SPZ4OSDVXC35R26"
-        DO_SECRET_KEY="9b7SQmnFNx0vzAHWc5czKW75By01CH4"
-        DO_BUCKET="dltk-ai"
-        DO_REGION="sgp1"
-
-    Refer this `link <https://www.digitalocean.com/docs/spaces/how-to/create/>`__ for creating a bucket in Digital Ocean Spaces.
-
-.. warning::
-    In case you decide to switch your initial storage from one source to another, the data migrations has to be handled by you.
+            # Values only for reference, replace with your credentials
 
 
-**3.b Configure supported AI Engines Credentials**
+            DO_ENDPOINT="sgp1.digitaloceanspaces.com"
+            DO_ACCESS_KEY="SPZ4OSDVXC35R26"
+            DO_SECRET_KEY="9b7SQmnFNx0vzAHWc5czKW75By01CH4"
+            DO_BUCKET="dltk-ai"
+            DO_REGION="sgp1"
+
+        Refer this `link <https://www.digitalocean.com/docs/spaces/how-to/create/>`__ for creating a bucket in Digital Ocean Spaces.
+
+    .. warning::
+        In case you decide to switch your initial storage from one source to another, the data migrations has to be handled by you.
 
 
-.. tab:: Azure
+*b. Configure supported AI Engines Credentials*
 
-    .. code-block::
 
-        AZURE_LANGUAGE_SUBSCRIPTION_KEY="USER_DEFINED"
-        AZURE_BASE_URL="USER_DEFINED"
+    .. tab:: Azure
 
-    .. code-block::
+        .. code-block::
 
-        AZURE_VISION_SUBSCRIPTION_KEY="USER_DEFINED"
-        AZURE_VISION_URL="USER_DEFINED"
+            AZURE_LANGUAGE_SUBSCRIPTION_KEY="USER_DEFINED"
+            AZURE_BASE_URL="USER_DEFINED"
 
-.. tab:: IBM
+        .. code-block::
 
-    .. code-block::
+            AZURE_VISION_SUBSCRIPTION_KEY="USER_DEFINED"
+            AZURE_VISION_URL="USER_DEFINED"
 
-        IBM_LANGUAGE_URL="USER_DEFINED"
-        IBM_SUBSCRIPTION_KEY="USER_DEFINED"
+    .. tab:: IBM
 
-    .. code-block::
+        .. code-block::
 
-        IBM_VISUAL_URL="USER_DEFINED"
-        IBM_VISUAL_APIKEY="USER_DEFINED"
+            IBM_LANGUAGE_URL="USER_DEFINED"
+            IBM_SUBSCRIPTION_KEY="USER_DEFINED"
 
-**3.c Authentication**
+        .. code-block::
 
-.. tab:: Enable Authentication
+            IBM_VISUAL_URL="USER_DEFINED"
+            IBM_VISUAL_APIKEY="USER_DEFINED"
 
-    In config.env file, update
+*c. Authentication*
 
-    .. code-block::
+    .. tab:: Enable Authentication
 
-        AUTH_ENABLED="true"
+        In config.env file, update
 
-        # SMTP setup
-        SMTP_HOST="YOUR_SMTP_HOST"
-        SMTP_PORT=587
-        SMTP_USERNAME="YOUR_SMTP_USERNAME"
-        SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+        .. code-block::
 
-        # UI SERVER URL(replace localhost with server IP in case of remote machine)
-        UI_SERVICE_URL="http://localhost:8082"
+            AUTH_ENABLED="true"
 
-    .. todo::
-        If later you want to disable authentication, please refer this section
+            # SMTP setup
+            SMTP_HOST="YOUR_SMTP_HOST"
+            SMTP_PORT=587
+            SMTP_USERNAME="YOUR_SMTP_USERNAME"
+            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
 
-.. tab:: Disable Authentication
+            # UI SERVER URL(replace localhost with server IP in case of remote machine)
+            UI_SERVICE_URL="http://localhost:8082"
 
-    In config.env file, update
+        .. todo::
+            If later you want to disable authentication, please refer this section
 
-    .. code-block::
+    .. tab:: Disable Authentication
 
-        AUTH_ENABLED="false"
+        In config.env file, update
 
-    .. todo::
-        If later you want to enable authentication, please refer this section
+        .. code-block::
+
+            AUTH_ENABLED="false"
+
+        .. todo::
+            If later you want to enable authentication, please refer this section
 
 **4. Update config**
 
@@ -246,48 +254,41 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
 **5. Install Services**
 
-    .. code-block::
+.. code-block::
 
-        python setup.py -m install
+    python setup.py -m install
 
-    You will get a list of service as shown below, choose the services you want to install using comma separated Ids.
+You will get a list of service as shown below, choose the services you want to install using comma separated Ids.
 
-    .. code-block::
+::
 
-        Please choose services you want to install from below list
-            1. Base
-            2. ML Scikit
-            3. ML H2O
-            4. ML Weka
-            5. Image Classification
-            6. Object Detection
-            7. Face Analytics
-            8. Natural Language Processing
+    Please choose services you want to install from below list
+        1. Base
+        2. ML Scikit
+        3. ML H2O
+        4. ML Weka
+        5. Image Classification
+        6. Object Detection
+        7. Face Analytics
+        8. Natural Language Processing
 
-        Note: Image Classification,Object Detection and Face Analytics may take an hour to download.
+    Choose your selection : 5, 8
 
-        Choose your selection : 5, 8(for example)
+.. note::
 
-    You can verify whether installation is successful or not by visiting `Registry service <http://localhost:8761>`__ to check status of containers.
+    Image Classification, Object Detection and Face Analytics may take an hour to download.
+
+You can verify whether installation is successful or not by visiting `Registry service <http://localhost:8761>`__ to check status of containers.
 
 Usage
 ===============
 
-.. note:: Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next section here `installation <pythonclientsdk.html#installation>`_ .
+After OpenDLTK is installed, it can be used via DLTK python client SDK, as shown in below example.
 
-.. tab:: with Auth Enabled
+.. note::
 
-    .. code-block::
+    Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next `section <pythonclientsdk.html#installation>`_ .
 
-        import dltk_ai
-
-        client = dltk_ai.DltkAiClient('86122578-4b01-418d-80cc-049e283d1e2b', base_url='http://localhost:8000')
-
-        text = "The product is very easy to use and has got a really good life expectancy."
-
-        sentiment_analysis_response = client.sentiment_analysis(text)
-
-        print(sentiment_analysis_response.text)
 
 
 .. tab:: with Auth Disabled
@@ -302,14 +303,44 @@ Usage
 
         sentiment_analysis_response = client.sentiment_analysis(text)
 
-        print(sentiment_analysis_response.text)
+        print(sentiment_analysis_response)
 
-.. todo::
-    Please check this `link <http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/toggle_auth.html>`__ to enable/disable authentication.
-    Please check this `link <http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html>`__ to check how to Create user and API Key.
+    .. code-block::
+
+            {
+              "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+            }
+
+
+.. tab:: with Auth Enabled
+
+    .. code-block::
+
+        import dltk_ai
+
+        client = dltk_ai.DltkAiClient('86122578-4b01-418d-80cc-049e283d1e2b', base_url='http://localhost:8000')
+
+        text = "The product is very easy to use and has got a really good life expectancy."
+
+        sentiment_analysis_response = client.sentiment_analysis(text)
+
+        print(sentiment_analysis_response)
+
+    .. code-block::
+
+        {
+          "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+        }
+
+
+.. seealso::
+    1. To enable/disable authentication `link <toggle_auth.html>`__ .
+    2. How to Create user and Generate API Key `link <generateAPIkey.html>`__ .
 
 Stop Services
 ===============
+
+To stop OpenDLTK services, run below commands.
 
 .. tab:: selected services
 
@@ -329,6 +360,8 @@ Stop Services
 
 Uninstall DLTK
 ===============
+
+To uninstall OpenDLTK, run below commands.
 
 .. tab:: selected services
 

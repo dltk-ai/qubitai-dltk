@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -92,16 +93,17 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">openDLTK on single instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/toggle_auth.html">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/ansibleHostConfig.html">Configure Ansible Hosts</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -121,7 +123,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul class="current">
@@ -217,7 +218,7 @@
 <p>Usage: social media monitoring, Brand reputation analysis, etc.</p>
 <dl class="py function">
 <dt id="client.sentiment_analysis">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">sentiment_analysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.sentiment_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">sentiment_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.sentiment_analysis" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -231,7 +232,7 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
+<p><strong>Example</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
@@ -254,7 +255,7 @@
 <p>It identifies and marks a word in a text as corresponding to a particular part of speech, based on its definition and context.</p>
 <dl class="py function">
 <dt id="client.pos_tagger">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">pos_tagger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.pos_tagger" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">pos_tagger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.pos_tagger" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -268,15 +269,15 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
+<p><strong>Example</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;They refuse to permit us to obtain the refuse permit.&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;They refuse to permit us to obtain the refuse permit.&quot;</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pos_tagger_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">pos_tagger</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">pos_tagger_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">pos_tagger</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">pos_tagger_response</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pos_tagger_response</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output</strong></p>
@@ -291,7 +292,7 @@
 <p>It identifies key information (entities) in text. Each token is given an appropriate tag such as Person, Location, Organisation, etc.</p>
 <dl class="py function">
 <dt id="client.ner_tagger">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">ner_tagger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.ner_tagger" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">ner_tagger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.ner_tagger" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -329,7 +330,7 @@
 <p>Usage: Grammar monitoring.</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">client.dependency_parser(text):</span></code></dt>
+<code class="sig-name descname">client.dependency_parser(text):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>text</strong> – text for dependency parser</p>
@@ -369,7 +370,7 @@
 <p>It identifies the important words in a sentence.</p>
 <dl class="py function">
 <dt id="client.tags">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">tags</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.tags" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">tags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.tags" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>text</strong> – text for tags recognition</p>

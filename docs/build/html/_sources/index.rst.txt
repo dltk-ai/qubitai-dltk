@@ -22,6 +22,8 @@ Welcome to Qubitai-dltk's documentation!
    getting_started/pythonClientSDK
    getting_started/toggle_auth
    getting_started/generateAPIkey
+   getting_started/ansibleHostConfig
+   getting_started/configurations
 
 
 .. toctree::

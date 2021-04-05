@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
   
   
@@ -90,16 +91,18 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_single_instance.html">OpenDLTK on single instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html">openDLTK on multiple instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/toggle_auth.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/ansibleHostConfig.html">Configure Ansible Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/configurations.html">Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -119,7 +122,6 @@
 <li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -207,14 +209,41 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#B"><strong>B</strong></a>
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  
 </div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/configurations.html#term-a.-Local"><strong>a. Local</strong></a>
+</li>
+      <li><a href="getting_started/configurations.html#term-a.-Postgres"><strong>a. Postgres</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/configurations.html#term-a.-Registry-Service"><strong>a. Registry Service</strong></a>
+</li>
+      <li><a href="getting_started/openDLTK_multiple_instance.html#term-Ansible-Playbook"><strong>Ansible Playbook</strong></a>
+</li>
+      <li><a href="getting_started/openDLTK_multiple_instance.html#term-Ansible-role"><strong>Ansible role</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/configurations.html#term-b.-AWS-S3"><strong>b. AWS S3</strong></a>
+</li>
+      <li><a href="getting_started/configurations.html#term-b.-Kong"><strong>b. Kong</strong></a>
+</li>
+      <li><a href="getting_started/configurations.html#term-b.-Redis"><strong>b. Redis</strong></a>
+</li>
       <li>
     built-in function
 
@@ -244,6 +273,10 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/configurations.html#term-c.-InfluxDB"><strong>c. InfluxDB</strong></a>
+</li>
+      <li><a href="getting_started/configurations.html#term-c.-Solution-Service"><strong>c. Solution Service</strong></a>
+</li>
       <li>
     client.download()
 
@@ -305,6 +338,22 @@
   </ul></td>
 </tr></table>
 
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/openDLTK_multiple_instance.html#term-Hosts"><strong>Hosts</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/index.html#term-OpenDLTK"><strong>OpenDLTK</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -315,6 +364,10 @@
         <li><a href="machine_learning/preprocessing.html#preprocessor.data_profile">built-in function</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="getting_started/index.html#term-Python-Client-SDK"><strong>Python Client SDK</strong></a>
+</li>
   </ul></td>
 </tr></table>
 

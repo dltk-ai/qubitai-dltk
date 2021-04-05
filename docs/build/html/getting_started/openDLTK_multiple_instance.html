@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>openDLTK on multiple instances &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  <title>OpenDLTK on multiple machines &mdash; Qubitai-dltk v1.0.1 documentation</title>
   
 
   
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -44,7 +45,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DLTK Python SDK Client Installation" href="pythonClientSDK.html" />
-    <link rel="prev" title="openDLTK on single instance" href="openDLTK_single_instance.html" /> 
+    <link rel="prev" title="OpenDLTK on single machine" href="openDLTK_single_instance.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,14 +93,15 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#opendltk-and-python-sdk-client">openDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up openDLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">openDLTK on single instance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">openDLTK on multiple instances</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenDLTK on multiple machines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
@@ -107,7 +109,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansibleHostConfig.html">Configure Ansible Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -127,7 +131,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -194,7 +197,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>openDLTK on multiple instances</li>
+      <li>OpenDLTK on multiple machines</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -213,47 +216,94 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="opendltk-on-multiple-instances">
-<h1>openDLTK on multiple instances<a class="headerlink" href="#opendltk-on-multiple-instances" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="opendltk-on-multiple-machines">
+<h1>OpenDLTK on multiple machines<a class="headerlink" href="#opendltk-on-multiple-machines" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#about" id="id5">About</a></p></li>
-<li><p><a class="reference internal" href="#pre-requisites" id="id6">Pre-requisites</a></p></li>
-<li><p><a class="reference internal" href="#installation" id="id7">Installation</a></p></li>
-<li><p><a class="reference internal" href="#usage" id="id8">Usage</a></p></li>
+<li><p><a class="reference internal" href="#about" id="id6">About</a></p></li>
+<li><p><a class="reference internal" href="#getting-started" id="id7">Getting Started</a></p></li>
+<li><p><a class="reference internal" href="#pre-requisites" id="id8">Pre-requisites</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id9">Installation</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id10">Usage</a></p></li>
 </ul>
 </div>
 <div class="section" id="about">
-<h2><a class="toc-backref" href="#id5">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
-<p>If you wish to deploy openDLTK at scale,</p>
+<h2><a class="toc-backref" href="#id6">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getting-started">
+<h2><a class="toc-backref" href="#id7">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>For simple deployment of OpenDLTK on multiple instances we will use <a class="reference external" href="https://www.ansible.com/">Ansible</a>.</p>
+<p><strong>What is Ansible?</strong></p>
+<p>Ansible is a simple automation tool that automates software application deployment, cloud provisioning, and configuration management.</p>
+<p>It’s a server orchestration tool that helps you to manage and control a large number of server nodes from single places called ‘Control Machines’</p>
+<p>So in this section we will use ansible to deploy openDLTK services on multiple machines as shown in below diagram.</p>
+<img alt="../_images/DLTK_ansible_diagram.jpg" class="align-center" src="../_images/DLTK_ansible_diagram.jpg" />
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Replace above image</p></li>
+<li><p>Add content for configuring Databases</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="pre-requisites">
-<h2><a class="toc-backref" href="#id6">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Docker installed on all the instances</p></li>
-<li><p>Ansible</p></li>
-<li></li>
+<li><p>5-8 ubuntu OS machines</p></li>
+<li><p>Python3 installed on all the machines</p></li>
+<li><p>root/admin privileges</p></li>
 </ol>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id7">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p><strong>1. Clone openDLTK github repository</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">/</span><span class="n">openDLTK</span>
-<span class="n">cd</span> <span class="n">openDLTK</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<h2><a class="toc-backref" href="#id9">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><strong>1. Ansible Installation</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository ppa:ansible/ansible-2.9
+$ sudo apt install ansible
 </pre></div>
 </div>
+<p>For more detailed installation guide, please refer this <a class="reference external" href="https://docs.ansible.com/ansible/2.7/installation_guide/intro_installation.html">link</a></p>
+<p><strong>2. Clone openDLTK github repository</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">/</span><span class="n">openDLTK</span>
+</pre></div>
+</div>
+<p><strong>3. What this repo contains</strong></p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>add directory tree</p>
+</div>
+<p>Ansible playbooks &amp; roles, docker-compose files for openDLTK services &amp; configurations files.</p>
+<p><strong>4. Details about Ansible Files</strong></p>
+<dl class="glossary">
+<dt id="term-Ansible-Playbook">Ansible Playbook</dt><dd><p>These are a set of instructions that you send to run on a single or group of server hosts.</p>
+<p>The Ansible Playbook contains some basic configuration, including hosts and user information of the provision servers, a task list that will be implemented to deploy openDLTK services.</p>
+<p>Ansible playbooks and roles are present in this repository, which can be used directly.</p>
+</dd>
+<dt id="term-Hosts">Hosts</dt><dd><p>It’s an inventory file that contains pieces of information about managed servers by ansible. It allows you to create a group of servers that make you more easier to manage and scale the inventory file itself.</p>
+</dd>
+<dt id="term-Ansible-role">Ansible role</dt><dd><p>It is a set of tasks to configure a host to serve a certain purpose like configuring a service. Roles are defined using YAML files with a predefined directory structure. A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers.</p>
+</dd>
+</dl>
 <p><strong>2. Initialize DLTK setup</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">openDLTK</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
 </pre></div>
 </div>
 <p><strong>3. Updating Configuration</strong></p>
 <blockquote>
-<div><p>Please update config.env file saved at <code class="docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code></p>
+<div><p>Please update config.env file saved at <code class="file docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code></p>
+<p><strong>Ansible Host Configurations</strong></p>
 </div></blockquote>
-<p><strong>3.a Configuring Storage</strong></p>
-<div class="tab-set docutils container">
+<p>To verify whether ansible host &amp; roles are setup correctly, we will use following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span> <span class="o">-</span><span class="n">m</span> <span class="n">ping</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p><em>3.a Configuring Storage</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Local</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;local&quot;</span>
 </pre></div>
@@ -302,8 +352,10 @@
 <p class="admonition-title">Warning</p>
 <p>In case you decide to switch your initial storage from one source to another, the data migrations has to be handled by you.</p>
 </div>
-<p><strong>3.b Configure supported AI Engines Credentials</strong></p>
-<div class="tab-set docutils container">
+</div></blockquote>
+<p><em>3.b Configure supported AI Engines Credentials</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Azure</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AZURE_LANGUAGE_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
 <span class="n">AZURE_BASE_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
@@ -317,14 +369,16 @@
 </div>
 </div>
 </div>
-<p><strong>3.c Authentication</strong></p>
-<div class="tab-set docutils container">
+</div></blockquote>
+<p><em>3.c Authentication</em></p>
+<blockquote>
+<div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Enable Authentication</label><div class="tab-content docutils container">
 <p>In config.env file, update</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id1">
+<div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <p>If later you want to disable authentication, please refer this section</p>
 </div>
@@ -334,28 +388,131 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id2">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <p>If later you want to enable authentication, please refer this section</p>
 </div>
 </div>
 </div>
+</div></blockquote>
 <p><strong>4. Update config</strong></p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">update_config</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">update_config</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>5. Install Services</strong></p>
+<blockquote>
+<div><p><strong>Database</strong></p>
+<blockquote>
+<div><div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">Already Existing Postgres</label><div class="tab-content docutils container">
+<ol class="arabic simple">
+<li><p>Please update your existing postgres details in <strong>config.env</strong>, if not already done in configuration step.</p></li>
+</ol>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">Setup Postgres</label><div class="tab-content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># please go to openDLTK directory</span>
+<span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">postgres</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To setup InfluxDB and Redis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">db</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Base Services</strong></p>
+<blockquote>
+<div><p>Base Service will setup Kong, Registry Service (Eureka), Solution Service.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Database and Base are necessary to run below services, so proceed to other service deployment after deploying above two services.</p>
+</div>
+<p><strong>c. Machine Learning</strong></p>
+<blockquote>
+<div><p>ML wrapper installation Steps</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">ML Scikit</label><div class="tab-content docutils container">
+<p>Steps for ML Scikit</p>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">ML H2O</label><div class="tab-content docutils container">
+<p>Steps for ML H2O</p>
+</div>
+<input class="tab-input" id="tab-set--4-input--3" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--3">ML Weka</label><div class="tab-content docutils container">
+<p>Steps for ML Weka</p>
+</div>
+</div>
+</div></blockquote>
+<p><strong>d. Computer Vision</strong></p>
+<blockquote>
+<div><p>For running Computer vision services we will first deploy a wrapper which route the Images, client request to right processor</p>
+<p>To install Computer Vision Wrapper, run below command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">Image Classification</label><div class="tab-content docutils container">
+<p>Image Classification takes Image as an input &amp; return predicted labels as output in JSON format</p>
+<p>To run Image Classification service, run below command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">classification</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more details on Image Classification features, please refer this section</p>
+</div>
+</div>
+<input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">Object Detection</label><div class="tab-content docutils container">
+<p>Object Detection detects Objects in an Image</p>
+<p>To deploy Object Detection service, run below command in ansible control machine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detection</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more details on Object Detection features, please refer this section</p>
+</div>
+</div>
+<input class="tab-input" id="tab-set--5-input--3" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--3">Face Analytics</label><div class="tab-content docutils container">
+<p>This service provide state-of-the-art open source AI models &amp; support to various AI engines to provide face analytics on Images</p>
+<p>To deploy Face Analytics services, run below command in ansible control machine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">face</span><span class="o">-</span><span class="n">analytics</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more details on Face Analytics features, please refer this section</p>
+</div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>e. Natural Language Processing</strong></p>
+<blockquote>
+<div><p>This service provide various NLP features like Name Entity Recognition, Part of Speech and Sentiment Analysis using various open source AI models &amp; supported AI Engines</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">nlp</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more detail on NLP features, please refer this section</p>
+</div>
+</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id8">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next section here <a class="reference external" href="pythonclientsdk.html#installation">installation</a> .</p>
 </div>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">with Auth Enabled</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">with Auth Disabled</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
 
@@ -367,7 +524,7 @@
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">with Auth Disabled</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--6-input--2" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--2">with Auth Enabled</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;86122578-4b01-418d-80cc-049e283d1e2b&#39;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
 
@@ -380,9 +537,12 @@
 </div>
 </div>
 </div>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>Update link of how to create a user &amp; generate API key</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ol class="arabic simple">
+<li><p>To enable/disable authentication <a class="reference external" href="http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/toggle_auth.html">link</a> .</p></li>
+<li><p>How to Create user and Generate API Key <a class="reference external" href="http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html">link</a> .</p></li>
+</ol>
 </div>
 </div>
 </div>
@@ -394,7 +554,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="pythonClientSDK.html" class="btn btn-neutral float-right" title="DLTK Python SDK Client Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="openDLTK_single_instance.html" class="btn btn-neutral float-left" title="openDLTK on single instance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="openDLTK_single_instance.html" class="btn btn-neutral float-left" title="OpenDLTK on single machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
