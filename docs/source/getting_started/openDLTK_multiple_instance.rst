@@ -255,7 +255,6 @@ To verify whether ansible host & roles are setup correctly, we will use followin
         **Machine Learning**
 
 
-
             ML wrapper installation Steps
 
             .. code-block::
@@ -381,3 +380,95 @@ Usage
     2. How to Create user and Generate API Key `link <http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html>`__ .
 
 
+Stop DLTK Services
+======================
+
+    **Natural Language Processing**
+
+        .. code-block::
+
+             sudo ansible-playbook ansible/playbooks/dltk-ai-stop-nlp.yml --extra-vars "folderpath=/home/dltk"
+
+    **Machine Learning**
+
+        .. tab:: ML scikit
+
+            .. code-block::
+
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-scikit.yml --extra-vars "folderpath=/home/dltk"
+
+        .. tab:: ML H2O
+
+            .. code-block::
+
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-h2o.yml --extra-vars "folderpath=/home/dltk"
+
+
+        .. tab:: ML Weka
+
+            .. code-block::
+
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-weka.yml --extra-vars "folderpath=/home/dltk"
+
+        *ML Wrapper*
+
+        .. danger::
+
+            Run Below command to stop **ML-Wrapper** only if all the above ML services (ML Scikit, ML H2O, ML weka) are stopped.
+
+        .. code-block::
+
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-wrapper.yml --extra-vars "folderpath=/home/dltk"
+
+    **Computer Vision**
+
+        .. tab:: Image Classification
+
+            To stop Image Classification service, run below command
+
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-image-classification.yml --extra-vars "folderpath=/home/dltk"
+
+
+
+        .. tab:: Object Detection
+
+
+            To stop Object Detection service, run below command in ansible control machine
+
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-object-detection.yml --extra-vars "folderpath=/home/dltk"
+
+
+        .. tab:: Face Analytics
+
+
+            To stop Face Analytics services, run below command in ansible control machine
+
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-face-analytics.yml --extra-vars "folderpath=/home/dltk"
+
+        *CV-Wrapper*
+
+            To stop CV wrapper, run below command in ansible control machine
+
+            .. danger::
+
+                Run below command only if all the above computer vision services like Image Classification, Object Detection & Face Analytics are stopped.
+
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-wrapper.yml --extra-vars "folderpath=/home/dltk"
+
+    **Base**
+
+        .. danger::
+
+                Run below command only to stop base service only if all the above services are stopped, as uninstalling base will impact all the DLTK services
+
+        .. code-block::
+
+            sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=/home/dltk"

@@ -105,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stop-dltk-services">Stop DLTK Services</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
@@ -226,6 +227,7 @@
 <li><p><a class="reference internal" href="#pre-requisites" id="id8">Pre-requisites</a></p></li>
 <li><p><a class="reference internal" href="#installation" id="id9">Installation</a></p></li>
 <li><p><a class="reference internal" href="#usage" id="id10">Usage</a></p></li>
+<li><p><a class="reference internal" href="#stop-dltk-services" id="id11">Stop DLTK Services</a></p></li>
 </ul>
 </div>
 <div class="section" id="about">
@@ -555,6 +557,89 @@ $ sudo apt install ansible
 <li><p>How to Create user and Generate API Key <a class="reference external" href="http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html">link</a> .</p></li>
 </ol>
 </div>
+</div>
+<div class="section" id="stop-dltk-services">
+<h2><a class="toc-backref" href="#id11">Stop DLTK Services</a><a class="headerlink" href="#stop-dltk-services" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Natural Language Processing</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">nlp</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Machine Learning</strong></p>
+<blockquote>
+<div><div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">ML scikit</label><div class="tab-content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">scikit</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">ML H2O</label><div class="tab-content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">h2o</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--7-input--3" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--3">ML Weka</label><div class="tab-content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">weka</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>ML Wrapper</em></p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Run Below command to stop <strong>ML-Wrapper</strong> only if all the above ML services (ML Scikit, ML H2O, ML weka) are stopped.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Computer Vision</strong></p>
+<blockquote>
+<div><div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">Image Classification</label><div class="tab-content docutils container">
+<p>To stop Image Classification service, run below command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">classification</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--8-input--2" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--2">Object Detection</label><div class="tab-content docutils container">
+<p>To stop Object Detection service, run below command in ansible control machine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detection</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--8-input--3" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--3">Face Analytics</label><div class="tab-content docutils container">
+<p>To stop Face Analytics services, run below command in ansible control machine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">face</span><span class="o">-</span><span class="n">analytics</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>CV-Wrapper</em></p>
+<blockquote>
+<div><p>To stop CV wrapper, run below command in ansible control machine</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Run below command only if all the above computer vision services like Image Classification, Object Detection &amp; Face Analytics are stopped.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">cv</span><span class="o">-</span><span class="n">wrapper</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Base</strong></p>
+<blockquote>
+<div><div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Run below command only to stop base service only if all the above services are stopped, as uninstalling base will impact all the DLTK services</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">ansible</span><span class="o">/</span><span class="n">playbooks</span><span class="o">/</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="nb">vars</span> <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 </div>
 </div>
 
