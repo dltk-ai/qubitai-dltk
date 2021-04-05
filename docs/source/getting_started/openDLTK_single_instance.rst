@@ -22,7 +22,7 @@ Pre-requisites
 
 .. tab:: Mac
 
-    **1. Python3.6** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
+    **1. Python 3.6+** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
 
     **2. Virtual Environment** : To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__
 
@@ -32,7 +32,7 @@ Pre-requisites
 
 .. tab:: Windows
 
-    **1. Python3** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
+    **1. Python 3.6+** : To install python refer this `Python installation guide <https://realpython.com/installing-python/>`__
 
     **2. Virtual Environment** : To install virtual environment refer this `Virtual Environment installation guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands>`__
 
@@ -77,7 +77,7 @@ Installation
 
         git clone https://github.com/dltk-ai/OpenDLTK
         cd OpenDLTK
-        pip install -r requirements.txt
+        sudo pip install -r requirements.txt
 
 **2. Initialize DLTK setup**
 
@@ -247,16 +247,56 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
 **4. Update config**
 
+
+.. tab:: Linux
+
+    .. code-block::
+
+        sudo python setup.py -m update_config
+
+
+.. tab:: Mac
+
+    .. code-block::
+
+        sudo python setup.py -m update_config
+
+.. tab:: Windows
+
     .. code-block::
 
         python setup.py -m update_config
 
-
-**5. Install Services**
+Result would be like:
 
 .. code-block::
 
-    python setup.py -m install
+       Which version you want to install ['1.0', '1.1']
+       Enter your input: 1.0
+
+
+**5. Install Services**
+
+.. tab:: Linux
+
+    .. code-block::
+
+        sudo python setup.py -m install
+
+
+.. tab:: Mac
+
+    .. code-block::
+
+        sudo python setup.py -m install
+
+.. tab:: Windows
+
+    .. code-block::
+
+        python setup.py -m install
+
+
 
 You will get a list of service as shown below, choose the services you want to install using comma separated Ids.
 
@@ -344,16 +384,50 @@ To stop OpenDLTK services, run below commands.
 
 .. tab:: selected services
 
-    .. code-block::
+    .. tab:: Linux
 
-        python setup.py --mode uninstall --partial --remove
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --partial --remove
+
+
+    .. tab:: Mac
+
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --partial --remove
+
+    .. tab:: Windows
+
+        .. code-block::
+
+            python setup.py --mode uninstall --partial --remove
+
+
 
 
 .. tab:: all services
 
-    .. code-block::
+    .. tab:: Linux
 
-        python setup.py --mode uninstall --all --remove
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --all --remove
+
+
+    .. tab:: Mac
+
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --all --remove
+
+    .. tab:: Windows
+
+        .. code-block::
+
+            python setup.py --mode uninstall --all --remove
+
+
 
 .. warning::
     Select services which you want to retain, all other services will be stopped.
@@ -365,13 +439,47 @@ To uninstall OpenDLTK, run below commands.
 
 .. tab:: selected services
 
-    .. code-block::
+    .. tab:: Linux
 
-        python setup.py --mode uninstall --partial --purge
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --partial --purge
+
+
+    .. tab:: Mac
+
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --partial --purge
+
+    .. tab:: Windows
+
+        .. code-block::
+
+            python setup.py --mode uninstall --partial --purge
+
+
 
 .. tab:: all services
 
-    .. code-block::
+    .. tab:: Linux
 
-        python setup.py --mode uninstall --all --purge
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --all --purge
+
+
+    .. tab:: Mac
+
+        .. code-block::
+
+            sudo python setup.py --mode uninstall --all --purge
+
+    .. tab:: Windows
+
+        .. code-block::
+
+            python setup.py --mode uninstall --all --purge
+
+
 
