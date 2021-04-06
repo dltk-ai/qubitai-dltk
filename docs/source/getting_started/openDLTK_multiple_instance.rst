@@ -12,19 +12,13 @@ About
 As these AI models are computationally heavy and require higher RAM, its difficult to run all the services to run on local or single machine,
 So in order to run these services smoothly its recommended to deploy OpenDLTK on multiple machines.
 
+.. seealso::
+    - `OpenDLTK Services <index.html#opendltk-and-python-sdk-client>`__ for more details on services present in OpenDLTK
+
+
 
 Getting Started
 ===============
-
-OpenDLTK architecture diagram
-
-
-.. seealso::
-    1. openDLTK Services : For more details on services present in openDLTK
-
-
-
-
 
 For simple deployment of OpenDLTK on multiple instances we will use `Ansible <https://www.ansible.com/>`__.
 
@@ -131,9 +125,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
 **3. Updating Configuration**
 
-    **Update Config.env**
+    **Update config_multi.env**
 
-        Please update config.env file saved at :file:`/usr/dltk-ai/config.env` by referring to `Configurations Details <configurations.html>`__
+        Please update config_multi.env file saved at :file:`/usr/dltk-ai/config_multi.env` by referring to `Configurations Details <configurations.html>`__
 
     **Ansible Host Configurations**
 
@@ -183,20 +177,20 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
         To verify whether ansible host & roles are setup correctly, we will use following commands
 
 
-        .. code-block::
+        .. code-block:: console
 
-            ansible -m ping all
+            $ ansible -m ping all
 
 
 **4. Update config**
 
-    .. code-block::
+    .. code-block:: console
 
-        sudo python3 setup.py -m update_config
+        $ sudo python3 setup.py -m update_config
 
     .. tip::
 
-        Whenever config.env is changed this command needs to be run, to update those changes.
+        Whenever config_multi.env is changed this command needs to be run, to update those changes.
 
 
 **5. Install Services**
@@ -211,38 +205,43 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             To install docker on all the remote machine, below ansible playbook command can be used. This will install docker on all the remote machines.
 
-            .. code-block::
+            .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=path/to/folder"
 
         **Database**
 
 
-            1. *Postgres Setup*
+            **Postgres Setup**
 
-            .. tab:: Already Existing Postgres
+                If you already have a postgres database then you can skip setting up a new postgres container, the details of existing postgres
+                needs to be updated in :file:`/usr/dltk-ai/config_multi.env` file.
 
-                1. Please update your existing postgres details in :file:`/usr/dltk-ai/config.env`, if not already done in configuration step.
+                But in case you dont have an existing postgres database, you need to setup postgres database.
 
-                2. After Updating :file:`/usr/dltk-ai/config.env` , run ``sudo python3 setup.py -m update_config`` command to update configurations changes.
+                .. tab:: Already Existing Postgres
 
-            .. tab:: Setup Postgres
+                    1. Please update your existing postgres details in :file:`/usr/dltk-ai/config_multi.env`, if not already done in configuration step.
 
-                Run below command to setup postgres container
+                    2. After Updating :file:`/usr/dltk-ai/config_multi.env` , run ``sudo python3 setup.py -m update_config`` command to update configurations changes.
 
-                .. code-block::
+                .. tab:: Setup Postgres
 
-                    # please go to openDLTK directory
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=path/to/folder"
+                    Run below command to setup postgres container
+
+                    .. code-block:: console
+
+                        # please go to openDLTK directory
+                        $ sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=path/to/folder"
 
 
-            2. *InfluxDB and Redis Setup*
+            **InfluxDB and Redis Setup**
 
-            To setup Influxdb and Redis containers on remote machines, run below command.
+                To setup Influxdb and Redis containers on remote machines, run below command.
 
-            .. code-block::
+                .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=path/to/folder"
 
         **Base Services**
 
@@ -250,9 +249,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             Base Service will setup Kong, Registry Service, Solution Service.
 
-            .. code-block::
+            .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=path/to/folder"
 
         .. warning::
 
@@ -302,9 +301,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             To setup Computer Vision Wrapper Service container on remote machine, run below command
 
-            .. code-block::
+            .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=path/to/folder"
 
             Based on your choice to install Image Classification, Object Detection, Face Analytics run below command respectively.
 
@@ -314,9 +313,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 To setup Computer Vision Image Classification Service container on remote machine, run below command
 
-                .. code-block::
+                .. code-block:: console
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                     For more details on Image Classification features, please refer this section
@@ -328,9 +327,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 To deploy Object Detection service, run below command in ansible control machine
 
-                .. code-block::
+                .. code-block:: console
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                         For more details on Object Detection features, please refer this section
@@ -341,9 +340,9 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 To deploy Face Analytics services, run below command in ansible control machine
 
-                .. code-block::
+                .. code-block:: console
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                         For more details on Face Analytics features, please refer this section
@@ -353,13 +352,27 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             This service provide various NLP features like Name Entity Recognition, Part of Speech and Sentiment Analysis using various open source AI models & supported AI Engines
 
-            .. code-block::
+            .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=path/to/folder"
 
             .. seealso::
 
                 For more detail on NLP features, please refer this section
+
+**OpenDLTK Services Status Check**
+
+    All the OpenDLTK Service will register to registry service while starting and also every 30sec update their status.
+    To check whether services installed are correctly started or not, go to http://your_base_ip_address:8761 and check whether your services are registered or not.
+
+    *Expected Output*
+
+    .. image:: images/eureka.png
+        :align: center
+
+
+    As we can see in this example, Machine Learning Service & Machine Learning Weka Service & Solution Service are setup correctly.
+
 
 Usage
 ===============

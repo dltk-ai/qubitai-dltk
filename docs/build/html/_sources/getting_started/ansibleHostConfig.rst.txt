@@ -3,7 +3,6 @@ Configure Ansible Hosts
 -----------------------
 
 
-
 The host file is used to store connections for Anisble playbooks. There are options to define connection parameters:
 
         ``ansible_host`` is the hostname or IP address

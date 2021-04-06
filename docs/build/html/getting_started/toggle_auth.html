@@ -293,6 +293,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <div class="section" id="multiple-machines">
 <h2>Multiple Machines<a class="headerlink" href="#multiple-machines" title="Permalink to this headline">¶</a></h2>
 <blockquote>
+<div><p><strong>Enabling Authentication</strong></p>
+<blockquote>
 <div><p>Please update config.env file saved at <code class="docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code> with following details</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
 
@@ -310,9 +312,27 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup.py -m update_config
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+<p>Run below command to restart the base services with updated configurations which will ensure that only request with valid API key will served.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
 </pre></div>
 </div>
+</div></blockquote>
+<p><strong>Disabling Authentication</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
+
+
+<span class="n">To</span> <span class="n">update</span> <span class="n">configurations</span> <span class="n">changes</span><span class="p">,</span> <span class="n">run</span> <span class="n">below</span> <span class="n">command</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup.py -m update_config
+</pre></div>
+</div>
+<p>Run below command to restart the base services with updated configurations which will disable need of providing a valid API key, so request by any developer will be served by OpenDLTK.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div></blockquote>
 </div>
 </div>

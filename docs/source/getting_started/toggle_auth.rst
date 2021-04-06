@@ -92,28 +92,53 @@ Single Machine
 Multiple Machines
 ------------------
 
-        Please update config.env file saved at ``/usr/dltk-ai/config.env`` with following details
+        **Enabling Authentication**
 
-        .. code-block::
+            Please update config.env file saved at ``/usr/dltk-ai/config.env`` with following details
 
-            AUTH_ENABLED="true"
+            .. code-block::
 
-            # SMTP setup
-            SMTP_HOST="YOUR_SMTP_HOST"
-            SMTP_PORT=587
-            SMTP_USERNAME="YOUR_SMTP_USERNAME"
-            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+                AUTH_ENABLED="true"
 
-            # UI SERVER URL(replace localhost with server IP in case of remote machine)
-            UI_SERVICE_URL="http://dltk-ai-base-host-ipaddress:8082"
+                # SMTP setup
+                SMTP_HOST="YOUR_SMTP_HOST"
+                SMTP_PORT=587
+                SMTP_USERNAME="YOUR_SMTP_USERNAME"
+                SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
+
+                # UI SERVER URL(replace localhost with server IP in case of remote machine)
+                UI_SERVICE_URL="http://dltk-ai-base-host-ipaddress:8082"
 
 
-        To update configurations changes, run below command
+            To update configurations changes, run below command
 
-        .. code-block:: console
+            .. code-block:: console
 
-            $ sudo python3 setup.py -m update_config
+                $ sudo python3 setup.py -m update_config
 
-        .. code-block:: console
+            Run below command to restart the base services with updated configurations which will ensure that only request with valid API key will served.
 
-            $ sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars "folderpath=/home/dltk"
+            .. code-block:: console
+
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars "folderpath=/path/to/dltk"
+
+
+
+        **Disabling Authentication**
+
+            .. code-block::
+
+                AUTH_ENABLED="false"
+
+
+                To update configurations changes, run below command
+
+            .. code-block:: console
+
+                $ sudo python3 setup.py -m update_config
+
+            Run below command to restart the base services with updated configurations which will disable need of providing a valid API key, so request by any developer will be served by OpenDLTK.
+
+            .. code-block:: console
+
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars "folderpath=/path/to/dltk"
