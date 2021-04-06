@@ -9,34 +9,67 @@ OpenDLTK on multiple machines
 About
 =====
 
+As these AI models are computationally heavy and require higher RAM, its difficult to run all the services to run on local or single machine,
+So in order to run these services smoothly its recommended to deploy OpenDLTK on multiple machines.
+
 
 Getting Started
 ===============
+
+OpenDLTK architecture diagram
+
+
+.. seealso::
+    1. openDLTK Services : For more details on services present in openDLTK
+
+
+
+
+
 For simple deployment of OpenDLTK on multiple instances we will use `Ansible <https://www.ansible.com/>`__.
+
+
+.. image:: images/ansible_intro.png
+    :align: right
+    :width: 400
+
 
 **What is Ansible?**
 
 Ansible is a simple automation tool that automates software application deployment, cloud provisioning, and configuration management.
 
-It's a server orchestration tool that helps you to manage and control a large number of server nodes from single places called 'Control Machines'
+It's a server orchestration tool that helps you to manage and control a large number of `remote servers`  from single machine called `Control Machines` where ansible is installed.
 
-So in this section we will use ansible to deploy openDLTK services on multiple machines as shown in below diagram.
 
-.. image:: images/DLTK_ansible_diagram.jpg
+
+    **1. Ansible Playbook**
+        These are a set of instructions that you send to run on a single or group of server hosts.
+
+    **2. Hosts**
+        It's an inventory file that contains pieces of information about managed servers by ansible.
+
+    **3. Ansible role**
+        It is a set of tasks to configure a host to serve a certain purpose like configuring a service.
+
+.. seealso::
+
+    `How Ansible Works? <https://www.ansible.com/overview/how-ansible-works>`__
+
+
+We will use ansible to deploy OpenDLTK services on multiple machines as shown in below diagram.
+
+
+.. image:: images/ansible_install_diagram.png
     :align: center
-
-.. todo::
-
-    1. Replace above image
-    2. Add content for configuring Databases
+    :width: 1000
 
 
 
 Pre-requisites
 ================
-1. 5-8 ubuntu OS machines
-2. Python3 installed on all the machines
-3. root/admin privileges
+- 5 to 8 Servers with 2 vCPUs, 8 GB memory, 30GB Disk Space for each machine
+- Python3 installed on all the machines
+- Root/Admin privileges
 
 Installation
 =============
@@ -44,20 +77,33 @@ Installation
 
 **1. Ansible Installation**
 
-.. code-block::
+.. code-block:: shell-session
 
     $ sudo apt update
     $ sudo apt install software-properties-common
     $ sudo add-apt-repository ppa:ansible/ansible-2.9
     $ sudo apt install ansible
 
+To verify whether ansible installation is successful, run below command
+
+.. code-block:: shell-session
+
+    $ sudo ansible --version
+
+    ansible 2.9.6
+    config file = /etc/ansible/ansible.cfg
+    configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+    ansible python module location = /usr/lib/python3/dist-packages/ansible
+    executable location = /usr/bin/ansible
+    python version = 3.8.5 (default, Jul 28 2020, 12:59:40) [GCC 9.3.0]
+
 For more detailed installation guide, please refer this `link <https://docs.ansible.com/ansible/2.7/installation_guide/intro_installation.html>`__
 
 **2. Clone openDLTK github repository**
 
-.. code-block::
+.. code-block:: console
 
-    git clone https://github.com/dltk-ai/openDLTK
+    $ git clone https://github.com/dltk-ai/openDLTK
 
 
 **3. What this repo contains**
@@ -68,142 +114,79 @@ For more detailed installation guide, please refer this `link <https://docs.ansi
 
 Ansible playbooks & roles, docker-compose files for openDLTK services & configurations files.
 
-**4. Details about Ansible Files**
-
-.. glossary::
-    Ansible Playbook
-        These are a set of instructions that you send to run on a single or group of server hosts.
-
-        The Ansible Playbook contains some basic configuration, including hosts and user information of the provision servers, a task list that will be implemented to deploy openDLTK services.
-
-        Ansible playbooks and roles are present in this repository, which can be used directly.
-
-
-    Hosts
-        It's an inventory file that contains pieces of information about managed servers by ansible. It allows you to create a group of servers that make you more easier to manage and scale the inventory file itself.
-
-    Ansible role
-        It is a set of tasks to configure a host to serve a certain purpose like configuring a service. Roles are defined using YAML files with a predefined directory structure. A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers.
-
-
 
 **2. Initialize DLTK setup**
 
-.. code-block::
+    .. code-block:: console
 
-    cd openDLTK
-    pip install -r requirements.txt
-    sudo python3 setup.py -m init
+        $ cd openDLTK
+
+    Use the following command to install pip for Python 3:
+
+    .. code-block:: console
+
+        $ sudo apt install python3-pip
+        $ sudo pip3 install -r requirements.txt
+        $ sudo python3 setup_init.py -m init
 
 **3. Updating Configuration**
 
-    Please update config.env file saved at :file:`/usr/dltk-ai/config.env`
+    **Update Config.env**
+
+        Please update config.env file saved at :file:`/usr/dltk-ai/config.env` by referring to `Configurations Details <configurations.html>`__
 
     **Ansible Host Configurations**
 
 
-To verify whether ansible host & roles are setup correctly, we will use following commands
+        While installing Ansible a hosts file is generated at ``/etc/ansible/`` path
 
-.. code-block::
-
-    ansible -m ping all
-
-
-
-*3.a Configuring Storage*
-
-    .. tab:: Local
+        Copy below host file into ``/etc/ansible/hosts`` path
 
         .. code-block::
 
-            STORAGE_TYPE="local"
+            [dltk-ai-db-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
 
-    .. tab:: AWS S3
+            [dltk-ai-base-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-wrapper-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-ml-wrapper-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-ml-scikit-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-ml-h2o-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-ml-weka-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-image-processor-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+            [dltk-ai-object-detector-host]
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+
+        Please update ``XX.XX.XX.XX`` with your IP Addresses and ``YOUR_PASSWORD`` for ``root`` user
+
+        .. caution::
+
+            Please don't modify host names like (``dltk-ai-object-detector-host``, ``dltk-ai-db-host``)
+
+
+        Please login to **all** remote machines using ``ssh username@IPaddress`` command
+
+        To verify whether ansible host & roles are setup correctly, we will use following commands
+
 
         .. code-block::
 
-            STORAGE_TYPE="aws"
+            ansible -m ping all
 
-            # Values only for reference, replace with your credentials
-
-            S3_ACCESS_KEY="AKIAVKNVW3O4G2YSG"
-            S3_SECRET_KEY="vrJvyZFGSpOFTtZcsDTZTHwJ88Jw"
-            S3_BUCKET="dltk-ai"
-            S3_REGION="ap-south-1"
-            S3_ENDPOINT="https://s3.ap-south-1.amazonaws.com"
-
-    .. tab:: Google Cloud Storage
-
-        .. code-block::
-
-            STORAGE_TYPE="gcp"
-
-            # Values only for reference, replace with your details
-
-            GCP_SERVICE_ACCOUNT_FILE=dltk-ai.json
-            GCP_PRIVATE_BUCKET="dltk-ai-private"
-            GCP_PUBLIC_BUCKET="dltk-ai-public"
-
-    .. tab:: Digital Ocean
-
-        .. code-block::
-
-            STORAGE_TYPE="do"
-
-            # Values only for reference, replace with your credentials
-
-
-            DO_ENDPOINT="sgp1.digitaloceanspaces.com"
-            DO_ACCESS_KEY="SPZ4OSDVXC35R26"
-            DO_SECRET_KEY="9b7SQmnFNx0vzAHWc5czKW75By01CH4"
-            DO_BUCKET="dltk-ai"
-            DO_REGION="sgp1"
-
-    .. warning::
-        In case you decide to switch your initial storage from one source to another, the data migrations has to be handled by you.
-
-
-*3.b Configure supported AI Engines Credentials*
-
-    .. tab:: Azure
-
-        .. code-block::
-
-            AZURE_LANGUAGE_SUBSCRIPTION_KEY="USER_DEFINED"
-            AZURE_BASE_URL="USER_DEFINED"
-
-
-
-    .. tab:: IBM
-
-        .. code-block::
-
-            IBM_LANGUAGE_URL="USER_DEFINED"
-            IBM_SUBSCRIPTION_KEY="USER_DEFINED"
-
-*3.c Authentication*
-
-    .. tab:: Enable Authentication
-
-        In config.env file, update
-
-        .. code-block::
-
-            AUTH_ENABLED="true"
-
-        .. todo::
-            If later you want to disable authentication, please refer this section
-
-    .. tab:: Disable Authentication
-
-        In config.env file, update
-
-        .. code-block::
-
-            AUTH_ENABLED="false"
-
-        .. todo::
-            If later you want to enable authentication, please refer this section
 
 **4. Update config**
 
@@ -211,42 +194,65 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
         sudo python3 setup.py -m update_config
 
+    .. tip::
+
+        Whenever config.env is changed this command needs to be run, to update those changes.
+
 
 **5. Install Services**
 
+        Please provide ``folderpath`` where you want to install OpenDLTK services on remote machines in all the below commands.
+
+        .. tip::
+
+            Please use same path in all the remote machines
+
         **Docker**
 
-        .. code-block::
+            To install docker on all the remote machine, below ansible playbook command can be used. This will install docker on all the remote machines.
 
-            sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=home/dltk"
+            .. code-block::
+
+                sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=path/to/folder"
 
         **Database**
 
+
+            1. *Postgres Setup*
+
             .. tab:: Already Existing Postgres
 
-                1. Please update your existing postgres details in **config.env**, if not already done in configuration step.
+                1. Please update your existing postgres details in :file:`/usr/dltk-ai/config.env`, if not already done in configuration step.
+
+                2. After Updating :file:`/usr/dltk-ai/config.env` , run ``sudo python3 setup.py -m update_config`` command to update configurations changes.
 
             .. tab:: Setup Postgres
+
+                Run below command to setup postgres container
 
                 .. code-block::
 
                     # please go to openDLTK directory
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=home/dltk"
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=path/to/folder"
 
 
-            To setup InfluxDB and Redis
+            2. *InfluxDB and Redis Setup*
+
+            To setup Influxdb and Redis containers on remote machines, run below command.
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=path/to/folder"
 
         **Base Services**
 
-            Base Service will setup Kong, Registry Service (Eureka), Solution Service.
+            To setup Base Service containers on remote machines, run below command.
+
+            Base Service will setup Kong, Registry Service, Solution Service.
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=path/to/folder"
 
         .. warning::
 
@@ -255,27 +261,38 @@ To verify whether ansible host & roles are setup correctly, we will use followin
         **Machine Learning**
 
 
-            ML wrapper installation Steps
+            To setup ML Wrapper Service container on remote machine, run below command
 
-            .. code-block::
+            .. code-block:: console
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars "folderpath=home/dltk"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars "folderpath=path/to/folder"
+
+            Based on your choice to install ML-Scikit, ML-H2O or ML-weka, run below command respectively.
+
 
             .. tab:: ML Scikit
 
-                .. code-block::
+                To setup ML Scikit Service container on remote machine, run below command
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars "folderpath=home/dltk"
+                .. code-block:: console
+
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars "folderpath=path/to/folder"
 
             .. tab:: ML H2O
 
-                .. code-block::
+                To setup ML H2O Service container on remote machine, run below command
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars "folderpath=home/dltk"
+                .. code-block:: console
+
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars "folderpath=path/to/folder"
 
             .. tab:: ML Weka
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars "folderpath=home/dltk"
+                To setup ML Weka Service container on remote machine, run below command
+
+                .. code-block:: console
+
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars "folderpath=path/to/folder"
 
 
 
@@ -283,22 +300,23 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
             For running Computer vision services we will first deploy a wrapper which route the Images, client request to right processor
 
-            To install Computer Vision Wrapper, run below command
+            To setup Computer Vision Wrapper Service container on remote machine, run below command
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=path/to/folder"
 
+            Based on your choice to install Image Classification, Object Detection, Face Analytics run below command respectively.
 
             .. tab:: Image Classification
 
                 Image Classification takes Image as an input & return predicted labels as output in JSON format
 
-                To run Image Classification service, run below command
+                To setup Computer Vision Image Classification Service container on remote machine, run below command
 
                 .. code-block::
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=home/dltk"
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                     For more details on Image Classification features, please refer this section
@@ -312,7 +330,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
                 .. code-block::
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=home/dltk"
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                         For more details on Object Detection features, please refer this section
@@ -325,7 +343,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
                 .. code-block::
 
-                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=home/dltk"
+                    sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=path/to/folder"
 
                 .. seealso::
                         For more details on Face Analytics features, please refer this section
@@ -337,7 +355,7 @@ To verify whether ansible host & roles are setup correctly, we will use followin
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=path/to/folder"
 
             .. seealso::
 
@@ -412,7 +430,7 @@ Stop DLTK Services
 
         *ML Wrapper*
 
-        .. danger::
+        .. caution::
 
             Run Below command to stop **ML-Wrapper** only if all the above ML services (ML Scikit, ML H2O, ML weka) are stopped.
 
@@ -455,7 +473,7 @@ Stop DLTK Services
 
             To stop CV wrapper, run below command in ansible control machine
 
-            .. danger::
+            .. caution::
 
                 Run below command only if all the above computer vision services like Image Classification, Object Detection & Face Analytics are stopped.
 
@@ -465,7 +483,7 @@ Stop DLTK Services
 
     **Base**
 
-        .. danger::
+        .. caution::
 
                 Run below command only to stop base service only if all the above services are stopped, as uninstalling base will impact all the DLTK services
 

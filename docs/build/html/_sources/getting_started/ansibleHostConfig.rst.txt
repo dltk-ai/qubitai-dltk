@@ -4,40 +4,19 @@ Configure Ansible Hosts
 
 
 
-.. tab:: Host File
+The host file is used to store connections for Anisble playbooks. There are options to define connection parameters:
 
-    .. code-block::
+        ``ansible_host`` is the hostname or IP address
 
-        [dltk-ai-postgres-host]
-        12.1.1.8 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
+        ``ansible_port`` is the port the machine uses for SSH
 
-        [dltk-ai-db-host]
-        12.1.1.8 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
+        ``ansible_user`` is the remote user to connect as
 
-        [dltk-ai-base-host]
-        12.1.1.9 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
+        ``ansible_ssh_pass`` if using a password to SSH
 
-        [dltk-ai-wrapper-host]
-        12.1.1.10 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
+        ``ansible_ssh_private_key_file`` if you need to use multiple keys that are specific to hosts
 
-        [dltk-ai-ml-wrapper-host]
-        12.1.1.11 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
-        [dltk-ai-ml-scikit-host]
-        12.1.1.11 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
-        [dltk-ai-ml-h2o-host]
-        12.1.1.11 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
-        [dltk-ai-ml-weka-host]
-        12.1.1.11 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
-        [dltk-ai-image-processor-host]
-        12.1.1.12 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
-        [dltk-ai-object-detector-host]
-        12.1.1.13 ansible_user=dltk ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa
-
+        These are the most commonly used options. More can be found in the Ansible official documentation.
 
 .. tab:: Various Host File Configurations
 

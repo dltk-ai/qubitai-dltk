@@ -102,7 +102,8 @@
 <li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#enable-authentication">Enable Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#single-machine">Single Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-machines">Multiple Machines</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
@@ -214,10 +215,14 @@
             
   <div class="section" id="authentication">
 <h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="enable-authentication">
-<h2>Enable Authentication<a class="headerlink" href="#enable-authentication" title="Permalink to this headline">¶</a></h2>
+<p>If you have group of developers using OpenDLTK, its desirable to enable Authentication. So each developer can register themselves
+to the OpenDLTK Portal by providing their Basic Details like Username &amp; EmailID.</p>
+<p>Developers can Sign Up &amp; Create Project using <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">Management</span> <span class="pre">UI</span></code>. as shown in <a class="reference external" href="generateAPIkey.html">User Registration and API key generation page</a></p>
+<div class="section" id="single-machine">
+<h2>Single Machine<a class="headerlink" href="#single-machine" title="Permalink to this headline">¶</a></h2>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Single Instance</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Enable Authentication</label><div class="tab-content docutils container">
+<p>To Enable Authentication</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Linux</label><div class="tab-content docutils container">
 <p>Please update config.env file saved at <code class="docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code></p>
@@ -280,12 +285,35 @@
 </div>
 </div>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Multiple Instances</label><div class="tab-content docutils container">
-<p>Please update config.env file saved at <code class="docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code></p>
-<p>1. update <code class="docutils literal notranslate"><span class="pre">AUTH_ENABLED=&quot;true&quot;</span></code>
-2.</p>
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Disable Authentication</label><div class="tab-content docutils container">
+<p>To Disable Authentication</p>
 </div>
 </div>
+</div>
+<div class="section" id="multiple-machines">
+<h2>Multiple Machines<a class="headerlink" href="#multiple-machines" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Please update config.env file saved at <code class="docutils literal notranslate"><span class="pre">/usr/dltk-ai/config.env</span></code> with following details</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+
+<span class="c1"># SMTP setup</span>
+<span class="n">SMTP_HOST</span><span class="o">=</span><span class="s2">&quot;YOUR_SMTP_HOST&quot;</span>
+<span class="n">SMTP_PORT</span><span class="o">=</span><span class="mi">587</span>
+<span class="n">SMTP_USERNAME</span><span class="o">=</span><span class="s2">&quot;YOUR_SMTP_USERNAME&quot;</span>
+<span class="n">SMTP_PASSWORD</span><span class="o">=</span><span class="s2">&quot;YOUR_SMTP_USER_PASSWORD&quot;</span>
+
+<span class="c1"># UI SERVER URL(replace localhost with server IP in case of remote machine)</span>
+<span class="n">UI_SERVICE_URL</span><span class="o">=</span><span class="s2">&quot;http://dltk-ai-base-host-ipaddress:8082&quot;</span>
+</pre></div>
+</div>
+<p>To update configurations changes, run below command</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup.py -m update_config
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/home/dltk&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 

@@ -211,41 +211,17 @@
             
   <div class="section" id="configure-ansible-hosts">
 <h1>Configure Ansible Hosts<a class="headerlink" href="#configure-ansible-hosts" title="Permalink to this headline">¶</a></h1>
+<p>The host file is used to store connections for Anisble playbooks. There are options to define connection parameters:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ansible_host</span></code> is the hostname or IP address</p>
+<p><code class="docutils literal notranslate"><span class="pre">ansible_port</span></code> is the port the machine uses for SSH</p>
+<p><code class="docutils literal notranslate"><span class="pre">ansible_user</span></code> is the remote user to connect as</p>
+<p><code class="docutils literal notranslate"><span class="pre">ansible_ssh_pass</span></code> if using a password to SSH</p>
+<p><code class="docutils literal notranslate"><span class="pre">ansible_ssh_private_key_file</span></code> if you need to use multiple keys that are specific to hosts</p>
+<p>These are the most commonly used options. More can be found in the Ansible official documentation.</p>
+</div></blockquote>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Host File</label><div class="tab-content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.8</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.8</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.9</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">wrapper</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.10</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">wrapper</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.11</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">scikit</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.11</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">h2o</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.11</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">weka</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.11</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">processor</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.12</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detector</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="mf">12.1</span><span class="o">.</span><span class="mf">1.13</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dltk</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
-</pre></div>
-</div>
-</div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Various Host File Configurations</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Various Host File Configurations</label><div class="tab-content docutils container">
 <ol class="arabic simple">
 <li><p><strong>Without SSH key</strong></p></li>
 <li><p><strong>With SSH key and without root password</strong></p></li>
