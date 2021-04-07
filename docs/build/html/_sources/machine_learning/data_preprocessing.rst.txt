@@ -57,9 +57,9 @@ Function for performing Exploratory Data Analysis on given dataset.
 
 *Supported Libraries*
 
-    1.Pandas-Profiling
-    2.AutoViz
-    3.DTale
+    1. Pandas-Profiling
+    2. AutoViz
+    3. DTale
 
 
 
