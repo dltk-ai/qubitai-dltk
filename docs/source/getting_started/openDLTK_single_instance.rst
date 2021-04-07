@@ -443,14 +443,14 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --partial --purge
+            sudo python3 setup.py --mode uninstall --partial --purge
 
 
     .. tab:: Mac
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --partial --purge
+            sudo python3 setup.py --mode uninstall --partial --purge
 
     .. tab:: Windows
 
@@ -466,14 +466,14 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --all --purge
+            sudo python3 setup.py --mode uninstall --all --purge
 
 
     .. tab:: Mac
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --all --purge
+            sudo python3 setup.py --mode uninstall --all --purge
 
     .. tab:: Windows
 
