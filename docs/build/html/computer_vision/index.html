@@ -210,8 +210,11 @@
 </div>
 <div class="section" id="image-classification">
 <h1>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h1>
-<p>Classifies an image according to its visual content.</p>
-<p>Usage: Identifying the category of the image, Image organisation, etc,</p>
+<blockquote>
+<div><p>Image Classification is a fundamental computer vision task which attempts to comprehend an entire image as a whole.
+It tries to classify an image into various classes the model is trained for.</p>
+<p>This feature uses various open source models present which are included in OpenDLTK for classifying an image based on its visual content.
+Also other proprietary AI engines like Azure and IBM can also be used using same function, as shown in below code.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -263,9 +266,6 @@
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
 <li><p><strong>top_n</strong> – If True, uses dlib for face analyticsget top n predictions</p></li>
-<li><p><strong>tensorflow</strong> – If True, uses tensorflow for image classification</p></li>
-<li><p><strong>azure</strong> – If True, returns azure results of image classification on given image</p></li>
-<li><p><strong>ibm</strong> – If True, uses mtcnn for face analyticsif True, returns ibm results of image classification on given image</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
@@ -299,10 +299,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="object-detection">
 <h1>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
-<p>Identifies and locates objects in an Image.</p>
+<blockquote>
+<div><p>Identifies and locates objects in an Image.</p>
 <p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
@@ -351,8 +353,6 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>tensorflow</strong> – If True, uses tensorflow for object detection</p></li>
-<li><p><strong>azure</strong> – If True, returns azure results of object detection on given image</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
 </ul>
 </dd>
@@ -362,8 +362,9 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
@@ -373,6 +374,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p><strong>Input</strong></p>
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"><img alt="sample-object-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg" style="height: 200px;" /></a>
 <p><strong>Output</strong></p>
@@ -385,10 +387,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="face-detection">
 <h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h1>
-<p>Analyses an individual’s face in an image.</p>
+<blockquote>
+<div><p>Analyses an individual’s face in an image.</p>
 <p>Usage: Automated identity verification.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
@@ -483,6 +487,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 
 

@@ -63,7 +63,10 @@ OpenDLTK
                 This microservice receives images provided by user and route to right service based on the feature requested by them.
 
             b. Image Classification
-                This microservice classi
+                This microservice classify images into various classes using pretrained model and also using supported AI Engines.
+
+            c. Object Detection
+                This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
 
 
         .. seealso::
