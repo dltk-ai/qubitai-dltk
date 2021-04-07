@@ -9,7 +9,7 @@ OpenDLTK on multiple machines
 About
 =====
 
-As these AI models are computationally heavy and require higher RAM, its difficult to run all the services to run on local or single machine,
+As these AI models are computationally heavy and require higher compute power, its difficult to run all the services to run on local or single machine,
 So in order to run these services smoothly its recommended to deploy OpenDLTK on multiple machines.
 
 .. seealso::
@@ -167,12 +167,17 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
         $ cd openDLTK
 
-    Use the following command to install pip for Python 3:
+    Use the following command to install pip for Python3 and install the necessary packages required for installing OpenDLTK installer.
 
     .. code-block:: console
 
         $ sudo apt install python3-pip
         $ sudo pip3 install -r requirements.txt
+
+    Run below command to initialize OpenDLTK installation, this will create a config file at :file:`/usr/dltk-ai/config_multi.env` which is required to manage all the configurations required for installation.
+
+    .. code-block::
+
         $ sudo python3 setup_init.py -m init
 
 **3. Updating Configuration**
@@ -214,14 +219,14 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
             [dltk-ai-object-detector-host]
             XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
-        Please update ``XX.XX.XX.XX`` with your IP Addresses and YOUR_PASSWORD for ``root`` user
+        Please update ``XX.XX.XX.XX`` with your IP Addresses and ``YOUR_PASSWORD`` for ``root`` user
 
         .. caution::
 
             Please don't modify host names like (``dltk-ai-object-detector-host``, ``dltk-ai-db-host``)
 
 
-        Please login to **all** remote machines using ``ssh username@IPaddress`` command
+        Please login to **all** remote machines using ``ssh username@IPaddress`` command from ansible machine
 
         To verify whether ansible host & roles are setup correctly, we will use following commands
 
@@ -257,6 +262,10 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
             .. code-block:: console
 
                 $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=/path/to/folder"
+
+            .. tip::
+
+                In case you get issues while installing docker,
 
         **Database**
 

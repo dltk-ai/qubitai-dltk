@@ -1,4 +1,4 @@
-.. __OpenDLTK-setup
+.. _openDLTK-setup:
 
 *******************
 Setting Up OpenDLTK

@@ -232,7 +232,7 @@
 </div>
 <div class="section" id="about">
 <h2><a class="toc-backref" href="#id2">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
-<p>As these AI models are computationally heavy and require higher RAM, its difficult to run all the services to run on local or single machine,
+<p>As these AI models are computationally heavy and require higher compute power, its difficult to run all the services to run on local or single machine,
 So in order to run these services smoothly its recommended to deploy OpenDLTK on multiple machines.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -359,10 +359,13 @@ So in order to run these services smoothly its recommended to deploy OpenDLTK on
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> openDLTK
 </pre></div>
 </div>
-<p>Use the following command to install pip for Python 3:</p>
+<p>Use the following command to install pip for Python3 and install the necessary packages required for installing OpenDLTK installer.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt install python3-pip
 <span class="gp">$</span> sudo pip3 install -r requirements.txt
-<span class="gp">$</span> sudo python3 setup_init.py -m init
+</pre></div>
+</div>
+<p>Run below command to initialize OpenDLTK installation, this will create a config file at <code class="file docutils literal notranslate"><span class="pre">/usr/dltk-ai/config_multi.env</span></code> which is required to manage all the configurations required for installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo python3 setup_init.py -m init
 </pre></div>
 </div>
 </div></blockquote>
@@ -403,12 +406,12 @@ In case, machines which are configured with different authentication method like
 <span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
 </pre></div>
 </div>
-<p>Please update <code class="docutils literal notranslate"><span class="pre">XX.XX.XX.XX</span></code> with your IP Addresses and YOUR_PASSWORD for <code class="docutils literal notranslate"><span class="pre">root</span></code> user</p>
+<p>Please update <code class="docutils literal notranslate"><span class="pre">XX.XX.XX.XX</span></code> with your IP Addresses and <code class="docutils literal notranslate"><span class="pre">YOUR_PASSWORD</span></code> for <code class="docutils literal notranslate"><span class="pre">root</span></code> user</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Please don’t modify host names like (<code class="docutils literal notranslate"><span class="pre">dltk-ai-object-detector-host</span></code>, <code class="docutils literal notranslate"><span class="pre">dltk-ai-db-host</span></code>)</p>
 </div>
-<p>Please login to <strong>all</strong> remote machines using <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;IPaddress</span></code> command</p>
+<p>Please login to <strong>all</strong> remote machines using <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;IPaddress</span></code> command from ansible machine</p>
 <p>To verify whether ansible host &amp; roles are setup correctly, we will use following commands</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible -m ping all
 </pre></div>
@@ -438,6 +441,10 @@ In case, machines which are configured with different authentication method like
 <div><p>To install docker on all the remote machine, below ansible playbook command can be used. This will install docker on all the remote machines.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In case you get issues while installing docker,</p>
 </div>
 </div></blockquote>
 <p><strong>Database</strong></p>

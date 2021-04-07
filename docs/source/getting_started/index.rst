@@ -55,13 +55,24 @@ OpenDLTK
 
             d. ML Weka
 
-        NLP
+        Natural Language Processing
+            This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
+
+        Computer Vision
+            a. CV Wrapper
+                This microservice receives images provided by user and route to right service based on the feature requested by them.
+
+            b. Image Classification
+                This microservice classi
 
 
         .. seealso::
-            1. :ref:`OpenDLTK Setup Guide <OpenDLTK-setup>`
-            2. OpenDLTK docker Hub
-            3. OpenDLTK github
+
+            For more details on OpenDLTK you can refer following documentation
+
+            - :ref:`OpenDLTK Setup Guide <openDLTK-setup>`
+            - `OpenDLTK docker Hub <https://hub.docker.com/repositories>`__
+            - `OpenDLTK github <https://github.com/dltk-ai/openDLTK>`__
 
 Python Client SDK
 =================
