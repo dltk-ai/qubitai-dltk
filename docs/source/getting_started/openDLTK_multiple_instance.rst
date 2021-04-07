@@ -205,16 +205,7 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
             [dltk-ai-wrapper-host]
             XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
-            [dltk-ai-ml-wrapper-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
-
-            [dltk-ai-ml-scikit-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
-
-            [dltk-ai-ml-h2o-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
-
-            [dltk-ai-ml-weka-host]
+            [dltk-ai-ml-host]
             XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-image-processor-host]

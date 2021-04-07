@@ -406,7 +406,7 @@ Stop Services
 
 To stop OpenDLTK services, run below commands.
 
-.. tab:: selected services
+**Selected services**
 
     .. tab:: Linux
 
@@ -446,7 +446,7 @@ To stop OpenDLTK services, run below commands.
 
         Choose your selection : 1(example)
 
-.. tab:: all services
+**All services**
 
     .. tab:: Linux
 
@@ -477,7 +477,7 @@ Uninstall DLTK
 
 To uninstall OpenDLTK, run below commands.
 
-.. tab:: selected services
+**Selected services**
 
     .. tab:: Linux
 
@@ -498,9 +498,10 @@ To uninstall OpenDLTK, run below commands.
 
             python setup.py --mode uninstall --partial --purge
 
-    You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.
+    You will get a list of service as shown below, choose the services you want to ``RETAIN`` using comma separated Ids.
 
     .. code-block::
+        :emphasize-lines: 1
 
         Please choose services you want to RETAIN, other than those all services will be UNINSTALLED
 
@@ -515,11 +516,11 @@ To uninstall OpenDLTK, run below commands.
 
         Note: Image Classification,Object Detection and Face Analytics may take an hour to download.
 
-        Choose your selection : 1(example)
+        Choose your selection : 3, 5
 
 
 
-.. tab:: all services
+**All services**
 
     .. tab:: Linux
 

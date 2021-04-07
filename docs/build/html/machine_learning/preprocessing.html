@@ -225,17 +225,17 @@
 <p>Function for reading data from csv or excel to dataframe.</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">preprocessor.read_data(file_name,header=0,names=None,index_col=None,usecols=None,</span></code></dt>
+<code class="sig-name descname">preprocessor.read_data(file_name,header=0,names=None,index_col=None,usecols=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">squeeze=False,mangle_dupe_cols=True,dtype=None,engine=None,</span></code></dt>
+<code class="sig-name descname">squeeze=False,mangle_dupe_cols=True,dtype=None,engine=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">converters=None,true_values=None,false_values=None,skiprows=None,</span></code></dt>
+<code class="sig-name descname">converters=None,true_values=None,false_values=None,skiprows=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">skipfooter=0,nrows=None,na_values=None,keep_default_na=True,</span></code></dt>
+<code class="sig-name descname">skipfooter=0,nrows=None,na_values=None,keep_default_na=True,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">na_filter=True,verbose=False,parse_dates=False,date_parser=None,</span></code></dt>
+<code class="sig-name descname">na_filter=True,verbose=False,parse_dates=False,date_parser=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">thousands=None,comment=None)</span></code></dt>
+<code class="sig-name descname">thousands=None,comment=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -286,7 +286,7 @@
 <p>Information to describe the statistics of variables in the data.</p>
 <dl class="py function">
 <dt id="preprocessor.data_profile">
-<code class="sig-prename descclassname"><span class="pre">preprocessor.</span></code><code class="sig-name descname"><span class="pre">data_profile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocessor.data_profile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">preprocessor.</code><code class="sig-name descname">data_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocessor.data_profile" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>dataframe</strong> – dataframe</p>
@@ -311,7 +311,7 @@
 <p>Function to handle missing values by replacing them with a statistic or user specified value or methods such as back fill and front fill.</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">preprocessor.treat_missing_data(dataframe,</span> <span class="pre">column,</span> <span class="pre">**kwargs):</span></code></dt>
+<code class="sig-name descname">preprocessor.treat_missing_data(dataframe, column, **kwargs):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -354,7 +354,7 @@ For categorical variables, most repeated value is default value for filling miss
 <p>Function to handle outliers in the data by either removing them or replacing them with a specific value (user specified value or statistic)</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">preprocessor.treat_outliers(dataframe,</span> <span class="pre">column,</span> <span class="pre">**kwargs):</span></code></dt>
+<code class="sig-name descname">preprocessor.treat_outliers(dataframe, column, **kwargs):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -392,17 +392,17 @@ For categorical variables, most repeated value is default value for filling miss
 <p>New features created based on existing columns using methods such as binning, one-hot-encoding and group by transform.</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">preprocessor.feature_creation(dataframe,</span> <span class="pre">feature_method,</span> <span class="pre">binning_column=None,</span> <span class="pre">bins=10,</span></code></dt>
+<code class="sig-name descname">preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">binning_right=True,</span> <span class="pre">binning_labels=None,</span></code></dt>
+<code class="sig-name descname">binning_right=True, binning_labels=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">binning_retbins=False,</span> <span class="pre">binning_precision=3,</span> <span class="pre">binning_include_lowest=False,</span></code></dt>
+<code class="sig-name descname">binning_retbins=False, binning_precision=3, binning_include_lowest=False,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">binning_duplicates='raise',</span> <span class="pre">binning_ordered=True,</span> <span class="pre">dummies_prefix=None,</span> <span class="pre">dummies_prefix_sep='_',</span></code></dt>
+<code class="sig-name descname">binning_duplicates='raise', binning_ordered=True, dummies_prefix=None, dummies_prefix_sep='_',</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">dummies_dummy_na=False,</span> <span class="pre">dummies_column=None,</span> <span class="pre">dummies_sparse=False,</span> <span class="pre">dummies_drop_first=False,</span></code></dt>
+<code class="sig-name descname">dummies_dummy_na=False, dummies_column=None, dummies_sparse=False, dummies_drop_first=False,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">groupby_column=None,</span> <span class="pre">groupby_transform_column=None,</span> <span class="pre">groupby_transform_metric='mean')</span></code></dt>
+<code class="sig-name descname">groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean')</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -470,11 +470,11 @@ For categorical variables, most repeated value is default value for filling miss
 <p>Transforms data from one format to another</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">preprocessor.feature_creation(dataframe,</span> <span class="pre">transform_method,</span> <span class="pre">pivot_index=None,</span> <span class="pre">pivot_columns=None,</span></code></dt>
+<code class="sig-name descname">preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">pivot_values=None,</span> <span class="pre">melt_id_vars=None,</span> <span class="pre">melt_value_vars=None,</span></code></dt>
+<code class="sig-name descname">pivot_values=None, melt_id_vars=None, melt_value_vars=None,</code></dt>
 <dt>
-<code class="sig-name descname"><span class="pre">crosstab_columns=None,</span> <span class="pre">crosstab_rows=None)</span></code></dt>
+<code class="sig-name descname">crosstab_columns=None, crosstab_rows=None)</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

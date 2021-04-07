@@ -35,16 +35,7 @@ Ansible Host File Configuration for Machines with Private Key
         [dltk-ai-wrapper-host]
         XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
-        [dltk-ai-ml-wrapper-host]
-        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
-
-        [dltk-ai-ml-scikit-host]
-        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
-
-        [dltk-ai-ml-h2o-host]
-        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
-
-        [dltk-ai-ml-weka-host]
+        [dltk-ai-ml-host]
         XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
         [dltk-ai-image-processor-host]

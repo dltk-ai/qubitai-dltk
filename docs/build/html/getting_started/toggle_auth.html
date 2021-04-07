@@ -264,8 +264,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <span class="n">UI_SERVICE_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8082&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python3 setup.py -m update_config
-<span class="gp">$ </span>sudo python3 setup.py --mode auth --auth True
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup.py -m update_config
+<span class="gp">$</span> sudo python3 setup.py --mode auth --auth True
 </pre></div>
 </div>
 </div>
@@ -283,8 +283,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <span class="n">UI_SERVICE_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8082&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python3 setup.py -m update_config
-<span class="gp">$ </span>sudo python3 setup.py --mode auth --auth True
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup.py -m update_config
+<span class="gp">$</span> sudo python3 setup.py --mode auth --auth True
 </pre></div>
 </div>
 </div>
@@ -302,8 +302,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <span class="n">UI_SERVICE_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8082&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python setup.py -m update_config
-<span class="gp">$ </span>python setup.py --mode auth --auth True
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py -m update_config
+<span class="gp">$</span> python setup.py --mode auth --auth True
 </pre></div>
 </div>
 </div>
@@ -320,8 +320,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python setup.py -m update_config
-<span class="gp">$ </span>sudo python setup.py --mode auth --auth False
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python setup.py -m update_config
+<span class="gp">$</span> sudo python setup.py --mode auth --auth False
 </pre></div>
 </div>
 </div>
@@ -330,8 +330,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python setup.py -m update_config
-<span class="gp">$ </span>sudo python setup.py --mode auth --auth False
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python setup.py -m update_config
+<span class="gp">$</span> sudo python setup.py --mode auth --auth False
 </pre></div>
 </div>
 </div>
@@ -340,8 +340,8 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python setup.py -m update_config
-<span class="gp">$ </span>python setup.py --mode auth --auth False
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py -m update_config
+<span class="gp">$</span> python setup.py --mode auth --auth False
 </pre></div>
 </div>
 </div>
@@ -368,11 +368,11 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 </pre></div>
 </div>
 <p>To update configurations changes, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python3 setup.py -m update_config
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup_init.py -m update_config
 </pre></div>
 </div>
 <p>Run below command to restart the base services with updated configurations which will ensure that only request with valid API key will served.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -385,11 +385,11 @@ to the OpenDLTK Portal by providing their Basic Details like Username &amp; Emai
 </pre></div>
 </div>
 <p>To update configurations changes, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python3 setup.py -m update_config
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup_init.py -m update_config
 </pre></div>
 </div>
 <p>Run below command to restart the base services with updated configurations which will disable need of providing a valid API key, so request by any developer will be served by OpenDLTK.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-enable-auth.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/dltk&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>

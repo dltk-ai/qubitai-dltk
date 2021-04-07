@@ -21,7 +21,7 @@ Usage: social media monitoring, Brand reputation analysis, etc.
 
 **Example**
 
-.. code-block::
+.. code-block:: python
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -56,7 +56,7 @@ It identifies and marks a word in a text as corresponding to a particular part o
 
 **Example**
 
-.. code-block::
+.. code-block:: python
 
     import dltk_ai
     client = dltk_ai.DltkAiClient('YOUR_API_KEY')
@@ -89,16 +89,18 @@ It identifies key information (entities) in text. Each token is given an appropr
    :param sources: algorithm to use - azure/ibm_watson/spacy
    :rtype: A json object with Entities identified in the given text.
 
-**Example**::
+**Example**
 
-    import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+    .. code-block:: python
 
-    text = "John has moved to California recently."
+        import dltk_ai
+        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    ner_tagger_response = client.ner_tagger(text)
+        text = "John has moved to California recently."
 
-    print(ner_tagger_response.text)
+        ner_tagger_response = client.ner_tagger(text)
+
+        print(ner_tagger_response)
 
 **Output**
 
@@ -122,30 +124,32 @@ Usage: Grammar monitoring.
    :param text: text for dependency parser
    :rtype: A json object with Entities identified in the given text.
 
-**Example**::
+**Example**
 
-    import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+    .. code-block:: python
 
-    text = "And now for something completely different."
+        import dltk_ai
+        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    dependency_parser_response = client.dependency_parser(text)
+        text = "And now for something completely different."
 
-    print(dependency_parser_response)
+        dependency_parser_response = client.dependency_parser(text)
+
+        print(dependency_parser_response)
 
 **Output**
 
-.. code-block:: JSON
+    .. code-block:: JSON
 
-    {
-     'And': {'dep': 'cc', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
-     'now': {'dep': 'advmod', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
-     'for': {'dep': 'ROOT','headText': 'for', 'headPOS': 'ADP', 'children': ['And', 'now', 'something', '.']},
-     'something': {'dep': 'pobj', 'headText': 'for', 'headPOS': 'ADP', 'children': ['different']},
-     'completely': {'dep': 'advmod', 'headText': 'different', 'headPOS': 'ADJ', 'children': []},
-     'different': {'dep': 'amod','headText': 'something', 'headPOS': 'NOUN', 'children': ['completely']},
-     '.': {'dep': 'punct', 'headText': 'for', 'headPOS': 'ADP', 'children': []}
-     }
+        {
+         'And': {'dep': 'cc', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
+         'now': {'dep': 'advmod', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
+         'for': {'dep': 'ROOT','headText': 'for', 'headPOS': 'ADP', 'children': ['And', 'now', 'something', '.']},
+         'something': {'dep': 'pobj', 'headText': 'for', 'headPOS': 'ADP', 'children': ['different']},
+         'completely': {'dep': 'advmod', 'headText': 'different', 'headPOS': 'ADJ', 'children': []},
+         'different': {'dep': 'amod','headText': 'something', 'headPOS': 'NOUN', 'children': ['completely']},
+         '.': {'dep': 'punct', 'headText': 'for', 'headPOS': 'ADP', 'children': []}
+         }
 
 
 ****************
@@ -159,22 +163,25 @@ It identifies the important words in a sentence.
    :param text: text for tags recognition
    :rtype: A json object with Tags identified in the given text.
 
-**Example**::
+**Example**
 
-    import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+    .. code-block:: python
+        :linenos:
 
-    text = "Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit full-body look.."
+        import dltk_ai
+        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
 
-    tags_response = client.tags(text)
+        text = "Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit full-body look.."
 
-    print(tags_response.text)
+        tags_response = client.tags(text)
+
+        print(tags_response)
 
 **Output**
 
-.. code-block:: JSON
+    .. code-block:: JSON
 
-    {
-      "rake": {"tags": ["elon musk", "shared", "photo", "spacesuit designed", "spacex", "image shared", "design", "feature", "spacesuit full", "body"]}
-    }
+        {
+          "rake": {"tags": ["elon musk", "shared", "photo", "spacesuit designed", "spacex", "image shared", "design", "feature", "spacesuit full", "body"]}
+        }
 

@@ -4,72 +4,72 @@ Configurations
 Database Configuration
 -----------------------
 
-.. glossary::
-    a. Postgres
+    .. glossary::
+        a. Postgres
 
-        Postgres is used for saving output of various services. We can deploy postgres or use an existing postgres DB.
+            Postgres is used for saving output of various services. We can deploy postgres or use an existing postgres DB.
 
-        +-------------------+-----------------------------------------------+
-        | Parameter         |                Description                    |
-        +===================+===============================================+
-        | *SQL_USER*        | User Name for postgres database               |
-        +-------------------+-----------------------------------------------+
-        | *SQL_PASSWORD*    | Password for postgres database                |
-        +-------------------+-----------------------------------------------+
-        | *SQL_HOST*        | IP address of the postgres database           |
-        +-------------------+-----------------------------------------------+
-        | *SQL_PORT*        | Port where postgres database can be accessed  |
-        +-------------------+-----------------------------------------------+
+            +-------------------+-----------------------------------------------+
+            | Parameter         |                Description                    |
+            +===================+===============================================+
+            | *SQL_USER*        | User Name for postgres database               |
+            +-------------------+-----------------------------------------------+
+            | *SQL_PASSWORD*    | Password for postgres database                |
+            +-------------------+-----------------------------------------------+
+            | *SQL_HOST*        | IP address of the postgres database           |
+            +-------------------+-----------------------------------------------+
+            | *SQL_PORT*        | Port where postgres database can be accessed  |
+            +-------------------+-----------------------------------------------+
 
 
-        .. code-block::
+            .. code-block::
 
-            # postgres
-            PYTHON_SQL_ENGINE="django.db.backends.postgresql"
-            SQL_USER="postgres"
-            SQL_PASSWORD="postgres"
-            SQL_HOST="12.1.1.8"
-            SQL_PORT="5432"
-            EXTERNAL_PORT="5432"
-            JAVA_SQL_DRIVER="org.postgresql.Driver"
+                # postgres
+                PYTHON_SQL_ENGINE="django.db.backends.postgresql"
+                SQL_USER="postgres"
+                SQL_PASSWORD="postgres"
+                SQL_HOST="12.1.1.8"
+                SQL_PORT="5432"
+                EXTERNAL_PORT="5432"
+                JAVA_SQL_DRIVER="org.postgresql.Driver"
 
-    b. Redis
+        b. Redis
 
-        +-------------------+-----------------------------------------------+
-        | Parameter         |                Description                    |
-        +-------------------+-----------------------------------------------+
-        | *REDIS_IP*        | User Name for postgres database               |
-        +-------------------+-----------------------------------------------+
-        | *REDIS_PORT*      | Password for postgres database                |
-        +-------------------+-----------------------------------------------+
+            +-------------------+-----------------------------------------------+
+            | Parameter         |                Description                    |
+            +-------------------+-----------------------------------------------+
+            | *REDIS_IP*        | User Name for postgres database               |
+            +-------------------+-----------------------------------------------+
+            | *REDIS_PORT*      | Password for postgres database                |
+            +-------------------+-----------------------------------------------+
 
-        .. code-block::
+            .. code-block::
 
-            # Redis Details
-            REDIS_IP="12.1.1.8"
-            REDIS_PORT="6379"
+                # Redis Details
+                REDIS_IP="12.1.1.8"
+                REDIS_PORT="6379"
 
-    c. InfluxDB
+        c. InfluxDB
 
-        +-------------------------+------------------------------------------------+
-        | Parameter               |           Description                          |
-        +=========================+================================================+
-        | *INFLUXDB_IP*           |  IP address of the postgres database           |
-        +-------------------------+------------------------------------------------+
-        | *INFLUXDB_PORT*         |  Port where postgres database can be accessed  |
-        +-------------------------+------------------------------------------------+
-        | *INFLUXDB_USER*         |  User Name for influx database                 |
-        +-------------------------+------------------------------------------------+
-        | *INFLUXDB_PASSWORD*     |  Password for influx database                  |
-        +-------------------------+------------------------------------------------+
+            +-------------------------+------------------------------------------------+
+            | Parameter               |           Description                          |
+            +=========================+================================================+
+            | *INFLUXDB_IP*           |  IP address of the postgres database           |
+            +-------------------------+------------------------------------------------+
+            | *INFLUXDB_PORT*         |  Port where postgres database can be accessed  |
+            +-------------------------+------------------------------------------------+
+            | *INFLUXDB_USER*         |  User Name for influx database                 |
+            +-------------------------+------------------------------------------------+
+            | *INFLUXDB_PASSWORD*     |  Password for influx database                  |
+            +-------------------------+------------------------------------------------+
 
-        .. code-block::
+            .. code-block::
 
-            # InfluxDb Details
-            INFLUXDB_IP="12.1.1.8"
-            INFLUXDB_PORT="8011"
-            INFLUXDB_USER="influxdb"
-            INFLUXDB_PASSWORD="influxdb"
+                # InfluxDb Details
+                INFLUXDB_IP="12.1.1.8"
+                INFLUXDB_PORT="8011"
+                INFLUXDB_USER="influxdb"
+                INFLUXDB_PASSWORD="influxdb"
 
 Base Services
 -------------
@@ -191,7 +191,8 @@ AI Engines Credentials
                 IBM_LANGUAGE_URL="https://gateway-lon.watsonplatform.net/natural-language-understanding/api"
                 IBM_LANGUAGE_APIKEY="USER_DEFINED"
 
-        b. CV(Object detection and Image Classification)
+        b. Computer Vision
+            For Object Detection and Image Classification
 
             .. code-block::
 

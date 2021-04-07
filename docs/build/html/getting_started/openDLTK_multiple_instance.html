@@ -276,14 +276,14 @@ So in order to run these services smoothly its recommended to deploy OpenDLTK on
 <div class="section" id="installation">
 <h2><a class="toc-backref" href="#id5">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Ansible Installation</strong></p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt update
-<span class="gp">$ </span>sudo apt install software-properties-common
-<span class="gp">$ </span>sudo add-apt-repository ppa:ansible/ansible-2.9
-<span class="gp">$ </span>sudo apt install ansible
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt update
+<span class="gp">$</span> sudo apt install software-properties-common
+<span class="gp">$</span> sudo add-apt-repository ppa:ansible/ansible-2.9
+<span class="gp">$</span> sudo apt install ansible
 </pre></div>
 </div>
 <p>To verify whether ansible installation is successful, run below command</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible --version
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible --version
 
 <span class="go">ansible 2.9.6</span>
 <span class="go">config file = /etc/ansible/ansible.cfg</span>
@@ -295,7 +295,7 @@ So in order to run these services smoothly its recommended to deploy OpenDLTK on
 </div>
 <p>For more detailed installation guide, please refer this <a class="reference external" href="https://docs.ansible.com/ansible/2.7/installation_guide/intro_installation.html">link</a></p>
 <p><strong>2. Clone openDLTK github repository</strong></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/dltk-ai/openDLTK
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/dltk-ai/openDLTK
 </pre></div>
 </div>
 <p><strong>3. What this repo contains</strong></p>
@@ -356,13 +356,13 @@ So in order to run these services smoothly its recommended to deploy OpenDLTK on
 </div>
 <p><strong>2. Initialize DLTK setup</strong></p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> openDLTK
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> openDLTK
 </pre></div>
 </div>
 <p>Use the following command to install pip for Python 3:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt install python3-pip
-<span class="gp">$ </span>sudo pip3 install -r requirements.txt
-<span class="gp">$ </span>sudo python3 setup_init.py -m init
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt install python3-pip
+<span class="gp">$</span> sudo pip3 install -r requirements.txt
+<span class="gp">$</span> sudo python3 setup_init.py -m init
 </pre></div>
 </div>
 </div></blockquote>
@@ -393,16 +393,7 @@ In case, machines which are configured with different authentication method like
 <span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">wrapper</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
 <span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
 
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">wrapper</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">scikit</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">h2o</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">weka</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
+<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
 <span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">root</span> <span class="n">ansible_ssh_pass</span><span class="o">=</span><span class="n">YOUR_PASSWORD</span>
 
 <span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">processor</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
@@ -419,7 +410,7 @@ In case, machines which are configured with different authentication method like
 </div>
 <p>Please login to <strong>all</strong> remote machines using <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;IPaddress</span></code> command</p>
 <p>To verify whether ansible host &amp; roles are setup correctly, we will use following commands</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ansible -m ping all
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible -m ping all
 </pre></div>
 </div>
 </div>
@@ -427,7 +418,7 @@ In case, machines which are configured with different authentication method like
 </div></blockquote>
 <p><strong>4. Update config</strong></p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo python3 setup_init.py -m update_config
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo python3 setup_init.py -m update_config
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -445,7 +436,7 @@ In case, machines which are configured with different authentication method like
 <p><strong>Docker</strong></p>
 <blockquote>
 <div><p>To install docker on all the remote machine, below ansible playbook command can be used. This will install docker on all the remote machines.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -465,8 +456,8 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 </div>
 <input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Setup Postgres</label><div class="tab-content docutils container">
 <p>Run below command to setup postgres container</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>please go to openDLTK directory
-<span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> please go to openDLTK directory
+<span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -475,7 +466,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <p><strong>InfluxDB and Redis Setup</strong></p>
 <blockquote>
 <div><p>To setup Influxdb and Redis containers on remote machines, run below command.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -484,7 +475,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <blockquote>
 <div><p>To setup Base Service containers on remote machines, run below command.</p>
 <p>Base Service will setup Kong, Registry Service, Solution Service.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -495,26 +486,26 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <p><strong>Machine Learning</strong></p>
 <blockquote>
 <div><p>To setup ML Wrapper Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <p>Based on your choice to install ML-Scikit, ML-H2O or ML-weka, run below command respectively.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">ML Scikit</label><div class="tab-content docutils container">
 <p>To setup ML Scikit Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div>
 <input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">ML H2O</label><div class="tab-content docutils container">
 <p>To setup ML H2O Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div>
 <input class="tab-input" id="tab-set--2-input--3" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--3">ML Weka</label><div class="tab-content docutils container">
 <p>To setup ML Weka Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -524,7 +515,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <blockquote>
 <div><p>For running Computer vision services we will first deploy a wrapper which route the Images, client request to right processor</p>
 <p>To setup Computer Vision Wrapper Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <p>Based on your choice to install Image Classification, Object Detection, Face Analytics run below command respectively.</p>
@@ -532,7 +523,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">Image Classification</label><div class="tab-content docutils container">
 <p>Image Classification takes Image as an input &amp; return predicted labels as output in JSON format</p>
 <p>To setup Computer Vision Image Classification Service container on remote machine, run below command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -543,7 +534,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">Object Detection</label><div class="tab-content docutils container">
 <p>Object Detection detects Objects in an Image</p>
 <p>To deploy Object Detection service, run below command in ansible control machine</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -554,7 +545,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <input class="tab-input" id="tab-set--3-input--3" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--3">Face Analytics</label><div class="tab-content docutils container">
 <p>This service provide state-of-the-art open source AI models &amp; support to various AI engines to provide face analytics on Images</p>
 <p>To deploy Face Analytics services, run below command in ansible control machine</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -567,7 +558,7 @@ needs to be updated in <code class="file docutils literal notranslate"><span cla
 <p><strong>Natural Language Processing</strong></p>
 <blockquote>
 <div><p>This service provide various NLP features like Name Entity Recognition, Part of Speech and Sentiment Analysis using various open source AI models &amp; supported AI Engines</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars <span class="s2">&quot;folderpath=/path/to/folder&quot;</span>
 </pre></div>
 </div>
 <div class="admonition seealso">

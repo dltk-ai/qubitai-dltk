@@ -219,7 +219,7 @@
 <p>Usage: social media monitoring, Brand reputation analysis, etc.</p>
 <dl class="py function">
 <dt id="client.sentiment_analysis">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">sentiment_analysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.sentiment_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">sentiment_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.sentiment_analysis" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -234,7 +234,7 @@
 </dd></dl>
 
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The product is very easy to use and has got a really good life expectancy.&quot;</span>
@@ -256,7 +256,7 @@
 <p>It identifies and marks a word in a text as corresponding to a particular part of speech, based on its definition and context.</p>
 <dl class="py function">
 <dt id="client.pos_tagger">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">pos_tagger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.pos_tagger" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">pos_tagger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.pos_tagger" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -271,7 +271,7 @@
 </dd></dl>
 
 <p><strong>Example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;They refuse to permit us to obtain the refuse permit.&quot;</span>
@@ -293,7 +293,7 @@
 <p>It identifies key information (entities) in text. Each token is given an appropriate tag such as Person, Location, Organisation, etc.</p>
 <dl class="py function">
 <dt id="client.ner_tagger">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">ner_tagger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['spacy']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.ner_tagger" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">ner_tagger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">sources</span><span class="o">=</span><span class="default_value">['spacy']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.ner_tagger" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -307,17 +307,19 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;John has moved to California recently.&quot;</span>
 
 <span class="n">ner_tagger_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ner_tagger</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">ner_tagger_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ner_tagger_response</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p><strong>Output</strong></p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;John&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="nt">&quot;California&quot;</span><span class="p">:</span> <span class="s2">&quot;GPE&quot;</span><span class="p">},</span> <span class="nt">&quot;persons&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="nt">&quot;organizations&quot;</span><span class="p">:</span> <span class="p">[]}</span>
@@ -331,7 +333,7 @@
 <p>Usage: Grammar monitoring.</p>
 <dl class="py function">
 <dt>
-<code class="sig-name descname"><span class="pre">client.dependency_parser(text):</span></code></dt>
+<code class="sig-name descname">client.dependency_parser(text):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>text</strong> – text for dependency parser</p>
@@ -342,8 +344,9 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;And now for something completely different.&quot;</span>
@@ -353,8 +356,10 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">dependency_parser_response</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
  &#39;And&#39;: {&#39;dep&#39;: &#39;cc&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: []},
  &#39;now&#39;: {&#39;dep&#39;: &#39;advmod&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: []},
  &#39;for&#39;: {&#39;dep&#39;: &#39;ROOT&#39;,&#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: [&#39;And&#39;, &#39;now&#39;, &#39;something&#39;, &#39;.&#39;]},
@@ -365,13 +370,14 @@
  }
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="tags-recognition">
 <h1>Tags Recognition<a class="headerlink" href="#tags-recognition" title="Permalink to this headline">¶</a></h1>
 <p>It identifies the important words in a sentence.</p>
 <dl class="py function">
 <dt id="client.tags">
-<code class="sig-prename descclassname"><span class="pre">client.</span></code><code class="sig-name descname"><span class="pre">tags</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.tags" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">client.</code><code class="sig-name descname">tags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#client.tags" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>text</strong> – text for tags recognition</p>
@@ -382,23 +388,34 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit full-body look..&quot;</span>
 
 <span class="n">tags_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tags</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">tags_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tags_response</span><span class="p">)</span>
 </pre></div>
-</div>
+</td></tr></table></div>
+</div></blockquote>
 <p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;rake&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elon musk&quot;</span><span class="p">,</span> <span class="s2">&quot;shared&quot;</span><span class="p">,</span> <span class="s2">&quot;photo&quot;</span><span class="p">,</span> <span class="s2">&quot;spacesuit designed&quot;</span><span class="p">,</span> <span class="s2">&quot;spacex&quot;</span><span class="p">,</span> <span class="s2">&quot;image shared&quot;</span><span class="p">,</span> <span class="s2">&quot;design&quot;</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">,</span> <span class="s2">&quot;spacesuit full&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">]}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 
 

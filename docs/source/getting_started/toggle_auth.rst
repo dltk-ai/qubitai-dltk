@@ -165,7 +165,7 @@ Enabling Authentication
 
         .. code-block:: console
 
-            $ sudo python3 setup.py -m update_config
+            $ sudo python3 setup_init.py -m update_config
 
         Run below command to restart the base services with updated configurations which will ensure that only request with valid API key will served.
 
@@ -189,7 +189,7 @@ Disabling Authentication
 
         .. code-block:: console
 
-            $ sudo python3 setup.py -m update_config
+            $ sudo python3 setup_init.py -m update_config
 
         Run below command to restart the base services with updated configurations which will disable need of providing a valid API key, so request by any developer will be served by OpenDLTK.
 
