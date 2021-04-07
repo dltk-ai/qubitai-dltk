@@ -8,19 +8,17 @@
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
-DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google’s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
+DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Googleï¿½s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
 
 ## Getting Started
 
 ### Pre-requisite
 
-**QubitAI-OpenDLTK**
+**OpenDLTK**
 
-Please follow the below links for instructions
+Please follow the below link for instructions on installing OpenDLTK
 
-a. [Without Authentication](https://github.com/dltk-ai/openDLTK)
-
-b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
+[OpenDLTK Installation](https://docs.dltk.ai/getting_started/openDLTK_setup.html)
 
 ---
 
@@ -30,6 +28,11 @@ b. [With Authentication](https://github.com/dltk-ai/openDLTK/docs/auth.md)
 
 
 ### Installation
+
+**Installing through pip**
+```sh
+    pip install qubitai-dltk
+```
 
 **Installing from Source**
 
@@ -46,10 +49,7 @@ c. Install requirements from requirements.txt file
     pip install -r requirements.txt
 ```
 
-**Installing through pip**
-```sh
-    pip install qubitai-dltk
-```
+Choose any one of the above options for Installation
 
 ---
 
@@ -57,13 +57,13 @@ c. Install requirements from requirements.txt file
 
 ```python
 import dltk_ai
-client = dltk_ai.DltkAiClient('YOUR_API_KEY', base_url='http://localhost:8000')
+client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
 text = "The product is very easy to use and has got a really good life expectancy."
 
 sentiment_analysis_response = client.sentiment_analysis(text)
 
-print(sentiment_analysis_response.text)
+print(sentiment_analysis_response)
 ```
 
 Important Parameters:
@@ -84,6 +84,30 @@ _Expected Output_
 ```
 
 ---
+## Services
+
+**1. Machine Learning**
+
+a. ML Wrapper - It parse user request parameters
+
+b. ML Scikit - This Microservice uses widely used Scikit package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+
+c. ML H2O - This Microservice uses H2O.ai python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+
+d. ML Weka 
+
+**2. NLP**
+
+This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
+
+**3. Computer Vision**
+
+a. CV Wrapper - This microservice receives images provided by user and route to right service based on the feature requested by them.
+
+b. Image Classification - This microservice classify images into various classes using pretrained model and also using supported AI Engines.
+
+c. Object Detection - This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
+
 
 ## Reference
 
