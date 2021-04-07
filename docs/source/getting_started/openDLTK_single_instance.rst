@@ -87,20 +87,20 @@ Installation
 
     .. code-block::
 
-        sudo python setup.py -m init
+        sudo python3 setup.py -m init
 
 
 .. tab:: Mac
 
     .. code-block::
 
-        sudo python setup.py -m init
+        sudo python3 setup.py -m init
 
 .. tab:: Windows
 
     .. code-block::
 
-        python setup.py -m init
+        python3 setup.py -m init
 
 .. code-block::
 
@@ -280,20 +280,20 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     .. code-block::
 
-        sudo python setup.py -m update_config
+        sudo python3 setup.py -m update_config
 
 
 .. tab:: Mac
 
     .. code-block::
 
-        sudo python setup.py -m update_config
+        sudo python3 setup.py -m update_config
 
 .. tab:: Windows
 
     .. code-block::
 
-        python setup.py -m update_config
+        python3 setup.py -m update_config
 
 .. note::
     Please Note that you need to run the update_config command every time you make some changes in /usr/dltk-ai/config.env(Linux and Mac) or C://Users//{username}//AppData//Local//dltk-ai//config.env(windows)
@@ -305,20 +305,20 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     .. code-block::
 
-        sudo python setup.py -m install
+        sudo python3 setup.py -m install
 
 
 .. tab:: Mac
 
     .. code-block::
 
-        sudo python setup.py -m install
+        sudo python3 setup.py -m install
 
 .. tab:: Windows
 
     .. code-block::
 
-        python setup.py -m install
+        python3 setup.py -m install
 
 
 
@@ -412,20 +412,20 @@ To stop OpenDLTK services, run below commands.
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --partial --remove
+            sudo python3 setup.py --mode uninstall --partial --remove
 
 
     .. tab:: Mac
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --partial --remove
+            sudo python3 setup.py --mode uninstall --partial --remove
 
     .. tab:: Windows
 
         .. code-block::
 
-            python setup.py --mode uninstall --partial --remove
+            python3 setup.py --mode uninstall --partial --remove
 
     You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.
 
@@ -452,20 +452,20 @@ To stop OpenDLTK services, run below commands.
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --all --remove
+            sudo python3 setup.py --mode uninstall --all --remove
 
 
     .. tab:: Mac
 
         .. code-block::
 
-            sudo python setup.py --mode uninstall --all --remove
+            sudo python3 setup.py --mode uninstall --all --remove
 
     .. tab:: Windows
 
         .. code-block::
 
-            python setup.py --mode uninstall --all --remove
+            python3 setup.py --mode uninstall --all --remove
 
 
 
@@ -496,7 +496,7 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            python setup.py --mode uninstall --partial --purge
+            python3 setup.py --mode uninstall --partial --purge
 
     You will get a list of service as shown below, choose the services you want to ``RETAIN`` using comma separated Ids.
 
@@ -539,7 +539,7 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            python setup.py --mode uninstall --all --purge
+            python3 setup.py --mode uninstall --all --purge
 
 
 

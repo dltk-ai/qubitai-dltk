@@ -84,8 +84,8 @@ Enable Authentication
 
         .. code-block:: console
 
-            $ python setup.py -m update_config
-            $ python setup.py --mode auth --auth True
+            $ python3 setup.py -m update_config
+            $ python3 setup.py --mode auth --auth True
 
 
 Disable Authentication
@@ -104,8 +104,8 @@ Disable Authentication
 
         .. code-block:: console
 
-            $ sudo python setup.py -m update_config
-            $ sudo python setup.py --mode auth --auth False
+            $ sudo python3 setup.py -m update_config
+            $ sudo python3 setup.py --mode auth --auth False
 
 
     .. tab:: Mac
@@ -118,8 +118,8 @@ Disable Authentication
 
         .. code-block:: console
 
-            $ sudo python setup.py -m update_config
-            $ sudo python setup.py --mode auth --auth False
+            $ sudo python3 setup.py -m update_config
+            $ sudo python3 setup.py --mode auth --auth False
 
 
     .. tab:: Windows
@@ -132,8 +132,8 @@ Disable Authentication
 
         .. code-block:: console
 
-            $ python setup.py -m update_config
-            $ python setup.py --mode auth --auth False
+            $ python3 setup.py -m update_config
+            $ python3 setup.py --mode auth --auth False
 
 
 
