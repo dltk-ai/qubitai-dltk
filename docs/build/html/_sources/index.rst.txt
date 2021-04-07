@@ -50,12 +50,6 @@ Welcome to Qubitai-dltk's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Conversation
-
-   conversation/index
-
-.. toctree::
-   :maxdepth: 1
    :caption: History
 
    history/index

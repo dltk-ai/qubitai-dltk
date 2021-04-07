@@ -24,20 +24,20 @@ Usage: social media monitoring, Brand reputation analysis, etc.
 .. code-block:: python
 
     import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+    client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
-    text = "The product is very easy to use and has got a really good life expectancy."
+    text = "I really like the new design of your website"
 
-    sentiment_analysis_response = client.sentiment_analysis(text)
+    dltk_sentiment = client.sentiment_analysis(text)
 
-    print(sentiment_analysis_response.text)
+    print(dltk_sentiment)
 
 **Output**
 
 .. code-block:: JSON
 
     {
-      "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+      "nltk_vader": {"emotion": "POSITIVE", "scores": {"compound": 0.4201, "negative": 0.0, "positive": 0.285, "neutral": 0.715}}
     }
 
 
@@ -59,13 +59,13 @@ It identifies and marks a word in a text as corresponding to a particular part o
 .. code-block:: python
 
     import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+    client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
-    text = "They refuse to permit us to obtain the refuse permit."
+    text = "The old tired man was sitting under a tree and patiently waiting for his son to arrive"
 
-    pos_tagger_response = client.pos_tagger(text)
+    dltk_pos_tagger = client.pos_tagger(text)
 
-    print(pos_tagger_response)
+    print(dltk_pos_tagger)
 
 
 **Output**
@@ -73,7 +73,11 @@ It identifies and marks a word in a text as corresponding to a particular part o
 .. code-block:: JSON
 
     {
-      "spacy": {"result": {"They": "PRP", "refuse": "NN", "to": "TO", "permit": "NN", "us": "PRP", "obtain": "VB", "the": "DT", ".": "."}}
+      "spacy": {
+          "result": {
+              "The": "DT", "old": "JJ", "tired": "JJ", "man": "NN", "was": "VBD", "sitting": "VBG", "under": "IN", "a": "DT", "tree": "NN", "and": "CC", "patiently": "RB", "waiting": "VBG", "for": "IN", "his": "PRP$", "son": "NN", "to": "TO", "arrive": "VB"
+              }
+            }
     }
 
 
@@ -94,20 +98,20 @@ It identifies key information (entities) in text. Each token is given an appropr
     .. code-block:: python
 
         import dltk_ai
-        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+        client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
-        text = "John has moved to California recently."
+        text = "Delhi has a population of 1.3 crore. Arvind Kejriwal is the Chief Minister of Delhi"
 
-        ner_tagger_response = client.ner_tagger(text)
+        dltk_ner_tagger = client.ner_tagger(text)
 
-        print(ner_tagger_response)
+        print(dltk_ner_tagger)
 
 **Output**
 
 .. code-block:: JSON
 
     {
-      "spacy": {"result": {"John": "PERSON", "California": "GPE"}, "persons": [], "organizations": []}
+      "spacy": {"result": {"Delhi": "GPE", "1.3": "CARDINAL", "Arvind Kejriwal": "PERSON"}}
     }
 
 
@@ -129,13 +133,13 @@ Usage: Grammar monitoring.
     .. code-block:: python
 
         import dltk_ai
-        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+        client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
         text = "And now for something completely different."
 
-        dependency_parser_response = client.dependency_parser(text)
+        dltk_dependency_parser_response = client.dependency_parser(text)
 
-        print(dependency_parser_response)
+        print(dltk_dependency_parser_response)
 
 **Output**
 
@@ -166,22 +170,23 @@ It identifies the important words in a sentence.
 **Example**
 
     .. code-block:: python
-        :linenos:
 
         import dltk_ai
-        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+        client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
 
-        text = "Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit full-body look.."
+        text = "Artificial intelligence is intelligence demonstrated by machines, unlike the natural intelligence displayed by humans and animals, which involves consciousness and emotionality."
 
-        tags_response = client.tags(text)
+        dltk_tags = client.tags(text)
 
-        print(tags_response)
+        print(dltk_tags)
 
 **Output**
 
     .. code-block:: JSON
 
         {
-          "rake": {"tags": ["elon musk", "shared", "photo", "spacesuit designed", "spacex", "image shared", "design", "feature", "spacesuit full", "body"]}
+            "rake": {
+                "tags": ["artificial intelligence", "intelligence demonstrated", "machines", "unlike", "natural intelligence displayed", "humans", "animals", "involves consciousness", "emotionality"]
+                }  
         }
 
