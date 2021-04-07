@@ -189,7 +189,7 @@ class DltkAiClient:
             print(f"FAILED due to {task_creation_response.content}")
         return task_status_response
 
-    def object_detection(self, image_url=None, image_path=None, object_detectors = ['tensorflow'], output_types=["json"], reformat=True, wait_time=10):
+    def object_detection(self, image_url=None, image_path=None, object_detectors=['tensorflow'], output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for object detection
         Args:

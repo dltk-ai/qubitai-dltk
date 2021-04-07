@@ -54,6 +54,8 @@ Initializing the DLTK Client
 
 Now you can use your favourite IDEs (Jupyter Notebook, pycharm, VS code) to initialize DLTK client using below commands.
 
+.. _client-sdk-usage-with-auth:
+
 .. tab:: With Auth Disabled
 
     .. code-block:: python

@@ -8,17 +8,15 @@
 
 Our philosophy is to create a Deep Technologies platform with ethical AI for enterprises that offers meaningful insights and actions. 
 
-DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google�s TensorFlow, WEKA and a few trusted open-sources, we offer custom AI algorithms with co-innovation support. 
+DLTK Unified Deep Learning platform can be leveraged to build solutions that are Application-Specific and Industry-Specific where AI opportunity found by using DLTK SDKs, APIs and Microservices. With best of the breed AI Services from platform pioneers like H2O, Google's TensorFlow, WEKA and a few trusted open-sources models and libraries, we offer custom AI algorithms with co-innovation support. 
 
 ## Getting Started
 
 ### Pre-requisite
 
-**OpenDLTK**
+1. OpenDLTK : OpenDLTK is collection of open-source docker images, where processing of images, text or structured tabular data is done using state-of-the-art AI models.
 
-Please follow the below link for instructions on installing OpenDLTK
-
-[OpenDLTK Installation](https://docs.dltk.ai/getting_started/openDLTK_setup.html)
+Please follow the below link for instructions on [OpenDLTK Installation](https://docs.dltk.ai/getting_started/openDLTK_setup.html)
 
 ---
 
@@ -69,9 +67,7 @@ print(sentiment_analysis_response)
 Important Parameters:
 
 **1. API key:**
-If authentication is disabled(default) in openDLTK server, there is no need to change 'YOUR_APIKEY' input, but if authentication is enabled you will need to provide a valid APIkey. 
 
-For more details on authentication enabling, please refer to [Authentication Documentation](docs/auth.md)
 
 **2. base_url:**
 The base_url is the url for the machine where base service is installed by _default_ its localhost, so base_url needs to be [http://localhost:8000]()
@@ -88,25 +84,25 @@ _Expected Output_
 
 **1. Machine Learning**
 
-a. ML Wrapper - It parse user request parameters
+* ML Wrapper - It parse user request parameters
 
-b. ML Scikit - This Microservice uses widely used Scikit package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+* ML Scikit - This Microservice uses widely used Scikit package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
 
-c. ML H2O - This Microservice uses H2O.ai python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+* ML H2O - This Microservice uses H2O.ai python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
 
-d. ML Weka 
+* ML Weka - This Microservice uses WEKA for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
 
 **2. NLP**
 
-This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
+* This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
 
 **3. Computer Vision**
 
-a. CV Wrapper - This microservice receives images provided by user and route to right service based on the feature requested by them.
+* CV Wrapper - This microservice receives images provided by user and route to right service based on the feature requested by them.
 
-b. Image Classification - This microservice classify images into various classes using pretrained model and also using supported AI Engines.
+* Image Classification - This microservice classify images into various classes using pretrained model and also using supported AI Engines.
 
-c. Object Detection - This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
+* Object Detection - This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
 
 
 ## Reference
@@ -119,4 +115,4 @@ The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-
 
 ## Contact
 
-QubitAi - connect@qubitai.tech
+QubitAI Email-ID - connect@qubitai.tech

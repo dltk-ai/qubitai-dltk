@@ -296,7 +296,8 @@ Please ensure this version should be compatible with the `Python client SDK <htt
         python3 setup.py -m update_config
 
 .. note::
-    Please Note that you need to run the update_config command every time you make some changes in /usr/dltk-ai/config.env(Linux and Mac) or C://Users//{username}//AppData//Local//dltk-ai//config.env(windows)
+
+    Please ensure to run the update_config command every time you make some changes in ``/usr/dltk-ai/config.env`` (Linux and Mac) or ``C://Users//{username}//AppData//Local//dltk-ai//config.env`` (windows)
 
 
 **5. Install Services**

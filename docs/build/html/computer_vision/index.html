@@ -216,7 +216,8 @@ It tries to classify an image into various classes the model is trained for.</p>
 <p>This feature uses various open source models present which are included in OpenDLTK for classifying an image based on its visual content.
 Also other proprietary AI engines like Azure and IBM can also be used using same function, as shown in below code.</p>
 <p><em>Supported Open Source Models</em></p>
-<table class="colwidths-given docutils align-default">
+<blockquote>
+<div><table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -230,13 +231,15 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ResNet50</p></td>
-<td><p><a class="reference external" href="http://www.image-net.org/">http://www.image-net.org/</a></p></td>
-<td><p><a class="reference external" href="https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json">https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json</a></p></td>
+<td><p><a class="reference external" href="http://www.image-net.org/">ImageNet</a></p></td>
+<td><p><a class="reference external" href="https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json">ImageNet Class Index</a></p></td>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default">
+<blockquote>
+<div><table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -248,24 +251,24 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Azure</p></td>
-<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images</a></p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images">Azure Image tagging</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>IBM</p></td>
-<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify">https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify</a></p></td>
+<td><p><a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3?code=python#getclassify">IBM Visual Recognition</a></p></td>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, tensorflow=True,</code></dt>
-<dt>
-<code class="sig-name descname">azure=False, ibm=False,output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname">client.image_classification(image_url=None, image_path=None, top_n=3, image_classifiers=['tensorflow'], output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>top_n</strong> – If True, uses dlib for face analyticsget top n predictions</p></li>
+<li><p><strong>top_n</strong> – get top n predictions</p></li>
+<li><p><strong>image_classifiers</strong> – Supported image classifier tensorflow, azure, ibm</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
@@ -275,39 +278,62 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><dl>
+<dt>Setup DLTK</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
-
-<span class="c1"># Note: top_n=4 predictions, image classification</span>
-<span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">image_classification</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Input</strong></p>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg"><img alt="sample-classification-image" src="https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg" style="height: 200px;" /></a>
-<p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;331348a2-254d-418a-a1b8-9414172f8a86&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;tensorflow_predicted_classes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;quilt&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3350585&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;tiger_cat&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.16452688&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;lynx&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.09777632&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;sleeping_bag&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.06928878&quot;</span><span class="p">}]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Send Image to OpenDLTK for Image classification</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../image_classification_sample.jpg&quot;</span>
+
+<span class="n">image_classification</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">image_classification</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">image_path</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">image_classifiers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tensorflow&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Check status of prediction</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_classification_output</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">check_cv_job</span><span class="p">(</span><span class="n">image_classification</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_classification_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>Input and output</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/image_classification_sample_2.jpg"><img alt="sample-classification-image" class="align-left" src="../_images/image_classification_sample_2.jpg" style="height: 140px;" /></a>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;83efafb7-95ae-42cf-871d-58f7b21a37be&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;tensorflow_predicted_classes&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;clumber&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.23649043&quot;</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;otterhound&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.18737608&quot;</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Old_English_sheepdog&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.12396963&quot;</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Irish_wolfhound&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.10178323&quot;</span><span class="p">}]}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="object-detection">
 <h1>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>Identifies and locates objects in an Image.</p>
-<p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
+<div><p>Object Detection identifies and locates objects in an image provided by user. This function uses open source deep learning pre-trained models provided under OpenDLTK,
+along with support for proprietary models by AI engines like Azure.</p>
+<p>Object Detection can be used for various use-cases like Tracking objects, Counting people, Vehicle Detection, etc.</p>
 <p><em>Supported Open Source Models</em></p>
-<table class="colwidths-given docutils align-default">
+<blockquote>
+<div><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -322,12 +348,14 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 <tbody>
 <tr class="row-even"><td><p>Single Shot Detector</p></td>
 <td><p>ResNet50</p></td>
-<td><p><a class="reference external" href="https://cocodataset.org/#explore">https://cocodataset.org/#explore</a></p></td>
+<td><p><a class="reference external" href="https://cocodataset.org/#explore">COCO Dataset</a></p></td>
 </tr>
 </tbody>
 </table>
-<p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default">
+</div></blockquote>
+<p><em>Supported Object Detectors</em></p>
+<blockquote>
+<div><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -339,21 +367,21 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Azure</p></td>
-<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection">https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection</a></p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-object-detection">Azure Object Detection Documentation</a></p></td>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.object_detection(image_url=None, image_path=None, tensorflow=True,</code></dt>
-<dt>
-<code class="sig-name descname">azure=False, output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname">client.object_detection(image_url=None, image_path=None,object_detectors=['tensorflow'], output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
+<li><p><strong>object_detectors</strong> – list of object detectors, Supported object detectors are [‘tensorflow’,’azure’]</p></li>
+<li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image” (base64 encoded image)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -364,38 +392,107 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 
 <p><strong>Example</strong></p>
 <blockquote>
+<div><ol class="loweralpha">
+<li><p>Initialize DLTK Client</p>
+<blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
-<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;apikey&quot;</span> <span class="p">,</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Send Request to OpenDLTK for processing</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;./examples/data/image/object_detection_sample_2.jpg&quot;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
 
-<span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">)</span>
+<span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">object_detection</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">image_path</span><span class="p">,</span> <span class="n">object_detectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;azure&#39;</span><span class="p">,</span> <span class="s1">&#39;tensorflow&#39;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Input</strong></p>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"><img alt="sample-object-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg" style="height: 200px;" /></a>
-<p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;b37318f5-c657-4e93-a079-f3888fe03717&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;tensorflow_detected_objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.8257747888565063</span><span class="p">,</span> <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">501</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">257</span><span class="p">}}]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+</li>
+<li><p>Check prediction status</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">object_detection_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">check_cv_job</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><em>Expected Response</em></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;8b32db78-708d-49ff-83ad-71dedee5c1f5&quot;</span><span class="p">,</span>
+<span class="hll"> <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;azure_detected_objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1249</span><span class="p">,</span>
+</span>     <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">709</span><span class="p">,</span>
+     <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">1399</span><span class="p">,</span>
+     <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">890</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;vase&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.657</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1190</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">1450</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">854</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;plant&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.776</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">327</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">556</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1198</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.886</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1486</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">771</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">1737</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1162</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.843</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">948</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">428</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1310</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.659</span><span class="p">},</span>
+   <span class="p">{</span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1685</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">910</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">2013</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1260</span><span class="p">},</span>
+    <span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.74</span><span class="p">}],</span>
+<span class="hll">  <span class="nt">&quot;tensorflow_detected_objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;vase&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.6711814403533936</span><span class="p">,</span>
+    <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">702</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">1019</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">830</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1172</span><span class="p">}},</span>
+   <span class="p">{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.6634005308151245</span><span class="p">,</span>
+    <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">774</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">1748</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1144</span><span class="p">}},</span>
+   <span class="p">{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.6156675219535828</span><span class="p">,</span>
+    <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">319</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">792</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">566</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1156</span><span class="p">}},</span>
+   <span class="p">{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.5750893950462341</span><span class="p">,</span>
+    <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">929</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">489</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">1334</span><span class="p">}},</span>
+   <span class="p">{</span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span> <span class="s2">&quot;vase&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.5276069641113281</span><span class="p">,</span>
+    <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;x1&quot;</span><span class="p">:</span> <span class="mi">1240</span><span class="p">,</span> <span class="nt">&quot;y1&quot;</span><span class="p">:</span> <span class="mi">710</span><span class="p">,</span> <span class="nt">&quot;x2&quot;</span><span class="p">:</span> <span class="mi">1398</span><span class="p">,</span> <span class="nt">&quot;y2&quot;</span><span class="p">:</span> <span class="mi">889</span><span class="p">}}]}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Visualize output</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dltk_ai.visualization</span> <span class="kn">import</span> <span class="n">draw_bbox</span>
+
+<span class="n">tensforflow_output</span> <span class="o">=</span> <span class="n">object_detection_response</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;tensorflow_detected_objects&#39;</span><span class="p">]</span>
+<span class="n">bboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">object_</span><span class="p">[</span><span class="s1">&#39;bbox&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">object_</span> <span class="ow">in</span> <span class="n">tensforflow_output</span><span class="p">]</span>
+<span class="n">captions</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">object_</span><span class="p">[</span><span class="s2">&quot;object_name&quot;</span><span class="p">]</span> <span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">object_</span><span class="p">[</span><span class="s2">&quot;confidence&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s1">%&#39;</span>  <span class="k">for</span> <span class="n">object_</span> <span class="ow">in</span> <span class="n">tensforflow_output</span><span class="p">]</span>
+
+<span class="n">draw_bbox</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span><span class="p">,</span> <span class="n">captions</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Run in Jupyter Notebook for better visualization of response</p>
+</div>
+<a class="reference internal image-reference" href="../_images/house_object_detection_output.jpg"><img alt="sample-object-image" src="../_images/house_object_detection_output.jpg" style="height: 400px;" /></a>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="face-detection">
 <h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>Analyses an individual’s face in an image.</p>
-<p>Usage: Automated identity verification.</p>
+<div><p>Face Detection is fundamental task for various use-cases like Face Recognition, Face Verification, Expression Analysis, etc.</p>
+<p>This function uses open-source models for face detection, along with support for various proprietary AI engines like Azure</p>
 <p><em>Supported Open Source Models</em></p>
-<table class="colwidths-given docutils align-default">
+<blockquote>
+<div><table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -407,18 +504,20 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </thead>
 <tbody>
 <tr class="row-even"><td><p>MTCNN</p></td>
-<td><p><a class="reference external" href="https://github.com/ipazc/mtcnn">https://github.com/ipazc/mtcnn</a></p></td>
+<td><p><a class="reference external" href="https://github.com/ipazc/mtcnn">MTCNN GitHub Implementation</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>DLIB-HoG</p></td>
-<td><p><a class="reference external" href="http://dlib.net/python/index.html#dlib.get_frontal_face_detector">http://dlib.net/python/index.html#dlib.get_frontal_face_detector</a></p></td>
+<td><p><a class="reference external" href="http://dlib.net/python/index.html#dlib.get_frontal_face_detector">Dlib Detector</a></p></td>
 </tr>
 <tr class="row-even"><td><p>OpenCV - DNN</p></td>
-<td><p><a class="reference external" href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector</a></p></td>
+<td><p><a class="reference external" href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">Opencv DNN Github Implementation</a></p></td>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <p><em>Supported Third Party Classifiers</em></p>
-<table class="colwidths-given docutils align-default">
+<blockquote>
+<div><table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -430,25 +529,21 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Azure</p></td>
-<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection">https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection</a></p></td>
+<td><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection">Azure Face Detection Documentation</a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Presently supports Face Detection only.</p>
-</div>
+</div></blockquote>
 <dl class="py function">
 <dt>
-<code class="sig-name descname">client.face_analytics(image_url=None, features=None, image_path=None, dlib=False,</code></dt>
-<dt>
-<code class="sig-name descname">opencv=True,azure=False, mtcnn=False,output_types=[&quot;json&quot;]):</code></dt>
+<code class="sig-name descname">client.face_analytics(image_url=None, features=None, image_path=None, face_detectors=['mtcnn'], ,output_types=[&quot;json&quot;]):</code></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>features</strong> – Type of features requested by client. Presently supports “face_detection”.</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
+<li><p><strong>face_detectors</strong> – supported face detectors are (mtcnn, dlib, opencv, azure)</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
@@ -459,34 +554,66 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </dd></dl>
 
 <p><strong>Example</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>import dltk_ai
-client = dltk_ai.DltkAiClient(&#39;YOUR_API_KEY&#39;, base_url= &quot;http://localhost:8000&quot;)
+<blockquote>
+<div><ol class="loweralpha">
+<li><dl>
+<dt>Import necessary packages</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">dltk_ai</span>
 
-image_url = &quot;https://images.financialexpress.com/2020/01/660-3.jpg&quot;
-
-face_analytics_response = client.face_analytics(image_url=image_url, azure=True)
-
-print(face_analytics_response)
+<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Input</strong></p>
-<a class="reference internal image-reference" href="https://images.financialexpress.com/2020/01/660-3.jpg"><img alt="sample-face-image" src="https://images.financialexpress.com/2020/01/660-3.jpg" style="height: 200px;" /></a>
-<p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4e915abe-33da-4add-a325-8a07cf2093c3&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;output&quot;</span><span class="p">:</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;opencv&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">356</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">134</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">109</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">137</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">111</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">567</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">460</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">126</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}]}},</span>
-      <span class="nt">&quot;azure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">558</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">348</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">151</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">158</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">155</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span> <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">453</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">154</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">}]}}</span>
-      <span class="p">}</span>
-<span class="p">}</span>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Send request to OpenDLTK for processing image</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;./examples/data/image/face_analytics_sample_1.jpg&quot;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+
+<span class="n">face_analytics_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">face_analytics</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">face_analytics_response</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Ensure azure credentials were used while setting up OpenDLTK, else you can use <code class="docutils literal notranslate"><span class="pre">mtcnn</span></code></p>
+<p><em>Expected Output</em></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;task_status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;task_id&quot;</span><span class="p">:</span> <span class="s2">&quot;30e2bddd-5468-49b0-9f49-d7fb74b6663b&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;azure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;face_locations&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">514</span><span class="p">,</span>
+      <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">421</span><span class="p">,</span>
+      <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+      <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">645</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">408</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">265</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">382</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1217</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">417</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">985</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">374</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1311</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">369</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">393</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">432</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1088</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">409</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">875</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">374</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">},</span>
+     <span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">744</span><span class="p">,</span> <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">424</span><span class="p">,</span> <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span> <span class="nt">&quot;h&quot;</span><span class="p">:</span> <span class="mi">39</span><span class="p">}]}}}}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>c. Visualize response</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">azure_bboxes</span> <span class="o">=</span>  <span class="n">face_analytics_response</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;azure&#39;</span><span class="p">][</span><span class="s1">&#39;json&#39;</span><span class="p">][</span><span class="s1">&#39;face_locations&#39;</span><span class="p">]</span>
+<span class="n">azure_bboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">azure_bboxes</span><span class="p">]</span>
+
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">draw_bbox</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">azure_bboxes</span><span class="p">,</span><span class="n">coords_order</span><span class="o">=</span><span class="s1">&#39;xywh&#39;</span><span class="p">)</span>
+<span class="n">output_image</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/face_detection_output.jpg"><img alt="sample-face-image" src="../_images/face_detection_output.jpg" style="height: 350px;" /></a>
+</div></blockquote>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Update <code class="docutils literal notranslate"><span class="pre">base_url=</span> <span class="pre">&quot;http://localhost:8000&quot;</span></code> with your base service IP address.
-In case Authentication is enabled</p>
+<p>Update <code class="docutils literal notranslate"><span class="pre">base_url=&quot;http://localhost:8000&quot;</span></code> with your base service IP address.
+and in case <code class="docutils literal notranslate"><span class="pre">authentication</span></code> is enabled, please refer <a class="reference internal" href="../getting_started/pythonClientSDK.html#client-sdk-usage-with-auth"><span class="std std-ref">client SDK usage with authentication enabled</span></a> section</p>
 </div>
 </div></blockquote>
 </div>
