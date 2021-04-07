@@ -33,7 +33,7 @@ class DltkAiClient:
 
     # Note: NLP functions
 
-    def sentiment_analysis(self, text, sources=['spacy'], **kwargs):
+    def sentiment_analysis(self, text, sources=['nltk_vader'], **kwargs):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :param sources: algorithm to use for the analysis - azure/ibm_watson/spacy
@@ -42,7 +42,7 @@ class DltkAiClient:
             obj:A json obj containing sentiment analysis response.
         """
         sources = [feature.lower() for feature in sources]
-        supported_sources = ['spacy', 'azure', 'ibm_watson']
+        supported_sources = ['nltk_vader', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
 
