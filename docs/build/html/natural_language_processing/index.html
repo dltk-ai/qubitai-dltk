@@ -113,7 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-status">Check Job Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-output">Check Job Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning/preprocessing.html">Preprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/data_preprocessing.html">Data Preprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
@@ -358,15 +358,25 @@
 </div></blockquote>
 <p><strong>Output</strong></p>
 <blockquote>
-<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
- &#39;And&#39;: {&#39;dep&#39;: &#39;cc&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: []},
- &#39;now&#39;: {&#39;dep&#39;: &#39;advmod&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: []},
- &#39;for&#39;: {&#39;dep&#39;: &#39;ROOT&#39;,&#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: [&#39;And&#39;, &#39;now&#39;, &#39;something&#39;, &#39;.&#39;]},
- &#39;something&#39;: {&#39;dep&#39;: &#39;pobj&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: [&#39;different&#39;]},
- &#39;completely&#39;: {&#39;dep&#39;: &#39;advmod&#39;, &#39;headText&#39;: &#39;different&#39;, &#39;headPOS&#39;: &#39;ADJ&#39;, &#39;children&#39;: []},
- &#39;different&#39;: {&#39;dep&#39;: &#39;amod&#39;,&#39;headText&#39;: &#39;something&#39;, &#39;headPOS&#39;: &#39;NOUN&#39;, &#39;children&#39;: [&#39;completely&#39;]},
- &#39;.&#39;: {&#39;dep&#39;: &#39;punct&#39;, &#39;headText&#39;: &#39;for&#39;, &#39;headPOS&#39;: &#39;ADP&#39;, &#39;children&#39;: []}
- }
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;And&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;cc&quot;</span><span class="p">,</span> <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADP&quot;</span><span class="p">,</span> <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+    <span class="nt">&quot;now&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;advmod&quot;</span><span class="p">,</span> <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADP&quot;</span><span class="p">,</span> <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+    <span class="nt">&quot;for&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;ROOT&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADP&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;And&quot;</span><span class="p">,</span> <span class="s2">&quot;now&quot;</span><span class="p">,</span> <span class="s2">&quot;something&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">]},</span>
+    <span class="nt">&quot;something&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;pobj&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADP&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;different&quot;</span><span class="p">]},</span>
+    <span class="nt">&quot;completely&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;advmod&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;different&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADJ&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+    <span class="nt">&quot;different&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;amod&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;something&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;PRON&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;completely&quot;</span><span class="p">]},</span>
+    <span class="nt">&quot;.&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;dep&quot;</span><span class="p">:</span> <span class="s2">&quot;punct&quot;</span><span class="p">,</span> <span class="nt">&quot;headText&quot;</span><span class="p">:</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="nt">&quot;headPOS&quot;</span><span class="p">:</span> <span class="s2">&quot;ADP&quot;</span><span class="p">,</span> <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[]}}</span>
 </pre></div>
 </div>
 </div></blockquote>

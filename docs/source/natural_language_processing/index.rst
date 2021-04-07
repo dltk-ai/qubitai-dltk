@@ -145,16 +145,25 @@ Usage: Grammar monitoring.
 
     .. code-block:: JSON
 
-        {
-         'And': {'dep': 'cc', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
-         'now': {'dep': 'advmod', 'headText': 'for', 'headPOS': 'ADP', 'children': []},
-         'for': {'dep': 'ROOT','headText': 'for', 'headPOS': 'ADP', 'children': ['And', 'now', 'something', '.']},
-         'something': {'dep': 'pobj', 'headText': 'for', 'headPOS': 'ADP', 'children': ['different']},
-         'completely': {'dep': 'advmod', 'headText': 'different', 'headPOS': 'ADJ', 'children': []},
-         'different': {'dep': 'amod','headText': 'something', 'headPOS': 'NOUN', 'children': ['completely']},
-         '.': {'dep': 'punct', 'headText': 'for', 'headPOS': 'ADP', 'children': []}
-         }
-
+        {"And": {"dep": "cc", "headText": "for", "headPOS": "ADP", "children": []},
+            "now": {"dep": "advmod", "headText": "for", "headPOS": "ADP", "children": []},
+            "for": {"dep": "ROOT",
+            "headText": "for",
+            "headPOS": "ADP",
+            "children": ["And", "now", "something", "."]},
+            "something": {"dep": "pobj",
+            "headText": "for",
+            "headPOS": "ADP",
+            "children": ["different"]},
+            "completely": {"dep": "advmod",
+            "headText": "different",
+            "headPOS": "ADJ",
+            "children": []},
+            "different": {"dep": "amod",
+            "headText": "something",
+            "headPOS": "PRON",
+            "children": ["completely"]},
+            ".": {"dep": "punct", "headText": "for", "headPOS": "ADP", "children": []}}
 
 ****************
 Tags Recognition

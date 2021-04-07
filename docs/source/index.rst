@@ -31,7 +31,7 @@ Welcome to Qubitai-dltk's documentation!
    :caption: Machine Learning
 
    machine_learning/index
-   machine_learning/preprocessing
+   machine_learning/data_preprocessing
    machine_learning/classification
    machine_learning/regression
    machine_learning/clustering
