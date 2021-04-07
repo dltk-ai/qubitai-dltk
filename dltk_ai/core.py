@@ -669,7 +669,7 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         return response
 
-    def face_analytics(self, image_url=None, features=None, image_path=None, face_detectors = 'mtcnn',
+    def face_analytics(self, image_url=None, features=None, image_path=None, face_detectors=['mtcnn'],
                        output_types=["json"], wait_time=10):
         """
         This function is for face analytics
