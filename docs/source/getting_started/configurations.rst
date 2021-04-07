@@ -9,17 +9,17 @@ Database Configuration
 
         Postgres is used for saving output of various services. We can deploy postgres or use an existing postgres DB.
 
-        +-------------------+-----------------------------------------------+-------------------+
-        | Parameter         |                Description                    |  Default          |
-        +===================+===============================================+===================+
-        | *SQL_USER*        | User Name for postgres database               |  postgres         |
-        +-------------------+-----------------------------------------------+-------------------+
-        | *SQL_PASSWORD*    | Password for postgres database                |  postgres         |
-        +-------------------+-----------------------------------------------+-------------------+
-        | *SQL_HOST*        | IP address of the postgres database           |  http://localhost |
-        +-------------------+-----------------------------------------------+-------------------+
-        | *SQL_PORT*        | Port where postgres database can be accessed  |  5432             |
-        +-------------------+-----------------------------------------------+-------------------+
+        +-------------------+-----------------------------------------------+
+        | Parameter         |                Description                    |
+        +===================+===============================================+
+        | *SQL_USER*        | User Name for postgres database               |
+        +-------------------+-----------------------------------------------+
+        | *SQL_PASSWORD*    | Password for postgres database                |
+        +-------------------+-----------------------------------------------+
+        | *SQL_HOST*        | IP address of the postgres database           |
+        +-------------------+-----------------------------------------------+
+        | *SQL_PORT*        | Port where postgres database can be accessed  |
+        +-------------------+-----------------------------------------------+
 
 
         .. code-block::
@@ -36,6 +36,8 @@ Database Configuration
     b. Redis
 
         +-------------------+-----------------------------------------------+
+        | Parameter         |                Description                    |
+        +-------------------+-----------------------------------------------+
         | *REDIS_IP*        | User Name for postgres database               |
         +-------------------+-----------------------------------------------+
         | *REDIS_PORT*      | Password for postgres database                |
@@ -49,6 +51,18 @@ Database Configuration
 
     c. InfluxDB
 
+        +-------------------------+------------------------------------------------+
+        | Parameter               |           Description                          |
+        +=========================+================================================+
+        | *INFLUXDB_IP*           |  IP address of the postgres database           |
+        +-------------------------+------------------------------------------------+
+        | *INFLUXDB_PORT*         |  Port where postgres database can be accessed  |
+        +-------------------------+------------------------------------------------+
+        | *INFLUXDB_USER*         |  User Name for influx database                 |
+        +-------------------------+------------------------------------------------+
+        | *INFLUXDB_PASSWORD*     |  Password for influx database                  |
+        +-------------------------+------------------------------------------------+
+
         .. code-block::
 
             # InfluxDb Details
@@ -60,27 +74,22 @@ Database Configuration
 Base Services
 -------------
 
-.. glossary::
-    a. Registry Service
+    .. glossary::
+        a. Registry Service
 
-        .. code-block::
+            .. code-block::
 
-            # Registry service Details
-            REGISTRY_SERVICE_IP="http://12.1.1.9"
-            REGISTRY_SERVICE_PORT="8761"
-
-
-    b. Kong
-
-        Kong is used for ....
+                # Registry service Details
+                REGISTRY_SERVICE_IP="http://YOUR_BASE_SERVICE_IP_ADDRESS"
+                REGISTRY_SERVICE_PORT="8761"
 
 
-    c. Solution Service
+        b. Solution Service
 
-        .. code-block::
+            .. code-block::
 
-            SOLUTION_INSTANCE_IP="dltk-solution-service"
-            SOLUTION_INSTANCE_PORT="8093"
+                SOLUTION_INSTANCE_IP="YOUR_BASE_SERVICE_IP_ADDRESS"
+                SOLUTION_INSTANCE_PORT="8093"
 
 
 Storage Configurations
@@ -97,9 +106,144 @@ Storage Configurations
 
             .. code-block::
 
+                STORAGE_TYPE="aws"
+
                 # S3 Config
                 S3_BUCKET="YOUR_S3_BUCKET"
                 S3_REGION="ap-south-1"
                 S3_ENDPOINT="YOUR_S3_ENDPOINT"
                 S3_ACCESS_KEY="YOUR_S3_ACCESS_KEY"
                 S3_SECRET_KEY="YOUR_S3_SECRET_KEY"
+
+        b. GCP
+
+            .. code-block::
+
+                STORAGE_TYPE="gcp"
+
+                # GCP
+                GCP_SERVICE_ACCOUNT_FILE_PATH="YOUR_GCP_SERVICE_ACCOUNT_PATH"
+                GCP_PRIVATE_BUCKET="YOUR_GCP_PRIVATE_BUCKET"
+                GCP_PUBLIC_BUCKET="YOUR_GCP_PUBLIC_BUCKET"
+
+        b. DIGITAL OCEAN
+
+            .. code-block::
+
+                STORAGE_TYPE="do"
+
+                # Digital Ocean
+                DO_ENDPOINT="YOUR_DO_ENDPOINT"
+                DO_ACCESS_KEY="YOUR_DO_ACCESS_KEY"
+                DO_SECRET_KEY="YOUR_DO_SECRET_KEY"
+                DO_BUCKET="YOUR_DO_BUCKET"
+                DO_REGION="YOUR_DO_REGION"
+
+Authentication Configurations
+-----------------------------
+
+    .. glossary::
+
+        a. Enable Auth
+
+            .. code-block::
+
+                AUTH_ENABLED="true"
+                SMTP_HOST="YOUR_SMTP_HOST"
+                SMTP_PORT="587"
+                SMTP_USERNAME="YOUR_SMTP_USERNAME"
+                SMTP_PASSWORD="YOUR_SMTP_PASSWORD"
+                UI_SERVICE_URL="http://YOUR_UI_SERVICE_IP_ADDRESS:8082"
+
+        b. Disable Auth
+
+            .. code-block::
+
+                AUTH_ENABLED="false"
+
+
+AI Engines Credentials
+----------------------
+
+    .. glossary::
+
+        a. NLP
+
+            .. code-block::
+
+                # URL is given only for reference, replace with your credentials
+
+                AZURE_LANGUAGE_APIKEY="USER_DEFINED"
+                AZURE_LANGUAGE_URL="https://dltk-text-analytics.cognitiveservices.azure.com/text/analytics/v2.1/"
+
+                IBM_LANGUAGE_URL="https://gateway-lon.watsonplatform.net/natural-language-understanding/api"
+                IBM_LANGUAGE_APIKEY="USER_DEFINED"
+
+        b. CV(Object detection and Image Classification)
+
+            .. code-block::
+
+                # URL is given only for reference, replace with your credentials
+
+                AZURE_VISION_SUBSCRIPTION_KEY="USER_DEFINED"
+                AZURE_VISION_URL="https://dltk-ai-cv.cognitiveservices.azure.com/vision/v2.0/analyze"
+
+                IBM_VISUAL_URL="https://gateway.watsonplatform.net/visual-recognition/api"
+                IBM_VISUAL_APIKEY="USER_DEFINED"
+
+        b. Face Analytics
+
+            .. code-block::
+
+                # URL is given only for reference, replace with your credentials
+
+                AZURE_FACE_DETECTION_URL="https://dltk-ai-face.cognitiveservices.azure.com/face/v1.0/detect"
+                AZURE_FACE_DETECTION_SUBSCRIPTION_KEY ="USER_DEFINED"
+
+
+Microservices Instance IP and Ports
+-----------------------------------
+
+    .. glossary::
+
+        a. ML WRAPPER SERVICE
+
+            .. code-block::
+
+                ML_WRAPPER_INSTANCE_IP="YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS"
+                ML_WRAPPER_INSTANCE_PORT="8199"
+
+        b. ML WEKA SERVICE
+
+            .. code-block::
+
+                ML_WEKA_INSTANCE_IP="YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS"
+                ML_WEKA_INSTANCE_PORT="8101"
+
+        c. ML SCIKIT SERVICE
+
+            .. code-block::
+
+                ML_SCIKIT_INSTANCE_IP="YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS"
+                ML_SCIKIT_INSTANCE_PORT="8089"
+
+        d. ML H2O SERVICE
+
+            .. code-block::
+
+                ML_H2O_INSTANCE_IP="YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS"
+                ML_H2O_INSTANCE_PORT="8087"
+
+        e. NLP SERVICE
+
+            .. code-block::
+
+                NLP_INSTANCE_IP="YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS"
+                NLP_INSTANCE_PORT="8189"
+
+        f. CV WRAPPER SERVICE
+
+            .. code-block::
+
+                CV_WRAPPER_INSTANCE_IP="YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS"
+                CV_WRAPPER_INSTANCE_PORT="8190"

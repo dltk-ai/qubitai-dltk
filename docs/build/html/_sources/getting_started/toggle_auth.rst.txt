@@ -14,7 +14,6 @@ Developers can Sign Up & Create Project using ``User Management UI``. as shown i
 Single Machine
 ---------------
 
------------
 
 Enable Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,6 +102,11 @@ Disable Authentication
 
             AUTH_ENABLED="false"
 
+        .. code-block:: console
+
+            $ sudo python setup.py -m update_config
+            $ sudo python setup.py --mode auth --auth False
+
 
     .. tab:: Mac
 
@@ -111,6 +115,11 @@ Disable Authentication
         .. code-block::
 
             AUTH_ENABLED="false"
+
+        .. code-block:: console
+
+            $ sudo python setup.py -m update_config
+            $ sudo python setup.py --mode auth --auth False
 
 
     .. tab:: Windows
@@ -121,13 +130,17 @@ Disable Authentication
 
             AUTH_ENABLED="false"
 
+        .. code-block:: console
+
+            $ python setup.py -m update_config
+            $ python setup.py --mode auth --auth False
+
 
 
 
 Multiple Machines
 ------------------
 
-------------
 
 Enabling Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~

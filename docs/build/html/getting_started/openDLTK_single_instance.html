@@ -221,15 +221,15 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pre-requisites" id="id3">Pre-requisites</a></p></li>
-<li><p><a class="reference internal" href="#installation" id="id4">Installation</a></p></li>
-<li><p><a class="reference internal" href="#usage" id="id5">Usage</a></p></li>
-<li><p><a class="reference internal" href="#stop-services" id="id6">Stop Services</a></p></li>
-<li><p><a class="reference internal" href="#uninstall-dltk" id="id7">Uninstall DLTK</a></p></li>
+<li><p><a class="reference internal" href="#pre-requisites" id="id5">Pre-requisites</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id6">Installation</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id7">Usage</a></p></li>
+<li><p><a class="reference internal" href="#stop-services" id="id8">Stop Services</a></p></li>
+<li><p><a class="reference internal" href="#uninstall-dltk" id="id9">Uninstall DLTK</a></p></li>
 </ul>
 </div>
 <div class="section" id="pre-requisites">
-<h2><a class="toc-backref" href="#id3">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Pre-requisites</a><a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Linux</label><div class="tab-content docutils container">
 <p><strong>1. Python 3.6+</strong> : To install python refer this <a class="reference external" href="https://realpython.com/installing-python/">Python installation guide</a></p>
@@ -253,7 +253,7 @@
 </div>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id4">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Clone OpenDLTK github repository</strong></p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Linux</label><div class="tab-content docutils container">
@@ -291,10 +291,6 @@ sudo usermod -aG docker $(whoami)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Which</span> <span class="n">version</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">install</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">]</span>
-<span class="n">Enter</span> <span class="n">your</span> <span class="nb">input</span><span class="p">:</span> <span class="mf">1.0</span>
-</pre></div>
-</div>
 </div>
 <input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">Mac</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">init</span>
@@ -306,6 +302,10 @@ sudo usermod -aG docker $(whoami)
 </pre></div>
 </div>
 </div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Which</span> <span class="n">version</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">install</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">]</span>
+<span class="n">Enter</span> <span class="n">your</span> <span class="nb">input</span><span class="p">:</span> <span class="mf">1.0</span>
+</pre></div>
 </div>
 <p>You can choose version of openDLTK you want to install on your machine.
 Please ensure this version should be compatible with the <a class="reference external" href="https://github.com/dltk-ai/qubitai-dltk">Python client SDK</a> you installed above.</p>
@@ -351,12 +351,12 @@ Please ensure this version should be compatible with the <a class="reference ext
 
 <span class="c1"># Values only for reference, replace with your details</span>
 
-<span class="n">GCP_SERVICE_ACCOUNT_FILE</span><span class="o">=</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">.</span><span class="n">json</span>
+<span class="n">GCP_SERVICE_ACCOUNT_FILE_PATH</span><span class="o">=</span><span class="s2">&quot;/home/</span><span class="si">{username}</span><span class="s2">/Documents/dltk-ai.json&quot;</span>
 <span class="n">GCP_PRIVATE_BUCKET</span><span class="o">=</span><span class="s2">&quot;dltk-ai-private&quot;</span>
 <span class="n">GCP_PUBLIC_BUCKET</span><span class="o">=</span><span class="s2">&quot;dltk-ai-public&quot;</span>
 </pre></div>
 </div>
-<p>Replace <a class="reference external" href="https://github.com/dltk-ai/openDLTK_beta/blob/main/base/solution-config/dltk-ai.json">base/solution-config/dltk-ai.json</a> with your GCS credentials file which you can generate from <a class="reference external" href="https://cloud.google.com/iam/docs/creating-managing-service-accounts">GCP service account</a></p>
+<p>GCP_SERVICE_ACCOUNT_FILE will contain your GCS credentials.You can generate this by following this <a class="reference external" href="https://cloud.google.com/iam/docs/creating-managing-service-accounts">link</a></p>
 </div>
 <input class="tab-input" id="tab-set--4-input--4" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--4">Digital Ocean</label><div class="tab-content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;do&quot;</span>
@@ -383,23 +383,47 @@ Please ensure this version should be compatible with the <a class="reference ext
 <blockquote>
 <div><div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">Azure</label><div class="tab-content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AZURE_LANGUAGE_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
-<span class="n">AZURE_BASE_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+
+<span class="n">AZURE_LANGUAGE_APIKEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<span class="n">AZURE_LANGUAGE_URL</span><span class="o">=</span><span class="s2">&quot;https://dltk-text-analytics.cognitiveservices.azure.com/text/analytics/v2.1/&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AZURE_VISION_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
-<span class="n">AZURE_VISION_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+
+<span class="n">AZURE_VISION_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<span class="n">AZURE_VISION_URL</span><span class="o">=</span><span class="s2">&quot;https://dltk-ai-cv.cognitiveservices.azure.com/vision/v2.0/analyze&quot;</span>
 </pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+
+<span class="n">AZURE_FACE_DETECTION_URL</span><span class="o">=</span><span class="s2">&quot;https://dltk-ai-face.cognitiveservices.azure.com/face/v1.0/detect&quot;</span>
+<span class="n">AZURE_FACE_DETECTION_SUBSCRIPTION_KEY</span> <span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics">link</a> to create Azure Language Subscription Keys.
+Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision">link</a> to create Azure Vision Subscription Keys.
+Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace">link</a> to create Azure Face Subscription Keys.</p>
 </div>
 </div>
 <input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">IBM</label><div class="tab-content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IBM_LANGUAGE_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
-<span class="n">IBM_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+
+<span class="n">IBM_LANGUAGE_URL</span><span class="o">=</span><span class="s2">&quot;https://gateway-lon.watsonplatform.net/natural-language-understanding/api&quot;</span>
+<span class="n">IBM_LANGUAGE_APIKEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IBM_VISUAL_URL</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+
+<span class="n">IBM_VISUAL_URL</span><span class="o">=</span><span class="s2">&quot;https://gateway.watsonplatform.net/visual-recognition/api&quot;</span>
 <span class="n">IBM_VISUAL_APIKEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
 </pre></div>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Refer this <a class="reference external" href="https://www.ibm.com/watson/developercloud/doc/virtual-agent/api-keys.html">link</a> to create IBM Watson API Keys.</p>
 </div>
 </div>
 </div>
@@ -421,9 +445,9 @@ Please ensure this version should be compatible with the <a class="reference ext
 <span class="n">UI_SERVICE_URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8082&quot;</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id1">
+<div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
-<p>If later you want to disable authentication, please refer this section</p>
+<p>If later you want to disable authentication, please refer <a class="reference external" href="https://docs.dltk.ai/getting_started/toggle_auth.html">this section</a></p>
 </div>
 </div>
 <input class="tab-input" id="tab-set--6-input--2" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--2">Disable Authentication</label><div class="tab-content docutils container">
@@ -431,9 +455,9 @@ Please ensure this version should be compatible with the <a class="reference ext
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id2">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
-<p>If later you want to enable authentication, please refer this section</p>
+<p>If later you want to disable authentication, please refer <a class="reference external" href="https://docs.dltk.ai/getting_started/toggle_auth.html">this section</a></p>
 </div>
 </div>
 </div>
@@ -456,10 +480,9 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div>
 </div>
-<p>Result would be like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Which</span> <span class="n">version</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">install</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">]</span>
-<span class="n">Enter</span> <span class="n">your</span> <span class="nb">input</span><span class="p">:</span> <span class="mf">1.0</span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please Note that you need to run the update_config command every time you make some changes in /usr/dltk-ai/config.env(Linux and Mac) or C://Users//{username}//AppData//Local//dltk-ai//config.env(windows)</p>
 </div>
 <p><strong>5. Install Services</strong></p>
 <div class="tab-set docutils container">
@@ -490,7 +513,7 @@ Please ensure this version should be compatible with the <a class="reference ext
     <span class="mf">7.</span> <span class="n">Face</span> <span class="n">Analytics</span>
     <span class="mf">8.</span> <span class="n">Natural</span> <span class="n">Language</span> <span class="n">Processing</span>
 
-<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span>
+<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -500,7 +523,7 @@ Please ensure this version should be compatible with the <a class="reference ext
 <p>You can verify whether installation is successful or not by visiting <a class="reference external" href="http://localhost:8761">Registry service</a> to check status of containers.</p>
 </div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id5">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>After OpenDLTK is installed, it can be used via DLTK python client SDK, as shown in below example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -553,7 +576,7 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div>
 <div class="section" id="stop-services">
-<h2><a class="toc-backref" href="#id6">Stop Services</a><a class="headerlink" href="#stop-services" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Stop Services</a><a class="headerlink" href="#stop-services" title="Permalink to this headline">¶</a></h2>
 <p>To stop OpenDLTK services, run below commands.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--10-input--1" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--1">selected services</label><div class="tab-content docutils container">
@@ -573,6 +596,23 @@ Please ensure this version should be compatible with the <a class="reference ext
 </pre></div>
 </div>
 </div>
+</div>
+<p>You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">choose</span> <span class="n">services</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">RETAIN</span><span class="p">,</span> <span class="n">other</span> <span class="n">than</span> <span class="n">those</span> <span class="nb">all</span> <span class="n">services</span> <span class="n">will</span> <span class="n">be</span> <span class="n">UNINSTALLED</span>
+
+    <span class="mf">1.</span> <span class="n">Base</span>
+    <span class="mf">2.</span> <span class="n">ML</span> <span class="n">Scikit</span>
+    <span class="mf">3.</span> <span class="n">ML</span> <span class="n">H2O</span>
+    <span class="mf">4.</span> <span class="n">ML</span> <span class="n">Weka</span>
+    <span class="mf">5.</span> <span class="n">Image</span> <span class="n">Classification</span>
+    <span class="mf">6.</span> <span class="n">Object</span> <span class="n">Detection</span>
+    <span class="mf">7.</span> <span class="n">Face</span> <span class="n">Analytics</span>
+    <span class="mf">8.</span> <span class="n">Natural</span> <span class="n">Language</span> <span class="n">Processing</span>
+
+<span class="n">Note</span><span class="p">:</span> <span class="n">Image</span> <span class="n">Classification</span><span class="p">,</span><span class="n">Object</span> <span class="n">Detection</span> <span class="ow">and</span> <span class="n">Face</span> <span class="n">Analytics</span> <span class="n">may</span> <span class="n">take</span> <span class="n">an</span> <span class="n">hour</span> <span class="n">to</span> <span class="n">download</span><span class="o">.</span>
+
+<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">1</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -603,7 +643,7 @@ Please ensure this version should be compatible with the <a class="reference ext
 </div>
 </div>
 <div class="section" id="uninstall-dltk">
-<h2><a class="toc-backref" href="#id7">Uninstall DLTK</a><a class="headerlink" href="#uninstall-dltk" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Uninstall DLTK</a><a class="headerlink" href="#uninstall-dltk" title="Permalink to this headline">¶</a></h2>
 <p>To uninstall OpenDLTK, run below commands.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--14-input--1" name="tab-set--14" type="radio"><label class="tab-label" for="tab-set--14-input--1">selected services</label><div class="tab-content docutils container">
@@ -623,6 +663,23 @@ Please ensure this version should be compatible with the <a class="reference ext
 </pre></div>
 </div>
 </div>
+</div>
+<p>You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">choose</span> <span class="n">services</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">RETAIN</span><span class="p">,</span> <span class="n">other</span> <span class="n">than</span> <span class="n">those</span> <span class="nb">all</span> <span class="n">services</span> <span class="n">will</span> <span class="n">be</span> <span class="n">UNINSTALLED</span>
+
+    <span class="mf">1.</span> <span class="n">Base</span>
+    <span class="mf">2.</span> <span class="n">ML</span> <span class="n">Scikit</span>
+    <span class="mf">3.</span> <span class="n">ML</span> <span class="n">H2O</span>
+    <span class="mf">4.</span> <span class="n">ML</span> <span class="n">Weka</span>
+    <span class="mf">5.</span> <span class="n">Image</span> <span class="n">Classification</span>
+    <span class="mf">6.</span> <span class="n">Object</span> <span class="n">Detection</span>
+    <span class="mf">7.</span> <span class="n">Face</span> <span class="n">Analytics</span>
+    <span class="mf">8.</span> <span class="n">Natural</span> <span class="n">Language</span> <span class="n">Processing</span>
+
+<span class="n">Note</span><span class="p">:</span> <span class="n">Image</span> <span class="n">Classification</span><span class="p">,</span><span class="n">Object</span> <span class="n">Detection</span> <span class="ow">and</span> <span class="n">Face</span> <span class="n">Analytics</span> <span class="n">may</span> <span class="n">take</span> <span class="n">an</span> <span class="n">hour</span> <span class="n">to</span> <span class="n">download</span><span class="o">.</span>
+
+<span class="n">Choose</span> <span class="n">your</span> <span class="n">selection</span> <span class="p">:</span> <span class="mi">1</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>

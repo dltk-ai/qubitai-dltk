@@ -89,11 +89,6 @@ Installation
 
         sudo python setup.py -m init
 
-    .. code-block::
-
-       Which version you want to install ['1.0', '1.1']
-       Enter your input: 1.0
-
 
 .. tab:: Mac
 
@@ -106,6 +101,11 @@ Installation
     .. code-block::
 
         python setup.py -m init
+
+.. code-block::
+
+       Which version you want to install ['1.0', '1.1']
+       Enter your input: 1.0
 
 You can choose version of openDLTK you want to install on your machine.
 Please ensure this version should be compatible with the `Python client SDK <https://github.com/dltk-ai/qubitai-dltk>`__ you installed above.
@@ -158,11 +158,11 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
             # Values only for reference, replace with your details
 
-            GCP_SERVICE_ACCOUNT_FILE=dltk-ai.json
+            GCP_SERVICE_ACCOUNT_FILE_PATH="/home/{username}/Documents/dltk-ai.json"
             GCP_PRIVATE_BUCKET="dltk-ai-private"
             GCP_PUBLIC_BUCKET="dltk-ai-public"
 
-        Replace `base/solution-config/dltk-ai.json <https://github.com/dltk-ai/openDLTK_beta/blob/main/base/solution-config/dltk-ai.json>`__ with your GCS credentials file which you can generate from `GCP service account <https://cloud.google.com/iam/docs/creating-managing-service-accounts>`__
+        GCP_SERVICE_ACCOUNT_FILE will contain your GCS credentials.You can generate this by following this `link <https://cloud.google.com/iam/docs/creating-managing-service-accounts>`__
 
     .. tab:: Digital Ocean
 
@@ -190,27 +190,55 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     .. tab:: Azure
 
-        .. code-block::
-
-            AZURE_LANGUAGE_SUBSCRIPTION_KEY="USER_DEFINED"
-            AZURE_BASE_URL="USER_DEFINED"
 
         .. code-block::
+
+            # URL is given only for reference, replace with your credentials
+
+            AZURE_LANGUAGE_APIKEY="USER_DEFINED"
+            AZURE_LANGUAGE_URL="https://dltk-text-analytics.cognitiveservices.azure.com/text/analytics/v2.1/"
+
+        .. code-block::
+
+            # URL is given only for reference, replace with your credentials
 
             AZURE_VISION_SUBSCRIPTION_KEY="USER_DEFINED"
-            AZURE_VISION_URL="USER_DEFINED"
+            AZURE_VISION_URL="https://dltk-ai-cv.cognitiveservices.azure.com/vision/v2.0/analyze"
+
+        .. code-block::
+
+            # URL is given only for reference, replace with your credentials
+
+            AZURE_FACE_DETECTION_URL="https://dltk-ai-face.cognitiveservices.azure.com/face/v1.0/detect"
+            AZURE_FACE_DETECTION_SUBSCRIPTION_KEY ="USER_DEFINED"
+
+        .. todo::
+
+            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics>`__ to create Azure Language Subscription Keys.
+            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision>`__ to create Azure Vision Subscription Keys.
+            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace>`__ to create Azure Face Subscription Keys.
 
     .. tab:: IBM
 
         .. code-block::
 
-            IBM_LANGUAGE_URL="USER_DEFINED"
-            IBM_SUBSCRIPTION_KEY="USER_DEFINED"
+            # URL is given only for reference, replace with your credentials
+
+            IBM_LANGUAGE_URL="https://gateway-lon.watsonplatform.net/natural-language-understanding/api"
+            IBM_LANGUAGE_APIKEY="USER_DEFINED"
 
         .. code-block::
 
-            IBM_VISUAL_URL="USER_DEFINED"
+            # URL is given only for reference, replace with your credentials
+
+            IBM_VISUAL_URL="https://gateway.watsonplatform.net/visual-recognition/api"
             IBM_VISUAL_APIKEY="USER_DEFINED"
+
+        .. todo::
+
+            Refer this `link <https://www.ibm.com/watson/developercloud/doc/virtual-agent/api-keys.html>`__ to create IBM Watson API Keys.
+
+
 
 *c. Authentication*
 
@@ -232,7 +260,7 @@ Please ensure this version should be compatible with the `Python client SDK <htt
             UI_SERVICE_URL="http://localhost:8082"
 
         .. todo::
-            If later you want to disable authentication, please refer this section
+            If later you want to disable authentication, please refer `this section <https://docs.dltk.ai/getting_started/toggle_auth.html>`__
 
     .. tab:: Disable Authentication
 
@@ -243,7 +271,7 @@ Please ensure this version should be compatible with the `Python client SDK <htt
             AUTH_ENABLED="false"
 
         .. todo::
-            If later you want to enable authentication, please refer this section
+            If later you want to disable authentication, please refer `this section <https://docs.dltk.ai/getting_started/toggle_auth.html>`__
 
 **4. Update config**
 
@@ -267,12 +295,8 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
         python setup.py -m update_config
 
-Result would be like:
-
-.. code-block::
-
-       Which version you want to install ['1.0', '1.1']
-       Enter your input: 1.0
+.. note::
+    Please Note that you need to run the update_config command every time you make some changes in /usr/dltk-ai/config.env(Linux and Mac) or C://Users//{username}//AppData//Local//dltk-ai//config.env(windows)
 
 
 **5. Install Services**
@@ -312,7 +336,7 @@ You will get a list of service as shown below, choose the services you want to i
         7. Face Analytics
         8. Natural Language Processing
 
-    Choose your selection : 5, 8
+    Choose your selection : 5, 8(example)
 
 .. note::
 
@@ -403,8 +427,24 @@ To stop OpenDLTK services, run below commands.
 
             python setup.py --mode uninstall --partial --remove
 
+    You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.
 
+    .. code-block::
 
+        Please choose services you want to RETAIN, other than those all services will be UNINSTALLED
+
+            1. Base
+            2. ML Scikit
+            3. ML H2O
+            4. ML Weka
+            5. Image Classification
+            6. Object Detection
+            7. Face Analytics
+            8. Natural Language Processing
+
+        Note: Image Classification,Object Detection and Face Analytics may take an hour to download.
+
+        Choose your selection : 1(example)
 
 .. tab:: all services
 
@@ -457,6 +497,25 @@ To uninstall OpenDLTK, run below commands.
         .. code-block::
 
             python setup.py --mode uninstall --partial --purge
+
+    You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.
+
+    .. code-block::
+
+        Please choose services you want to RETAIN, other than those all services will be UNINSTALLED
+
+            1. Base
+            2. ML Scikit
+            3. ML H2O
+            4. ML Weka
+            5. Image Classification
+            6. Object Detection
+            7. Face Analytics
+            8. Natural Language Processing
+
+        Note: Image Classification,Object Detection and Face Analytics may take an hour to download.
+
+        Choose your selection : 1(example)
 
 
 
