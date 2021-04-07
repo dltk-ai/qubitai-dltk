@@ -16,7 +16,7 @@ In this section we will see DLTK python SDK Installation steps and Initiating cl
 Installation
 -------------
 
-Python SDK client can be installed using
+Python SDK client can be installed using either using ``pip`` or from ``Source``
 
 .. tab:: Installing through pip
 
@@ -26,6 +26,7 @@ Python SDK client can be installed using
 
         $ pip install qubitai-dltk
 
+    for linux or mac machines, try using with ``sudo pip3`` instead of ``pip``
 
 .. tab:: Installing From Source
 

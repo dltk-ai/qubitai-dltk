@@ -258,6 +258,10 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
                 $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=/path/to/folder"
 
+            .. tip::
+
+                In case you get issues while installing docker,
+
         **Database**
 
 
@@ -456,8 +460,8 @@ Usage
         print(sentiment_analysis_response.text)
 
 .. seealso::
-    1. To enable/disable authentication `link <http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/toggle_auth.html>`__ .
-    2. How to Create user and Generate API Key `link <http://localhost:63342/qubitai-dltk/docs/build/html/getting_started/generateAPIkey.html>`__ .
+    1. To enable/disable authentication `link <toggle_auth.html>`__ .
+    2. How to Create user and Generate API Key `link <generateAPIkey.html>`__ .
 
 
 Stop DLTK Services
