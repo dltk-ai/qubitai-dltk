@@ -694,7 +694,7 @@ class DltkAiClient:
         if 'face_locations' in features:
             if type(face_detectors) == str:
                 face_detectors = face_detectors.split(',')
-            face_detectors = [detector.lower for detector in face_detectors]
+            face_detectors = [detector.lower() for detector in face_detectors]
             supported_face_detectors = ['mtcnn', 'azure', 'dlib', 'opencv']
             assert len([detector for detector in supported_face_detectors if detector in face_detectors]) > 0, f"Please choose face_detectors from {supported_face_detectors}"
 
