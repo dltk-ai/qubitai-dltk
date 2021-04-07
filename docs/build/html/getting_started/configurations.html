@@ -223,7 +223,7 @@
 <h2>Database Configuration<a class="headerlink" href="#database-configuration" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="glossary">
-<dt id="term-a.-Postgres">a. Postgres</dt><dd><p>Postgres is used for saving output of various services. We can deploy postgres or use an existing postgres DB.</p>
+<dt id="term-a.-Postgres">a. Postgres<a class="headerlink" href="#term-a.-Postgres" title="Permalink to this term">¶</a></dt><dd><p>Postgres is used for saving output of various services. We can deploy postgres or use an existing postgres DB.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
@@ -253,14 +253,14 @@
 <span class="n">PYTHON_SQL_ENGINE</span><span class="o">=</span><span class="s2">&quot;django.db.backends.postgresql&quot;</span>
 <span class="n">SQL_USER</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span>
 <span class="n">SQL_PASSWORD</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span>
-<span class="n">SQL_HOST</span><span class="o">=</span><span class="s2">&quot;12.1.1.8&quot;</span>
+<span class="n">SQL_HOST</span><span class="o">=</span><span class="s2">&quot;YOUR_POSTGRES_DB_IP_ADDRESS&quot;</span>
 <span class="n">SQL_PORT</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span>
 <span class="n">EXTERNAL_PORT</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span>
 <span class="n">JAVA_SQL_DRIVER</span><span class="o">=</span><span class="s2">&quot;org.postgresql.Driver&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-Redis">b. Redis</dt><dd><table class="docutils align-default">
+<dt id="term-b.-Redis">b. Redis<a class="headerlink" href="#term-b.-Redis" title="Permalink to this term">¶</a></dt><dd><table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
 <col style="width: 71%" />
@@ -278,12 +278,12 @@
 </tbody>
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Redis Details</span>
-<span class="n">REDIS_IP</span><span class="o">=</span><span class="s2">&quot;12.1.1.8&quot;</span>
+<span class="n">REDIS_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_REDIS_IP_ADDRESS&quot;</span>
 <span class="n">REDIS_PORT</span><span class="o">=</span><span class="s2">&quot;6379&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-c.-InfluxDB">c. InfluxDB</dt><dd><table class="docutils align-default">
+<dt id="term-c.-InfluxDB">c. InfluxDB<a class="headerlink" href="#term-c.-InfluxDB" title="Permalink to this term">¶</a></dt><dd><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -309,7 +309,7 @@
 </tbody>
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># InfluxDb Details</span>
-<span class="n">INFLUXDB_IP</span><span class="o">=</span><span class="s2">&quot;12.1.1.8&quot;</span>
+<span class="n">INFLUXDB_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_INFLUXDB_IP_ADDRESS&quot;</span>
 <span class="n">INFLUXDB_PORT</span><span class="o">=</span><span class="s2">&quot;8011&quot;</span>
 <span class="n">INFLUXDB_USER</span><span class="o">=</span><span class="s2">&quot;influxdb&quot;</span>
 <span class="n">INFLUXDB_PASSWORD</span><span class="o">=</span><span class="s2">&quot;influxdb&quot;</span>
@@ -323,13 +323,13 @@
 <h2>Base Services<a class="headerlink" href="#base-services" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="glossary">
-<dt id="term-a.-Registry-Service">a. Registry Service</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Registry service Details</span>
+<dt id="term-a.-Registry-Service">a. Registry Service<a class="headerlink" href="#term-a.-Registry-Service" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Registry service Details</span>
 <span class="n">REGISTRY_SERVICE_IP</span><span class="o">=</span><span class="s2">&quot;http://YOUR_BASE_SERVICE_IP_ADDRESS&quot;</span>
 <span class="n">REGISTRY_SERVICE_PORT</span><span class="o">=</span><span class="s2">&quot;8761&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-Solution-Service">b. Solution Service</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_BASE_SERVICE_IP_ADDRESS&quot;</span>
+<dt id="term-b.-Solution-Service">b. Solution Service<a class="headerlink" href="#term-b.-Solution-Service" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_BASE_SERVICE_IP_ADDRESS&quot;</span>
 <span class="n">SOLUTION_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8093&quot;</span>
 </pre></div>
 </div>
@@ -341,11 +341,11 @@
 <h2>Storage Configurations<a class="headerlink" href="#storage-configurations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="glossary">
-<dt id="term-a.-Local">a. Local</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;local&quot;</span>
+<dt id="term-a.-Local">a. Local<a class="headerlink" href="#term-a.-Local" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;local&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-AWS-S3">b. AWS S3</dt><dd><ul class="simple">
+<dt id="term-b.-AWS-S3">b. AWS S3<a class="headerlink" href="#term-b.-AWS-S3" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Refer this <a class="reference external" href="https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html">link</a> for creating a bucket in AWS S3.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
@@ -359,7 +359,7 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-GCP">b. GCP</dt><dd><ul class="simple">
+<dt id="term-b.-GCP">b. GCP<a class="headerlink" href="#term-b.-GCP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>GCP_SERVICE_ACCOUNT_FILE will contain your GCS credentials.You can generate this by following this <a class="reference external" href="https://cloud.google.com/iam/docs/creating-managing-service-accounts">link</a></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;gcp&quot;</span>
@@ -371,7 +371,7 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-DIGITAL-OCEAN">b. DIGITAL OCEAN</dt><dd><ul class="simple">
+<dt id="term-b.-DIGITAL-OCEAN">b. DIGITAL OCEAN<a class="headerlink" href="#term-b.-DIGITAL-OCEAN" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Refer this <a class="reference external" href="https://www.digitalocean.com/docs/spaces/how-to/create/">link</a> for creating a bucket in Digital Ocean Spaces.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;do&quot;</span>
@@ -392,7 +392,7 @@
 <h2>Authentication Configurations<a class="headerlink" href="#authentication-configurations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="glossary">
-<dt id="term-a.-Enable-Auth">a. Enable Auth</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+<dt id="term-a.-Enable-Auth">a. Enable Auth<a class="headerlink" href="#term-a.-Enable-Auth" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
 <span class="n">SMTP_HOST</span><span class="o">=</span><span class="s2">&quot;YOUR_SMTP_HOST&quot;</span>
 <span class="n">SMTP_PORT</span><span class="o">=</span><span class="s2">&quot;587&quot;</span>
 <span class="n">SMTP_USERNAME</span><span class="o">=</span><span class="s2">&quot;YOUR_SMTP_USERNAME&quot;</span>
@@ -401,7 +401,7 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-Disable-Auth">b. Disable Auth</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
+<dt id="term-b.-Disable-Auth">b. Disable Auth<a class="headerlink" href="#term-b.-Disable-Auth" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_ENABLED</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
 </dd>
@@ -418,7 +418,7 @@
 <li><p>Refer this <a class="reference external" href="https://www.ibm.com/watson/developercloud/doc/virtual-agent/api-keys.html">link</a> to create IBM Watson API Keys.</p></li>
 </ul>
 <dl class="glossary">
-<dt id="term-a.-NLP">a. NLP</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+<dt id="term-a.-NLP">a. NLP<a class="headerlink" href="#term-a.-NLP" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
 
 <span class="n">AZURE_LANGUAGE_APIKEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
 <span class="n">AZURE_LANGUAGE_URL</span><span class="o">=</span><span class="s2">&quot;https://dltk-text-analytics.cognitiveservices.azure.com/text/analytics/v2.1/&quot;</span>
@@ -428,7 +428,7 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-Computer-Vision">b. Computer Vision</dt><dd><p>For Object Detection and Image Classification</p>
+<dt id="term-b.-Computer-Vision">b. Computer Vision<a class="headerlink" href="#term-b.-Computer-Vision" title="Permalink to this term">¶</a></dt><dd><p>For Object Detection and Image Classification</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
 
 <span class="n">AZURE_VISION_SUBSCRIPTION_KEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
@@ -439,7 +439,7 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-Face-Analytics">b. Face Analytics</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
+<dt id="term-b.-Face-Analytics">b. Face Analytics<a class="headerlink" href="#term-b.-Face-Analytics" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
 
 <span class="n">AZURE_FACE_DETECTION_URL</span><span class="o">=</span><span class="s2">&quot;https://dltk-ai-face.cognitiveservices.azure.com/face/v1.0/detect&quot;</span>
 <span class="n">AZURE_FACE_DETECTION_SUBSCRIPTION_KEY</span> <span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
@@ -453,32 +453,32 @@
 <h2>Microservices Instance IP and Ports<a class="headerlink" href="#microservices-instance-ip-and-ports" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="glossary">
-<dt id="term-a.-ML-WRAPPER-SERVICE">a. ML WRAPPER SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_WRAPPER_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-a.-ML-WRAPPER-SERVICE">a. ML WRAPPER SERVICE<a class="headerlink" href="#term-a.-ML-WRAPPER-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_WRAPPER_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">ML_WRAPPER_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8199&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-ML-WEKA-SERVICE">b. ML WEKA SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_WEKA_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-b.-ML-WEKA-SERVICE">b. ML WEKA SERVICE<a class="headerlink" href="#term-b.-ML-WEKA-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_WEKA_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">ML_WEKA_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8101&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-c.-ML-SCIKIT-SERVICE">c. ML SCIKIT SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_SCIKIT_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-c.-ML-SCIKIT-SERVICE">c. ML SCIKIT SERVICE<a class="headerlink" href="#term-c.-ML-SCIKIT-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_SCIKIT_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">ML_SCIKIT_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8089&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-d.-ML-H2O-SERVICE">d. ML H2O SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_H2O_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-d.-ML-H2O-SERVICE">d. ML H2O SERVICE<a class="headerlink" href="#term-d.-ML-H2O-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ML_H2O_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_ML_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">ML_H2O_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8087&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-e.-NLP-SERVICE">e. NLP SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NLP_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-e.-NLP-SERVICE">e. NLP SERVICE<a class="headerlink" href="#term-e.-NLP-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NLP_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">NLP_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8189&quot;</span>
 </pre></div>
 </div>
 </dd>
-<dt id="term-f.-CV-WRAPPER-SERVICE">f. CV WRAPPER SERVICE</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CV_WRAPPER_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS&quot;</span>
+<dt id="term-f.-CV-WRAPPER-SERVICE">f. CV WRAPPER SERVICE<a class="headerlink" href="#term-f.-CV-WRAPPER-SERVICE" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CV_WRAPPER_INSTANCE_IP</span><span class="o">=</span><span class="s2">&quot;YOUR_DLTK_AI_WRAPPER_HOST_IP_ADDRESS&quot;</span>
 <span class="n">CV_WRAPPER_INSTANCE_PORT</span><span class="o">=</span><span class="s2">&quot;8190&quot;</span>
 </pre></div>
 </div>

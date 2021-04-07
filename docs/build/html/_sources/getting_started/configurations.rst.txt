@@ -28,7 +28,7 @@ Database Configuration
                 PYTHON_SQL_ENGINE="django.db.backends.postgresql"
                 SQL_USER="postgres"
                 SQL_PASSWORD="postgres"
-                SQL_HOST="12.1.1.8"
+                SQL_HOST="YOUR_POSTGRES_DB_IP_ADDRESS"
                 SQL_PORT="5432"
                 EXTERNAL_PORT="5432"
                 JAVA_SQL_DRIVER="org.postgresql.Driver"
@@ -46,7 +46,7 @@ Database Configuration
             .. code-block::
 
                 # Redis Details
-                REDIS_IP="12.1.1.8"
+                REDIS_IP="YOUR_REDIS_IP_ADDRESS"
                 REDIS_PORT="6379"
 
         c. InfluxDB
@@ -66,7 +66,7 @@ Database Configuration
             .. code-block::
 
                 # InfluxDb Details
-                INFLUXDB_IP="12.1.1.8"
+                INFLUXDB_IP="YOUR_INFLUXDB_IP_ADDRESS"
                 INFLUXDB_PORT="8011"
                 INFLUXDB_USER="influxdb"
                 INFLUXDB_PASSWORD="influxdb"
