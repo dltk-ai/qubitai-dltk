@@ -59,7 +59,7 @@ OpenDLTK
 
 
         .. seealso::
-            1. OpenDLTK Setup Guide
+            1. :ref:`OpenDLTK Setup Guide <OpenDLTK-setup>`
             2. OpenDLTK docker Hub
             3. OpenDLTK github
 
