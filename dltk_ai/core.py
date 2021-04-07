@@ -189,15 +189,14 @@ class DltkAiClient:
             print(f"FAILED due to {task_creation_response.content}")
         return task_status_response
 
-    def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"], reformat=True, wait_time=10):
+    def object_detection(self, image_url=None, image_path=None, object_detectors = ['tensorflow'], output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for object detection
         Args:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for object detection
-            azure: if True, returns azure results of object detection on given image
+            object_detectors: Supported object detectors ['tensorflow','azure']
             reformat: if True, reformat response to a common format, else not
             wait_time: wait time to get response
 
@@ -208,9 +207,15 @@ class DltkAiClient:
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
         if image_url is not None:
             assert is_url_valid(image_url), "Enter a valid URL"
-        assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
+        supported_object_detectors = ['tensorflow', 'azure', 'ibm']
+        assert len(supported_object_detectors) >= 1, f"Please select object_detectors from {supported_object_detectors}"
+
+        assert len([classifier for classifier in object_detectors if classifier in supported_object_detectors]) > 0, f"Please select object_detectors from {supported_object_detectors}"
+
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
         assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+
+        object_detectors = {detector: True for detector in object_detectors}
 
         load = {
             "tasks": {"object_detection": True},
@@ -218,8 +223,8 @@ class DltkAiClient:
             "configs": {
                 "output_types": output_types,
                 "object_detection_config": {
-                    "tensorflow": tensorflow,
-                    "azure": azure
+                    "tensorflow": object_detectors.get('tensorflow', False),
+                    "azure": object_detectors.get('azure', False)
                 }
 
             }
@@ -245,7 +250,7 @@ class DltkAiClient:
 
         return response
 
-    def image_classification(self, image_url=None, image_path=None, top_n=3, tensorflow=True, azure=False, ibm=False,
+    def image_classification(self, image_url=None, image_path=None, top_n=3, image_classifiers=[],
                              output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for image classification
@@ -255,9 +260,7 @@ class DltkAiClient:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for image classification
-            azure: if True, returns azure results of image classification on given image
-            ibm: if True, returns ibm results of image classification on given image
+            image_classifiers: Supported image classifier tensorflow, azure, ibm
             reformat: if True, reformat responses received from azure, ibm to a common format
             wait_time: wait time to get response from DLTK server
 
@@ -268,9 +271,16 @@ class DltkAiClient:
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
         if image_url is not None:
             assert is_url_valid(image_url), "Enter a valid URL"
-        assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
+
+        supported_image_classifiers = ['tensorflow', 'azure', 'ibm']
+
+        assert len(image_classifiers) >= 1, f"Please select image_classifiers from {supported_image_classifiers}"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
         assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+
+        assert len([classifier for classifier in image_classifiers if classifier in supported_image_classifiers]) > 0, f"Please select image_classifiers from {supported_image_classifiers}"
+
+        image_classifiers = {classifier: True for classifier in image_classifiers}
 
         load = {
             "tasks": {"image_classification": True},
@@ -279,9 +289,9 @@ class DltkAiClient:
                 "output_types": ["json"],
                 "img_classification_config": {
                     "top_n": top_n,
-                    "tensorflow": tensorflow,
-                    "ibm": ibm,
-                    "azure": azure
+                    "tensorflow": image_classifiers.get('tensorflow', False),
+                    "ibm": image_classifiers.get('ibm', False),
+                    "azure": image_classifiers.get('azure', False)
                 }
             }
         }
@@ -659,8 +669,7 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         return response
 
-    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=True,
-                       azure=False, mtcnn=False,
+    def face_analytics(self, image_url=None, features=None, image_path=None, face_detectors=['mtcnn'],
                        output_types=["json"], wait_time=10):
         """
         This function is for face analytics
@@ -669,10 +678,7 @@ class DltkAiClient:
             image_url: Image URL
             image_path: Local Image Path
             features: list of features requested by client
-            dlib: if True, uses dlib for face analytics
-            opencv: if True, uses opencv for face analytics
-            azure: if True, returns azure results of face analytics on given image
-            mtcnn: if True, uses mtcnn for face analytics
+            face_detectors: supported face detectors are mtcnn, dlib, opencv, azure
             wait_time: wait time for server to return response
 
         Returns:
@@ -682,14 +688,21 @@ class DltkAiClient:
             features = ['face_locations']
         features = [feature.lower() for feature in features]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert any(
-            (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
-        assert "face_locations" in features, "Please select at least one feature ['face_locations']"
+        assert len(features)>0, "Please select at least one feature ['face_locations']"
         assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+        if 'face_locations' in features:
+            if type(face_detectors) == str:
+                face_detectors = face_detectors.split(',')
+            face_detectors = [detector.lower() for detector in face_detectors]
+            supported_face_detectors = ['mtcnn', 'azure', 'dlib', 'opencv']
+            assert len([detector for detector in supported_face_detectors if detector in face_detectors]) > 0, f"Please choose face_detectors from {supported_face_detectors}"
 
         if image_url is not None:
             assert is_url_valid(image_url), "Enter a valid URL"
+
+        face_detectors = {detector: True for detector in face_detectors}
+
         load = {
             "image_url": image_url,
 
@@ -699,10 +712,10 @@ class DltkAiClient:
                 "output_types": output_types,
 
                 "face_detection_config": {
-                    "dlib": dlib,
-                    "opencv": opencv,
-                    "mtcnn": mtcnn,
-                    "azure": azure
+                    "dlib": face_detectors.get('dlib', False),
+                    "opencv": face_detectors.get('opencv', False),
+                    "mtcnn": face_detectors.get('mtcnn', False),
+                    "azure": face_detectors.get('azure', False)
                 }
             }
         }
