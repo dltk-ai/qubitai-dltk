@@ -449,10 +449,6 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>features</strong> – Type of features requested by client. Presently supports “face_detection”.</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>dlib</strong> – If True, uses dlib for face analytics</p></li>
-<li><p><strong>opencv</strong> – If True, uses opencv for face analytics</p></li>
-<li><p><strong>azure</strong> – If True, returns azure results of face analytics on given image</p></li>
-<li><p><strong>mtcnn</strong> – If True, uses mtcnn for face analytics</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
@@ -462,15 +458,15 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+<p><strong>Example</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>import dltk_ai
+client = dltk_ai.DltkAiClient(&#39;YOUR_API_KEY&#39;, base_url= &quot;http://localhost:8000&quot;)
 
-<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://images.financialexpress.com/2020/01/660-3.jpg&quot;</span>
+image_url = &quot;https://images.financialexpress.com/2020/01/660-3.jpg&quot;
 
-<span class="n">face_analytics_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">face_analytics</span><span class="p">(</span><span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span> <span class="n">azure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+face_analytics_response = client.face_analytics(image_url=image_url, azure=True)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">face_analytics_response</span><span class="p">)</span>
+print(face_analytics_response)
 </pre></div>
 </div>
 <p><strong>Input</strong></p>
@@ -486,6 +482,11 @@ Also other proprietary AI engines like Azure and IBM can also be used using same
       <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Update <code class="docutils literal notranslate"><span class="pre">base_url=</span> <span class="pre">&quot;http://localhost:8000&quot;</span></code> with your base service IP address.
+In case Authentication is enabled</p>
 </div>
 </div></blockquote>
 </div>

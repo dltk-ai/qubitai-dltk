@@ -203,17 +203,15 @@ Face Detection
        :param image_url: Image URL
        :param features: Type of features requested by client. Presently supports "face_detection".
        :param image_path: Local Image Path
-       :param dlib: If True, uses dlib for face analytics
-       :param opencv: If True, uses opencv for face analytics
-       :param azure: If True, returns azure results of face analytics on given image
-       :param mtcnn: If True, uses mtcnn for face analytics
        :param list output_types: Type of output requested by client: "json", "image"
        :rtype: A json object containing the output of object detection
 
-    **Example**::
+    **Example**
+
+    .. code-block:: JSON
 
         import dltk_ai
-        client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+        client = dltk_ai.DltkAiClient('YOUR_API_KEY', base_url= "http://localhost:8000")
 
         image_url = "https://images.financialexpress.com/2020/01/660-3.jpg"
 
@@ -241,3 +239,7 @@ Face Detection
               }
         }
 
+    .. note::
+
+        Update ``base_url= "http://localhost:8000"`` with your base service IP address.
+        In case Authentication is enabled
