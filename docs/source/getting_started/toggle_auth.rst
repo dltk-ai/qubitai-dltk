@@ -145,7 +145,7 @@ Multiple Machines
 Enabling Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-        Please update config.env file saved at ``/usr/dltk-ai/config.env`` with following details
+        Please update config.env file saved at ``/usr/dltk-ai/config_multi.env`` with following details
 
         .. code-block::
 
