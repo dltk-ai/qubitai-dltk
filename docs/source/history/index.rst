@@ -25,3 +25,15 @@ History
 
 * Conversation
     * Speech to Text
+
+1.0.1
+-----
+
+* Configurable base url in DLTK Client initialization
+
+1.0.2
+-----
+
+* OpenDLTK integration
+* Data Preprocessing for Machine Learning
+* Tutorial notebooks
