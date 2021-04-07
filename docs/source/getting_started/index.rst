@@ -2,73 +2,87 @@
 About DLTK
 **********
 
-DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities. Qubit AIâ€™s philosophy is to empower businesses with cutting edge technologies.
+DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities.
 
-*******************
-Creating an Account
-*******************
+******************************
+OpenDLTK and Python SDK client
+******************************
 
-1. Click on Sign Up and create a new account on https://cloud.dltk.ai/
+DLTK comprises of **OpenDLTK** where processing of images, text or structured tabular data is done using state-of-the-art AI models,
+and another component is **python client sdk** which can be used for integration of these AI services in your projects.
 
-2. You will receive a verification email to the registered email id. Please click on the "Verify Now" button in the mail.
-
-3. After verifying the email, you will be redirected to the dltk login page.
-
-4. Enter your credentials to gain access
-
-
-***************
-Creating an App
-***************
-
-ApiKey Generation
------------------
-
-1. Once you login, to access DLTK Cloud, click on the Console button or the Console tab available in the menu bar.
-
-2. Click on the Projects menu dropdown and select Create App
-
-3. Enter the name of the app and a short description
-
-4. The dashboard will be visible with the given name and description along with an API key
+.. image:: ../resources/DLTK_overview_diagram.png
+    :alt: DLTK overview diagram
+    :align: center
+    :height: 250
 
 
-***********
-Setup Guide
-***********
+OpenDLTK
+========
 
-Installation
-------------
+        OpenDLTK is collection of open-source docker images which can be deployed on single or multiple instances.
 
-Installing From Source
-^^^^^^^^^^^^^^^^^^^^^^
+        Functional Architecture Diagram
 
-* Clone the repo
-``git clone https://github.com/dltk-ai/qubitai-dltk.git``
+        .. image:: images/architecture_diagram.png
+            :align: center
+            :alt: Functional Architecture Diagram
+            :width: 900
 
-* Set working directory to qubitai-dltk folder
-
-* Install requirements from requirements.txt file
-``pip install -r requirements.txt``
-
-Installing through pip
-^^^^^^^^^^^^^^^^^^^^^^
-
-``pip install qubitai-dltk``
+        **Description:**
 
 
-Initializing the DLTK Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Setting up your ApiKey**::
-
-    import dltk_ai
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
+        1. Kong API Gateway
+              All user request are received by kong, which further directs to right microservice in OpenDLTK
 
 
+        2. Base Service
+            It comprises of `Solution Service, Registry service and Database Migrations` Docker Containers, which are responsible for interacting with supported File storage services
+            and Databases along with managing .
+
+        3. Storage Services
+            OpenDLTK supports AWS S3, Google Cloud Storage and Digital Ocean SPACES, along with Local Disk storage where Base services are deployed.
+
+        4. Machine Learning Services
+            a. ML Wrapper
+                It parse user request parameters
+
+            b. ML Scikit
+                This Microservice uses widely used `Scikit <https://scikit-learn.org/stable/>`__ package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+
+            c. ML H2O
+                This Microservice uses `H2O.ai <https://www.h2o.ai/>`__ python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+
+            d. ML Weka
+
+        Natural Language Processing
+            This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
+
+        Computer Vision
+            a. CV Wrapper
+                This microservice receives images provided by user and route to right service based on the feature requested by them.
+
+            b. Image Classification
+                This microservice classify images into various classes using pretrained model and also using supported AI Engines.
+
+            c. Object Detection
+                This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
 
 
+        .. seealso::
 
+            For more details on OpenDLTK you can refer following documentation
 
+            - :ref:`OpenDLTK Setup Guide <openDLTK-setup>`
+            - `OpenDLTK docker Hub <https://hub.docker.com/repositories>`__
+            - `OpenDLTK github <https://github.com/dltk-ai/openDLTK>`__
 
+Python Client SDK
+=================
 
+        OpenDLTK containers can be used either using REST APIs or using ``qubitai-dltk`` python client sdk, which simplify usage of the cognitive services provided by OpenDLTK.
+
+        .. seealso::
+
+            - `Python Client SDK Github Code <https://github.com/dltk-ai/qubitai-dltk>`__
+            - :ref:`Installation Guide <python-sdk-installation>`

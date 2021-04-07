@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -35,6 +37,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -90,9 +93,18 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-account">Creating an Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#creating-an-app">Creating an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#setup-guide">Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/toggle_auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/ansibleHostConfig.html">Configure Ansible Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/configurations.html">Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
@@ -101,7 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-status">Check Job Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-output">Check Job Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning/preprocessing.html">Preprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/data_preprocessing.html">Data Preprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
@@ -112,7 +124,6 @@
 <li class="toctree-l1"><a class="reference internal" href="#image-classification">Image Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#object-detection">Object Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#face-detection">Face Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#barcode-detection">Barcode Detection</a></li>
 </ul>
 <p class="caption"><span class="caption-text">NLP</span></p>
 <ul>
@@ -122,11 +133,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Conversation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conversation/index.html#speech-to-text">Speech to Text</a></li>
 </ul>
 <p class="caption"><span class="caption-text">History</span></p>
 <ul>
@@ -204,8 +210,11 @@
 </div>
 <div class="section" id="image-classification">
 <h1>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h1>
-<p>Classifies an image according to its visual content.</p>
-<p>Usage: Identifying the category of the image, Image organisation, etc,</p>
+<blockquote>
+<div><p>Image Classification is a fundamental computer vision task which attempts to comprehend an entire image as a whole.
+It tries to classify an image into various classes the model is trained for.</p>
+<p>This feature uses various open source models present which are included in OpenDLTK for classifying an image based on its visual content.
+Also other proprietary AI engines like Azure and IBM can also be used using same function, as shown in below code.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -257,9 +266,6 @@
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
 <li><p><strong>top_n</strong> – If True, uses dlib for face analyticsget top n predictions</p></li>
-<li><p><strong>tensorflow</strong> – If True, uses tensorflow for image classification</p></li>
-<li><p><strong>azure</strong> – If True, returns azure results of image classification on given image</p></li>
-<li><p><strong>ibm</strong> – If True, uses mtcnn for face analyticsif True, returns ibm results of image classification on given image</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json”, “image”</p></li>
 </ul>
 </dd>
@@ -293,10 +299,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="object-detection">
 <h1>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
-<p>Identifies and locates objects in an Image.</p>
+<blockquote>
+<div><p>Identifies and locates objects in an Image.</p>
 <p>Usage: Tracking objects, Counting people, Vehicle Detection, etc.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
@@ -345,8 +353,6 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image_url</strong> – Image URL</p></li>
 <li><p><strong>image_path</strong> – Local Image Path</p></li>
-<li><p><strong>tensorflow</strong> – If True, uses tensorflow for object detection</p></li>
-<li><p><strong>azure</strong> – If True, returns azure results of object detection on given image</p></li>
 <li><p><strong>output_types</strong> (<em>list</em>) – Type of output requested by client: “json” (bounding box coordinates for each object found), “image” (base64 encoded object)</p></li>
 </ul>
 </dd>
@@ -356,8 +362,9 @@
 </dl>
 </dd></dl>
 
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
+<p><strong>Example</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">DltkAiClient</span><span class="p">(</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
 
 <span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg&quot;</span>
@@ -367,6 +374,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">object_detection_response</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p><strong>Input</strong></p>
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg"><img alt="sample-object-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg/515px-2018_BMW_X3_xDrive30d_M_Sport_Automatic_3.0_Front.jpg" style="height: 200px;" /></a>
 <p><strong>Output</strong></p>
@@ -379,10 +387,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="face-detection">
 <h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h1>
-<p>Analyses an individual’s face in an image.</p>
+<blockquote>
+<div><p>Analyses an individual’s face in an image.</p>
 <p>Usage: Automated identity verification.</p>
 <p><em>Supported Open Source Models</em></p>
 <table class="colwidths-given docutils align-default">
@@ -477,37 +487,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="barcode-detection">
-<h1>Barcode Detection<a class="headerlink" href="#barcode-detection" title="Permalink to this headline">¶</a></h1>
-<p>Detects and extracts barcode or QRcode information in an Image.</p>
-<p>Usage: Tracking product information and details</p>
-<dl class="py function">
-<dt>
-<code class="sig-name descname">client.object_detection(image):</code></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> – Local Image Path or Numpy array of the image</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List of dictionaries containing the barcode information</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p><strong>Example</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dltk_ai</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">dltk_ai</span><span class="o">.</span><span class="n">barcode_extractor</span><span class="p">(</span><span class="s1">&#39;../barcode.png&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Input</strong></p>
-<a class="reference internal image-reference" href="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png"><img alt="sample-barcode-image" src="https://blog-trycontechnologi.netdna-ssl.com/blog/wp-content/uploads/2015/03/UPC-A.png" style="height: 200px;" /></a>
-<p><strong>Output</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>[{&quot;serial_number&quot;: &quot;0020357122682&quot;, &quot;code_type&quot;: &quot;EAN13&quot;, &quot;bbox&quot;: (38, 14, 519, 313)}]
-</pre></div>
-</div>
+</div></blockquote>
 </div>
 
 

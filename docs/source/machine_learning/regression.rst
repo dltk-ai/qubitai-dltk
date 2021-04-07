@@ -3,15 +3,15 @@ Regression
 
 Regression is used to predict quantitative response in given data.
 
-*Supported Libraries and Algorithms*
+**Supported Libraries and Algorithms**
 
 .. list-table::
    :widths: 25 25 25
    :header-rows: 1
 
-   * - scikit
-     - h2o
-     - weka
+   * - Scikit
+     - H2O
+     - Weka
    * - LinearRegression
      - LinearRegression
      - LinearRegression

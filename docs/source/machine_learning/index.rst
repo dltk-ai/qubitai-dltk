@@ -16,14 +16,6 @@ Used to store file on cloud storage.
    :param dataset_type: Type of dataset. valid Values TEST_DATA, TRAIN_DATA.
    :rtype: A json obj containing the file path in storage.
 
-**Example**::
-
-    import dltk_ai
-    from dltk_ai.dataset_types import Dataset
-    client = dltk_ai.DltkAiClient('YOUR_API_KEY')
-
-    train_data_store_response = client.store('../train_data.csv',Dataset.TRAIN_DATA)
-    print(train_data_store_response)
 
 
 ****************

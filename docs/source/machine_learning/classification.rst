@@ -3,15 +3,15 @@ Classification
 
 Classification is used to predict class of a given data point based on the target variable.
 
-*Supported Libraries and Algorithms*
+**Supported Libraries and Algorithms**
 
 .. list-table:: 
    :widths: 25 25 25
    :header-rows: 1
 
-   * - scikit
-     - h2o
-     - weka
+   * - Scikit
+     - H2O
+     - Weka
    * - NaiveBayesMultinomial
      - NaiveBayesBinomial
      - LibSVM
