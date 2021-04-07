@@ -93,7 +93,11 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About DLTK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#opendltk">OpenDLTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-client-sdk">Python Client SDK</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul>
@@ -218,8 +222,54 @@
 <p>DLTK comprises of <strong>OpenDLTK</strong> where processing of images, text or structured tabular data is done using state-of-the-art AI models,
 and another component is <strong>python client sdk</strong> which can be used for integration of these AI services in your projects.</p>
 <a class="reference internal image-reference" href="../_images/DLTK_overview_diagram.png"><img alt="DLTK overview diagram" class="align-center" src="../_images/DLTK_overview_diagram.png" style="height: 250px;" /></a>
-<dl class="glossary">
-<dt id="term-OpenDLTK">OpenDLTK</dt><dd><p>OpenDLTK is collection of open-source docker images which can be deployed on single or multiple instances</p>
+<div class="section" id="opendltk">
+<h2>OpenDLTK<a class="headerlink" href="#opendltk" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>OpenDLTK is collection of open-source docker images which can be deployed on single or multiple instances.</p>
+<p>Functional Architecture Diagram</p>
+<a class="reference internal image-reference" href="../_images/architecture_diagram.png"><img alt="Functional Architecture Diagram" class="align-center" src="../_images/architecture_diagram.png" style="width: 900px;" /></a>
+<p><strong>Description:</strong></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Kong API Gateway</dt><dd><p>All user request are received by kong, which further directs to right microservice in OpenDLTK</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Base Service</dt><dd><p>It comprises of <cite>Solution Service, Registry service and Database Migrations</cite> Docker Containers, which are responsible for interacting with supported File storage services
+and Databases along with managing .</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Storage Services</dt><dd><p>OpenDLTK supports AWS S3, Google Cloud Storage and Digital Ocean SPACES, along with Local Disk storage where Base services are deployed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Machine Learning Services</dt><dd><ol class="loweralpha simple">
+<li><dl class="simple">
+<dt>ML Wrapper</dt><dd><p>It parse user request parameters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ML Scikit</dt><dd><p>This Microservice uses widely used <a class="reference external" href="https://scikit-learn.org/stable/">Scikit</a> package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ML H2O</dt><dd><p>This Microservice uses <a class="reference external" href="https://www.h2o.ai/">H2O.ai</a> python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.</p>
+</dd>
+</dl>
+</li>
+<li><p>ML Weka</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<p>NLP</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ol class="arabic simple">
@@ -228,10 +278,21 @@ and another component is <strong>python client sdk</strong> which can be used fo
 <li><p>OpenDLTK github</p></li>
 </ol>
 </div>
-</dd>
-<dt id="term-Python-Client-SDK">Python Client SDK</dt><dd><p>OpenDLTK containers can be used either using REST APIs or using <code class="docutils literal notranslate"><span class="pre">qubitai-dltk</span></code> python client sdk, which simplify usage of the cognitive services provided by OpenDLTK</p>
-</dd>
-</dl>
+</div></blockquote>
+</div>
+<div class="section" id="python-client-sdk">
+<h2>Python Client SDK<a class="headerlink" href="#python-client-sdk" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>OpenDLTK containers can be used either using REST APIs or using <code class="docutils literal notranslate"><span class="pre">qubitai-dltk</span></code> python client sdk, which simplify usage of the cognitive services provided by OpenDLTK.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dltk-ai/qubitai-dltk">Python Client SDK Github Code</a></p></li>
+<li><p><a class="reference internal" href="pythonClientSDK.html#python-sdk-installation"><span class="std std-ref">Installation Guide</span></a></p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 

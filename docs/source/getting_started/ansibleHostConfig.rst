@@ -15,24 +15,47 @@ The host file is used to store connections for Anisble playbooks. There are opti
 
         ``ansible_ssh_private_key_file`` if you need to use multiple keys that are specific to hosts
 
-        These are the most commonly used options. More can be found in the Ansible official documentation.
+        These are the most commonly used options. More can be found in the `Ansible official documentation <https://docs.ansible.com/ansible/latest/user_guide/index.html>`__.
 
-.. tab:: Various Host File Configurations
+|
 
-    1. **Without SSH key**
+Ansible Host File Configuration for Machines with Private Key
+==============================================================
 
-    2. **With SSH key and without root password**
+    Replace ``XX.XX.XX`` with IP address of host machine and ``USER_PASSWORD`` with your machine's password and update ``/path/to/private/key/file``
 
-    3. **With SSH key and with root password**
+    .. code-block::
 
+        [dltk-ai-db-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
-.. warning::
+        [dltk-ai-base-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
-    1. Please modify only ``12.1.1.9 ansible_user=dltk ansible_become=yes ansible_become_password=<ROOT_USER_PASSWORD> ansible_ssh_private_key_file=/home/dltk/.ssh/id_rsa``
-    2. Please don't modify Host names (e.g ``dltk-ai-db-host``, ``dltk-ai-object-detector-host``)
+        [dltk-ai-wrapper-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-ml-wrapper-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-ml-scikit-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-ml-h2o-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-ml-weka-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-image-processor-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
+        [dltk-ai-object-detector-host]
+        XX.XX.XX.XX ansible_user=dltk ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
+
 
 
 .. seealso::
 
-    Add link to Ansible
+    Ansible Official Documentation - `Connecting to hosts: behavioral inventory parameters <https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters>`__
 

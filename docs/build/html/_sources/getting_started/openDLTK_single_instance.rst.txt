@@ -122,7 +122,7 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
 .. tab:: Windows
 
-    Please update **config.env** file saved at ``C:\Users\{username}\AppData\Local\dltk_ai\config.env``
+    Please update **config.env** file saved at ``C:\Users\{username}\AppData\Local\dltk-ai\config.env``
 
 |
 

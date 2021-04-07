@@ -7,13 +7,13 @@ Welcome to Qubitai-dltk's documentation!
 ========================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: Getting Started
 
    getting_started/index
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: Installation
 
    getting_started/openDLTK_setup
@@ -27,7 +27,7 @@ Welcome to Qubitai-dltk's documentation!
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: Machine Learning
 
    machine_learning/index
@@ -37,25 +37,25 @@ Welcome to Qubitai-dltk's documentation!
    machine_learning/clustering
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: Computer Vision
 
    computer_vision/index
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: NLP
 
    natural_language_processing/index
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: Conversation
 
    conversation/index
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
    :caption: History
 
    history/index

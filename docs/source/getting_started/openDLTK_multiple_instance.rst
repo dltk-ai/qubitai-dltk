@@ -61,7 +61,7 @@ We will use ansible to deploy OpenDLTK services on multiple machines as shown in
 
 Pre-requisites
 ================
-- 5 to 8 Servers with 2 vCPUs, 8 GB memory, 30GB Disk Space for each machine
+- 5 to 8 Ubuntu Machines with 2 vCPUs, 8 GB memory, 30GB Disk Space for each machine
 - Python3 installed on all the machines
 - Root/Admin privileges
 
@@ -102,11 +102,63 @@ For more detailed installation guide, please refer this `link <https://docs.ansi
 
 **3. What this repo contains**
 
-.. todo::
+This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for OpenDLTK microservices & necessary ``configurations`` files.
 
-    add directory tree
+.. code-block::
 
-Ansible playbooks & roles, docker-compose files for openDLTK services & configurations files.
+    ├── ansible
+    │    └── playbooks
+    |    |    ├── dltk-ai-base.yml
+    |    |    ├── dltk-ai-cv-face-analytics.yml
+    |    |    ├── dltk-ai-cv-image-classification.yml
+    |    |    ├── dltk-ai-cv-object-detection.yml
+    |    |    ├── dltk-ai-cv-wrapper.yml
+    |    |    ├── dltk-ai-db.yml
+    |    |    ├── dltk-ai-disable-auth-1.yml
+    |    |    ├── dltk-ai-disable-auth-2.yml
+    |    |    ├── dltk-ai-disable-auth-db-migrations.yml
+    |    |    ├── dltk-ai-disable-auth.yml
+    |    |    ├── dltk-ai-disable-web.yml
+    |    |    ├── dltk-ai-docker.yml
+    |    |    ├── dltk-ai-enable-auth-1.yml
+    |    |    ├── dltk-ai-enable-auth-2.yml
+    |    |    ├── dltk-ai-enable-auth-db-migrations.yml
+    |    |    ├── dltk-ai-enable-auth.yml
+    |    |    ├── dltk-ai-ml-h2o.yml
+    |    |    ├── dltk-ai-ml-scikit.yml
+    |    |    ├── dltk-ai-ml-weka.yml
+    |    |    ├── dltk-ai-ml-wrapper.yml
+    |    |    ├── dltk-ai-nlp.yml
+    |    |    ├── dltk-ai-postgres.yml
+    |    |    ├── dltk-ai-stop-all.yml
+    |    |    ├── dltk-ai-stop-base.yml
+    |    |    ├── dltk-ai-stop-cv-face-analytics.yml
+    |    |    ├── dltk-ai-stop-cv-image-classification.yml
+    |    |    ├── dltk-ai-stop-cv-object-detection.yml
+    |    |    ├── dltk-ai-stop-cv-wrapper.yml
+    |    |    ├── dltk-ai-stop-ml-h2o.yml
+    |    |    ├── dltk-ai-stop-ml-scikit.yml
+    |    |    ├── dltk-ai-stop-ml-weka.yml
+    |    |    ├── dltk-ai-stop-ml-wrapper.yml
+    |    |    ├── dltk-ai-stop-nlp.yml
+    |    |    ├── dltk-ai-stop-web.yml
+    |    |    ├── dltk-ai-web.yml
+    |    |    └── roles
+    |    ├── base
+    |    │   ├── registry-config
+    |    │   └── solution-config
+    |    ├── cv
+    |    │   ├── face_analytics
+    |    │   ├── pretrained_detectors
+    |    │   └── wrapper
+    |    ├── db
+    |    ├── docs
+    |    ├── ml
+    |    ├── nlp
+    |    ├── pgdump
+    |    ├── utils
+    |    └── web
+
 
 
 **2. Initialize DLTK setup**
@@ -127,45 +179,51 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
     **Update config_multi.env**
 
-        Please update config_multi.env file saved at :file:`/usr/dltk-ai/config_multi.env` by referring to `Configurations Details <configurations.html>`__
+        Please update ``config_multi.env`` file saved at :file:`/usr/dltk-ai/config_multi.env` by referring to `Configurations Details <configurations.html>`__
 
-    **Ansible Host Configurations**
+**4. Ansible Host Configurations**
 
+    While installing Ansible a hosts file is generated at ``/etc/ansible/`` path
 
-        While installing Ansible a hosts file is generated at ``/etc/ansible/`` path
+    Copy below host file into ``/etc/ansible/hosts`` path
 
-        Copy below host file into ``/etc/ansible/hosts`` path
+    .. note::
+
+        Below shown host file is for machines where only username & password is required for authentication.
+        In case, machines which are configured with different authentication method like private key file, please refer to `Ansible Connection Setup Guide <ansibleHostConfig.html>`__
+
+    .. tab:: Host File
 
         .. code-block::
 
             [dltk-ai-db-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-base-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-wrapper-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-ml-wrapper-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-ml-scikit-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-ml-h2o-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-ml-weka-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-image-processor-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
             [dltk-ai-object-detector-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=`YOUR_PASSWORD`
+            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
 
-        Please update ``XX.XX.XX.XX`` with your IP Addresses and ``YOUR_PASSWORD`` for ``root`` user
+        Please update ``XX.XX.XX.XX`` with your IP Addresses and YOUR_PASSWORD for ``root`` user
 
         .. caution::
 
@@ -186,7 +244,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
     .. code-block:: console
 
-        $ sudo python3 setup.py -m update_config
+        $ sudo python3 setup_init.py -m update_config
 
     .. tip::
 
@@ -207,7 +265,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             .. code-block:: console
 
-                $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=/path/to/folder"
 
         **Database**
 
@@ -232,7 +290,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
                     .. code-block:: console
 
                         # please go to openDLTK directory
-                        $ sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=path/to/folder"
+                        $ sudo ansible-playbook ansible/playbooks/dltk-ai-postgres.yml --extra-vars "folderpath=/path/to/folder"
 
 
             **InfluxDB and Redis Setup**
@@ -241,7 +299,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-db.yml --extra-vars "folderpath=/path/to/folder"
 
         **Base Services**
 
@@ -251,7 +309,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             .. code-block:: console
 
-                $ sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=/path/to/folder"
 
         .. warning::
 
@@ -264,7 +322,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             .. code-block:: console
 
-                $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-wrapper.yml --extra-vars "folderpath=/path/to/folder"
 
             Based on your choice to install ML-Scikit, ML-H2O or ML-weka, run below command respectively.
 
@@ -275,7 +333,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-scikit.yml --extra-vars "folderpath=/path/to/folder"
 
             .. tab:: ML H2O
 
@@ -283,7 +341,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-h2o.yml --extra-vars "folderpath=/path/to/folder"
 
             .. tab:: ML Weka
 
@@ -291,7 +349,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-ml-weka.yml --extra-vars "folderpath=/path/to/folder"
 
 
 
@@ -303,7 +361,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             .. code-block:: console
 
-                $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-wrapper.yml --extra-vars "folderpath=/path/to/folder"
 
             Based on your choice to install Image Classification, Object Detection, Face Analytics run below command respectively.
 
@@ -315,7 +373,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-image-classification.yml --extra-vars "folderpath=/path/to/folder"
 
                 .. seealso::
                     For more details on Image Classification features, please refer this section
@@ -329,7 +387,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-object-detection.yml --extra-vars "folderpath=/path/to/folder"
 
                 .. seealso::
                         For more details on Object Detection features, please refer this section
@@ -342,7 +400,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
                 .. code-block:: console
 
-                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=path/to/folder"
+                    $ sudo ansible-playbook ansible/playbooks/dltk-ai-cv-face-analytics.yml --extra-vars "folderpath=/path/to/folder"
 
                 .. seealso::
                         For more details on Face Analytics features, please refer this section
@@ -354,7 +412,7 @@ Ansible playbooks & roles, docker-compose files for openDLTK services & configur
 
             .. code-block:: console
 
-                $ sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=path/to/folder"
+                $ sudo ansible-playbook ansible/playbooks/dltk-ai-nlp.yml --extra-vars "folderpath=/path/to/folder"
 
             .. seealso::
 
@@ -418,7 +476,7 @@ Stop DLTK Services
 
         .. code-block::
 
-             sudo ansible-playbook ansible/playbooks/dltk-ai-stop-nlp.yml --extra-vars "folderpath=/home/dltk"
+             sudo ansible-playbook ansible/playbooks/dltk-ai-stop-nlp.yml --extra-vars "folderpath=/path/to/folder"
 
     **Machine Learning**
 
@@ -426,20 +484,20 @@ Stop DLTK Services
 
             .. code-block::
 
-                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-scikit.yml --extra-vars "folderpath=/home/dltk"
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-scikit.yml --extra-vars "folderpath=/path/to/folder"
 
         .. tab:: ML H2O
 
             .. code-block::
 
-                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-h2o.yml --extra-vars "folderpath=/home/dltk"
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-h2o.yml --extra-vars "folderpath=/path/to/folder"
 
 
         .. tab:: ML Weka
 
             .. code-block::
 
-                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-weka.yml --extra-vars "folderpath=/home/dltk"
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-weka.yml --extra-vars "folderpath=/path/to/folder"
 
         *ML Wrapper*
 
@@ -449,7 +507,7 @@ Stop DLTK Services
 
         .. code-block::
 
-                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-wrapper.yml --extra-vars "folderpath=/home/dltk"
+                 sudo ansible-playbook ansible/playbooks/dltk-ai-stop-ml-wrapper.yml --extra-vars "folderpath=/path/to/folder"
 
     **Computer Vision**
 
@@ -459,7 +517,7 @@ Stop DLTK Services
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-image-classification.yml --extra-vars "folderpath=/home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-image-classification.yml --extra-vars "folderpath=/path/to/folder"
 
 
 
@@ -470,7 +528,7 @@ Stop DLTK Services
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-object-detection.yml --extra-vars "folderpath=/home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-object-detection.yml --extra-vars "folderpath=/path/to/folder"
 
 
         .. tab:: Face Analytics
@@ -480,7 +538,7 @@ Stop DLTK Services
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-face-analytics.yml --extra-vars "folderpath=/home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-face-analytics.yml --extra-vars "folderpath=/path/to/folder"
 
         *CV-Wrapper*
 
@@ -492,7 +550,7 @@ Stop DLTK Services
 
             .. code-block::
 
-                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-wrapper.yml --extra-vars "folderpath=/home/dltk"
+                sudo ansible-playbook ansible/playbooks/dltk-ai-stop-cv-wrapper.yml --extra-vars "folderpath=/path/to/folder"
 
     **Base**
 
@@ -502,4 +560,4 @@ Stop DLTK Services
 
         .. code-block::
 
-            sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=/home/dltk"
+            sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=/path/to/folder"

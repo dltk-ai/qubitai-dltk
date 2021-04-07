@@ -37,7 +37,7 @@ extensions = ["sphinx_rtd_theme",
               "sphinx_inline_tabs",
               'sphinx.ext.autosectionlabel',
               'sphinx.ext.todo'
-]
+              ]
 
 autosectionlabel_prefix_document = True
 todo_include_todos = True
@@ -66,3 +66,7 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css'
 ]
+
+copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
+copybutton_prompt_is_regexp = True
+copybutton_remove_prompts = True
