@@ -104,6 +104,8 @@ Storage Configurations
 
         b. AWS S3
 
+            - Refer this `link <https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html>`__ for creating a bucket in AWS S3.
+
             .. code-block::
 
                 STORAGE_TYPE="aws"
@@ -117,6 +119,8 @@ Storage Configurations
 
         b. GCP
 
+            - GCP_SERVICE_ACCOUNT_FILE will contain your GCS credentials.You can generate this by following this `link <https://cloud.google.com/iam/docs/creating-managing-service-accounts>`__
+
             .. code-block::
 
                 STORAGE_TYPE="gcp"
@@ -127,6 +131,8 @@ Storage Configurations
                 GCP_PUBLIC_BUCKET="YOUR_GCP_PUBLIC_BUCKET"
 
         b. DIGITAL OCEAN
+
+            - Refer this `link <https://www.digitalocean.com/docs/spaces/how-to/create/>`__ for creating a bucket in Digital Ocean Spaces.
 
             .. code-block::
 
@@ -164,6 +170,12 @@ Authentication Configurations
 
 AI Engines Credentials
 ----------------------
+
+
+    - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics>`__ to create Azure Language Subscription Keys.
+    - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision>`__ to create Azure Vision Subscription Keys.
+    - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace>`__ to create Azure Face Subscription Keys.
+    - Refer this `link <https://www.ibm.com/watson/developercloud/doc/virtual-agent/api-keys.html>`__ to create IBM Watson API Keys.
 
     .. glossary::
 

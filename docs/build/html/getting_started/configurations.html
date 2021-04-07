@@ -343,7 +343,10 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-AWS-S3">b. AWS S3<a class="headerlink" href="#term-b.-AWS-S3" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
+<dt id="term-b.-AWS-S3">b. AWS S3<a class="headerlink" href="#term-b.-AWS-S3" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>Refer this <a class="reference external" href="https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html">link</a> for creating a bucket in AWS S3.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
 
 <span class="c1"># S3 Config</span>
 <span class="n">S3_BUCKET</span><span class="o">=</span><span class="s2">&quot;YOUR_S3_BUCKET&quot;</span>
@@ -354,7 +357,10 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-GCP">b. GCP<a class="headerlink" href="#term-b.-GCP" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;gcp&quot;</span>
+<dt id="term-b.-GCP">b. GCP<a class="headerlink" href="#term-b.-GCP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>GCP_SERVICE_ACCOUNT_FILE will contain your GCS credentials.You can generate this by following this <a class="reference external" href="https://cloud.google.com/iam/docs/creating-managing-service-accounts">link</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;gcp&quot;</span>
 
 <span class="c1"># GCP</span>
 <span class="n">GCP_SERVICE_ACCOUNT_FILE_PATH</span><span class="o">=</span><span class="s2">&quot;YOUR_GCP_SERVICE_ACCOUNT_PATH&quot;</span>
@@ -363,7 +369,10 @@
 </pre></div>
 </div>
 </dd>
-<dt id="term-b.-DIGITAL-OCEAN">b. DIGITAL OCEAN<a class="headerlink" href="#term-b.-DIGITAL-OCEAN" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;do&quot;</span>
+<dt id="term-b.-DIGITAL-OCEAN">b. DIGITAL OCEAN<a class="headerlink" href="#term-b.-DIGITAL-OCEAN" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>Refer this <a class="reference external" href="https://www.digitalocean.com/docs/spaces/how-to/create/">link</a> for creating a bucket in Digital Ocean Spaces.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STORAGE_TYPE</span><span class="o">=</span><span class="s2">&quot;do&quot;</span>
 
 <span class="c1"># Digital Ocean</span>
 <span class="n">DO_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;YOUR_DO_ENDPOINT&quot;</span>
@@ -400,7 +409,13 @@
 <div class="section" id="ai-engines-credentials">
 <h2>AI Engines Credentials<a class="headerlink" href="#ai-engines-credentials" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><dl class="glossary">
+<div><ul class="simple">
+<li><p>Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics">link</a> to create Azure Language Subscription Keys.</p></li>
+<li><p>Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision">link</a> to create Azure Vision Subscription Keys.</p></li>
+<li><p>Refer this <a class="reference external" href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace">link</a> to create Azure Face Subscription Keys.</p></li>
+<li><p>Refer this <a class="reference external" href="https://www.ibm.com/watson/developercloud/doc/virtual-agent/api-keys.html">link</a> to create IBM Watson API Keys.</p></li>
+</ul>
+<dl class="glossary">
 <dt id="term-a.-NLP">a. NLP<a class="headerlink" href="#term-a.-NLP" title="Permalink to this term">¶</a></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL is given only for reference, replace with your credentials</span>
 
 <span class="n">AZURE_LANGUAGE_APIKEY</span><span class="o">=</span><span class="s2">&quot;USER_DEFINED&quot;</span>
