@@ -597,3 +597,11 @@ Stop DLTK Services
         .. code-block::
 
             sudo ansible-playbook ansible/playbooks/dltk-ai-base.yml --extra-vars "folderpath=/path/to/folder"
+
+    **Stop All**
+
+        To stop all the OpenDLTK services, run below command
+
+         .. code-block::
+
+            sudo ansible-playbook ansible/playbooks/dltk-ai-stop-all.yml --extra-vars "folderpath=/path/to/folder"
