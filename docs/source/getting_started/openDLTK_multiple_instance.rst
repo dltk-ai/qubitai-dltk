@@ -467,14 +467,18 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 Usage
 ===============
 
-.. note:: Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next section here `installation <pythonclientsdk.html#installation>`_ .
+.. note::
+
+    Below code block can be run after DLTK python client SDK is installed. The installation of which is covered in next section here `installation <pythonclientsdk.html#installation>`_ .
+    Its recommended to map a DNS name to the kong IP address i.e YOUR_BASE_IP_ADDRESS:8000
+
 
 .. tab:: with Auth Disabled
 
     .. code-block::
 
         import dltk_ai
-        client = dltk_ai.DltkAiClient('YOUR_API_KEY', base_url='http://localhost:8000')
+        client = dltk_ai.DltkAiClient('YOUR_API_KEY', base_url='http://your-dltk-ai-base-host:8000')
 
         text = "The product is very easy to use and has got a really good life expectancy."
 
