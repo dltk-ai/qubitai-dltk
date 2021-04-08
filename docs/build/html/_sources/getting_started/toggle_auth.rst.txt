@@ -2,7 +2,7 @@ Authentication
 ==============
 
 If you have group of developers using OpenDLTK, its desirable to enable Authentication. So each developer can register themselves
-to the OpenDLTK Portal by providing their Basic Details like Username & EmailID.
+to the OpenDLTK Portal by providing their basic details like Username & EmailID.
 
 Developers can Sign Up & Create Project using ``User Management UI``. as shown in `User Registration and API key generation page <generateAPIkey.html>`__
 
@@ -14,7 +14,7 @@ Developers can Sign Up & Create Project using ``User Management UI``. as shown i
 Single Machine
 ---------------
 
-
+.. _enable-auth-single-machine:
 Enable Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -141,6 +141,7 @@ Disable Authentication
 Multiple Machines
 ------------------
 
+.. _enable-auth-multi-machine:
 
 Enabling Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~

@@ -4,16 +4,18 @@
 Setting Up OpenDLTK
 *******************
 
-OpenDLTK can be deployed on single instance or multiple instances as well.
+OpenDLTK can be deployed on single machine or multiple machines as well.
 
-As part of OpenDLTK
+Installation
+-------------
+For installing OpenDLTK on single machines, you can follow detailed :ref:`installation guide <openDLTK-single-machine-setup>` .
 
-.. warning::
-    1. As these deep learning models are computationally expensive,
-       its recommended to run these docker containers on minimum of 16GB RAM machine.
+For installing OpenDLTK on multiple machines, you can follow detailed :ref:`installation guide <openDLTK-multiple-machine-setup>`
 
+Authentication
+-----------------
+By default Authentication is disabled for faster and simpler installation, but if you wish to enable authentication to restrict access to your machine where OpenDLTK is installed, you can refer following sections
 
+    1. :ref:`Enable Authentication for Single Machine <enable-auth-single-machine>`
+    2. :ref:`Enable Authentication for Multiple Machine <enable-auth-multi-machine>`
 
-**What's next?**
-
-In next section we will see how to setup openDLTK docker containers on single instance

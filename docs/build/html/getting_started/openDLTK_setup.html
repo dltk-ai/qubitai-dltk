@@ -97,7 +97,11 @@
 </ul>
 <p class="caption"><span class="caption-text">Installation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting Up OpenDLTK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
@@ -206,17 +210,22 @@
             
   <div class="section" id="setting-up-opendltk">
 <span id="opendltk-setup"></span><h1>Setting Up OpenDLTK<a class="headerlink" href="#setting-up-opendltk" title="Permalink to this headline">¶</a></h1>
-<p>OpenDLTK can be deployed on single instance or multiple instances as well.</p>
-<p>As part of OpenDLTK</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ol class="arabic simple">
-<li><p>As these deep learning models are computationally expensive,
-its recommended to run these docker containers on minimum of 16GB RAM machine.</p></li>
-</ol>
+<p>OpenDLTK can be deployed on single machine or multiple machines as well.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>For installing OpenDLTK on single machines, you can follow detailed <a class="reference internal" href="openDLTK_single_instance.html#opendltk-single-machine-setup"><span class="std std-ref">installation guide</span></a> .</p>
+<p>For installing OpenDLTK on multiple machines, you can follow detailed <a class="reference internal" href="openDLTK_multiple_instance.html#opendltk-multiple-machine-setup"><span class="std std-ref">installation guide</span></a></p>
 </div>
-<p><strong>What’s next?</strong></p>
-<p>In next section we will see how to setup openDLTK docker containers on single instance</p>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>By default Authentication is disabled for faster and simpler installation, but if you wish to enable authentication to restrict access to your machine where OpenDLTK is installed, you can refer following sections</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><a class="reference internal" href="toggle_auth.html#enable-auth-single-machine"><span class="std std-ref">Enable Authentication for Single Machine</span></a></p></li>
+<li><p><a class="reference internal" href="toggle_auth.html#enable-auth-multi-machine"><span class="std std-ref">Enable Authentication for Multiple Machine</span></a></p></li>
+</ol>
+</div></blockquote>
+</div>
 </div>
 
 

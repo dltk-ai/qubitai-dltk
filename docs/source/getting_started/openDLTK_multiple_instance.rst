@@ -1,3 +1,4 @@
+.. _openDLTK-multiple-machine-setup:
 ******************************
 OpenDLTK on multiple machines
 ******************************
@@ -61,7 +62,8 @@ We will use ansible to deploy OpenDLTK services on multiple machines as shown in
 
 Pre-requisites
 ================
-- 5 to 8 Ubuntu Machines with 2 vCPUs, 8 GB memory, 30GB Disk Space for each machine
+- 5 to 8 Ubuntu Machines with 2 vCPUs, 8 GB memory, 30GB Disk Space configurations for each machine
+- Configure VPC and all the remote machine should be in private subnet, with only private IP enabled for every remote machine.
 - Python3 installed on all the machines
 - Root/Admin privileges
 
@@ -83,6 +85,10 @@ To verify whether ansible installation is successful, run below command
 .. code-block:: shell-session
 
     $ sudo ansible --version
+
+*Expected Output*
+
+.. code-block:: shell-session
 
     ansible 2.9.6
     config file = /etc/ansible/ansible.cfg
@@ -192,39 +198,54 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
     Copy below host file into ``/etc/ansible/hosts`` path
 
-    .. note::
+    Update following details in below file
+        - ``XX.XX.XX.XX`` with IP address of host machine
+        - ``USER_PASSWORD`` with your machine's password
+        - ``/path/to/private/key/file`` with path to your private key
+        - ``root_username`` with your username having admin privileges
 
-        Below shown host file is for machines where only username & password is required for authentication.
-        In case, machines which are configured with different authentication method like private key file, please refer to `Ansible Connection Setup Guide <ansibleHostConfig.html>`__
-
-    .. tab:: Host File
 
         .. code-block::
 
             [dltk-ai-db-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
             [dltk-ai-base-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
             [dltk-ai-wrapper-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
             [dltk-ai-ml-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
             [dltk-ai-image-processor-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
             [dltk-ai-object-detector-host]
-            XX.XX.XX.XX ansible_user=root ansible_ssh_pass=YOUR_PASSWORD
+            XX.XX.XX.XX ansible_user=root_username ansible_become=yes ansible_become_password=USER_PASSWORD ansible_ssh_private_key_file=/path/to/private/key/file
 
-        Please update ``XX.XX.XX.XX`` with your IP Addresses and ``YOUR_PASSWORD`` for ``root`` user
 
         .. caution::
 
             Please don't modify host names like (``dltk-ai-object-detector-host``, ``dltk-ai-db-host``)
 
+        .. note::
+
+            For more detail on configuring Remote Machines for Ansible, please refer to `Ansible Connection Setup Guide <ansibleHostConfig.html>`__
+
+
+        Generate a SSH key and copy to remote machine
+            a. Generate an SSH Key
+                With OpenSSH, an SSH key is created by running ``ssh-keygen`` command which generates public/private rsa key pair.
+
+            b. Copy the key to a server
+                Once an SSH key has been created, the ssh-copy-id command can be used to install it as an authorized key on the remote machine. Once the key has been authorized for SSH, it grants access to the remote machine without a password.
+
+                Use command ``ssh-copy-id -i ~/.ssh/mykey user@host`` to copy SSH key.
+
+                This logs into the remote machine, and copies keys to the remote machine, and configures them to grant access by adding them to the authorized_keys file. The copying may ask for a password or other authentication for the server.
+                Only the public key is copied to the remote machine.
 
         Please login to **all** remote machines using ``ssh username@IPaddress`` command from ansible machine
 
@@ -235,6 +256,20 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
             $ ansible -m ping all
 
+        Expected Output
+
+        .. code-block::
+
+            XX.XX.XX.XX | SUCCESS => {
+            "ansible_facts": {
+                "discovered_interpreter_python": "/usr/bin/python3"
+            },
+            "changed": false,
+            "ping": "pong"
+            }
+            :
+
+
 
 **4. Update config**
 
@@ -242,7 +277,7 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
         $ sudo python3 setup_init.py -m update_config
 
-    .. tip::
+    .. important::
 
         Whenever config_multi.env is changed this command needs to be run, to update those changes.
 
@@ -263,9 +298,6 @@ This repo contains ``Ansible playbooks & roles``, ``docker-compose`` files for O
 
                 $ sudo ansible-playbook ansible/playbooks/dltk-ai-docker.yml --extra-vars "folderpath=/path/to/folder"
 
-            .. tip::
-
-                In case you get issues while installing docker,
 
         **Database**
 

@@ -1,3 +1,4 @@
+.. _openDLTK-single-machine-setup:
 *****************************
 OpenDLTK on single machine
 *****************************
@@ -45,7 +46,7 @@ Pre-requisites
 Installation
 =============
 
-**1. Clone OpenDLTK github repository**
+**1. Clone OpenDLTK github repository and install required packages**
 
 .. tab:: Linux
 
@@ -81,7 +82,7 @@ Installation
 
 **2. Initialize DLTK setup**
 
-`cd` to directory containing `setup.py` file and use below command to start installation process.
+``cd`` to directory containing ``setup.py`` file and use below command to start installation process.
 
 .. tab:: Linux
 

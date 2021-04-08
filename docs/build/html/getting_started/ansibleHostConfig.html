@@ -103,10 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure Ansible Hosts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ansible-host-file-configuration-for-machines-with-private-key">Ansible Host File Configuration for Machines with Private Key</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure Ansible Hosts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning</span></p>
@@ -218,38 +215,6 @@
 <p><code class="docutils literal notranslate"><span class="pre">ansible_ssh_private_key_file</span></code> if you need to use multiple keys that are specific to hosts</p>
 <p>These are the most commonly used options. More can be found in the <a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/index.html">Ansible official documentation</a>.</p>
 </div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="section" id="ansible-host-file-configuration-for-machines-with-private-key">
-<h2>Ansible Host File Configuration for Machines with Private Key<a class="headerlink" href="#ansible-host-file-configuration-for-machines-with-private-key" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Replace <code class="docutils literal notranslate"><span class="pre">XX.XX.XX</span></code> with IP address of host machine and <code class="docutils literal notranslate"><span class="pre">USER_PASSWORD</span></code> with your machine’s password and update <code class="docutils literal notranslate"><span class="pre">/path/to/private/key/file</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">wrapper</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">processor</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-
-<span class="p">[</span><span class="n">dltk</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="nb">object</span><span class="o">-</span><span class="n">detector</span><span class="o">-</span><span class="n">host</span><span class="p">]</span>
-<span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span><span class="o">.</span><span class="n">XX</span> <span class="n">ansible_user</span><span class="o">=</span><span class="n">dltk</span> <span class="n">ansible_become</span><span class="o">=</span><span class="n">yes</span> <span class="n">ansible_become_password</span><span class="o">=</span><span class="n">USER_PASSWORD</span> <span class="n">ansible_ssh_private_key_file</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span><span class="o">/</span><span class="n">file</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Ansible Official Documentation - <a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters">Connecting to hosts: behavioral inventory parameters</a></p>
-</div>
-</div>
 </div>
 
 
