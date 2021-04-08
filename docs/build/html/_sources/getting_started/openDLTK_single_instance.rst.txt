@@ -243,36 +243,8 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
 *c. Authentication*
 
-    .. tab:: Enable Authentication
+    To Enable or disable authentication please refer this section on :ref:`Authentication Management for single machine <enable-auth-single-machine>`
 
-        In config.env file, update
-
-        .. code-block::
-
-            AUTH_ENABLED="true"
-
-            # SMTP setup
-            SMTP_HOST="YOUR_SMTP_HOST"
-            SMTP_PORT=587
-            SMTP_USERNAME="YOUR_SMTP_USERNAME"
-            SMTP_PASSWORD="YOUR_SMTP_USER_PASSWORD"
-
-            # UI SERVER URL(replace localhost with server IP in case of remote machine)
-            UI_SERVICE_URL="http://localhost:8082"
-
-        .. todo::
-            If later you want to disable authentication, please refer `this section <https://docs.dltk.ai/getting_started/toggle_auth.html>`__
-
-    .. tab:: Disable Authentication
-
-        In config.env file, update
-
-        .. code-block::
-
-            AUTH_ENABLED="false"
-
-        .. todo::
-            If later you want to disable authentication, please refer `this section <https://docs.dltk.ai/getting_started/toggle_auth.html>`__
 
 **4. Update config**
 
@@ -395,7 +367,7 @@ After OpenDLTK is installed, it can be used via DLTK python client SDK, as shown
     .. code-block::
 
         {
-          "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
+          "spacy": {"emotion": "POSITIVE", "scores": {"negative": 0.0, "neutral": 0.653, "positive": 0.347, "compound": 0.7496}}
         }
 
 

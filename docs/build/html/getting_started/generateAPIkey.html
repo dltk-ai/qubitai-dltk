@@ -225,41 +225,43 @@
 <li><p><a class="reference internal" href="#use-api-key-in-sdk-client-initialization" id="id6">Use API Key in SDK client initialization</a></p></li>
 </ul>
 </div>
+<p>Depending on where OpenDLTK is deployed, you need to follow steps for either local or server machine IP address</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">local</label><div class="tab-content docutils container">
 <p>The UI for user creation can be accessed at <a class="reference external" href="http://localhost:8082">http://localhost:8082</a> ,by clicking on <strong>Sign Up</strong> button on top right, user will be able to view below pages</p>
 </div>
 <input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">server</label><div class="tab-content docutils container">
 <p>The UI for user creation can be accessed at <a class="reference external" href="http://BASE_SERVICE_IP:8082">http://BASE_SERVICE_IP:8082</a> ,by clicking on <strong>Sign Up</strong> button on top right, user will be able to view below pages</p>
+<p>It’s recommended to map DNS name to BASE_SERVICE_IP:8082</p>
 </div>
 </div>
 <div class="section" id="sign-up">
 <h2><a class="toc-backref" href="#id1">Sign Up</a><a class="headerlink" href="#sign-up" title="Permalink to this headline">¶</a></h2>
-<img alt="../_images/signup.png" src="../_images/signup.png" />
+<a class="reference internal image-reference" href="../_images/signup.png"><img alt="../_images/signup.png" class="align-center" src="../_images/signup.png" style="width: 500px;" /></a>
 <p>After filling above details, click on <strong>Sign Up</strong> button.
 User will receive an e-mail for verification. On successful verification of email, user will be redirected to <strong>Sign In</strong> page.</p>
 </div>
 <div class="section" id="email-verification">
 <h2><a class="toc-backref" href="#id2">Email Verification</a><a class="headerlink" href="#email-verification" title="Permalink to this headline">¶</a></h2>
-<p>User will receive a verification email, as shown below</p>
-<img alt="../_images/verification_mail.png" src="../_images/verification_mail.png" />
+<p>User will receive a verification email, as shown below, you need to click on <code class="docutils literal notranslate"><span class="pre">Verify</span> <span class="pre">Now</span></code> button to verify your email address.</p>
+<a class="reference internal image-reference" href="../_images/verification_mail.png"><img alt="../_images/verification_mail.png" class="align-center" src="../_images/verification_mail.png" style="width: 300px;" /></a>
 </div>
 <div class="section" id="sign-in">
 <h2><a class="toc-backref" href="#id3">Sign in</a><a class="headerlink" href="#sign-in" title="Permalink to this headline">¶</a></h2>
 <p>Next Step is to sign in using the credentials provided while Sign Up process</p>
-<img alt="../_images/login.png" src="../_images/login.png" />
+<a class="reference internal image-reference" href="../_images/login.png"><img alt="../_images/login.png" class="align-center" src="../_images/login.png" style="width: 500px;" /></a>
 </div>
 <div class="section" id="create-a-project">
 <h2><a class="toc-backref" href="#id4">Create a project</a><a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
 <p>After successful login, user will be able to view project list page</p>
-<img alt="../_images/project_list_page.png" src="../_images/project_list_page.png" />
+<a class="reference internal image-reference" href="../_images/project_list_page.png"><img alt="../_images/project_list_page.png" class="align-center" src="../_images/project_list_page.png" style="width: 500px;" /></a>
 <p>Next user needs to create a project, by giving details as shown in below image</p>
-<img alt="../_images/create_project.png" class="align-center" src="../_images/create_project.png" />
+<a class="reference internal image-reference" href="../_images/create_project.png"><img alt="../_images/create_project.png" class="align-center" src="../_images/create_project.png" style="width: 300px;" /></a>
 </div>
 <div class="section" id="get-an-api-key">
 <h2><a class="toc-backref" href="#id5">Get an API key</a><a class="headerlink" href="#get-an-api-key" title="Permalink to this headline">¶</a></h2>
 <p>After successful creation of project, you can go to Project Details Page to get <cite>API Key</cite></p>
-<img alt="../_images/project_details_page.png" src="../_images/project_details_page.png" />
+<a class="reference internal image-reference" href="../_images/project_details_page.png"><img alt="../_images/project_details_page.png" class="align-center" src="../_images/project_details_page.png" style="width: 800px;" /></a>
 </div>
 <div class="section" id="use-api-key-in-sdk-client-initialization">
 <h2><a class="toc-backref" href="#id6">Use API Key in SDK client initialization</a><a class="headerlink" href="#use-api-key-in-sdk-client-initialization" title="Permalink to this headline">¶</a></h2>
@@ -277,7 +279,7 @@ User will receive an e-mail for verification. On successful verification of emai
 </div>
 <p><strong>Expected Output:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;neg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;neu&quot;</span><span class="p">:</span> <span class="mf">0.653</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="mf">0.347</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="mf">0.7496</span><span class="p">}}</span>
+  <span class="s2">&quot;spacy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;neutral&quot;</span><span class="p">:</span> <span class="mf">0.653</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="mf">0.347</span><span class="p">,</span> <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="mf">0.7496</span><span class="p">}}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
