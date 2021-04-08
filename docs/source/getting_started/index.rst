@@ -69,6 +69,9 @@ OpenDLTK
             c. Object Detection
                 This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
 
+            d. Face Analytics
+                This microservice detects faces in Images provided by user using pretrained model and using supported AI Engines.
+
 
         .. seealso::
 
