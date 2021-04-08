@@ -54,6 +54,7 @@ OpenDLTK
                 This Microservice uses `H2O.ai <https://www.h2o.ai/>`__ python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
 
             d. ML Weka
+                This Microservice uses WEKA for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
 
         Natural Language Processing
             This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
