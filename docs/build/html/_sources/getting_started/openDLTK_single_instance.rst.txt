@@ -101,7 +101,7 @@ Installation
 
     .. code-block::
 
-        python3 setup.py -m init
+        python setup.py -m init
 
 .. code-block::
 
@@ -266,7 +266,7 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     .. code-block::
 
-        python3 setup.py -m update_config
+        python setup.py -m update_config
 
 .. note::
 
@@ -292,7 +292,7 @@ Please ensure this version should be compatible with the `Python client SDK <htt
 
     .. code-block::
 
-        python3 setup.py -m install
+        python setup.py -m install
 
 
 
@@ -301,16 +301,15 @@ You will get a list of service as shown below, choose the services you want to i
 ::
 
     Please choose services you want to install from below list
-        1. Base
-        2. ML Scikit
-        3. ML H2O
-        4. ML Weka
-        5. Image Classification
-        6. Object Detection
-        7. Face Analytics
-        8. Natural Language Processing
+        1. ML Scikit
+        2. ML H2O
+        3. ML Weka
+        4. Image Classification
+        5. Object Detection
+        6. Face Analytics
+        7. Natural Language Processing
 
-    Choose your selection : 5, 8(example)
+    Choose your selection : 4, 7
 
 .. note::
 
@@ -399,7 +398,7 @@ To stop OpenDLTK services, run below commands.
 
         .. code-block::
 
-            python3 setup.py --mode uninstall --partial --remove
+            python setup.py --mode uninstall --partial --remove
 
     You will get a list of service as shown below, choose the services you want to RETAIN using comma separated Ids.
 
@@ -407,18 +406,15 @@ To stop OpenDLTK services, run below commands.
 
         Please choose services you want to RETAIN, other than those all services will be UNINSTALLED
 
-            1. Base
-            2. ML Scikit
-            3. ML H2O
-            4. ML Weka
-            5. Image Classification
-            6. Object Detection
-            7. Face Analytics
-            8. Natural Language Processing
+            1. ML Scikit
+            2. ML H2O
+            3. ML Weka
+            4. Image Classification
+            5. Object Detection
+            6. Face Analytics
+            7. Natural Language Processing
 
-        Note: Image Classification,Object Detection and Face Analytics may take an hour to download.
-
-        Choose your selection : 1(example)
+        Choose your selection : 1
 
 **All services**
 
@@ -439,7 +435,7 @@ To stop OpenDLTK services, run below commands.
 
         .. code-block::
 
-            python3 setup.py --mode uninstall --all --remove
+            python setup.py --mode uninstall --all --remove
 
 
 
@@ -470,7 +466,7 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            python3 setup.py --mode uninstall --partial --purge
+            python setup.py --mode uninstall --partial --purge
 
     You will get a list of service as shown below, choose the services you want to ``RETAIN`` using comma separated Ids.
 
@@ -513,7 +509,7 @@ To uninstall OpenDLTK, run below commands.
 
         .. code-block::
 
-            python3 setup.py --mode uninstall --all --purge
+            python setup.py --mode uninstall --all --purge
 
 
 

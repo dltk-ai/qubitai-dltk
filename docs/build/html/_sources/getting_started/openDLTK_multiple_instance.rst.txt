@@ -62,7 +62,7 @@ We will use ansible to deploy OpenDLTK services on multiple machines as shown in
 
 Pre-requisites
 ================
-- 5 to 8 Ubuntu Machines with 2 vCPUs, 8 GB memory, 30GB Disk Space configurations for each machine
+- 7 Ubuntu Machines with 2 vCPUs, 8 GB memory, 30GB Disk Space configurations for each machine
 - Configure VPC and all the remote machine should be in private subnet, with only private IP enabled for every remote machine.
 - Python3 installed on all the machines
 - Root/Admin privileges
