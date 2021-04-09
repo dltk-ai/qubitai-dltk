@@ -213,11 +213,11 @@ Please ensure this version should be compatible with the `Python client SDK <htt
             AZURE_FACE_DETECTION_URL="https://dltk-ai-face.cognitiveservices.azure.com/face/v1.0/detect"
             AZURE_FACE_DETECTION_SUBSCRIPTION_KEY ="USER_DEFINED"
 
-        .. todo::
+        .. note::
 
-            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics>`__ to create Azure Language Subscription Keys.
-            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision>`__ to create Azure Vision Subscription Keys.
-            Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace>`__ to create Azure Face Subscription Keys.
+            - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics>`__ to create Azure Language Subscription Keys.
+            - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision>`__ to create Azure Vision Subscription Keys.
+            - Refer this `link <https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace>`__ to create Azure Face Subscription Keys.
 
     .. tab:: IBM
 
