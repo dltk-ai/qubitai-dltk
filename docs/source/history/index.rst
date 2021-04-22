@@ -36,4 +36,6 @@ History
 
 * OpenDLTK integration
 * Data Preprocessing for Machine Learning
+* Cross Validation - Machine Learning
 * Tutorial notebooks
+* Deprecated - Conversation

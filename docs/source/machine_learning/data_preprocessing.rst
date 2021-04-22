@@ -9,17 +9,16 @@ Read Data
 
 Function for reading data from csv or excel to dataframe.
 
-.. function:: preprocessor.read_data(file_name,header=0,names=None,index_col=None,usecols=None,
+.. function:: data_preprocessing.read_data(file_name,header=0,sep=',',names=None,index_col=None,usecols=None,
                                     squeeze=False,mangle_dupe_cols=True,dtype=None,engine=None,
                                     converters=None,true_values=None,false_values=None,skiprows=None,
                                     skipfooter=0,nrows=None,na_values=None,keep_default_na=True,
                                     na_filter=True,verbose=False,parse_dates=False,date_parser=None,
                                     thousands=None,comment=None)
 
-
-    :param data_path: Path for data file - csv or excel.
     :param file_name: Complete path of the data file.
     :param header: Row number(s) to use as the column names. default 0 (first row).
+    :param sep: Delimiter to use for reading data
     :param names: List of column names to use. array-like, optional.
     :param index_col: Column(s) to use as the row labels of the DataFrame. int, str, sequence of int / str, or False, default None.
     :param usecols: A list of subset of columns.
@@ -47,12 +46,14 @@ Function for reading data from csv or excel to dataframe.
 **Example**::
 
     import dltk_ai
+    from dltk_ai import data_preprocessing
 
-    df = dltk_ai.read_data("diabetes_train.csv")
+    df = data_preprocessing.read_data("diabetes_train.csv")
 
 
 Data Profile
 ------------
+
 Function for performing Exploratory Data Analysis on given dataset.
 
 *Supported Libraries*
@@ -63,9 +64,9 @@ Function for performing Exploratory Data Analysis on given dataset.
 
 
 
-.. function:: data_profile(dataframe,library='dtale',save_html,html_path)
+.. function:: data_preprocessing.data_profile(dataframe,library='dtale',save_html,html_path)
 
-    :param dataframe: Pandas Dataframe.
+    :param dataframe: pandas dataframe
     :param Library: Library for performing EDA out-of 3 libraries for given dataset.
     :param save_html: Boolean parametr to create html report for EDA Profile using Pandas-Profiling library ; by default False
     :param html_path: Path for saving html file created using Pandas-Profiling library
@@ -77,17 +78,19 @@ Function for performing Exploratory Data Analysis on given dataset.
 **Example**::
 
     import dltk_ai
+    from dltk_ai import data_preprocessing
 
-    df = dltk_ai.read_data("diabetes_train.csv")
+    df = data_preprocessing.read_data("diabetes_train.csv")
 
-    dltk_ai.data_profile(df,"pandas-profiling")
+    data_preprocessing.data_profile(df,"pandas-profiling")
 
 
 Missing Value Imputation
 ------------------------
+
 Function is used for imputing Missing values for selected set of independent columns in the given dataset.
 
-.. function:: impute_missing_value(dataframe,columns,imputer,method="iterative_imputer",replace=True,
+.. function:: data_preprocessing.impute_missing_value(dataframe,columns,imputer,method="iterative_imputer",replace=True,
                                    strategy='mean',missing_values=np.nan,fill_value=None,verbose=0,
                                    copy=True, add_indicator=False,estimator=None,sample_posterior=False,
                                    max_iter=10,tol=0.001,n_nearest_features=None,initial_strategy='mean',
@@ -95,14 +98,14 @@ Function is used for imputing Missing values for selected set of independent col
                                    max_value=None,random_state=None,n_neighbors=5,weights='uniform',
                                    metric='nan_euclidean'):
 
-    :param dataframe: Pandas Dataframe.
+    :param dataframe: pandas dataframe
     :param columns: List of selected features from dataset for Imputing Missing Values.
     :param imputer: Imputers from sklearn-library for Missing Value Imputation;
                     valid values: {"Univariate_imputation","Multivariate_Imputation"}.
     :param method:  Method for Multivariate Imputation; valid values: {"Iterative_Imputer" and "KNN_Imputer"}.
     :param replace: Boolean parameter,if True replace original values with Dataframe and if False then transformed selected column.
-    :param missing_values: The placeholder for the missing values assigned to be np.nan as default for SimpleImputer function.
     :param strategy: The imputation strategy; it can be mean,median,most_frequent or constant value for SimpleImputer function.
+    :param missing_values: The placeholder for the missing values assigned to be np.nan as default for SimpleImputer function.
     :param fill_value: When strategy == “constant”, fill_value is used to replace all occurrences of missing_values for SimpleImputer function.
     :param verbose: Controls the verbosity of the imputer.
     :param copy: Boolean parameter, if True, a copy of X will be created. If False, imputation will be done in-place whenever possible.
@@ -138,19 +141,21 @@ Function is used for imputing Missing values for selected set of independent col
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("diabetes_train.csv")
+    from dltk_ai import data_preprocessing
 
-    dltk_ai.impute_missing_value(df,['Glucose', 'BloodPressure'],"univariate_imputation",strategy="median")
+    df = data_preprocessing.read_data("diabetes_train.csv")
+
+    data_preprocessing.impute_missing_value(df,['Glucose', 'BloodPressure'],"univariate_imputation",strategy="median")
 
 
 Treat Outliers
 --------------
 
-Function to handle outliers in the data by either removing them or replacing them with a specific value (user specified value or statistic)
+Function to handle outliers in the data by either removing them or replacing them with a specific value (user specified value or statistic).
 
-.. function:: treat_outliers(dataframe, column, **kwargs):
+.. function:: dltk_ai.treat_outliers(dataframe, column, **kwargs):
 
-    :param dataframe: dataframe
+    :param dataframe: pandas dataframe
     :param column: list of columns/column to treat outliers
     
     `**kwargs`
@@ -164,19 +169,22 @@ Function to handle outliers in the data by either removing them or replacing the
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("diabetes_train.csv")
+    from dltk_ai import data_preprocessing
 
-    df_outliers_removed = dltk_ai.treat_outliers(df,['BloodPressure'],remove=True)
+    df = data_preprocessing.read_data("diabetes_train.csv")
+
+    df_outliers_removed = data_preprocessing.treat_outliers(df,['BloodPressure'],remove=True)
     df_outliers_removed.head()
 
 
 Datatype Conversion
 -------------------
+
 Function for Converting datatype of selected column from one datatype to other.
 
-.. function:: convert_dtypes(dataframe,column_datatypes)
+.. function:: dltk_ai.convert_dtypes(dataframe,column_datatypes)
 
-    :param dataframe: dataset in the form of pandas Dataframe
+    :param dataframe: pandas dataframe
     :param column_datatypes: Dictionary as input where keys are column_names and values of dictionary is required datatype for conversion.
 
 
@@ -187,23 +195,24 @@ Function for Converting datatype of selected column from one datatype to other.
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("diabetes_train.csv")
+    from dltk_ai import data_preprocessing
 
-    dltk_ai.convert_dtypes(df,{"Outcome":"int64"})
+    df = data_preprocessing.read_data("diabetes_train.csv")
+
+    data_preprocessing.convert_dtypes(df,{"Outcome":"int64"})
 
 
 Feature Scaling
 ---------------
-Function for normalizing the range of independent features of the given dataset.In data processing, it is also known as data normalization
-and is generally performed during the data preprocessing step. The range of Feature Scaling can be user-defined or default range provided by 
-the particular method.Function for Converting datatype of selected column from one datatype to other.
 
-.. function:: feature_scaling(dataframe,column_names,method,replace=True,feature_range=(0,1),
+Function for normalizing the range of independent features of the given dataset.
+
+.. function:: dltk_ai.feature_scaling(dataframe,column_names,method,replace=True,feature_range=(0,1),
                               copy=True,clip=False,use_mean=True,use_std=True,
                               use_centering=True, use_scaling=True, 
                               quantile_range=(25.0, 75.0),unit_variance=False,norm='l2')
 
-    :param dataframe: dataset in the form of pandas Dataframe
+    :param dataframe: pandas dataframe
     :param column_names: List of selected features from dataset for Feature Scaling.
     :param method: Methods from sklearn-library for Feature Scaling; valid values:{"MinMaxScaler","StandardScaler","MaxAbsScaler","RobustScaler",and "Normalizer"}.
     :param replace: Boolean parameter; if True replace original values with Dataframe,otherwise transformed selected column.
@@ -227,18 +236,21 @@ the particular method.Function for Converting datatype of selected column from o
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("housing_train.csv")
+    from dltk_ai import data_preprocessing
 
-    dltk_ai.feature_scaling(df,['LotArea','2ndFlrSF','GrLivArea'],"MinMaxScaler")
+    df = data_preprocessing.read_data("housing_train.csv")
+
+    data_preprocessing.feature_scaling(df,['LotArea','2ndFlrSF','GrLivArea'],"MinMaxScaler")
 
 
 
 Feature Transformation
 ----------------------
+
 Function for transforming from one representation to another representation for the selected list of independent features of given dataset.
 Different techniques of Feature Transformation can be implemented by checking the skewness of the independent variables. 
 
-.. function:: feature_transformations(dataframe,column_names,transformer,copy=True,
+.. function:: dltk_ai.feature_transformations(dataframe,column_names,transformer,copy=True,
                                       output_distribution='uniform',n_quantiles=1000,
                                       ignore_implicit_zeros=False,subsample=1e5,random_state=None,
                                       method='yeo-johnson',standardize=True,func=None,
@@ -246,7 +258,7 @@ Different techniques of Feature Transformation can be implemented by checking th
                                       check_inverse=True, kw_args=None, inv_kw_args=None,
                                       replace=True):
 
-    :param dataframe: dataset in the form of pandas Dataframe
+    :param dataframe: pandas dataframe
     :param column_names: List of selected features from dataset for Feature Transformation.
     :param transformer: Methods from sklearn-library for Feature Transformation; valid values:{"Quantile Transformer","Power Transformation","Custom Transformation"}
     :param copy: boolean parameter, if true creates copy and then scale the variables otherwise inplaced in same dataframe.
@@ -274,9 +286,11 @@ Different techniques of Feature Transformation can be implemented by checking th
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("housing_train.csv")
+    from dltk_ai import data_preprocessing
 
-    dltk_ai.feature_transformations(df,["MSSubClass",'GarageYrBlt','WoodDeckSF','OpenPorchSF'],transformer="power_transformer")
+    df = data_preprocessing.read_data("housing_train.csv")
+
+    data_preprocessing.feature_transformations(df,["MSSubClass",'GarageYrBlt','WoodDeckSF','OpenPorchSF'],transformer="power_transformer")
 
 
 Feature Creation
@@ -284,7 +298,7 @@ Feature Creation
 
 New features created based on existing columns using methods such as binning, one-hot-encoding and group by transform.
 
-.. function:: preprocessor.feature_creation(dataframe, feature_method, binning_column=None, bins=10, 
+.. function:: dltk_ai.feature_creation(dataframe, feature_method, binning_column=None, bins=10, 
                             binning_right=True, binning_labels=None,
                      binning_retbins=False, binning_precision=3, binning_include_lowest=False,
                      binning_duplicates='raise', binning_ordered=True, dummies_prefix=None, dummies_prefix_sep='_',
@@ -292,7 +306,7 @@ New features created based on existing columns using methods such as binning, on
                      groupby_column=None, groupby_transform_column=None, groupby_transform_metric='mean')
 
     
-    :param dataframe: dataframe
+    :param dataframe: pandas dataframe
     :param feature_method: binning/one-hot-encoding/groupby
 
     binning - bins a numerical variable based on user specified value.
@@ -305,12 +319,16 @@ New features created based on existing columns using methods such as binning, on
     :param binning_precision: Precision to store and display bins labels.
     :param binning_include_lowest: Whether the first interval should be left-inclusive or not.
     :param binning_duplicates: Raises error if bin edges are not unique. can opt for drop. values = 'raise','drop'.
+    :param binning_ordered: Whether the labels are ordered or not. Applies to returned types Categorical and Series 
+                            (with Categorical dtype). If True, the resulting categorical will be ordered. If False, 
+                            the resulting categorical will be unordered (labels must be provided).
 
     one-hot-encoding - Process in the data processing that is applied to categorical data, to convert it into a binary vector representation.
 
     :param dummies_prefix: List of prefix strings to name the dataframe columns.
     :param dummies_prefix_sep: If appending prefix, separator to use. default '_'
     :param dummies_dummy_na: Add column o indicate NaNs. Default - False.
+    :param dummies_column: Column names in the DataFrame to be encoded. If columns is None then all the columns with object or category dtype will be converted.
     :param dummies_sparse: Whether the dummy-encoded columns should be backed by a SparseArray (True) or a regular NumPy array (False).
     :param dummies_drop_first: Whether to get k-1 dummies out of k categorical levels by removing the first level.
 
@@ -323,16 +341,18 @@ New features created based on existing columns using methods such as binning, on
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("diabetes_train.csv")
+    from dltk_ai import data_preprocessing
+
+    df = data_preprocessing.read_data("diabetes_train.csv")
 
     # groupby transform
-    dltk_ai.feature_creation(df,feature_method='groupby',groupby_column=['Outcome'],groupby_transform_column=['Pregnancies'], groupby_transform_metric='mean')
+    data_preprocessing.feature_creation(df,feature_method='groupby',groupby_column=['Outcome'],groupby_transform_column=['Pregnancies'], groupby_transform_metric='mean')
 
     # binning
-    dltk_ai.feature_creation(df,feature_method='binning',binning_column='Age',bins=20)
+    data_preprocessing.feature_creation(df,feature_method='binning',binning_column='Age',bins=20)
 
     # one-hot-encoding
-    dltk_ai.feature_creation(df,feature_method='one-hot-encoding')
+    data_preprocessing.feature_creation(df,feature_method='one-hot-encoding')
 
 
 Data Transformation
@@ -341,13 +361,13 @@ Data Transformation
 Transforms data from one format to another
 
 
-.. function:: preprocessor.feature_creation(dataframe, transform_method, pivot_index=None, pivot_columns=None, 
+.. function:: dltk_ai.data_transformation(dataframe, transform_method, pivot_index=None, pivot_columns=None, 
                                             pivot_values=None, melt_id_vars=None, melt_value_vars=None, 
                                             crosstab_columns=None, crosstab_rows=None)
 
 
-    :param dataframe: dataframe
-    :param feature_method: pivot/melt/crosstab
+    :param dataframe: pandas dataframe
+    :param transform_method: pivot/melt/crosstab
     
     pivot - Summarises data in a given dataframe.
     
@@ -371,16 +391,18 @@ Transforms data from one format to another
 **Example**::
 
     import dltk_ai
-    df = dltk_ai.read_data("housing_train.csv")
+    from dltk_ai import data_preprocessing
+
+    df = data_preprocessing.read_data("housing_train.csv")
 
     # pivot 
-    dltk_ai.data_transformation(df,transform_method='pivot',pivot_index='col_B',pivot_columns='col_A')
+    data_preprocessing.data_transformation(df,transform_method='pivot',pivot_index='col_B',pivot_columns='col_A')
 
     # melt
-    dltk_ai.data_transformation(df,transform_method='melt',melt_id_vars='col_C',melt_value_vars=['col_A','col_B'])
+    data_preprocessing.data_transformation(df,transform_method='melt',melt_id_vars='col_C',melt_value_vars=['col_A','col_B'])
 
     # crosstab
-    dltk_ai.data_transformation(df,transform_method='crosstab',crosstab_columns='col_A',crosstab_rows='col_B')
+    data_preprocessing.data_transformation(df,transform_method='crosstab',crosstab_columns='col_A',crosstab_rows='col_B')
 
 
 

@@ -1,10 +1,7 @@
 # Importing Libraries for performing Exploratory Data Analysis on dataset
 import pandas as pd
 from pandas_profiling import ProfileReport
-#from autoviz.AutoViz_Class import AutoViz_Class
 import dtale
-import dtale.app as dtale_app
-
 
 # Importing Sklearn modules for Feature Scaling 
 from sklearn.preprocessing import MinMaxScaler
