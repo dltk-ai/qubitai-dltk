@@ -14,7 +14,7 @@ Used to store file on cloud storage.
 
    :param file_path: The path of the dataset file.
    :param dataset_type: Type of dataset. valid Values TEST_DATA, TRAIN_DATA.
-   :rtype: A json obj containing the file path in storage.
+   :rtype: A json object containing the file path in storage.
 
 
 
@@ -27,7 +27,7 @@ Training a model is done on DLTK's cloud server. A job is triggered as soon as t
 .. function:: client.job_status(job_id)
 
    :param job_id: jobId from the train function response.
-   :rtype: A json obj containing the status details.
+   :rtype: A json object containing the status details.
 
 
 ****************
@@ -38,7 +38,7 @@ It gives the training job output, including model evaluation metrics, the path w
 .. function:: client.job_output(job_id)
 
    :param job_id: jobId from train function response.
-   :rtype: A json obj containing the job output.
+   :rtype: A json object containing the job output.
 
 
 ******************

@@ -484,7 +484,7 @@ Usage
 
         sentiment_analysis_response = client.sentiment_analysis(text)
 
-        print(sentiment_analysis_response.text)
+        print(sentiment_analysis_response)
 
 
 .. tab:: with Auth Enabled
@@ -498,7 +498,7 @@ Usage
 
         sentiment_analysis_response = client.sentiment_analysis(text)
 
-        print(sentiment_analysis_response.text)
+        print(sentiment_analysis_response)
 
 .. seealso::
     1. To enable/disable authentication `link <toggle_auth.html>`__ .
