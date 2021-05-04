@@ -67,7 +67,7 @@ print(sentiment_analysis_response)
 Example notebooks for all the services are provided and are accesible when the user installs qubitai-dltk from source.
 
 
-Important Parameters:
+**Important Parameters:**
 
 **1. API key:**
 
