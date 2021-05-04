@@ -1,0 +1,115 @@
+Regression
+===========
+
+Regression is used to predict quantitative response in given data.
+
+**Supported Libraries and Algorithms**
+
+.. list-table::
+   :widths: 25 25 25
+   :header-rows: 1
+
+   * - Scikit
+     - H2O
+     - Weka
+   * - LinearRegression
+     - LinearRegression
+     - LinearRegression
+   * - DecisionTrees
+     - GradientBoostingMachines
+     - RandomForest
+   * - Bagging
+     - RandomForest
+     - AdditiveRegression
+   * - RandomForest
+     - GradientBoostingMachines
+     - 
+   * - GradientBoostingMachine
+     - 
+     - 
+   * - XGradientBoosting
+     - 
+     - 
+   * - AdaBoost
+     - 
+     - 
+   * - ExtraTrees
+     - 
+     - 
+   * - SupportVectorMachines
+     - 
+     - 
+
+
+Training a model
+-----------------
+
+Used to train a model on specific data.
+
+.. function:: client.train(service, algorithm, dataset, label, features, model_name=None,
+                            lib="weka", train_percentage=80, save_model=True,params=None,
+                            dataset_source=None)
+
+   :param service: Training task to perform. Valid parameter values are classification, regression.
+   :param algorithm: Algorithm to use for training the model.
+   :param dataset: Dataset file location in DLTK storage.
+   :param label: Target variable.
+   :param features: List of features to use for training the model.
+   :param model_name: Model will be saved with the name specified in this parameter.
+   :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+   :param train_percentage: % of data to use for training the model. Rest of the data will be used to test the model.
+   :param save_model: If True, the model will be saved in DLTK Storage.
+   :param dataset_source: To specify data source,
+        None: Dataset file from DLTK storage will be used
+        database: Query from connected database will be used
+   :rtype: A json object containing the file path in storage.
+
+
+
+Predictions
+-----------------
+
+Used to predict data using a model object.
+
+.. function:: client.predict(service, dataset, model_url, features, lib='weka',
+                            params=None, dataset_source=None)
+
+    :param service: Service used in training the model. Valid parameter values are classification, regression.
+    :param dataset: Dataset file location in DLTK storage.
+    :param model_url: Trained model location in DLTK storage.
+    :param features: List of features used for training.
+    :param lib: Library used for training the model. Currently we are supporting scikit, h2o and weka.
+    :param dataset_source: To specify data source,
+        None: Dataset file from DLTK storage will be used
+        database: Query from connected database will be used
+    :rtype: A json object containing the file info which has the predictions.
+
+
+
+
+Feedback
+-----------------
+
+Used to retrain a model on new data.
+
+.. function:: client.train(service, algorithm, train_data, feedback_data, job_id, model_url,
+                            label, features, lib='weka', model_name=None,
+                            split_perc=80, save_model=True, params=None):
+
+   :param service: Training task to perform. Valid parameter values are classification, regression.
+   :param algorithm: Algorithm to use for training the model.
+   :param train_data: Dataset file location in DLTK storage.
+   :param feedback_data: Dataset file location in DLTK storage.
+   :param job_id: job id from the train function used to train the model.
+   :param model_url: model url returned from job output function.
+   :param label: Target variable.
+   :param features: List of features to use for training the model.
+   :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+   :param model_name: Model will be saved with the name specified in this parameter.
+   :param split_perc: Percentage of data to use for training the model. Rest of the data will be used to test the model.
+   :param save_model: If True, the model will be saved in DLTK Storage.
+   :param params: additional parameters.
+   :rtype: A json object containing the file path in storage.
+
+
+

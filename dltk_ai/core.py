@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters
+from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension
 from dltk_ai.dataset_types import Dataset
 
 
@@ -18,7 +18,7 @@ class DltkAiClient:
             api_key (str): API Key Generated for an app in DltkAi.
     """
 
-    def __init__(self, api_key):
+    def __init__(self, api_key=None, base_url="https://prod-kong.dltk.ai"):
         """
             The constructor for DltkAi Client.
 
@@ -29,31 +29,34 @@ class DltkAiClient:
                 DltkAiClient: Client object for DltkAi.
         """
         self.api_key = api_key
-        self.base_url = "https://prod-kong.dltk.ai"
+        self.base_url = base_url
 
     # Note: NLP functions
 
-    def sentiment_analysis(self, text, sources=['spacy']):
+    def sentiment_analysis(self, text, sources=['nltk_vader'], **kwargs):
         """
         :param str text: The text on which sentiment analysis is to be applied.
         :param sources: algorithm to use for the analysis - azure/ibm_watson/spacy
+        :kwargs reformat: reformat to a common format or not
         :return:
             obj:A json obj containing sentiment analysis response.
         """
         sources = [feature.lower() for feature in sources]
-        supported_sources = ['spacy', 'azure', 'ibm_watson']
+        supported_sources = ['nltk_vader', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
 
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/sentiment/compare'
+        url = self.base_url + '/core/nlp/sentiment/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def pos_tagger(self, text, sources=['spacy']):
+    def pos_tagger(self, text, sources=['spacy'], **kwargs):
         """
         :param str text: The text on which POS analysis is to be applied.
         :param sources: algorithm to use for POS analysis - ibm_watson/spacy
@@ -64,14 +67,17 @@ class DltkAiClient:
         supported_sources = ['spacy', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/pos/compare'
+        url = self.base_url + '/core/nlp/pos/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def ner_tagger(self, text, sources=['spacy']):
+    def ner_tagger(self, text, sources=['spacy'], **kwargs):
         """
         :param str text: The text on which NER Tagger is to be applied.
         :param sources: algorithm to use for NER Tagger - azure/ibm_watson/spacy
@@ -82,11 +88,14 @@ class DltkAiClient:
         supported_sources = ['spacy', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/ner/compare'
+        url = self.base_url + '/core/nlp/ner/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
     def dependency_parser(self, text):
@@ -101,10 +110,12 @@ class DltkAiClient:
         body = json.dumps(body)
         url = self.base_url + '/core/nlp/dependency-parser/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
+        response = requests.post(url=url, data=body, headers=headers)
+        if response.status_code == 200:
+            response = response.json()
         return response
 
-    def tags(self, text, sources=['rake']):
+    def tags(self, text, sources=['rake'], **kwargs):
         """
         :param str text: The text on which tags is to be applied.
         :param sources: algorithm to use for tagging - azure/ibm_watson/rake
@@ -115,12 +126,14 @@ class DltkAiClient:
         supported_sources = ['rake', 'azure', 'ibm_watson']
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         assert text is not None and text != '', "Please ensure text is not empty"
-        body = {'text': text, 'sources': sources}
+        reformat = kwargs.get('reformat', True)
+        body = {'text': text, 'sources': sources, 'reformat': reformat}
         body = json.dumps(body)
-        url = self.base_url + '/core/nlp/tags/compare'
+        url = self.base_url + '/core/nlp/tags/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers)
-
+        if response.status_code == 200:
+            response = response.json()
         return response
 
     # Note: Computer vision functions
@@ -141,7 +154,7 @@ class DltkAiClient:
         task_status_response = requests.get(task_url + str(job_id), headers=headers).json()
         return task_status_response
 
-    def check_cv_job_status(self, task_creation_response):
+    def check_cv_job_status(self, task_creation_response, wait_time=10):
         """
         This function check status of the job
         Args:
@@ -166,41 +179,52 @@ class DltkAiClient:
                 sleep(1)
 
                 # check if execution time is more than
-                if time() - start_time > 10:
+                if time() - start_time > wait_time:
+                    job_id = task_creation_response["job_id"]
                     print("It's taking too long than expected!!",
-                          'you can use this function to check status dltkai.check_cv_job(',
-                          task_creation_response['job_id'], ')')
+                          f"Use check_cv_job('{job_id}') to check status of your request")
                     break
 
         else:
             print(f"FAILED due to {task_creation_response.content}")
         return task_status_response
 
-    def object_detection(self, image_url=None, image_path=None, tensorflow=True, azure=False, output_types=["json"]):
+    def object_detection(self, image_url=None, image_path=None, object_detectors=['tensorflow'], output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for object detection
         Args:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for object detection
-            azure: if True, returns azure results of object detection on given image
+            object_detectors: Supported object detectors ['tensorflow','azure']
+            reformat: if True, reformat response to a common format, else not
+            wait_time: wait time to get response
 
         Returns:
         Object_detection
         """
         output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True, "please choose at least 1 supported processor ['tensorflow', 'azure']"
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
+        supported_object_detectors = ['tensorflow', 'azure', 'ibm']
+        assert len(supported_object_detectors) >= 1, f"Please select object_detectors from {supported_object_detectors}"
+
+        assert len([classifier for classifier in object_detectors if classifier in supported_object_detectors]) > 0, f"Please select object_detectors from {supported_object_detectors}"
+
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+
+        object_detectors = {detector: True for detector in object_detectors}
 
         load = {
             "tasks": {"object_detection": True},
+            "reformat": reformat,
             "configs": {
                 "output_types": output_types,
                 "object_detection_config": {
-                    "tensorflow": tensorflow,
-                    "azure": azure
+                    "tensorflow": object_detectors.get('tensorflow', False),
+                    "azure": object_detectors.get('azure', False)
                 }
 
             }
@@ -211,6 +235,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
                 load["base64_img"] = base64_img
@@ -220,12 +246,12 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/object_detection/'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response
 
-    def image_classification(self, image_url=None, image_path=None, top_n=3, tensorflow=True, azure=False, ibm=False,
-                             output_types=["json"]):
+    def image_classification(self, image_url=None, image_path=None, top_n=3, image_classifiers=[],
+                             output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for image classification
         Args:
@@ -234,28 +260,38 @@ class DltkAiClient:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            tensorflow: if True, uses tensorflow for image classification
-            azure: if True, returns azure results of image classification on given image
-            ibm: if True, returns ibm results of image classification on given image
+            image_classifiers: Supported image classifier tensorflow, azure, ibm
+            reformat: if True, reformat responses received from azure, ibm to a common format
+            wait_time: wait time to get response from DLTK server
 
         Returns:
         Image classification response
         """
         output_types = [feature.lower() for feature in output_types]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert tensorflow is True or azure is True or ibm is True, "please choose at least 1 supported processor ['tensorflow', 'azure','ibm']"
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
+
+        supported_image_classifiers = ['tensorflow', 'azure', 'ibm']
+
+        assert len(image_classifiers) >= 1, f"Please select image_classifiers from {supported_image_classifiers}"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+
+        assert len([classifier for classifier in image_classifiers if classifier in supported_image_classifiers]) > 0, f"Please select image_classifiers from {supported_image_classifiers}"
+
+        image_classifiers = {classifier: True for classifier in image_classifiers}
 
         load = {
             "tasks": {"image_classification": True},
-
+            "reformat": reformat,
             "configs": {
                 "output_types": ["json"],
                 "img_classification_config": {
                     "top_n": top_n,
-                    "tensorflow": tensorflow,
-                    "ibm": ibm,
-                    "azure": azure
+                    "tensorflow": image_classifiers.get('tensorflow', False),
+                    "ibm": image_classifiers.get('ibm', False),
+                    "azure": image_classifiers.get('azure', False)
                 }
             }
         }
@@ -265,6 +301,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
             load["base64_img"] = base64_img
@@ -274,7 +312,7 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/image_classification'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response
 
@@ -290,12 +328,12 @@ class DltkAiClient:
         sources = [feature.lower() for feature in sources]
         supported_audio_format = '.wav'
         supported_sources = ['google', 'ibm_watson']
-        assert '.wav' in audio_path, f'Please use supported audio format {supported_audio_format}'
+        assert allowed_file_extension(audio_path, '.wav'), f'Please use supported audio format {supported_audio_format}'
         assert all(i in supported_sources for i in sources), f"Please enter supported source {supported_sources}"
         body = {'audio': (audio_path, open(audio_path, 'rb'), 'multipart/form-data')}
         sources_string = ",".join(sources)
         payload = {'sources': sources_string}
-        url = self.base_url + '/speech-to-text/compare'
+        url = self.base_url + '/speech-to-text/'
         headers = {'ApiKey': self.api_key}
         response = requests.post(url=url, files=body, headers=headers, data=payload).json()
         return response
@@ -313,32 +351,30 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80,
-              save_model=True, params=None, dataset_source=None):
+    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None):
+
         """
-        :param lib: Library for training the model. Currently we are supporting DLTK and weka libraries.
-        :param service: Valid parameter values are classification, regression.
-        :param model_name: Model name and with this name model will be saved.
-        :param algorithm: algorithm by which model will be trained.
+        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param algorithm: Algorithm used for training the model.
         :param dataset: dataset file location in DLTK storage.
-        :param label: label of the column in dataset file.
-        :param train_percentage: % of data will be used for training and model will be tested against remaining % of data.
-        :param features: column name list which is used to train classification model.
-        :param save_model: If true model will saved in.
-        :param params: additional parameters.
-        :return:
-            obj: A json obj containing model info.
-
-        Args:
-            features: Feature list used while model training
-            dataset_source: To specify data source,
-                None: Dataset file will from DLTK storage will be used
+        :param label: Target variable.
+        :param features: List of features used for training the model.
+        :param model_name: Model will be saved with the name specified in this parameter.
+        :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+        :param train_percentage: Percentage of data used for training the model. Rest of the data will be used to test the model.
+        :param save_model: If True, the model will be saved in the DLTK Storage.
+        :param dataset_source: To specify data source,
+                None: Dataset file from DLTK storage will be used
                 database: Query from connected database will be used
-
+        :param folds: number of folds for cross validation
+        :param cross_validation: Evaluates model using crossvalidation if set to True.
+        :rtype: A json object containing the file path in storage.
+        
         """
+
+
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label, train_percentage,
-            save_model)
+            service, lib, algorithm, features, label, train_percentage)
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
@@ -346,7 +382,7 @@ class DltkAiClient:
             params = {}
         if model_name is None:
             model_name = algorithm
-
+        
         if dataset_source == "database":
             body = {
                 "library": lib,
@@ -360,7 +396,9 @@ class DltkAiClient:
                     "trainPercentage": train_percentage,
                     "features": features,
                     "saveModel": save_model,
-                    "params": params
+                    "params": params,
+                    "folds" : folds,
+                    "crossValidation" : cross_validation
                 }
             }
         else:
@@ -375,7 +413,9 @@ class DltkAiClient:
                     "trainPercentage": train_percentage,
                     "features": features,
                     "saveModel": save_model,
-                    "params": params
+                    "params": params,
+                    "folds" : folds,
+                    "crossValidation" : cross_validation
                 }
             }
         body = json.dumps(body)
@@ -384,31 +424,28 @@ class DltkAiClient:
         return response
 
     def feedback(self, service, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
-                 model_name=None, split_perc=80, save_model=True, params=None):
+                 model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None):
         """
-         The function call to feedback service in DLTK ML.
+        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param algorithm: Algorithm used for training the model.
+        :param train_data: dataset file location in DLTK storage.
+        :param feedback_data: dataset file location in DLTK storage.
+        :param job_id: job id from the train function used to train the model.
+        :param model_url: model url returned from job output function.
+        :param label: Target variable.
+        :param features: List of features used for training the model.
+        :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
+        :param model_name: Model will be saved with the name specified in this parameter.
+        :param split_perc: Percentage of data to use for training the model. Rest of the data will be used to test the model.
+        :param save_model: If True, the model will be saved in DLTK Storage.
+        :param params: additional parameters.
+        :param folds: number of folds for cross validation
+        :param cross_validation: Evaluates model using crossvalidation if set to True.
 
-        :param lib: Trained model's library
-        :param service: Trained model's service.
-        :param model_name: Trained model's name.
-        :param algorithm: Trained model's algorithm.
-        :param train_data: Trained model's dataset url.
-        :param feedback_data:
-                a)Dataset (used for feedback) file location in DLTK storage.
-                b)Feedback dataset upload. IMP: Please ensure the dataset has all features used for training the model.
-        :param job_id: Job_id from training API response.
-        :param model_url: Model file location in DLTK storage.
-        :param label: Trained model's label.
-        :param split_perc: % of data will be used for training and model will be tested against remaining % of data.
-        :param features: Trained model's features.
-        :param save_model:If true model will saved in.
-        :param params: Additional parameters.
-        :return:
-            A json obj containing feedback model info.
+        :rtype: A json object containing the file path in storage.
         """
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label,
-            save_model)
+            service, lib, algorithm, features, label)
         url = self.base_url + '/machine/' + service + '/feedback'
 
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
@@ -417,6 +454,7 @@ class DltkAiClient:
             params = {}
         if model_name is None:
             model_name = algorithm
+        
 
         body = {
             'library': lib,
@@ -432,8 +470,10 @@ class DltkAiClient:
                 'label': label,
                 'trainPercentage': split_perc,
                 'features': features,
+                'params': params,
                 'saveModel': save_model,
-                'params': params
+                "folds" : folds,
+                "crossValidation" : cross_validation
             }
         }
         body = json.dumps(body)
@@ -629,20 +669,17 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         return response
 
-    def face_analytics(self, image_url=None, features=None, image_path=None, dlib=False, opencv=True,
-                       azure=False, mtcnn=False,
-                       output_types=["json"]):
+    def face_analytics(self, image_url=None, features=None, image_path=None, face_detectors=['mtcnn'],
+                       output_types=["json"], wait_time=10):
         """
         This function is for face analytics
         Args:
             output_types (list): Type of output requested by client: "json", "image"
             image_url: Image URL
             image_path: Local Image Path
-            features (list) : Type of features requested by client
-            dlib: if True, uses dlib for face analytics
-            opencv: if True, uses opencv for face analytics
-            azure: if True, returns azure results of face analytics on given image
-            mtcnn: if True, uses mtcnn for face analytics
+            features: list of features requested by client
+            face_detectors: supported face detectors are mtcnn, dlib, opencv, azure
+            wait_time: wait time for server to return response
 
         Returns:
         face analytics response dependent on the features requested by client
@@ -651,10 +688,21 @@ class DltkAiClient:
             features = ['face_locations']
         features = [feature.lower() for feature in features]
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
-        assert any(
-            (azure, mtcnn, dlib, opencv)), "please choose at least 1 processor ['opencv', 'azure', 'mtcnn', 'dlib']"
         assert "json" in output_types or "image" in output_types, "Please select at least 1 output type ['json','image']"
-        assert "face_locations" in features, "Please select at least one feature ['face_locations']"
+        assert len(features)>0, "Please select at least one feature ['face_locations']"
+        assert type(wait_time) == int and 0 < wait_time <= 30, "Please provide a wait time in (0-30) seconds"
+        if 'face_locations' in features:
+            if type(face_detectors) == str:
+                face_detectors = face_detectors.split(',')
+            face_detectors = [detector.lower() for detector in face_detectors]
+            supported_face_detectors = ['mtcnn', 'azure', 'dlib', 'opencv']
+            assert len([detector for detector in supported_face_detectors if detector in face_detectors]) > 0, f"Please choose face_detectors from {supported_face_detectors}"
+
+        if image_url is not None:
+            assert is_url_valid(image_url), "Enter a valid URL"
+
+        face_detectors = {detector: True for detector in face_detectors}
+
         load = {
             "image_url": image_url,
 
@@ -664,10 +712,10 @@ class DltkAiClient:
                 "output_types": output_types,
 
                 "face_detection_config": {
-                    "dlib": dlib,
-                    "opencv": opencv,
-                    "mtcnn": mtcnn,
-                    "azure": azure
+                    "dlib": face_detectors.get('dlib', False),
+                    "opencv": face_detectors.get('opencv', False),
+                    "mtcnn": face_detectors.get('mtcnn', False),
+                    "azure": face_detectors.get('azure', False)
                 }
             }
         }
@@ -679,6 +727,8 @@ class DltkAiClient:
             load["image_url"] = image_url
 
         elif image_url is None and image_path is not None:
+            allowed_extensions = ('.jpg', '.png', '.jpeg')
+            assert allowed_file_extension(image_path, allowed_extensions), f"Supported Files extensions are {allowed_extensions}"
             with open(image_path, "rb") as image_file:
                 base64_img = base64.b64encode(image_file.read()).decode('utf-8')
             load["base64_img"] = base64_img
@@ -688,6 +738,6 @@ class DltkAiClient:
         url = self.base_url + '/computer_vision/face_analytics/'
 
         task_response = requests.post(url, json=load, headers=headers)
-        response = self.check_cv_job_status(task_response)
+        response = self.check_cv_job_status(task_response, wait_time)
 
         return response

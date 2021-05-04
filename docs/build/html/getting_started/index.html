@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>About DLTK &mdash; Qubitai-dltk v1.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting Up OpenDLTK" href="openDLTK_setup.html" />
+    <link rel="prev" title="Welcome to Qubitai-dltk’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qubitai-dltk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About DLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#opendltk-and-python-sdk-client">OpenDLTK and Python SDK client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#opendltk">OpenDLTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-client-sdk">Python Client SDK</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_setup.html">Setting Up OpenDLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_single_instance.html">OpenDLTK on single machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openDLTK_multiple_instance.html">OpenDLTK on multiple machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pythonClientSDK.html">DLTK Python SDK Client Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toggle_auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateAPIkey.html">Create user and Generate APIkey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansibleHostConfig.html">Configure Ansible Hosts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#uploading-a-dataset">Uploading a Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-status">Check Job Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#check-job-output">Check Job Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html#downloading-a-file">Downloading a File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/data_preprocessing.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/clustering.html">Clustering</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Computer Vision</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#image-classification">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#object-detection">Object Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computer_vision/index.html#face-detection">Face Detection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">NLP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#parts-of-speech-tagger">Parts of Speech Tagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#named-entity-recognition">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#dependancy-parser">Dependancy Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../natural_language_processing/index.html#tags-recognition">Tags Recognition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">History</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history/index.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubitai-dltk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>About DLTK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/getting_started/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="about-dltk">
+<h1>About DLTK<a class="headerlink" href="#about-dltk" title="Permalink to this headline">¶</a></h1>
+<p>DLTK is an enterprise-ready cloud platform that offers self-service AI capabilities.</p>
+</div>
+<div class="section" id="opendltk-and-python-sdk-client">
+<h1>OpenDLTK and Python SDK client<a class="headerlink" href="#opendltk-and-python-sdk-client" title="Permalink to this headline">¶</a></h1>
+<p>DLTK comprises of <strong>OpenDLTK</strong> where processing of images, text or structured tabular data is done using state-of-the-art AI models,
+and another component is <strong>python client sdk</strong> which can be used for integration of these AI services in your projects.</p>
+<a class="reference internal image-reference" href="../_images/DLTK_overview_diagram.png"><img alt="DLTK overview diagram" class="align-center" src="../_images/DLTK_overview_diagram.png" style="height: 250px;" /></a>
+<div class="section" id="opendltk">
+<h2>OpenDLTK<a class="headerlink" href="#opendltk" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>OpenDLTK is collection of open-source docker images which can be deployed on single or multiple instances.</p>
+<p>Functional Architecture Diagram</p>
+<a class="reference internal image-reference" href="../_images/architecture_diagram.png"><img alt="Functional Architecture Diagram" class="align-center" src="../_images/architecture_diagram.png" style="width: 900px;" /></a>
+<p><strong>Description:</strong></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Kong API Gateway</dt><dd><p>All user request are received by kong, which further directs to right microservice in OpenDLTK</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Base Service</dt><dd><p>It comprises of <cite>Solution Service, Registry service and Database Migrations</cite> Docker Containers, which are responsible for interacting with supported File storage services
+and Databases along with managing .</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Storage Services</dt><dd><p>OpenDLTK supports AWS S3, Google Cloud Storage and Digital Ocean SPACES, along with Local Disk storage where Base services are deployed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Machine Learning Services</dt><dd><ol class="loweralpha simple">
+<li><dl class="simple">
+<dt>ML Wrapper</dt><dd><p>It parse user request parameters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ML Scikit</dt><dd><p>This Microservice uses widely used <a class="reference external" href="https://scikit-learn.org/stable/">Scikit</a> package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ML H2O</dt><dd><p>This Microservice uses <a class="reference external" href="https://www.h2o.ai/">H2O.ai</a> python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ML Weka</dt><dd><p>This Microservice uses WEKA for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>Natural Language Processing</dt><dd><p>This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used <code class="docutils literal notranslate"><span class="pre">Spacy</span></code> and <cite>NLTK</cite> package. It also provide support for various AI engines like Azure &amp; IBM.</p>
+</dd>
+<dt>Computer Vision</dt><dd><ol class="loweralpha simple">
+<li><dl class="simple">
+<dt>CV Wrapper</dt><dd><p>This microservice receives images provided by user and route to right service based on the feature requested by them.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Image Classification</dt><dd><p>This microservice classify images into various classes using pretrained model and also using supported AI Engines.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Object Detection</dt><dd><p>This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Face Analytics</dt><dd><p>This microservice detects faces in Images provided by user using pretrained model and using supported AI Engines.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more details on OpenDLTK you can refer following documentation</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="openDLTK_setup.html#opendltk-setup"><span class="std std-ref">OpenDLTK Setup Guide</span></a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/repositories">OpenDLTK docker Hub</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dltk-ai/openDLTK">OpenDLTK github</a></p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="python-client-sdk">
+<h2>Python Client SDK<a class="headerlink" href="#python-client-sdk" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>OpenDLTK containers can be used either using REST APIs or using <code class="docutils literal notranslate"><span class="pre">qubitai-dltk</span></code> python client sdk, which simplify usage of the cognitive services provided by OpenDLTK.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dltk-ai/qubitai-dltk">Python Client SDK Github Code</a></p></li>
+<li><p><a class="reference internal" href="pythonClientSDK.html#python-sdk-installation"><span class="std std-ref">Installation Guide</span></a></p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="openDLTK_setup.html" class="btn btn-neutral float-right" title="Setting Up OpenDLTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Qubitai-dltk’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QubitAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
