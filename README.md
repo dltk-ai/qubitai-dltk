@@ -119,3 +119,19 @@ The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-
 ## Contact
 
 QubitAI Email-ID - connect@qubitai.tech
+
+## Founding Member
+[![](https://github.com/shreeramiyer.png?size=50)](https://github.com/shreeramiyer)
+
+## Lead Maintainer
+[![](https://github.com/GHub4Naveen.png?size=50)](https://github.com/GHub4Naveen)
+[![](https://github.com/alamcta.png?size=50)](https://github.com/alamcta)
+
+## Core Maintainer
+[![](https://github.com/dltk-ai.png?size=50)](https://github.com/dltk-ai)
+## Core Contributors 
+[![](https://github.com/SivaramVeluri15.png?size=50)](https://github.com/SivaramVeluri15)
+[![](https://github.com/vishnupeesapati.png?size=49)](https://github.com/vishnupeesapati)
+[![](https://github.com/appareddyraja.png?size=50)](https://github.com/appareddyraja)
+[![](https://github.com/kavyavelagapudi252.png?size=50)](https://github.com/kavyavelagapudi252)
+[![](https://github.com/vivekkya.png?size=49)](https://github.com/vivekkya)
