@@ -207,7 +207,7 @@ class DltkAiClient:
         assert image_url is not None or image_path is not None, "Please choose either image_url or image_path"
         if image_url is not None:
             assert is_url_valid(image_url), "Enter a valid URL"
-        supported_object_detectors = ['tensorflow', 'azure', 'ibm']
+        supported_object_detectors = ['tensorflow', 'azure']
         assert len(supported_object_detectors) >= 1, f"Please select object_detectors from {supported_object_detectors}"
 
         assert len([classifier for classifier in object_detectors if classifier in supported_object_detectors]) > 0, f"Please select object_detectors from {supported_object_detectors}"
@@ -250,7 +250,7 @@ class DltkAiClient:
 
         return response
 
-    def image_classification(self, image_url=None, image_path=None, top_n=3, image_classifiers=[],
+    def image_classification(self, image_url=None, image_path=None, top_n=3, image_classifiers=['tensorflow'],
                              output_types=["json"], reformat=True, wait_time=10):
         """
         This function is for image classification
@@ -351,7 +351,7 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None):
+    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
 
         """
         :param service: Training task to perform. Valid parameter values are classification, regression.
@@ -398,7 +398,8 @@ class DltkAiClient:
                     "saveModel": save_model,
                     "params": params,
                     "folds" : folds,
-                    "crossValidation" : cross_validation
+                    "crossValidation" : cross_validation,
+                    "evalPlots": evaluation_plots
                 }
             }
         else:
@@ -415,7 +416,8 @@ class DltkAiClient:
                     "saveModel": save_model,
                     "params": params,
                     "folds" : folds,
-                    "crossValidation" : cross_validation
+                    "crossValidation" : cross_validation,
+                    "evalPlots": evaluation_plots
                 }
             }
         body = json.dumps(body)
@@ -424,7 +426,7 @@ class DltkAiClient:
         return response
 
     def feedback(self, service, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
-                 model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None):
+                 model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None, evaluation_plots=False):
         """
         :param service: Training task to perform. Valid parameter values are classification, regression.
         :param algorithm: Algorithm used for training the model.
@@ -473,7 +475,8 @@ class DltkAiClient:
                 'params': params,
                 'saveModel': save_model,
                 "folds" : folds,
-                "crossValidation" : cross_validation
+                "crossValidation" : cross_validation,
+                "evalPlots": evaluation_plots
             }
         }
         body = json.dumps(body)
