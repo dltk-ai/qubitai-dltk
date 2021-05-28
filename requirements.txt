@@ -7,4 +7,4 @@ pandas-profiling==2.11.0
 scikit-learn==0.24.1
 autoviz==0.0.81
 dtale==1.41.1
-umap==0.5.1
+umap-learn==0.5.1

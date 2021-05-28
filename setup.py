@@ -5,19 +5,20 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="qubitai-dltk",
-    version="1.0.2",
+    version="1.0.3",
     author="DLTK",
     install_requires=[
-        "pandas==1.1.3",
-        "xlrd==1.2.0",
-        "numpy==1.19.5",
+        "pandas==1.2.3",
+        "xlrd==2.0.1",
+        "numpy==1.20.2",
         "requests==2.25.1",
-        "openpyxl==3.0.6",
+        "openpyxl==3.0.7",
         "certifi==2020.12.5",
-        "pandas-profiling==2.10.1",
+        "pandas-profiling==2.11.0",
         "scikit-learn==0.24.1",
         "autoviz==0.0.81",
-        "dtale==1.40.2"
+        "dtale==1.41.1",
+        "umap-learn==0.5.1"
         ],
     author_email="connect@qubitai.tech",
     description="Python Client for DLTK.",
