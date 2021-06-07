@@ -32,6 +32,8 @@ Please follow the below link for instructions on [OpenDLTK Installation](https:/
     pip install qubitai-dltk
 ```
 
+<br />
+
 **Installing from Source**
 
 a. Clone the repo
@@ -39,9 +41,9 @@ a. Clone the repo
 ```sh
    git clone https://github.com/dltk-ai/qubitai-dltk.git
 ``` 
-b. Set working directory to qubitai-dltk folder
+* Set working directory to qubitai-dltk folder
 
-c. Install requirements from requirements.txt file
+* Install requirements from requirements.txt file
 
 ```sh
     pip install -r requirements.txt
@@ -49,9 +51,9 @@ c. Install requirements from requirements.txt file
 
 Choose any one of the above options for Installation
 
----
+<br />
 
-### Usage
+## Usage
 
 ```python
 import dltk_ai
@@ -64,74 +66,81 @@ sentiment_analysis_response = client.sentiment_analysis(text)
 print(sentiment_analysis_response)
 ```
 
-Example notebooks for all the services are provided and are accesible when the user installs qubitai-dltk from source.
-
-
 **Important Parameters:**
 
-**1. API key:**
+> **1. APIkey:**
+>
+>
+> **2. base_url:**
+> The base_url is the url for the machine where base service is installed by _default_ its localhost, so base_url needs to be [http://localhost:8000]()
 
+<br />
 
-**2. base_url:**
-The base_url is the url for the machine where base service is installed by _default_ its localhost, so base_url needs to be [http://localhost:8000]()
-
-_Expected Output_
+**Expected Output**
 ```json
 {
   "spacy": {"emotion": "POSITIVE", "scores": {"neg": 0.0, "neu": 0.653, "pos": 0.347, "compound": 0.7496}}
 }
 ```
 
----
+<br>
+
 ## Services
 
-**1. Machine Learning**
+#### Machine Learning
+>
+>**ML Scikit** -  This Microservice uses widely used Scikit package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+>
+>**ML H2O** - This Microservice uses H2O.ai python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+>
+>**ML Weka** - This Microservice uses WEKA for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
+>
+>**Example Notebooks**
+> - [ML Classification Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/machine_learning/DLTK%20ML%20Classification%20Tutorial.ipynb)
+> - [ML Regrression Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/machine_learning/DLTK%20ML%20Regression%20Tutorial.ipynb)
+> - [ML Clustering Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/machine_learning/DLTK%20ML%20Clustering%20Tutorial.ipynb)
 
-* ML Wrapper - It parse user request parameters
+<br/>
 
-* ML Scikit - This Microservice uses widely used Scikit package for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
-
-* ML H2O - This Microservice uses H2O.ai python SDK for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
-
-* ML Weka - This Microservice uses WEKA for training and evaluating classification, regression, clustering models and other ML related tasks on dataset provided by user.
-
-**2. NLP**
-
-* This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support for various AI engines like Azure & IBM.
-
-**3. Computer Vision**
-
-* CV Wrapper - This microservice receives images provided by user and route to right service based on the feature requested by them.
-
-* Image Classification - This microservice classify images into various classes using pretrained model and also using supported AI Engines.
-
-* Object Detection - This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
+#### Natural Language Processing (NLP)
+>
+>* This microservice provides features like Sentiment analysis, Name Entity Recognition, Tag Extraction using widely used ``Spacy`` and `NLTK` package. It also provide support
+> for various AI engines like Azure & IBM.
+>
+>**Example Notebook**
+> - [NLP Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/natural_language_processing/DLTK%20NLP.ipynb)
 
 
-## Reference
+<br/>
+
+#### Computer Vision
+
+>* **Image Classification** - This microservice classify images into various classes using pretrained model and also using supported AI Engines.
+> 
+>* **Object Detection** - This microservice detect objects in Images provided by user using pretrained model and using supported AI Engines.
+>
+> **Example Notebooks**
+> - [Image Classification Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/computer_vision/DLTK%20Image%20Classification.ipynb)
+> - [Object Detection Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/computer_vision/DLTK%20Object%20detection.ipynb)
+> - [Face Analytics Colab Notebook](https://colab.research.google.com/github/dltk-ai/qubitai-dltk/blob/master/examples/computer_vision/DLTK%20Face%20Detection.ipynb)
+
+<br/>
+
+### Documentation
 
 For more detail on DLTK features & usage please refer [DLTK SDK Client Documentation](https://docs.dltk.ai)
 
-## License
+### License
 
 The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-3)](https://github.com/dltk-ai/qubitai-dltk/blob/master/LICENSE)
 
-## Contact
 
-QubitAI Email-ID - connect@qubitai.tech
+### Team
 
-## Founding Member
-[![](https://github.com/shreeramiyer.png?size=50)](https://github.com/shreeramiyer)
+|[![](https://github.com/shreeramiyer.png?size=50)](https://github.com/shreeramiyer)| [![](https://github.com/GHub4Naveen.png?size=50)](https://github.com/GHub4Naveen) [![](https://github.com/alamcta.png?size=50)](https://github.com/alamcta) |[![](https://github.com/SivaramVeluri15.png?size=50)](https://github.com/SivaramVeluri15) [![](https://github.com/vishnupeesapati.png?size=49)](https://github.com/vishnupeesapati) [![](https://github.com/appareddyraja.png?size=50)](https://github.com/appareddyraja) [![](https://github.com/kavyavelagapudi252.png?size=50)](https://github.com/kavyavelagapudi252) [![](https://github.com/vivekkya.png?size=49)](https://github.com/vivekkya)
+|:--:|:--:|:--:|
+|Founding Member|Lead Maintainer|Core Contributor|
 
-## Lead Maintainer
-[![](https://github.com/GHub4Naveen.png?size=50)](https://github.com/GHub4Naveen)
-[![](https://github.com/alamcta.png?size=50)](https://github.com/alamcta)
+<br />
 
-## Core Maintainer
-[![](https://github.com/dltk-ai.png?size=50)](https://github.com/dltk-ai)
-## Core Contributors 
-[![](https://github.com/SivaramVeluri15.png?size=50)](https://github.com/SivaramVeluri15)
-[![](https://github.com/vishnupeesapati.png?size=49)](https://github.com/vishnupeesapati)
-[![](https://github.com/appareddyraja.png?size=50)](https://github.com/appareddyraja)
-[![](https://github.com/kavyavelagapudi252.png?size=50)](https://github.com/kavyavelagapudi252)
-[![](https://github.com/vivekkya.png?size=49)](https://github.com/vivekkya)
+*For more details you can reach us at QubitAI Email-ID - [connect@qubitai.tech](connect@qubitai.tech)*
