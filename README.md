@@ -1,8 +1,13 @@
 # DLTK SDK
+
+<p align="center">
+<a href="https://dltk.ai/">
+  <img src="dltk.png" alt="DLTK logo">
+</a>
+</p>
+
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
-
-[![DLTK Logo](dltk.png)](https://dltk.ai/)
 
 ## About
 
