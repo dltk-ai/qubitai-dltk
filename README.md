@@ -62,6 +62,10 @@ pip install -r requirements.txt
 
 ## Usage
 
+A detailed documentation is present [here](https://docs.dltk.ai/), on how to use various services supported by DLTK, 
+to verify whether all setup are done properly, we will be using a sample NLP code to analyze sentiment of the input text.
+
+**Example**
 ```python
 import dltk_ai
 client = dltk_ai.DltkAiClient(base_url='http://localhost:8000')
