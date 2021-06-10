@@ -386,7 +386,7 @@ class DltkAiClient:
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label, train_percentage)
 
-        hyper_parameter_check(service,algorithm, params)
+        hyper_parameter_check(library,service,algorithm, params)
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}

@@ -1,1822 +1,2687 @@
 {
-    "classification" :
-    {
-	"DecisionTree": {
-		"ccp_alpha": {
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0
+	"scikit": {
+		"classification": {
+			"DecisionTree": {
+				"ccp_alpha": {
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					},
+					"default": 0.0
+				},
+				"class_weight": {
+					"datatype": "except",
+					"default": null
+				},
+				"criterion": {
+					"datatype": "str",
+					"value": [
+						"gini",
+						"entropy"
+					],
+					"default": "gini"
+				},
+				"max_depth": {
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					},
+					"default": null
+				},
+				"max_features": {
+					"datatype": "except",
+					"default": null
+				},
+				"max_leaf_nodes": {
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					},
+					"default": null
+				},
+				"min_impurity_decrease": {
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					},
+					"default": 0.0
+				},
+				"min_samples_leaf": {
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": 1
+					},
+					"range": [
+						0.0,
+						0.5
+					],
+					"default": 1
+				},
+				"min_samples_split": {
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					},
+					"range": [
+						0.0,
+						0.1
+					],
+					"default": 1
+				},
+				"min_weight_fraction_leaf": {
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0.0,
+						0.5
+					],
+					"default": 0
+				},
+				"splitter": {
+					"datatype": "str",
+					"value": [
+						"best",
+						"random"
+					],
+					"default": "best"
+				}
 			},
-			"default": 0.0
-		},
-		"class_weight": {
-			"datatype": "except",
-			"default": null
-		},
-		"criterion": {
-			"datatype": "str",
-			"value": [
-				"gini",
-				"entropy"
-			],
-			"default": "gini"
-		},
-		"max_depth": {
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
+			"RandomForest": {
+				"bootstrap": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"class_weight": {
+					"default": null,
+					"datatype": "except"
+				},
+				"criterion": {
+					"default": "gini",
+					"datatype": "str",
+					"value": [
+						"gini",
+						"entropy"
+					]
+				},
+				"max_depth": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": "auto",
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"max_samples": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "\"float\"",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "\"int\"",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "\"str\"",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
 			},
-			"default": null
-		},
-		"max_features": {
-			"datatype": "except",
-			"default": null
-		},
-		"max_leaf_nodes": {
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
+			"Bagging": {
+				"base_estimator": {
+					"default": null,
+					"datatype": "except"
+				},
+				"bootstrap": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"bootstrap_features": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"max_features": {
+					"default": 1.0,
+					"datatype": "except"
+				},
+				"max_samples": {
+					"default": 1.0,
+					"datatype": "except"
+				},
+				"n_estimators": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "exceot"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
 			},
-			"default": null
-		},
-		"min_impurity_decrease": {
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0
+			"ExtraTrees": {
+				"bootstrap": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"class_weight": {
+					"default": null,
+					"datatype": "except"
+				},
+				"criterion": {
+					"default": "gini",
+					"datatype": "str",
+					"value": [
+						"gini",
+						"entropy"
+					]
+				},
+				"max_depth": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": "auto",
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"max_samples": {
+					"default": null,
+					"datatype": "except"
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
 			},
-			"default": 0.0
-		},
-		"min_samples_leaf": {
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": 1
+			"KNearestNeighbors": {
+				"algorithm": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"ball_tree",
+						"kd_tree",
+						"brute"
+					]
+				},
+				"leaf_size": {
+					"default": 30,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 1
+					}
+				},
+				"metric": {
+					"default": "minkowski",
+					"datatype": "str",
+					"value": [
+						"euclidean",
+						"manhattan",
+						"chebyshev",
+						"minkowski",
+						"wminkowski",
+						"seuclidean",
+						"mahalanobis",
+						""
+					]
+				},
+				"metric_params": {
+					"default": null,
+					"datatype": "except"
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"n_neighbors": {
+					"default": 5,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"p": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"weights": {
+					"default": "uniform",
+					"datatype": "str",
+					"value": [
+						"uniform"
+					]
+				}
 			},
-			"range": [
-				0.0,
-				0.5
-			],
-			"default": 1
-		},
-		"min_samples_split": {
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">",
-				"value": 1
+			"AdaBoost": {
+				"algorithm": {
+					"default": "SAMME.R",
+					"datatype": "str",
+					"value": [
+						"SAMME",
+						"SAMME.R"
+					]
+				},
+				"base_estimator": {
+					"default": null,
+					"datatype": "except"
+				},
+				"learning_rate": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"n_estimators": {
+					"default": 50,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				}
 			},
-			"range": [
-				0.0,
-				0.1
-			],
-			"default": 1
+			"NaiveBayesMultinomial": {
+				"alpha": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"class_prior": {
+					"default": null,
+					"datatype": "except"
+				},
+				"fit_prior": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				}
+			},
+			"GradientBoostingMachines": {
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"criterion": {
+					"default": "friedman_mse",
+					"datatype": "str",
+					"value": [
+						"friedman_mse",
+						"mse",
+						"mae"
+					]
+				},
+				"init": {
+					"default": null,
+					"datatype": "except"
+				},
+				"learning_rate": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"loss": {
+					"default": "deviance",
+					"datatype": "str",
+					"value": [
+						"deviance",
+						"exponential"
+					]
+				},
+				"max_depth": {
+					"default": 3,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": null,
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_iter_no_change": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"subsample": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"tol": {
+					"default": 0.0001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"validation_fraction": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"XGradientBoosting": {
+				"base_score": {
+					"default": 0.5,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"booster": {
+					"default": "gbtree",
+					"datatype": "str",
+					"value": [
+						"gbtree",
+						"gblinear",
+						"dart"
+					]
+				},
+				"colsample_bylevel": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"colsample_bytree": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"gamma": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"learning_rate": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"max_delta_step": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"max_depth": {
+					"default": 3,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"min_child_weight": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"missing": {
+					"default": null,
+					"datatype": "except"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": 1,
+					"datatype": "except"
+				},
+				"nthread": {
+					"default": null,
+					"datatype": "except"
+				},
+				"objective": {
+					"default": "binary:logistic",
+					"datatype": "except"
+				},
+				"random_state": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"reg_alpha": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"reg_lambda": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"scale_pos_weight": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"seed": {
+					"default": null,
+					"datatype": "except"
+				},
+				"silent": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"subsample": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				}
+			},
+			"SupportVectorMachines": {
+				"C": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"break_ties": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"cache_size": {
+					"default": 200,
+					"datatype": "except"
+				},
+				"class_weight": {
+					"default": null,
+					"datatype": "except"
+				},
+				"coef0": {
+					"default": 0.0,
+					"datatype": "except"
+				},
+				"decision_function_shape": {
+					"default": "ovr",
+					"datatype": "str",
+					"value": [
+						"ovo",
+						"ovr"
+					]
+				},
+				"degree": {
+					"default": 3,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"gamma": {
+					"default": "scale",
+					"datatype": "str",
+					"value": [
+						"scale",
+						"auto"
+					]
+				},
+				"kernel": {
+					"default": "rbf",
+					"datatype": "str",
+					"value": [
+						"linear",
+						"poly",
+						"rbf",
+						"sigmoid",
+						"precomputed"
+					]
+				},
+				"max_iter": {
+					"default": -1,
+					"datatype": "int",
+					"compare_type": "<=>"
+				},
+				"probability": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"shrinking": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"tol": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"verbose": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				}
+			},
+			"LogisticRegression": {
+				"C": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"class_weight": {
+					"default": null,
+					"datatype": "except"
+				},
+				"dual": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"fit_intercept": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"intercept_scaling": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"l1_ratio": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"max_iter": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"multi_class": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"ovr",
+						"multinomial"
+					]
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"penalty": {
+					"default": "l2",
+					"datatype": "str",
+					"value": [
+						"l1",
+						"l2",
+						"elasticnet",
+						"none"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"solver": {
+					"default": "lbfgs",
+					"datatype": "str",
+					"value": [
+						"newton-cg",
+						"lbfgs",
+						"liblinear",
+						"sag",
+						"saga"
+					]
+				},
+				"tol": {
+					"default": 0.0001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			}
 		},
-		"min_weight_fraction_leaf": {
-			"datatype": "float",
-			"compare_type": "range",
-			"range": [
-				0.0,
-				0.5
-			],
-			"default": 0
-		},
-		"splitter": {
-			"datatype": "str",
-			"value": [
-				"best",
-				"random"
-			],
-			"default": "best"
+		"regression": {
+			"DecisionTree": {
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"criterion": {
+					"default": "mse",
+					"datatype": "str",
+					"value": [
+						"mse",
+						"friedman_mse",
+						"mae",
+						"poisson"
+					]
+				},
+				"max_depth": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": null,
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "except"
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"splitter": {
+					"default": "best",
+					"datatype": "str",
+					"value": [
+						"best",
+						"random"
+					]
+				}
+			},
+			"RandomForest": {
+				"bootstrap": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"criterion": {
+					"default": "mse",
+					"datatype": "mse mae"
+				},
+				"max_depth": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": "auto",
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"max_samples": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">0",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"Bagging": {
+				"base_estimator": {
+					"default": null,
+					"datatype": "except"
+				},
+				"bootstrap": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"bootstrap_features": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"max_features": {
+					"default": 1.0,
+					"datatype": "except"
+				},
+				"max_samples": {
+					"default": 1.0,
+					"datatype": "except"
+				},
+				"n_estimators": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"GradientBoostingMachine": {
+				"alpha": {
+					"default": 0.9,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"criterion": {
+					"default": "friedman_mse",
+					"datatype": "str",
+					"value": [
+						"friedman_mse",
+						"mse",
+						"mae"
+					]
+				},
+				"init": {
+					"default": null,
+					"datatype": "except"
+				},
+				"learning_rate": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"loss": {
+					"default": "ls",
+					"datatype": "str",
+					"value": [
+						"ls",
+						"lad",
+						"huber",
+						"quantile"
+					]
+				},
+				"max_depth": {
+					"default": 3,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": null,
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_iter_no_change": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"subsample": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"tol": {
+					"default": 0.0001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=0",
+						"value": 0.0
+					}
+				},
+				"validation_fraction": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 1.0"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"ExtraTrees": {
+				"bootstrap": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"ccp_alpha": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"criterion": {
+					"default": "mse",
+					"datatype": "str",
+					"value": [
+						"mse",
+						"mae"
+					]
+				},
+				"max_depth": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_features": {
+					"default": "auto",
+					"datatype": "except"
+				},
+				"max_leaf_nodes": {
+					"default": null,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+				"max_samples": {
+					"default": null,
+					"datatype": "except"
+				},
+				"min_impurity_decrease": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_impurity_split": {
+					"default": null,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_samples_leaf": {
+					"default": 1,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						0.5
+					]
+				},
+				"min_samples_split": {
+					"default": 2,
+					"datatype": "hybrid",
+					"condition": {
+						"symbol": ">=",
+						"value": "1"
+					},
+					"range": [
+						0.0,
+						1.0
+					]
+				},
+				"min_weight_fraction_leaf": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": "0.0 0.5"
+				},
+				"n_estimators": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"n_jobs": {
+					"default": null,
+					"datatype": "except"
+				},
+				"oob_score": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True"
+					]
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				},
+				"verbose": {
+					"default": 0,
+					"datatype": "except"
+				},
+				"warm_start": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"AdaBoost": {
+				"base_estimator": {
+					"default": null,
+					"datatype": "except"
+				},
+				"learning_rate": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"loss": {
+					"default": "linear",
+					"datatype": "str",
+					"value": [
+						"linear",
+						"square",
+						"exponential"
+					]
+				},
+				"n_estimators": {
+					"default": 50,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"random_state": {
+					"default": null,
+					"datatype": "except"
+				}
+			},
+			"SupportVectorMachines": {
+				"C": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"cache_size": {
+					"default": 200,
+					"datatype": "except"
+				},
+				"coef0": {
+					"default": 0.0,
+					"datatype": "except"
+				},
+				"degree": {
+					"default": 3,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"epsilon": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"gamma": {
+					"default": "scale",
+					"datatype": "str",
+					"value": [
+						"scale",
+						"auto"
+					]
+				},
+				"kernel": {
+					"default": "rbf",
+					"datatype": "str",
+					"value": [
+						"linear",
+						"poly",
+						"rbf",
+						"sigmoid",
+						"precomputed"
+					]
+				},
+				"max_iter": {
+					"default": -1,
+					"datatype": "int",
+					"compare_type": "<=>"
+				},
+				"shrinking": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				},
+				"tol": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"conditiṀon": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"verbose": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						"True",
+						"False"
+					]
+				}
+			}
 		}
 	},
-	"RandomForest": {
-		"bootstrap": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"class_weight": {
-			"default": null,
-			"datatype": "except"
-		},
-		"criterion": {
-			"default": "gini",
-			"datatype": "str",
-			"value": [
-				"gini",
-				"entropy"
-			]			
-		},
-		"max_depth": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": "auto",
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"max_samples": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+	"weka": {
+		"classification":{
+			"Logistic": {
+				"-D": {
+					"default": false,
+					"datatype": "except"
+				},
+   				"-S": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-R": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-M": {
+					"default": 1,
+   					"datatype": "int",
+   					"compare_type": "condition",
+   					"condition": {
+						"symbol": ">",
+						"value": 0}
+				}
 			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+			"MultilayerPerceptron": {
+				"-L": {
+					"default": 0.3,
+   					"datatype": "float",
+   					"compare_type": "range",
+   					"range": [
+						0.0,
+						1.0
+					]
+				},
+  				"-M": {
+					"default": 0.2,
+				    "datatype": "float",
+				    "compare_type": "range",
+				    "range": [
+						0.0,
+						1.0
+					]
+				},
+			    "-N": {
+					"default": 500,
+				    "datatype": "int",
+				    "compare_type": "condition",
+				    "condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-V": {
+					"default": 0,
+				    "datatype": "float",
+				    "compare_type": "range",
+				    "range": [
+						0.0,
+						100.0
+					]
+				},
+				"-S": {
+					"default": 0,
+				    "datatype": "int",
+				    "compare_type": "condition",
+				    "condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"-E": {
+					"default": 20,
+				    "datatype": "int",
+				    "compare_type": "condition",
+				    "condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-G": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-A": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-B": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-H": {
+					"default": "a",
+					"datatype": "str",
+					"value":
+					[
+						"a",
+						"i",
+						"o",
+						"t"
+					]
+				},
+				"-C": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-I": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-R": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-D": {
+					"default": false,
+					"datatype": "except"
+				}
 			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "\"float\"",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "\"int\"",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "\"str\"",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"Bagging": {
-		"base_estimator": {
-			"default": null,
-			"datatype": "except"
-		},
-		"bootstrap": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"bootstrap_features": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"max_features": {
-			"default": 1.0,
-			"datatype": "except"
-		},
-		"max_samples": {
-			"default": 1.0,
-			"datatype": "except"
-		},
-		"n_estimators": {
-			"default": 10,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "exceot"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"ExtraTrees": {
-		"bootstrap": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"class_weight": {
-			"default": null,
-			"datatype": "except"
-		},
-		"criterion": {
-			"default": "gini",
-			"datatype": "str",
-			"value": [
-				"gini",
-				"entropy"
-			]
-		},
-		"max_depth": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": "auto",
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"max_samples": {
-			"default": null,
-			"datatype": "except"
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+			"NaiveBayesMultinomial": {
+				"-output-debug-info": {
+					"default": false,
+   					"datatype": "except"
+				},
+  				"-do-not-check-capabilities": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-num-decimal-places": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-batch-size": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				}
 			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+			"RandomForest": {
+				"-P": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<",
+						"value": 101
+					}
+				},
+				"-O": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-store-out-of-bag-predictions": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-output-out-of-bag-complexity-statistics": {
+					"default": false,
+   					"datatype": "except"
+				},
+				"-print": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-attribute-importance": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-I": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "range",
+					"range": "64 128"
+				},
+				"-num-slots": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-K": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"-M": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-V": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"-S": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-depth": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"-N": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"-U": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-B": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-output-debug-info": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-do-not-check-capabilities": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-num-decimal-places": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-batch-size": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				}
 			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"KNearestNeighbors": {
-		"algorithm": {
-			"default": "auto",
-			"datatype": "str",
-			"value": [
-				"auto",
-				"ball_tree",
-				"kd_tree",
-				"brute"
-			]
-		},
-		"leaf_size": {
-			"default": 30,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 1
-			}
-		},
-		"metric": {
-			"default": "minkowski",
-			"datatype": "str",
-			"value": [
-				"euclidean",
-				"manhattan",
-				"chebyshev",
-				"minkowski",
-				"wminkowski",
-				"seuclidean",
-				"mahalanobis",
-				""
-			]
-		},
-		"metric_params": {
-			"default": null,
-			"datatype": "except"
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"n_neighbors": {
-			"default": 5,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"p": {
-			"default": 2,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"weights": {
-			"default": "uniform",
-			"datatype": "str",
-			"value": [
-				"uniform"
-			]
-		}
-	},
-	"AdaBoost": {
-		"algorithm": {
-			"default": "SAMME.R",
-			"datatype": "str",
-			"value": [
-				"SAMME",
-				"SAMME.R"
-			]
-		},
-		"base_estimator": {
-			"default": null,
-			"datatype": "except"
-		},
-		"learning_rate": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"n_estimators": {
-			"default": 50,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		}
-	},
-	"NaiveBayesMultinomial": {
-		"alpha": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"class_prior": {
-			"default": null,
-			"datatype": "except"
-		},
-		"fit_prior": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		}
-	},
-	"GradientBoostingMachines": {
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"criterion": {
-			"default": "friedman_mse",
-			"datatype": "str",
-			"value": [
-				"friedman_mse",
-				"mse",
-				"mae"
-			]
-		},
-		"init": {
-			"default": null,
-			"datatype": "except"
-		},
-		"learning_rate": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"loss": {
-			"default": "deviance",
-			"datatype": "str",
-			"value": [
-				"deviance",
-				"exponential"
-			]
-		},
-		"max_depth": {
-			"default": 3,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": null,
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+			"LibSVM": {
+				"-S": {
+					"default": 0,
+   					"datatype": "int",
+   					"compare_type": "range",
+   					"range": "0 4"
+				},
+				"-K": {
+					"default": 2,
+					"datatype": "int",
+			    	"compare_type": "range",
+			    	"range": "0 3"},
+			    "-D": {
+					"default": false,
+			    	"datatype": "int",
+			    	"compare_type": "condition",
+			    	"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			    "-G": {
+					"default": "1/k",
+					"datatype": "except"
+				},
+			    "-R": {
+					"default": 0,
+			    	"datatype": "float",
+			  		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+			  	"-C": {
+					"default": 1,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-N": {
+					"default": 0.5,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-Z": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-J": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-V": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-P": {
+					"default": 0.1,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-M": {
+					"default": 40,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-E": {
+					"default": 0.001,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-H": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-W": {
+					"default": 1,
+					"datatype": "except"
+				},
+			  	"-B": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-seed": {
+					"default": 1,
+					"datatype": "except"
+				}
 			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
+			"AdaBoostM1": {
+				"-P": {
+					"default": 100,
+		   			"datatype": "int",
+		   			"compare_type": "range",
+					"range": "0 100"
+				},
+				"-Q": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-S": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-I": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-D": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-W": {
+					"default": "weka.classifiers.trees.DecisionStump",
+					"datatype": "except"
+				}
 			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
+			"AttributeSelectedClassifier": {
+				"-E": {
+					"default": "weka.attributeSelection.CfsSubsetEval",
+				    "datatype": "except"
+				},
+			  	"-S": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-D": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-W": {
+					"default": "weka.classifiers.trees.J48",
+					"datatype": "except"
+				},
+				"-U": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-C": {
+					"default": 0.25,
+				   	"datatype": "float",
+				   	"compare_type": "condition",
+				   	"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-M": {
+					"default": 2,
+				   	"datatype": "int",
+				   	"compare_type": "condition",
+				   	"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-R": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-N": {
+					"default": 3,
+				   	"datatype": "int",
+				   	"compare_type": "condition",
+				   	"condition": {
+						"symbol": ">=",
+						"value": 1
+					}
+				},
+			  	"-B": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-L": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-A": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-Q": {
+					"default": 1,
+				   	"datatype": "int",
+				   	"compare_type": "condition",
+				   	"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				}
+			},
+			"Bagging": {
+				"-P": {
+					"default": false,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": "<=",
+						"value": 100
+					}
+				},
+				"-O": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-print": {
+					"default": false,
+					"datatype": "except"
+				},
+				"-store-out-of-bag-predictions": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-output-out-of-bag-complexity-statistics": {
+					"default": false,
+			   		"datatype": "except"
+				},
+			  	"-represent-copies-using-weights": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-S": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-num-slots": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {"symbol": ">", "value": 0}},
+				"-I": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-D": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-W": {
+					"default": "weka.classifiers.trees.REPTree",
+					"datatype": "except"
+				},
+			  	"-M": {
+					"default": 2,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {"symbol": ">", "value": 0}},
+			  	"-V": {
+					"default": 0.001,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-N": {
+					"default": 3,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-L": {
+					"default": -1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-R": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"KStar": {
+				"-B": {
+					"default": 20,
+   					"datatype": "int",
+   					"compare_type": "range",
+   					"range": "0 100"
+				},
+				"-E": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-M": {
+					"default": "a",
+					"datatype": "str",
+					"value": ["a", "d", "m", "n"]
+				}
+			},
+			"DecisionTable": {
+				"-S": {
+					"default": "weka.attributeSelection.BestFirst",
+			   		"datatype": "except"
+				},
+			  	"-X": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-E": {
+					"default": "acc",
+			   		"datatype": "str",
+			   		"value": ["acc", "rmse", "mae", "auc"]
+				},
+			  	"-I": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-R": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-P": {
+					"default": null,
+					"datatype": "except"
+				},
+			  	"-D": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "range",
+			   		"range": "0 2"
+				},
+			  	"-N": {
+					"default": 5,
+					"datatype": "except"
+				}
+			},
+			"IBk": {
+				"-I": {
+					"default": null,
+					"datatype": "except"
+				},
+			  	"-F": {
+					"default": null,
+					"datatype": "except"
+				},
+			  	"-K": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-E": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-W": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-X": {
+					"default": null,
+					"datatype": "except"
+				},
+			  	"-A": {
+					"default": "weka.core.neighboursearch.LinearNNSearch",
+			   		"datatype": "except"
+				}
+			},
+
+ 			"RandomTree": {
+				"-K": {
+					"default": 0,
+					"datatype": "except"
+				},
+			  	"-M": {"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-V": {
+					"default": 0.001,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-S": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"-depth": {
+					"default": 0,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+			  	"-N": {
+					"default": 0,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+			  	"-U": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-B": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-output-debug-info": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-do-not-check-capabilities": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-num-decimal-places": {
+					"default": 2,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				}
+			},
+			"SMO": {
+				"-no-checks": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-C": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-N": {
+					"default": 0,
+			   		"datatype": "int",
+			   		"compare_type": "range",
+			   		"range": "0 2"
+				},
+			  	"-L": {
+					"default": 0.001,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-P": {
+					"default": 1e-12,
+			   		"datatype": "float",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+			  	"-M": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-V": {
+					"default": false,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">=",
+						"value": 1
+					}
+				},
+			  	"-W": {
+					"default": 1,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+			  	"-K": {
+					"default": "weka.classifiers.functions.supportVector.PolyKernel",
+			   		"datatype": "except"
+				},
+			  	"-claibrator": {
+					"default": "weka.classifiers.functions.Logistic",
+			   		"datatype": "except"
+				},
+				"-output-debug-info": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-do-not-check-capabilities": {
+					"default": false,
+					"datatype": "except"
+				},
+			  	"-num-decimal-places": {
+					"default": 2,
+			   		"datatype": "int",
+			   		"compare_type": "condition",
+			   		"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				}
 			}
 		},
-		"n_iter_no_change": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"subsample": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"tol": {
-			"default": 0.0001,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"validation_fraction": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
+		"regression": {
+			"LinearRegression": {},
+			"AdditiveRegression": {}
 		}
 	},
-	"XGradientBoosting": {
-		"base_score": {
-			"default": 0.5,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"booster": {
-			"default": "gbtree",
-			"datatype": "str",
-			"value": [
-				"gbtree",
-				"gblinear",
-				"dart"
-			]
-		},
-		"colsample_bylevel": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"colsample_bytree": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"gamma": {
-			"default": 0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"learning_rate": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"max_delta_step": {
-			"default": 0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"max_depth": {
-			"default": 3,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"min_child_weight": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"missing": {
-			"default": null,
-			"datatype": "except"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": 1,
-			"datatype": "except"
-		},
-		"nthread": {
-			"default": null,
-			"datatype": "except"
-		},
-		"objective": {
-			"default": "binary:logistic",
-			"datatype": "except"
-		},
-		"random_state": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"reg_alpha": {
-			"default": 0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"reg_lambda": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"scale_pos_weight": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"seed": {
-			"default": null,
-			"datatype": "except"
-		},
-		"silent": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"subsample": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		}
-	},
-	"SupportVectorMachines": {
-		"C": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"break_ties": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"cache_size": {
-			"default": 200,
-			"datatype": "except"
-		},
-		"class_weight": {
-			"default": null,
-			"datatype": "except"
-		},
-		"coef0": {
-			"default": 0.0,
-			"datatype": "except"
-		},
-		"decision_function_shape": {
-			"default": "ovr",
-			"datatype": "str",
-			"value": [
-				"ovo",
-				"ovr"
-			]
-		},
-		"degree": {
-			"default": 3,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"gamma": {
-			"default": "scale",
-			"datatype": "str",
-			"value": [
-				"scale",
-				"auto"
-			]
-		},
-		"kernel": {
-			"default": "rbf",
-			"datatype": "str",
-			"value": [
-				"linear",
-				"poly",
-				"rbf",
-				"sigmoid",
-				"precomputed"
-			]
-		},
-		"max_iter": {
-			"default": -1,
-			"datatype": "int",
-			"compare_type": "<=>"
-		},
-		"probability": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"shrinking": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"tol": {
-			"default": 0.001,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"verbose": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		}
-	},
-	"LogisticRegression": {
-		"C": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"class_weight": {
-			"default": null,
-			"datatype": "except"
-		},
-		"dual": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"fit_intercept": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"intercept_scaling": {
-			"default": 1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": "<=>",
-				"value": 0.0
-			}
-		},
-		"l1_ratio": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": "<=>",
-				"value": 0.0
-			}
-		},
-		"max_iter": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"multi_class": {
-			"default": "auto",
-			"datatype": "str",
-			"value": [
-				"auto",
-				"ovr",
-				"multinomial"
-			]
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"penalty": {
-			"default": "l2",
-			"datatype": "str",
-			"value": [
-				"l1",
-				"l2",
-				"elasticnet",
-				"none"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"solver": {
-			"default": "lbfgs",
-			"datatype": "str",
-			"value": [
-				"newton-cg",
-				"lbfgs",
-				"liblinear",
-				"sag",
-				"saga"
-			]
-		},
-		"tol": {
-			"default": 0.0001,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
+	"h2o": {
+		"classification":{},
+		"regression": {}
 	}
-},
-"regression" : 
-{
-	"DecisionTree": {
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"criterion": {
-			"default": "mse",
-			"datatype": "str",
-			"value": [
-				"mse",
-				"friedman_mse",
-				"mae",
-				"poisson"
-			]
-		},
-		"max_depth": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": null,
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "except"
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"splitter": {
-			"default": "best",
-			"datatype": "str",
-			"value": [
-				"best",
-				"random"
-			]
-		}
-	},
-	"RandomForest": {
-		"bootstrap": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"criterion": {
-			"default": "mse",
-			"datatype": "mse mae"
-		},
-		"max_depth": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": "auto",
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"max_samples": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">0",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"Bagging": {
-		"base_estimator": {
-			"default": null,
-			"datatype": "except"
-		},
-		"bootstrap": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"bootstrap_features": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"max_features": {
-			"default": 1.0,
-			"datatype": "except"
-		},
-		"max_samples": {
-			"default": 1.0,
-			"datatype": "except"
-		},
-		"n_estimators": {
-			"default": 10,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"GradientBoostingMachine": {
-		"alpha": {
-			"default": 0.9,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"criterion": {
-			"default": "friedman_mse",
-			"datatype": "str",
-			"value": [
-				"friedman_mse",
-				"mse",
-				"mae"
-			]
-		},
-		"init": {
-			"default": null,
-			"datatype": "except"
-		},
-		"learning_rate": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"loss": {
-			"default": "ls",
-			"datatype": "str",
-			"value": [
-				"ls",
-				"lad",
-				"huber",
-				"quantile"
-			]
-		},
-		"max_depth": {
-			"default": 3,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": null,
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_iter_no_change": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"subsample": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"tol": {
-			"default": 0.0001,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=0",
-				"value": 0.0
-			}
-		},
-		"validation_fraction": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 1.0"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"ExtraTrees": {
-		"bootstrap": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"ccp_alpha": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"criterion": {
-			"default": "mse",
-			"datatype": "str",
-			"value": [
-				"mse",
-				"mae"
-			]
-		},
-		"max_depth": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"max_features": {
-			"default": "auto",
-			"datatype": "except"
-		},
-		"max_leaf_nodes": {
-			"default": null,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 1
-			}
-		},
-		"max_samples": {
-			"default": null,
-			"datatype": "except"
-		},
-		"min_impurity_decrease": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_impurity_split": {
-			"default": null,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"min_samples_leaf": {
-			"default": 1,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				0.5
-			]
-		},
-		"min_samples_split": {
-			"default": 2,
-			"datatype": "hybrid",
-			"condition": {
-				"symbol": ">=",
-				"value": "1"
-			},
-			"range": [
-				0.0,
-				1.0
-			]
-		},
-		"min_weight_fraction_leaf": {
-			"default": 0.0,
-			"datatype": "float",
-			"compare_type": "range",
-			"range": "0.0 0.5"
-		},
-		"n_estimators": {
-			"default": 100,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"n_jobs": {
-			"default": null,
-			"datatype": "except"
-		},
-		"oob_score": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True"
-			]
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		},
-		"verbose": {
-			"default": 0,
-			"datatype": "except"
-		},
-		"warm_start": {
-			"default": false,
-			"datatype": "except"
-		}
-	},
-	"AdaBoost": {
-		"base_estimator": {
-			"default": null,
-			"datatype": "except"
-		},
-		"learning_rate": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"loss": {
-			"default": "linear",
-			"datatype": "str",
-			"value": [
-				"linear",
-				"square",
-				"exponential"
-			]
-		},
-		"n_estimators": {
-			"default": 50,
-			"datatype": "int",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0
-			}
-		},
-		"random_state": {
-			"default": null,
-			"datatype": "except"
-		}
-	},
-	"SupportVectorMachines": {
-		"C": {
-			"default": 1.0,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">",
-				"value": 0.0
-			}
-		},
-		"cache_size": {
-			"default": 200,
-			"datatype": "except"
-		},
-		"coef0": {
-			"default": 0.0,
-			"datatype": "except"
-		},
-		"degree": {
-			"default": 3,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"epsilon": {
-			"default": 0.1,
-			"datatype": "float",
-			"compare_type": "condition",
-			"condition": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"gamma": {
-			"default": "scale",
-			"datatype": "str",
-			"value": [
-				"scale",
-				"auto"
-			]
-		},
-		"kernel": {
-			"default": "rbf",
-			"datatype": "str",
-			"value": [
-				"linear",
-				"poly",
-				"rbf",
-				"sigmoid",
-				"precomputed"
-			]
-		},
-		"max_iter": {
-			"default": -1,
-			"datatype": "int",
-			"compare_type": "<=>"
-		},
-		"shrinking": {
-			"default": true,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		},
-		"tol": {
-			"default": 0.001,
-			"datatype": "float",
-			"compare_type": "condition",
-			"conditiṀon": {
-				"symbol": ">=",
-				"value": 0.0
-			}
-		},
-		"verbose": {
-			"default": false,
-			"datatype": "str",
-			"value": [
-				"True",
-				"False"
-			]
-		}
-	}
-}
 }

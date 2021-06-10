@@ -138,13 +138,13 @@ def allowed_file_extension(file_path, allowed_extensions):
     return file_path.lower().endswith(allowed_extensions)
 
 
-def hyper_parameter_check(service,algorithm, user_input_params):
+def hyper_parameter_check(library,service,algorithm, user_input_params):
 
     with open('dltk_ai\ml_hyperparameters.json') as file:
         hyper_parameters = json.load(file)
     
     user_input = list(user_input_params.keys())
-    algorithm_parameters = list(hyper_parameters[service][algorithm].keys())
+    algorithm_parameters = list(hyper_parameters[library][service][algorithm].keys())
     
     main_list = np.setdiff1d(user_input,algorithm_parameters)
     print(main_list)
