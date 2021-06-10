@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension
+from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension, hyper_parameter_check
 from dltk_ai.dataset_types import Dataset
 
 
@@ -351,6 +351,16 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
+
+    def get_default_params(self,service,algorithm):
+        
+        with open('dltk_ai\ml_hyperparameters.json') as file:
+            hyperparameters = json.load(file)
+    
+        params = list(hyperparameters[service][algorithm].keys())
+        default_values = [hyperparameters[service][algorithm][i]['default'] for i in list(hyperparameters[service][algorithm].keys())]
+        return dict(zip(params,default_values))
+
     def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
 
         """
@@ -375,6 +385,8 @@ class DltkAiClient:
 
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label, train_percentage)
+
+        hyper_parameter_check(service,algorithm, params)
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
