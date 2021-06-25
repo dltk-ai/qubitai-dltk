@@ -2676,8 +2676,78 @@
 			}
 		},
 		"regression": {
-			"LinearRegression": {},
-			"AdditiveRegression": {}
+			"LinearRegression": {
+				"-S": {
+					"default": 0,
+   					"datatype": "int",
+   					"compare_type": "condition",
+   					"condition": {
+						"symbol": "<",
+						"value": 3
+					}
+				},
+  				"-C": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-R": {
+					"default": 8e-08,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+  				"-minimal": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-additional-stats": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-output-debug-info": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-do-not-check-capabilities": {
+					"default": false,
+					"datatype": "except"
+				}
+			},
+			"AdditiveRegression": {
+				"-S": {
+					"default": 1.0,
+   					"datatype": "float",
+   					"compare_type": "condition",
+   					"condition": {
+						"symbol": "<",
+						"value": 1.0
+					}
+				},
+				"-I": {
+					"default": 10,
+   					"datatype": "int",
+   					"compare_type": "condition",
+   					"condition": {
+						"symbol": ">",
+						"value": 1
+					}
+				},
+  				"-A": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-D": {
+					"default": false,
+					"datatype": "except"
+				},
+  				"-W": {
+					"default": "weka.classifiers.trees.DecisionStump",
+   					"datatype": "except"
+				}
+			}
 		}
 	},
 	"h2o": {
