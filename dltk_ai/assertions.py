@@ -211,5 +211,3 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
         return False
     else:
         return True
-
-
