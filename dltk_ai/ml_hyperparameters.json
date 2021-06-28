@@ -101,8 +101,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"ccp_alpha": {
@@ -219,8 +219,8 @@
 					"default": false,
 					"datatype": "\"str\"",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -245,16 +245,16 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"bootstrap_features": {
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"max_features": {
@@ -282,8 +282,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -304,8 +304,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"ccp_alpha": {
@@ -420,8 +420,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -559,8 +559,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				}
 			},
@@ -863,8 +863,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"subsample": {
@@ -888,8 +888,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"cache_size": {
@@ -949,8 +949,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -961,8 +961,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"tol": {
@@ -978,8 +978,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				}
 			},
@@ -1001,16 +1001,16 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"fit_intercept": {
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"intercept_scaling": {
@@ -1201,8 +1201,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"ccp_alpha": {
@@ -1311,8 +1311,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -1337,16 +1337,16 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"bootstrap_features": {
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"max_features": {
@@ -1374,8 +1374,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"random_state": {
@@ -1566,8 +1566,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"ccp_alpha": {
@@ -1678,7 +1678,7 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True"
+						true
 					]
 				},
 				"random_state": {
@@ -1795,8 +1795,8 @@
 					"default": true,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				},
 				"tol": {
@@ -1812,8 +1812,8 @@
 					"default": false,
 					"datatype": "str",
 					"value": [
-						"True",
-						"False"
+						true,
+						false
 					]
 				}
 			}

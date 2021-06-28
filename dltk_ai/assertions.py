@@ -147,25 +147,24 @@ def hyper_parameter_check(library,service,algorithm, user_input_params):
     algorithm_parameters = list(hyper_parameters[library][service][algorithm].keys())
     
     main_list = np.setdiff1d(user_input,algorithm_parameters)
-    print(main_list)
 
     assert len(main_list) <= 0, "{} are not valid parameters".format(list(main_list))
 
-    algorithm_metrics = hyper_parameters[service][algorithm]
+    algorithm_metrics = hyper_parameters[library][service][algorithm]
 
     for i in list(user_input_params.keys()):
 
         input_value = user_input_params[i]
         datatype = algorithm_metrics[i]['datatype']
         
-        print(i)
-        print(datatype)
+        #print(i)
+        #print(datatype)
 
         # None input flag
         if algorithm_metrics[i]['default'] == None:
             if input_value == None:
                 continue
-        print("continuing")
+        #print("continuing")
         
         assert input_value!=None, "{} cant be None".format(i)
             
@@ -186,8 +185,8 @@ def hyper_parameter_check(library,service,algorithm, user_input_params):
             compare_type = algorithm_metrics[i]['compare_type']
 
             if compare_type == 'condition':
-                print(algorithm_metrics[i]['condition']['value'])
-                print(input_value)
+                #print(algorithm_metrics[i]['condition']['value'])
+                #print(input_value)
 
                 if algorithm_metrics[i]['condition']['symbol'] == ">":
                     assert input_value > algorithm_metrics[i]['condition']['value'], "{} should be greater than {}".format(i,algorithm_metrics[i]['condition']['value'])
@@ -203,9 +202,9 @@ def hyper_parameter_check(library,service,algorithm, user_input_params):
 
         if datatype == "hybrid":
             
-            print("inside hybrid")
-            print(type(input_value))
-            print(type(algorithm_metrics[i]['condition']['value']))
+            #print("inside hybrid")
+            #print(type(input_value))
+            #print(type(algorithm_metrics[i]['condition']['value']))
             if algorithm_metrics[i]['condition']['symbol'] == ">":
                 condition_flag = input_value > algorithm_metrics[i]['condition']['value'] and type(input_value)==int 
             if algorithm_metrics[i]['condition']['symbol'] == ">=":
@@ -213,8 +212,8 @@ def hyper_parameter_check(library,service,algorithm, user_input_params):
             if algorithm_metrics[i]['condition']['symbol'] == "<=>":
                 condition_flag = (input_value <= algorithm_metrics[i]['condition']['value'] or input_value >= algorithm_metrics[i]['condition']['value']) & type(input_value)==int
             
-            print("condition flag")
-            print(condition_flag)
+            #print("condition flag")
+            #print(condition_flag)
 
             assert (condition_flag or algorithm_metrics[i]['range'][0] >= input_value <= algorithm_metrics[i]['range'][1]), "{} should be in range {} or {} to {}".format(i, algorithm_metrics[i]['range'], algorithm_metrics[i]['condition']['symbol'], algorithm_metrics[i]['condition']['value'])
         
