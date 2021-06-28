@@ -20,7 +20,13 @@ class TestScikitClassificationAlgo(unittest.TestCase):
 
     def test_decision_tree_2(self):
         algorithm = "DecisionTree"
-        params = {'ccp_alpha': 0}
+        params = {'ccp_alpha': "0.5"}
+        # assertion should fail
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_decision_tree_3(self):
+        algorithm = "DecisionTree"
+        params = {'ccp_alpha': -0.3}
         # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 

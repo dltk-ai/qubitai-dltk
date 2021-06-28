@@ -145,24 +145,23 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
             hyper_parameters = json.load(file)
 
         user_input = list(user_input_params.keys())
-        algorithm_parameters = list(hyper_parameters[library][service][algorithm].keys())
+        algorithm_params = hyper_parameters[library][service][algorithm]['params']
+        algorithm_parameters = list(algorithm_params.keys())
 
         main_list = np.setdiff1d(user_input, algorithm_parameters)
 
         assert len(main_list) <= 0, "{} are not valid parameters".format(list(main_list))
 
-        algorithm_metrics = hyper_parameters[library][service][algorithm]
-
         for key in list(user_input_params.keys()):
 
             input_value = user_input_params[key]
-            expected_datatype = algorithm_metrics[key]['datatype']
+            expected_datatype = algorithm_params[key]['datatype']
 
             assert input_value is not None, "{} cant be None".format(key)
 
             # datatype - string
             if expected_datatype == "str":
-                values = algorithm_metrics[key]['value']
+                values = algorithm_params[key]['value']
                 assert input_value in values, "Please select {} from {}".format(key, values)
 
             # datatype - int or float
@@ -175,11 +174,11 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 if expected_datatype == "float":
                     assert type(input_value) == float or type(input_value) == int, "{} should be a integer".format(key)
 
-                compare_type = algorithm_metrics[key]['compare_type']
+                compare_type = algorithm_params[key]['compare_type']
 
                 if compare_type == 'condition':
-                    algo_param_value = algorithm_metrics[key]['condition']['value']
-                    algo_condition_symbol = algorithm_metrics[key]['condition']['symbol']
+                    algo_param_value = algorithm_params[key]['condition']['value']
+                    algo_condition_symbol = algorithm_params[key]['condition']['symbol']
 
                     if algo_condition_symbol == ">":
                         assert input_value > algo_param_value, f"{key} should be greater than {algo_param_value}"
@@ -191,12 +190,12 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                         assert (input_value <= algo_param_value or input_value >= algo_param_value), f"{key} should be <=> to {algo_param_value}"
 
                 if compare_type == 'range':
-                    assert algorithm_metrics[key]['range'][0] <= input_value <= algorithm_metrics[key]['range'][1], "{} should be in range {}".format(key, algorithm_metrics[key]['range'])
+                    assert algorithm_params[key]['range'][0] <= input_value <= algorithm_params[key]['range'][1], "{} should be in range {}".format(key, algorithm_params[key]['range'])
 
             # hybrid datatype
             if expected_datatype == "hybrid":
-                algo_param_value = algorithm_metrics[key]['condition']['value']
-                algo_condition_symbol = algorithm_metrics[key]['condition']['symbol']
+                algo_param_value = algorithm_params[key]['condition']['value']
+                algo_condition_symbol = algorithm_params[key]['condition']['symbol']
 
                 if algo_condition_symbol == ">":
                     assert input_value > algo_param_value and type(input_value) == int, f"{key} should be greater than {algo_param_value}"
@@ -205,9 +204,10 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 elif algo_condition_symbol == "<=>":
                     assert input_value <= algo_param_value or input_value >= algo_param_value and type(input_value) == int, f"{key} should be <=> to {algo_param_value}"
 
-                assert algorithm_metrics[key]['range'][0] >= input_value <= algorithm_metrics[key]['range'][1], f"{key} should be in range {algorithm_metrics[key]['range']}"
+                assert algorithm_params[key]['range'][0] >= input_value <= algorithm_params[key]['range'][1], f"{key} should be in range {algorithm_params[key]['range']}"
 
-    except AssertionError:
+    except AssertionError as msg:
+        print(msg)
         return False
     else:
         return True
