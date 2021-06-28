@@ -2870,7 +2870,2008 @@
 		}
 	},
 	"h2o": {
-		"classification":{},
-		"regression": {}
+		"regression": {
+			"LinearRegression": {
+				"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/glm.html#H2OGeneralizedLinearEstimator",
+				"params": {
+					"HGLM": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"auc_type": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"none",
+							"macro_ovr",
+							"weighted_ovr",
+							"macro_ovo",
+							"weighted_ovo"
+						]
+					},
+					"balance_classes": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"beta_epsilon": {
+						"default": 0.0001,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"calc_like": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"cold_start": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"compute_p_values": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"early_stopping": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"family": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"gaussian",
+							"binomial",
+							"fractionalbinomial",
+							"quasibinomial",
+							"ordinal",
+							"multinomial",
+							"poisson",
+							"gamma",
+							"tweedie",
+							"negativebinomial"
+						]
+					},
+					"fold_assignment": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"random",
+							"",
+							"modulo",
+							"",
+							"stratified"
+						]
+					},
+					"gradient_epsilon": {
+						"default": -1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"ignore_const_cols": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"intercept": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_fold_assignment": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_models": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_predictions": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"lambda_min_ratio": {
+						"default": -1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"lambda_search": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"link": {
+						"default": "family_default",
+						"datatype": "str",
+						"value": [
+							"family_default",
+							"identity",
+							"logit",
+							"log",
+							"inverse",
+							"tweedie",
+							"ologit"
+						]
+					},
+					"max_active_predictors": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"max_after_balance_size": {
+						"default": 5.0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"max_confusion_matrix_size": {
+						"default": 20,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"max_iterations": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "check",
+							"value": 0
+						}
+					},
+					"max_runtime_secs": {
+						"default": 0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"missing_values_handling": {
+						"default": "mean_imputation",
+						"datatype": "str",
+						"value": [
+							"mean_imputation",
+							"",
+							"skip",
+							"",
+							"plug_values"
+						]
+					},
+					"nlambdas": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"non_negative": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"obj_reg": {
+						"default": -1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "check",
+							"value": 0.0
+						}
+					},
+					"objective_epsilon": {
+						"default": -1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"prior": {
+						"default": -1,
+						"datatype": "float",
+						"compare_type": "check"
+					},
+					"remove_collinear_columns": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"score_each_iteration": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"score_iteration_interval": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"seed": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"solver": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"irlsm",
+							"l_bfgs",
+							"coordinate_descent_naive",
+							"coordinate_descent",
+							"gradient_descent_lh",
+							"gradient_descent_sqerr"
+						]
+					},
+					"standardize": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"stopping_metric": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"deviance",
+							"logloss",
+							"mse",
+							"rmse",
+							"mae",
+							"rmsle",
+							"auc",
+							"aucpr",
+							"lift_top_group",
+							"misclassification",
+							"mean_per_class_error",
+							"custom",
+							"custom_increasing"
+						]
+					},
+					"stopping_rounds": {
+						"default": 0,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"stopping_tolerance": {
+						"default": 0.001,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0,
+							1
+						]
+					},
+					"theta": {
+						"default": 1e-10,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"tweedie_link_power": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"tweedie_variance_power": {
+						"default": 0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					}
+				}
+			},
+			"GradientBoostingMachines": {
+				"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/gbm.html#H2OGradientBoostingEstimator",
+				"params": {
+					"auc_type": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"none",
+							"macro_ovr",
+							"weighted_ovr",
+							"macro_ovo",
+							"weighted_ovo"
+						]
+					},
+					"balance_classes": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"build_tree_one_node": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"calibrate_model": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"categorical_encoding": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"enum",
+							"one_hot_internal",
+							"one_hot_explicit",
+							"binary",
+							"eigen",
+							"label_encoder",
+							"sort_by_response",
+							"enum_limited"
+						]
+					},
+					"check_constant_response": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"col_sample_rate": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"col_sample_rate_change_per_level": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							2.0
+						]
+					},
+					"col_sample_rate_per_tree": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"distribution": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"bernoulli",
+							"quasibinomial",
+							"multinomial",
+							"gaussian",
+							"poisson",
+							"gamma",
+							"tweedie",
+							"laplace",
+							"quantile",
+							"huber",
+							"custom"
+						]
+					},
+					"fold_assignment": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"random",
+							"modulo",
+							"stratified"
+						]
+					},
+					"gainslift_bins": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": -1
+						}
+					},
+					"histogram_type": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"uniform_adaptive",
+							"random",
+							"quantiles_global",
+							"round_robin"
+						]
+					},
+					"huber_alpha": {
+						"default": 0.9,
+						"datatype": "float",
+						"compare_type": "check"
+					},
+					"ignore_const_cols": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_fold_assignment": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_models": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_predictions": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"learn_rate": {
+						"default": 0.1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"learn_rate_annealing": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"max_abs_leafnode_pred": {
+						"default": 1.7976,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"max_after_balance_size": {
+						"default": 5.0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"max_confusion_matrix_size": {
+						"default": 20,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"max_depth": {
+						"default": 5,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"max_runtime_secs": {
+						"default": 0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"min_rows": {
+						"default": 10,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"min_split_improvement": {
+						"default": 0.00001,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"nbins": {
+						"default": 20,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"nbins_cats": {
+						"default": 1024,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"nbins_top_level": {
+						"default": 1024,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "check",
+							"value": 0
+						}
+					},
+					"ntrees": {
+						"default": 50,
+						"datatype": "int",
+						"compare_type": "range",
+						"range": [
+							1,
+							100000
+						]
+					},
+					"pred_noise_bandwidth": {
+						"default": 0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"quantile_alpha": {
+						"default": 0.5,
+						"datatype": "float",
+						"compare_type": "check"
+					},
+					"r2_stopping": {
+						"default": 1.7976,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0.0
+						}
+					},
+					"sample_rate": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"score_each_iteration": {
+						"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},
+					"score_tree_interval": {
+						"default": 0,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"seed": {
+						"default": -1,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"stopping_metric": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"deviance",
+							"logloss",
+							"mse",
+							"rmse",
+							"mae",
+							"rmsle",
+							"auc",
+							"aucpr",
+							"lift_top_group",
+							"misclassification",
+							"mean_per_class_error",
+							"custom",
+							"custom_increasing"
+						]
+					},
+					"stopping_rounds": {
+						"default": 0,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"stopping_tolerance": {
+						"default": 0.001,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0.0,
+							1.0
+						]
+					},
+					"tweedie_power": {
+						"default": 1.5,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							1,
+							2
+						]
+					}
+				}
+			},
+			"RandomForest": {
+				"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/random_forest.html",
+				"params": {
+					"auc_type": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"none",
+							"macro_ovr",
+							"weighted_ovr",
+							"macro_ovo",
+							"weighted_ovo"
+						]
+					},
+					"balance_classes": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"binomial_double_trees": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"build_tree_one_node": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"calibrate_model": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"categorical_encoding": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"enum",
+							"one_hot_internal",
+							"one_hot_explicit",
+							"binary",
+							"eigen",
+							"label_encoder",
+							"sort_by_response",
+							"enum_limited"
+						]
+					},
+					"check_constant_response": {
+						"default": true,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"col_sample_rate_change_per_level": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "hybrid",
+						"condition": {
+							"symbol": ">",
+							"value": 0
+						},
+						"range": [
+							0.0,
+							2.0
+						]
+					},
+					"col_sample_rate_per_tree": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0,
+							6
+						]
+					},
+					"distribution": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"bernoulli",
+							"multinomial",
+							"gaussian",
+							"poisson",
+							"gamma",
+							"tweedie"
+						]
+					},
+					"fold_assignment": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"random",
+							"modulo",
+							"stratified"
+						]
+					},
+					"histogram_type": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"uniform_adaptive",
+							"random",
+							"quantiles_global",
+							"round_robin"
+						]
+					},
+					"keep_cross_validation_fold_assignment": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_models": {
+						"default": true,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"keep_cross_validation_predictions": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"max_after_balance_size": {
+						"default": 1.0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"max_confusion_matrix_size": {
+						"default": 0,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"max_depth": {
+						"default": 0,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"max_runtime_secs": {
+						"default": 0,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"min_rows": {
+						"default": 1,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"min_split_improvement": {
+						"default": 0.00001,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 0.0
+						}
+					},
+					"mtries": {
+						"default": -1,
+						"datatype": "hybrid",
+						"condition": {
+							"symbol": ">=",
+							"value": "1"
+						},
+						"range": [
+							-1.0,
+							-2.0
+						]
+					},
+					"nbins": {
+						"default": 2,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"nbins_cats": {
+						"default": 1024,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"nbins_top_level": {
+						"default": 1024,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"nfolds": {
+						"default": 0,
+						"datatype": "except"
+					},
+					"ntrees": {
+						"default": 50,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">",
+							"value": 1
+						}
+					},
+					"r2_stopping": {
+						"default": -1.7976,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": "<=>",
+							"value": 0
+						}
+					},
+					"sample_rate": {
+						"default": 0.632,
+						"datatype": "float",
+						"compare_type": "range",
+						"range": [
+							0,
+							1
+						]
+					},
+					"score_each_iteration": {
+						"default": false,
+						"datatype": "str",
+						"values": [
+							true,
+							false
+						]
+					},
+					"score_tree_interval": {
+						"default": 10,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"stopping_metric": {
+						"default": "auto",
+						"datatype": "str",
+						"value": [
+							"auto",
+							"deviance",
+							"logloss",
+							"mse",
+							"rmse",
+							"mae",
+							"rmsle",
+							"auc",
+							"aucpr",
+							"lift_top_group",
+							"misclassification",
+							"mean_per_class_error",
+							"custom",
+							"custom_increasing"
+						]
+					},
+					"stopping_rounds": {
+						"default": 10,
+						"datatype": "int",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0
+						}
+					},
+					"stopping_tolerance": {
+						"default": 0.001,
+						"datatype": "float",
+						"compare_type": "condition",
+						"condition": {
+							"symbol": ">=",
+							"value": 0.0
+						}
+					},
+					"calibration_frame": {
+						"default": null,
+						"datatype": "except"
+					},
+					"checkpoint": {
+						"default": null,
+						"datatype": "except"
+					},
+					"class_sampling_factors": {
+						"default": null,
+						"datatype": "except"
+					},
+					"custom_metric_func": {
+						"default": null,
+						"datatype": "except"
+					},
+					"export_checkpoints_dir": {
+						"default": null,
+						"datatype": "except"
+					},
+					"ignore_const_cols": {
+						"default": null,
+						"datatype": "except"
+					},
+					"ignored_columns": {
+						"default": null,
+						"datatype": "except"
+					},
+					"model_id": {
+						"default": null,
+						"datatype": "except"
+					},
+					"offset_column": {
+						"default": null,
+						"datatype": "except"
+					},
+					"response_column": {
+						"default": null,
+						"datatype": "except"
+					},
+					"sample_rate_per_class": {
+						"default": null,
+						"datatype": "except"
+					},
+					"seed": {
+						"default": null,
+						"datatype": "except"
+					},
+					"weights_column": {
+						"default": null,
+						"datatype": "except"
+					}
+				}
+			}
+		}
+	},
+	"classification": {
+		"NaiveBayesBinomial": {
+			"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/naive_bayes.html",
+			"params": {
+				"auc_type": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"none",
+						"macro_ovr",
+						"weighted_ovr",
+						"macro_ovo",
+						"weighted_ovo"
+					]
+				},
+				"balance_classes": {
+					"default": false,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"compute_metrics": {
+					"default": true,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"eps_prob": {
+					"default": 30,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 2.0
+					}
+				},
+				"eps_sdev": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"fold_assignment": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"random",
+						"modulo",
+						"stratified"
+					]
+				},
+				"gainslift_bins": {
+					"default": -1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0
+					}
+				},
+				"ignore_const_cols": {
+					"default": true,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"keep_cross_validation_fold_assignment": {
+					"default": false,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"keep_cross_validation_models": {
+					"default": true,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"keep_cross_validation_predictions": {
+					"default": false,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"laplace": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"max_after_balance_size": {
+					"default": 5,
+					"datatype": "float",
+					"compare_type": ">="
+				},
+				"max_confusion_matrix_size": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"max_runtime_secs": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_prob": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"min_sdev": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"score_each_iteration": {
+					"default": false,
+					"datatype": "str",
+					"values": [
+						true,
+						false
+					]
+				},
+				"seed": {
+					"default": -1,
+					"datatype": "except"
+				}
+			}
+		},
+		"DeepLearning": {
+			"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/deeplearning.html#H2ODeepLearningEstimator",
+			"params": {
+				"activation": {
+					"default": "rectifier",
+					"datatype": "str",
+					"value": [
+						"tanh",
+						"tanh_with_dropout",
+						"rectifier",
+						"rectifier_with_dropout",
+						"maxout",
+						"maxout_with_dropout"
+					]
+				},
+				"adaptive_rate": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"auc_type": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"none",
+						"macro_ovr",
+						"weighted_ovr",
+						"macro_ovo",
+						"weighted_ovo"
+					]
+				},
+				"autoencoder": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"average_activation": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"balance_classes": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"categorical_encoding": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"enum",
+						"one_hot_internal",
+						"one_hot_explicit",
+						"binary",
+						"eigen",
+						"label_encoder",
+						"sort_by_response",
+						"enum_limited"
+					]
+				},
+				"classification_stop": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"col_major": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"diagnostics": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"distribution": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"bernoulli",
+						"multinomial",
+						"gaussian",
+						"poisson",
+						"gamma",
+						"tweedie",
+						"laplace",
+						"quantile",
+						"huber"
+					]
+				},
+				"elastic_averaging": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"elastic_averaging_moving_rate": {
+					"default": 0.9,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"elastic_averaging_regularization": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"epochs": {
+					"default": 10,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"epsilon": {
+					"default": 1e-8,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"export_weights_and_biases": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"fast_mode": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"fold_assignment": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"random",
+						"modulo",
+						"stratified"
+					]
+				},
+				"force_load_balance": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"huber_alpha": {
+					"default": 0.9,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"ignore_const_cols": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"initial_weight_distribution": {
+					"default": "uniform_adaptive",
+					"datatype": "str",
+					"value": [
+						"uniform_adaptive",
+						"uniform",
+						"normal"
+					]
+				},
+				"initial_weight_scale": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"input_dropout_ratio": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0,
+						1
+					]
+				},
+				"keep_cross_validation_fold_assignment": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"keep_cross_validation_models": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"keep_cross_validation_predictions": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"l1": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"l2": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"loss": {
+					"default": "automatic",
+					"datatype": "str",
+					"value": [
+						"automatic",
+						"cross_entropy",
+						"quadratic",
+						"huber",
+						"absolute",
+						"quantile"
+					]
+				},
+				"max_after_balance_size": {
+					"default": 5.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"max_categorical_features": {
+					"default": 2147483647,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"max_confusion_matrix_size": {
+					"default": 20,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0
+					}
+				},
+				"max_runtime_secs": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0.0
+					}
+				},
+				"max_w2": {
+					"default": 3.4028235e38,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0.0
+					}
+				},
+				"mini_batch_size": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">",
+						"value": 0
+					}
+				},
+				"missing_values_handling": {
+					"default": "mean_imputation",
+					"datatype": "str",
+					"value": [
+						"mean_imputation",
+						"skip"
+					]
+				},
+				"momentum_ramp": {
+					"default": 1000000,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"momentum_stable": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"momentum_start": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"nesterov_accelerated_gradient": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"overwrite_with_best_model": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"quantile_alpha": {
+					"default": 5,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0,
+						1
+					]
+				},
+				"quiet_mode": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"rate": {
+					"default": 0.005,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"rate_annealing": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"rate_decay": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"regression_stop": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"replicate_training_data": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"reproducible": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"rho": {
+					"default": 0.99,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0.0,
+						0.99
+					]
+				},
+				"score_duty_cycle": {
+					"default": 0.1,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0,
+						1
+					]
+				},
+				"score_each_iteration": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"score_interval": {
+					"default": 5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"score_training_samples": {
+					"default": 10000,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"score_validation_samples": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"score_validation_sampling": {
+					"default": "uniform",
+					"datatype": "str",
+					"value": [
+						"uniform",
+						"stratified"
+					]
+				},
+				"seed": {
+					"default": -1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0
+					}
+				},
+				"shuffle_training_data": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"single_node_mode": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"sparse": {
+					"default": false,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"sparsity_beta": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "check"
+				},
+				"standardize": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"stopping_metric": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+						"auto",
+						"deviance",
+						"logloss",
+						"mse",
+						"rmse",
+						"mae",
+						"rmsle",
+						"auc",
+						"aucpr",
+						"lift_top_group",
+						"misclassification",
+						"mean_per_class_error",
+						"custom",
+						"custom_increasing"
+					]
+				},
+				"stopping_rounds": {
+					"default": 5,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": ">=",
+						"value": 0
+					}
+				},
+				"stopping_tolerance": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						0,
+						1
+					]
+				},
+				"target_ratio_comm_to_comp": {
+					"default": 0.05,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0.0
+					}
+				},
+				"train_samples_per_iteration": {
+					"default": -2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+						"symbol": "<=>",
+						"value": 0
+					}
+				},
+				"tweedie_power": {
+					"default": 1.5,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+						1,
+						2
+					]
+				},
+				"use_all_factor_levels": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				},
+				"variable_importances": {
+					"default": true,
+					"datatype": "str",
+					"value": [
+						true,
+						false
+					]
+				}
+			}
+		}
 	}
 }
