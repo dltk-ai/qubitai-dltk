@@ -2,7 +2,6 @@ import re
 import json
 import numpy as np
 
-
 supported_algorithm = {'regression':
 
                            {'scikit': ['LinearRegression', 'DecisionTrees', 'Bagging', 'RandomForest',
@@ -138,83 +137,79 @@ def allowed_file_extension(file_path, allowed_extensions):
     return file_path.lower().endswith(allowed_extensions)
 
 
-def hyper_parameter_check(library,service,algorithm, user_input_params):
+def hyper_parameter_check(library, service, algorithm, user_input_params):
 
-    with open('dltk_ai\ml_hyperparameters.json') as file:
-        hyper_parameters = json.load(file)
-    
-    user_input = list(user_input_params.keys())
-    algorithm_parameters = list(hyper_parameters[library][service][algorithm].keys())
-    
-    main_list = np.setdiff1d(user_input,algorithm_parameters)
-    print(main_list)
+    try:
 
-    assert len(main_list) <= 0, "{} are not valid parameters".format(list(main_list))
+        with open(r'dltk_ai/ml_hyperparameters.json', 'r') as file:
+            hyper_parameters = json.load(file)
 
-    algorithm_metrics = hyper_parameters[service][algorithm]
+        user_input = list(user_input_params.keys())
+        algorithm_parameters = list(hyper_parameters[library][service][algorithm].keys())
 
-    for i in list(user_input_params.keys()):
+        main_list = np.setdiff1d(user_input, algorithm_parameters)
 
-        input_value = user_input_params[i]
-        datatype = algorithm_metrics[i]['datatype']
-        
-        print(i)
-        print(datatype)
+        assert len(main_list) <= 0, "{} are not valid parameters".format(list(main_list))
 
-        # None input flag
-        if algorithm_metrics[i]['default'] == None:
-            if input_value == None:
-                continue
-        print("continuing")
-        
-        assert input_value!=None, "{} cant be None".format(i)
-            
-        # datatype - string
-        if datatype == "str":
-            values = algorithm_metrics[i]['value']
-            assert input_value in values, "Please select {} from {}".format(i,values)
+        algorithm_metrics = hyper_parameters[library][service][algorithm]
 
-        # datatype - int
-        if datatype == "int" or datatype == "float":
-            
-            if datatype == "int":
-                assert type(input_value)==int, "{} should be a integer".format(i)
-            
-            if datatype == float:
-                input_value = float(input_value)
+        for key in list(user_input_params.keys()):
 
-            compare_type = algorithm_metrics[i]['compare_type']
+            input_value = user_input_params[key]
+            expected_datatype = algorithm_metrics[key]['datatype']
 
-            if compare_type == 'condition':
-                print(algorithm_metrics[i]['condition']['value'])
-                print(input_value)
+            assert input_value is not None, "{} cant be None".format(key)
 
-                if algorithm_metrics[i]['condition']['symbol'] == ">":
-                    assert input_value > algorithm_metrics[i]['condition']['value'], "{} should be greater than {}".format(i,algorithm_metrics[i]['condition']['value'])
-                if algorithm_metrics[i]['condition']['symbol'] == ">=":
-                    assert input_value >= algorithm_metrics[i]['condition']['value'], "{} should be greater than or equal to {}".format(i,algorithm_metrics[i]['condition']['value'])
-                if algorithm_metrics[i]['condition']['symbol'] == "<=>":
-                    assert (input_value <= algorithm_metrics[i]['condition']['value'] or input_value >= algorithm_metrics[i]['condition']['value']), "{} should be <=> to {}".format(i,algorithm_metrics[i]['condition']['value'])
+            # datatype - string
+            if expected_datatype == "str":
+                values = algorithm_metrics[key]['value']
+                assert input_value in values, "Please select {} from {}".format(key, values)
+
+            # datatype - int or float
+            if expected_datatype == "int" or expected_datatype == "float":
+
+                # datatype - int
+                if expected_datatype == "int":
+                    assert type(input_value) == int, "{} should be a integer".format(key)
+
+                if expected_datatype == "float":
+                    assert type(input_value) == float or type(input_value) == int, "{} should be a integer".format(key)
+
+                compare_type = algorithm_metrics[key]['compare_type']
+
+                if compare_type == 'condition':
+                    algo_param_value = algorithm_metrics[key]['condition']['value']
+                    algo_condition_symbol = algorithm_metrics[key]['condition']['symbol']
+
+                    if algo_condition_symbol == ">":
+                        assert input_value > algo_param_value, f"{key} should be greater than {algo_param_value}"
+
+                    elif algo_condition_symbol == ">=":
+                        assert input_value >= algo_param_value, f"{key} should be greater than or equal to {algo_param_value}"
+
+                    elif algo_condition_symbol == "<=>":
+                        assert (input_value <= algo_param_value or input_value >= algo_param_value), f"{key} should be <=> to {algo_param_value}"
+
+                if compare_type == 'range':
+                    assert algorithm_metrics[key]['range'][0] <= input_value <= algorithm_metrics[key]['range'][1], "{} should be in range {}".format(key, algorithm_metrics[key]['range'])
+
+            # hybrid datatype
+            if expected_datatype == "hybrid":
+                algo_param_value = algorithm_metrics[key]['condition']['value']
+                algo_condition_symbol = algorithm_metrics[key]['condition']['symbol']
+
+                if algo_condition_symbol == ">":
+                    assert input_value > algo_param_value and type(input_value) == int, f"{key} should be greater than {algo_param_value}"
+                elif algo_condition_symbol == ">=":
+                    assert input_value >= algo_param_value and type(input_value) == int, f"{key} should be greater than or equal to {algo_param_value}"
+                elif algo_condition_symbol == "<=>":
+                    assert input_value <= algo_param_value or input_value >= algo_param_value and type(input_value) == int, f"{key} should be <=> to {algo_param_value}"
+
+                assert algorithm_metrics[key]['range'][0] >= input_value <= algorithm_metrics[key]['range'][1], f"{key} should be in range {algorithm_metrics[key]['range']}"
+
+    except AssertionError:
+        return False
+    else:
+        return True
 
 
-            if compare_type == 'range':
-
-                assert algorithm_metrics[i]['range'][0] <= input_value <= algorithm_metrics[i]['range'][1], "{} should be in range {}".format(i,algorithm_metrics[i]['range'])
-
-        if datatype == "hybrid":
-            
-            print("inside hybrid")
-            print(type(input_value))
-            print(type(algorithm_metrics[i]['condition']['value']))
-            if algorithm_metrics[i]['condition']['symbol'] == ">":
-                condition_flag = input_value > algorithm_metrics[i]['condition']['value'] and type(input_value)==int 
-            if algorithm_metrics[i]['condition']['symbol'] == ">=":
-                condition_flag = input_value >= algorithm_metrics[i]['condition']['value'] and type(input_value)==int
-            if algorithm_metrics[i]['condition']['symbol'] == "<=>":
-                condition_flag = (input_value <= algorithm_metrics[i]['condition']['value'] or input_value >= algorithm_metrics[i]['condition']['value']) & type(input_value)==int
-            
-            print("condition flag")
-            print(condition_flag)
-
-            assert (condition_flag or algorithm_metrics[i]['range'][0] >= input_value <= algorithm_metrics[i]['range'][1]), "{} should be in range {} or {} to {}".format(i, algorithm_metrics[i]['range'], algorithm_metrics[i]['condition']['symbol'], algorithm_metrics[i]['condition']['value'])
-        
