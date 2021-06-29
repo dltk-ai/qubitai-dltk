@@ -2034,11 +2034,8 @@
 					"-P": {
 						"default": 100,
 						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": "<",
-							"value": 101
-						}
+						"compare_type": "range",
+						"range": [0, 100]
 					},
 					"-O": {
 						"default": false,
@@ -2399,13 +2396,10 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/Bagging.html",
 				"params": {
 					"-P": {
-						"default": false,
+						"default": 100,
 						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": "<=",
-							"value": 100
-						}
+						"compare_type": "range",
+						"range": [0, 100]
 					},
 					"-O": {
 						"default": false,
@@ -2494,8 +2488,8 @@
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
-							"symbol": "<",
-							"value": 0
+							"symbol": ">",
+							"value": -1
 						}
 					},
 					"-R": {
@@ -2793,11 +2787,8 @@
 					"-S": {
 						"default": 0,
 						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": "<",
-							"value": 3
-						}
+						"compare_type": "range",
+						"range": [0, 100]
 					},
 					"-C": {
 						"default": false,
@@ -2836,11 +2827,8 @@
 					"-S": {
 						"default": 1.0,
 						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": "<",
-							"value": 1.0
-						}
+						"compare_type": "range",
+						"range": [0, 1]
 					},
 					"-I": {
 						"default": 10,
