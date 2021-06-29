@@ -1,6 +1,9 @@
 import re
 import json
 import numpy as np
+import os
+
+script_dir = os.path.dirname(__file__)
 
 supported_algorithm = {'regression':
 
@@ -141,7 +144,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
 
     try:
 
-        with open(r'dltk_ai/ml_hyperparameters.json', 'r') as file:
+        with open(os.path.join(script_dir, './ml_hyperparameters.json'), 'r') as file:
             hyper_parameters = json.load(file)
 
         user_input = list(user_input_params.keys())
