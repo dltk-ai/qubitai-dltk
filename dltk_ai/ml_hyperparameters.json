@@ -578,7 +578,7 @@
 					}
 				}
 			},
-			"GradientBoostingMachines": {
+			"GradientBoostingMachine": {
 				"reference_link": "",
 				"params": {
 					"ccp_alpha": {
@@ -3775,6 +3775,7 @@
 					"col_sample_rate_change_per_level": {
 						"default": 1,
 						"datatype": "float",
+						"compare_type": "condition",
 						"condition": {
 							"symbol": ">",
 							"value": 0
@@ -3913,8 +3914,8 @@
 							"value": 1
 						},
 						"range": [
-							-1.0,
-							-2.0
+							-2.0,
+							-1.0
 						]
 					},
 					"nbins": {

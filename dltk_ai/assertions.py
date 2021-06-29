@@ -1,6 +1,9 @@
 import re
 import json
 import numpy as np
+import os
+
+script_dir = os.path.dirname(__file__)
 
 supported_algorithm = {'regression':
 
@@ -141,7 +144,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
 
     try:
 
-        with open(r'dltk_ai/ml_hyperparameters.json', 'r') as file:
+        with open(os.path.join(script_dir, './ml_hyperparameters.json'), 'r') as file:
             hyper_parameters = json.load(file)
 
         user_input = list(user_input_params.keys())
@@ -157,7 +160,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
             input_value = user_input_params[key]
 
             expected_datatype = algorithm_params[key]['datatype']
-            print(key)
+
             # None input flag
             if algorithm_params[key]['default'] == None:
                 if input_value == None:
@@ -169,7 +172,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 assert input_value in values, "Please select {} from {}".format(key, values)
 
             # datatype - int or float
-            if expected_datatype == "int" or expected_datatype == "float":
+            elif expected_datatype == "int" or expected_datatype == "float":
 
                 # datatype - int
                 if expected_datatype == "int":
@@ -178,6 +181,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 if expected_datatype == "float":
                     assert type(input_value) == float or type(input_value) == int, "{} should be a integer".format(key)
 
+                print(key)
                 compare_type = algorithm_params[key]['compare_type']
 
                 if compare_type == 'condition':
@@ -186,6 +190,12 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
 
                     if algo_condition_symbol == ">":
                         assert input_value > algo_param_value, f"{key} should be greater than {algo_param_value}"
+
+                    elif algo_condition_symbol == "<":
+                        assert input_value < algo_param_value, f"{key} should be less than {algo_param_value}"
+
+                    elif algo_condition_symbol == "<=":
+                        assert input_value <= algo_param_value, f"{key} should be less than or equal to {algo_param_value}"
 
                     elif algo_condition_symbol == ">=":
                         assert input_value >= algo_param_value, f"{key} should be greater than or equal to {algo_param_value}"
@@ -197,20 +207,28 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                     assert algorithm_params[key]['range'][0] <= input_value <= algorithm_params[key]['range'][1], "{} should be in range {}".format(key, algorithm_params[key]['range'])
 
             # hybrid datatype
-            if expected_datatype == "hybrid":
+            elif expected_datatype == "hybrid":
+                print("in hybrid")
                 algo_param_value = algorithm_params[key]['condition']['value']
                 algo_condition_symbol = algorithm_params[key]['condition']['symbol']
                 range_lower = algorithm_params[key]['range'][0]
                 range_upper = algorithm_params[key]['range'][1]
 
-                if algo_condition_symbol == ">":
-                    condition_flag = input_value > algo_param_value
-                elif algo_condition_symbol == ">=":
-                    condition_flag = input_value >= algo_param_value
-                elif algo_condition_symbol == "<=>":
-                    condition_flag = input_value <= algo_param_value or input_value >= \
-                                     algo_param_value, "{} should be <=> to {}".format(key,algo_param_value)
-                assert (condition_flag or range_lower >= input_value <= range_upper), "{} should be in range {} or {} to {}".format(key, algorithm_params[key]['range'], algo_condition_symbol, algo_param_value)
+                if type(input_value) == int or type(input_value) == float:
+                    print("inside if")
+                    if algo_condition_symbol == ">":
+                        condition_flag = input_value > algo_param_value
+                    elif algo_condition_symbol == ">=":
+                        condition_flag = input_value >= algo_param_value
+                    elif algo_condition_symbol == "<=>":
+                        condition_flag = input_value <= algo_param_value or input_value >= algo_param_value, "{} should be <=> to {}".format(key, algo_param_value)
+
+                    print("inside int float")
+                    print(key, condition_flag, range_lower <= input_value <= range_upper)
+                    assert (condition_flag or range_lower <= input_value <= range_upper), "{} should be in range {} or {} to {}".format(key, algorithm_params[key]['range'], algo_condition_symbol, algo_param_value)
+
+                else:
+                    print(key)
 
     except AssertionError as msg:
         print(msg)
