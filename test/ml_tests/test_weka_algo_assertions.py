@@ -15,11 +15,8 @@ class TestWekaAlgo(unittest.TestCase):
     def test_logistic_1(self):
         algorithm = "Logistic"
         service = "classification"
-        params = {'-D': True,'-S': False,'-R': True,'-M': 2}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        params = {'-D': True, '-S': False, '-R': True, '-M': 2}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
     # ------------- MULTILAYER PERCEPTRON --------------------
@@ -28,10 +25,7 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "MultilayerPerceptron"
         service = "classification"
         params = {'-L': 0.4,'-M': 0.5,'-N': 200,'-V': 50,'-S': 1,'-E': 21,'-G': False,'-A': False,'-B': False,'-H': "a",'-C': False,'-I': False,'-R': False,'-D': False}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
     # ------------- NAIVE BAYES MULTINOMIAL --------------------
@@ -40,10 +34,8 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "NaiveBayesMultinomial"
         service = "classification"
         params = {'-output-debug-info': True,'-do-not-check-capabilities': False,'-num-decimal-places': 3,'-batch-size': 50}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- RANDOM FOREST --------------------
 
@@ -51,10 +43,8 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "RandomForest"
         service = "classification"
         params = {'-P': 99, '-O': False, '-store-out-of-bag-predictions': False,'-output-out-of-bag-complexity-statistics': False,'-print':False,'-attribute-importance':False,'-I':80,'-num-slots':1,'-K':0,'-M':2,'-V':0.1,'-S':1,'-depth':1,'-N':0,'-U':True,'-B':True,'-output-debug-info':True,'-do-not-check-capabilities':False,'-num-decimal-places':1}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- LibSVM --------------------
 
@@ -62,10 +52,7 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "LibSVM"
         service = "classification"
         params = {'-S': 3,'-K': 1,'-D': 1,'-G': "1/k",'-R':0,'-C':0.5,'-N':1,'-Z':True,'-J':True,'-V':True,'-P':0.5,'-M':20,'-E':0.1,'-H':False,'-W':1,'-B':False,'-seed':1}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
     # ------------- ADABOOSTM1 --------------------
 
@@ -73,10 +60,8 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "AdaBoostM1"
         service = "classification"
         params = {'-P': 99, '-Q': False, '-S': 2,'-I': 20,'-D':False,'-W':'weka.classifiers.trees.DecisionStump'}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- ATTRIBUTE SELECTED CLASSIFIER --------------------
 
@@ -97,21 +82,17 @@ class TestWekaAlgo(unittest.TestCase):
         params = {'-P': 50, '-O': True, '-print': False,
                   '-store-out-of-bag-predictions': False, '-output-out-of-bag-complexity-statistics': True, '-represent-copies-using-weights': True, '-S': 2, '-num-slots': 1, '-I': 2,
                   '-D': False, '-W': 'weka.classifiers.trees.REPTree', '-M': 1, '-V': 0.1,'-N':1,'-L':-2,'-R':False}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- KSTAR --------------------
 
     def test_kstar_1(self):
         algorithm = "KStar"
         service = "classification"
-        params = {'-B': 50, '-E': True, '-M': 'd'}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        params = {'-B': 50, '-E': True, '-M': 'X'}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- DECISION TABLE --------------------
 
@@ -119,10 +100,8 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "DecisionTable"
         service = "classification"
         params = {'-S': 'weka.attributeSelection.BestFirst', '-X': 2, '-E': 'mae','-I':True,'-R':True,'-P':False,'-D':0,'-N':3}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- IBK --------------------
 
@@ -130,10 +109,7 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "IBk"
         service = "classification"
         params = {'-I': False, '-F': True, '-K': 2,'-E':True,'-W':True,'-X':False,'-A':'weka.core.neighboursearch.LinearNNSearch'}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
     # ------------- RANDOM TREE --------------------
 
@@ -141,10 +117,8 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "RandomTree"
         service = "classification"
         params = {'-K': 0, '-M': 2, '-V': 0.1,'-S':2,'-depth':1,'-N':1,'-U':True,'-B':True,'-output-debug-info':False,'-do-not-check-capabilities':True,'-num-decimal-places':1}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- SMO --------------------
 
@@ -153,10 +127,7 @@ class TestWekaAlgo(unittest.TestCase):
         service = "classification"
         params = {'-no-checks': True, '-C': 2, '-N': 1, '-L': 0.1, '-P': 0.001, '-M': False, '-V': 1, '-W': 1,
                   '-K': 'weka.classifiers.functions.supportVector.PolyKernel', '-claibrator': 'weka.classifiers.functions.Logistic', '-output-debug-info': False,'-do-not-check-capabilities':True,'-num-decimal-places':2}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
     # ------------- LINEAR REGRESSION --------------------
 
@@ -164,21 +135,17 @@ class TestWekaAlgo(unittest.TestCase):
         algorithm = "LinearRegression"
         service = "regression"
         params = {'-S': 2, '-C': True, '-R': 0.00001, '-minimal': False, '-additional-stats': True, '-output-debug-info': False, '-do-not-check-capabilities': False}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
     # ------------- ADDITIVE REGRESSION --------------------
 
     def test_additive_regression_1(self):
         algorithm = "AdditiveRegression"
         service = "regression"
-        params = {'-S': 1.4, '-I': 5, '-A': False, '-D': False, '-W': 'weka.classifiers.trees.DecisionStump'}
-        if hyper_parameter_check(self.library, service, algorithm, params):
-            self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
-        else:
-            self.assertFalse(hyper_parameter_check(self.library, service, algorithm, params))
+        params = {'-S': 0.4, '-I': 5, '-A': False, '-D': False, '-W': 'weka.classifiers.trees.DecisionStump'}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
 
 if __name__ == '__main__':
     unittest.main()
