@@ -6,7 +6,7 @@ import dtale
 # Importing Sklearn modules for Feature Scaling 
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler, RobustScaler, Normalizer, QuantileTransformer, PowerTransformer, FunctionTransformer, normalize, LabelEncoder, OrdinalEncoder, StandardScaler
 
-# Importing Sklearn modules for Feature Transformation 
+# Importing Sklearn modules for Feature Transformation
 from sklearn.preprocessing import QuantileTransformer
 from sklearn.preprocessing import PowerTransformer
 from sklearn.preprocessing import FunctionTransformer
@@ -35,8 +35,9 @@ from sklearn.decomposition import FactorAnalysis, TruncatedSVD, PCA, FastICA
 
 # Importing libraries for Non-Linear Dimensionality Reduction
 from sklearn.manifold import TSNE
-from sklearn import manifold 
+from sklearn import manifold
 import umap
+
 
 
 
@@ -709,27 +710,26 @@ def data_transformation(dataframe, transform_method, pivot_index=None, pivot_col
             crosstab_columns = crosstab_columns if type(crosstab_columns) != list else crosstab_columns[0]
             return pd.crosstab(dataframe[crosstab_rows], dataframe[crosstab_columns])
 
-
-
-def data_preparation(X,y):
+def data_preparation(X, y):
     ordinal_encoder = OrdinalEncoder()
     ordinal_encoder.fit(X)
     X_encoded = ordinal_encoder.transform(X)
-    
+
     label_encoder = LabelEncoder()
     label_encoder.fit(y)
     y_encoded = label_encoder.transform(y)
-    return X_encoded, y_encoded   
+    return X_encoded, y_encoded
 
-def feature_selection(dataframe,method,missing_value_threshold=60,variance_threshold=0,correlation_threshold=0.75,target_variable=None,
-                    task=None,algorithm='RandomForest',n_features_to_select=5,scoring=None,cv=5,n_jobs=None):
 
+def feature_selection(dataframe, method, missing_value_threshold=60, variance_threshold=0, correlation_threshold=0.75,
+                      target_variable=None,
+                      task=None, algorithm='RandomForest', n_features_to_select=5, scoring=None, cv=5, n_jobs=None):
     """
     This function is used for selecting set of important Independent features for given dataset.
 
     Parameters:
     dataframe : Dataset in the form of Dataframe as input.
-    method: Method for Feature Selection; 
+    method: Method for Feature Selection;
             Valid parameter:['missing_value_filter','low_variance_filter','feature_importance','high_correlation_filter','Forward','Backward']
     missing_value_threshold: Mising threshold value for Missing value filter method, default value is 60
     variance_threshold: Variance threshold value for Low variance filter method, default value is 0
@@ -739,146 +739,149 @@ def feature_selection(dataframe,method,missing_value_threshold=60,variance_thres
           Valid parameter:["Classification","Regression"]
     #estimators: algorithm to use. used for feature importance, forward and backward methods.
     algorithm: algorithm to use. used for feature importance, forward and backward methods.
-    n_features_to_select: Any Integer value less than total number of independent features in dataset, the number of features to select 
+    n_features_to_select: Any Integer value less than total number of independent features in dataset, the number of features to select
                 for forward and backward method ; default = 5
     scoring: metric function defined for Classification and Regression task for forward and backward method.
     cv: Integer value, determines the cross-validation splitting strategy.
     n_jobs: Number of jobs to run in parallel.
 
-    
+
     :rtype: Modified data wirh respect to the input method.
-    """ 
-    
-    # To check if columns dataframe is not empty list 
+    """
+
+    # To check if columns dataframe is not empty list
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
-    # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+
+    # To make sure that input provided with Pandas Dataframe
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['missing_value_filter','low_variance_filter','feature_importance','high_correlation_filter',
-                      'forward','backward']
-    method= method.lower()
+    allowed_method = ['missing_value_filter', 'low_variance_filter', 'feature_importance', 'high_correlation_filter',
+                      'forward', 'backward']
+    method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    if method=='missing_value_filter':
-        
+
+    if method == 'missing_value_filter':
+
         # Calculate missing ratio percentage of each column in dataframe
-        missing_value = dataframe.isnull().sum()/len(dataframe)
+        missing_value = dataframe.isnull().sum() / len(dataframe)
         # Checking of Missing value Threshold
-        missing_value_imputed =  missing_value[missing_value<=missing_value_threshold]
+        missing_value_imputed = missing_value[missing_value <= missing_value_threshold]
         reduced_data = dataframe[missing_value_imputed.index]
-        
-    elif method=='low_variance_filter': 
-        
+
+    elif method == 'low_variance_filter':
+
         df = dataframe.select_dtypes([np.number])
         data_scaled = normalize(df)
         data_scaled = pd.DataFrame(data_scaled)
         variance = data_scaled.var()
         # Checking of Variance Threshold
-        high_variance_columns = list(variance[variance>=variance_threshold].index)
-        reduced_data = dataframe.iloc[:,high_variance_columns]
+        high_variance_columns = list(variance[variance >= variance_threshold].index)
+        reduced_data = dataframe.iloc[:, high_variance_columns]
 
-    elif method=='high_correlation_filter':
+    elif method == 'high_correlation_filter':
 
         df_corr = dataframe.corr()
         # Retrieving upper triangle correlation coefficient from correlation grid
         df_corr = df_corr.mask(np.tril(np.ones(df_corr.shape)).astype(np.bool))
 
-        # Checking of Correlation threshold 
+        # Checking of Correlation threshold
         if correlation_threshold > 0:
-            reduced_data = df_corr[df_corr>=correlation_threshold].stack().reset_index()
+            reduced_data = df_corr[df_corr >= correlation_threshold].stack().reset_index()
 
         else:
-            reduced_data = df_corr[df_corr<=correlation_threshold].stack().reset_index()
-        
-        reduced_data = reduced_data.rename(columns = {"level_0":'Feature_1',"level_1":'Feature_2',0:'correlation_coefficient'})
+            reduced_data = df_corr[df_corr <= correlation_threshold].stack().reset_index()
 
-    elif method=='feature_importance':
+        reduced_data = reduced_data.rename(
+            columns={"level_0": 'Feature_1', "level_1": 'Feature_2', 0: 'correlation_coefficient'})
 
-        if target_variable==None:
+    elif method == 'feature_importance':
+
+        if target_variable == None:
             raise ValueError("Please enter a valid target_variable")
-        
+
         # Check supported models
-        allowed_task = ['classification','regression']
-        if task==None:
+        allowed_task = ['classification', 'regression']
+        if task == None:
             raise ValueError(f"Please select *task* from {allowed_task}")
-        task  = task.lower()
+        task = task.lower()
         assert task in allowed_task, f"Please select *task* from {allowed_task}"
-       
-    
+
         # Check supported models
-        allowed_algorithm = ["RandomForest","XGradientBoosting","DecisionTrees","ExtraTrees"]
+        allowed_algorithm = ["RandomForest", "XGradientBoosting", "DecisionTrees", "ExtraTrees"]
         assert algorithm in allowed_algorithm, f"Please select *algorithm* from {allowed_algorithm}"
-        
-        X= dataframe.drop(target_variable,axis=1)
-        y= dataframe[target_variable]
-        #preparation of dataset
+
+        X = dataframe.drop(target_variable, axis=1)
+        y = dataframe[target_variable]
+        # preparation of dataset
         X_train, y_train = data_preparation(X, y)
 
-        # Checking for algorithm and fitting of algorithm 
-        if task==None:
+        # Checking for algorithm and fitting of algorithm
+        if task == None:
             raise ValueError("Please select Classification or Regression for 'task'")
-        X = dataframe.drop(target_variable,axis=1)
+        X = dataframe.drop(target_variable, axis=1)
         if algorithm == "RandomForest":
-            model = RandomForestClassifier() if task=='classification' else RandomForestRegressor()
-        elif algorithm =="XGradientBoosting":
-            model = XGBClassifier() if task=='classification' else XGBRegressor()
+            model = RandomForestClassifier() if task == 'classification' else RandomForestRegressor()
+        elif algorithm == "XGradientBoosting":
+            model = XGBClassifier() if task == 'classification' else XGBRegressor()
         elif algorithm == "DecisionTrees":
-            model = DecisionTreeClassifier() if task=='classification' else DecisionTreeRegressor()
+            model = DecisionTreeClassifier() if task == 'classification' else DecisionTreeRegressor()
         elif algorithm == "ExtraTrees":
-            model = ExtraTreesClassifier() if task=='classification' else ExtraTreeRegressor()
+            model = ExtraTreesClassifier() if task == 'classification' else ExtraTreeRegressor()
 
-        #Model-fitting
+        # Model-fitting
         model.fit(X_train, y_train)
-        reduced_data = pd.DataFrame({'Features': X.columns,'Importance': model.feature_importances_})
+        reduced_data = pd.DataFrame({'Features': X.columns, 'Importance': model.feature_importances_})
         reduced_data = reduced_data.sort_values(by='Importance', ascending=False)
-        
 
-    elif method =="forward" or method=="backward":
 
-        if target_variable==None:
+    elif method == "forward" or method == "backward":
+
+        if target_variable == None:
             raise ValueError("Please enter a valid target_variable")
 
         direction = 'forward' if method == 'forward' else 'backward'
-                
+
         # Check supported models
-        allowed_task = ['classification','regression']
-        if task==None:
+        allowed_task = ['classification', 'regression']
+        if task == None:
             raise ValueError(f"Please select *task* from {allowed_task}")
-        task  = task.lower()
+        task = task.lower()
         assert task in allowed_task, f"Please select *task* from {allowed_task}"
-        
+
         # Check supported models
-        allowed_algorithm = ["RandomForest","XGradientBoosting","DecisionTrees","ExtraTrees"]
-        
-        allowed_algorithm = allowed_algorithm+["KNearestNeighbour"] if task=='classification' else allowed_algorithm+["LogisticRegression","LinearRegression"]
+        allowed_algorithm = ["RandomForest", "XGradientBoosting", "DecisionTrees", "ExtraTrees"]
+
+        allowed_algorithm = allowed_algorithm + [
+            "KNearestNeighbour"] if task == 'classification' else allowed_algorithm + ["LogisticRegression",
+                                                                                       "LinearRegression"]
         assert algorithm in allowed_algorithm, f"Please select *algorithm* from {allowed_algorithm}"
-        
-        X= dataframe.drop(target_variable,axis=1)
-        y= dataframe[target_variable]
+
+        X = dataframe.drop(target_variable, axis=1)
+        y = dataframe[target_variable]
         # prepare input data
         X_train, y_train = data_preparation(X, y)
-        
+
         # Checking for algorithm and fitting of algorithm
         if algorithm == "RandomForest":
-            estimator = RandomForestClassifier() if task=='classification' else RandomForestRegressor()
-        elif algorithm =="XGradientBoosting":
-            estimator = XGBClassifier() if task=='classification' else XGBRegressor()
+            estimator = RandomForestClassifier() if task == 'classification' else RandomForestRegressor()
+        elif algorithm == "XGradientBoosting":
+            estimator = XGBClassifier() if task == 'classification' else XGBRegressor()
         elif algorithm == "DecisionTrees":
-            estimator = DecisionTreeClassifier() if task=='classification' else DecisionTreeRegressor()
-        elif algorithm== "ExtraTrees":
-            estimator = ExtraTreesClassifier() if task=='classification' else ExtraTreeRegressor()
-        elif algorithm== "KNearestNeighbour":
-            estimator = KNeighborsClassifier() 
+            estimator = DecisionTreeClassifier() if task == 'classification' else DecisionTreeRegressor()
+        elif algorithm == "ExtraTrees":
+            estimator = ExtraTreesClassifier() if task == 'classification' else ExtraTreeRegressor()
+        elif algorithm == "KNearestNeighbour":
+            estimator = KNeighborsClassifier()
         elif algorithm == "LinearRegression":
-            estimator = LinearRegression() 
+            estimator = LinearRegression()
         elif algorithm == "LogisticRegression":
             estimator = LogisticRegression()
 
         # Fitting of Sequential Feature Selector
-        feature_selector = SequentialFeatureSelector(estimator=estimator, n_features_to_select=n_features_to_select, direction=direction, 
-                           scoring=scoring, cv=cv, n_jobs=n_jobs).fit(X_train,y_train) 
+        feature_selector = SequentialFeatureSelector(estimator=estimator, n_features_to_select=n_features_to_select,
+                                                     direction=direction,
+                                                     scoring=scoring, cv=cv, n_jobs=n_jobs).fit(X_train, y_train)
         feature_names = X.columns.values
         reduced_data = pd.DataFrame()
         reduced_data['Features_selected'] = feature_names[feature_selector.get_support()]
@@ -886,11 +889,12 @@ def feature_selection(dataframe,method,missing_value_threshold=60,variance_thres
     return reduced_data
 
 
-def linear_reduction(dataframe,target_variable=None,method='pca',n_components=2,tol=0.01,copy=True,max_iter=1000,
-                     noise_variance_init=None,svd_method='randomized',iterated_power='auto',rotation=None, random_state=0,
-                     solver='randomized',n_iter=5,whitens=False,svd_solver='auto',algorithm='parallel',whiten=True,fun='logcosh', 
-                     fun_args=None,w_init=None):
-
+def linear_reduction(dataframe, target_variable=None, method='pca', n_components=2, tol=0.01, copy=True, max_iter=1000,
+                     noise_variance_init=None, svd_method='randomized', iterated_power='auto', rotation=None,
+                     random_state=0,
+                     solver='randomized', n_iter=5, whitens=False, svd_solver='auto', algorithm='parallel', whiten=True,
+                     fun='logcosh',
+                     fun_args=None, w_init=None):
     """
     This function is used for reducing Dimensionality of given Dataframe using linear dimensionality techniques.
 
@@ -905,7 +909,7 @@ def linear_reduction(dataframe,target_variable=None,method='pca',n_components=2,
     max_iter: Maximum number of iterations; default:1000
     noise_variance_init: ndarray of shape (n_features,); default=None
                         The initial guess of the noise variance for each feature. If None, it defaults to np.ones(n_features).
-    svd_method: to specify SVD method to use. If 'lapack' use standard SVD from scipy.linalg, if 'randomize'’ use fast randomized_svd function. 
+    svd_method: to specify SVD method to use. If 'lapack' use standard SVD from scipy.linalg, if 'randomize'’ use fast randomized_svd function.
                 Valid parameter:['lapack','randomized'], default='randomized'
     iterated_power: Number of iterations for the power method computed by svd_solver == 'randomized'. Must be of range [0, infinity);
                     Integer value or 'auto' ;default:'auto'
@@ -921,88 +925,93 @@ def linear_reduction(dataframe,target_variable=None,method='pca',n_components=2,
                Valid parameter:['parallel', 'deflation']; default: 'parallel'
     whiten: Boolean parameter,If whiten is false, the data is already considered to be whitened, and no whitening is performed.
     fun: The functional form of the G function used in the approximation to neg-entropy.
-         Valid parameter:['logcosh', 'exp', 'cube']; default:'logcosh'  
+         Valid parameter:['logcosh', 'exp', 'cube']; default:'logcosh'
     fun_args: Arguments to send to the functional form. If empty and if fun=’logcosh’, fun_args will take value {‘alpha’ : 1.0} for ICA method
               default: 'None'
     w_init: ndarray of shape (n_components, n_components); default:'None'
-            The mixing matrix to be used to initialize the algorithm.  
-    
+            The mixing matrix to be used to initialize the algorithm.
+
     Return:
     Reduced form of Dataframe using selected method.
 
-    """ 
-    # To check if columns dataframe is not empty list 
+    """
+    # To check if columns dataframe is not empty list
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
-    # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+
+    # To make sure that input provided with Pandas Dataframe
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['factor_analysis','svd','pca','ica']
-    method= method.lower()
+    allowed_method = ['factor_analysis', 'svd', 'pca', 'ica']
+    method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    X= dataframe.drop(target_variable,axis=1)
-    y= dataframe[target_variable]
-    
-    #Input data preparation
+
+    X = dataframe.drop(target_variable, axis=1)
+    y = dataframe[target_variable]
+
+    # Input data preparation
     X_train, y_train = data_preparation(X, y)
-    #Standardization applied to input data
+    # Standardization applied to input data
     X = StandardScaler().fit_transform(X_train)
 
     # Linear Dimensionality method for Factor Analysis
-    if method=='factor_analysis':
-        
-        reduced_data = FactorAnalysis(n_components=n_components,tol=tol,copy=copy, max_iter=max_iter,
-                            noise_variance_init=noise_variance_init,svd_method=svd_method,iterated_power=iterated_power,
-                            rotation=rotation,random_state=random_state).fit_transform(X)
+    if method == 'factor_analysis':
 
-    # Linear Dimensionality method for Single Value Decomposition 
-    elif method=='svd':
-        
-        reduced_data = TruncatedSVD(n_components=n_components,algorithm=solver,n_iter=n_iter,random_state=random_state,
+        reduced_data = FactorAnalysis(n_components=n_components, tol=tol, copy=copy, max_iter=max_iter,
+                                      noise_variance_init=noise_variance_init, svd_method=svd_method,
+                                      iterated_power=iterated_power,
+                                      rotation=rotation, random_state=random_state).fit_transform(X)
+
+    # Linear Dimensionality method for Single Value Decomposition
+    elif method == 'svd':
+
+        reduced_data = TruncatedSVD(n_components=n_components, algorithm=solver, n_iter=n_iter,
+                                    random_state=random_state,
                                     tol=tol).fit_transform(X)
-    
-    # Linear Dimensionality method for Principal Component Analysis
-    elif method=='pca':
-        
-        reduced_data = PCA(n_components=n_components,copy=copy,whiten=whitens,svd_solver=svd_solver,tol=tol,
-                           iterated_power=iterated_power,
-                  random_state=random_state).fit_transform(X)
 
-    # Linear Dimensionality method for Independent Component Analysis        
-    elif method=='ica':
-        
-        reduced_data = FastICA(n_components=n_components,algorithm=algorithm,whiten=whiten,fun=fun,fun_args=fun_args,
-                               max_iter=max_iter,w_init=w_init,tol=tol,random_state=random_state).fit_transform(X)
-    
+    # Linear Dimensionality method for Principal Component Analysis
+    elif method == 'pca':
+
+        reduced_data = PCA(n_components=n_components, copy=copy, whiten=whitens, svd_solver=svd_solver, tol=tol,
+                           iterated_power=iterated_power,
+                           random_state=random_state).fit_transform(X)
+
+    # Linear Dimensionality method for Independent Component Analysis
+    elif method == 'ica':
+
+        reduced_data = FastICA(n_components=n_components, algorithm=algorithm, whiten=whiten, fun=fun,
+                               fun_args=fun_args,
+                               max_iter=max_iter, w_init=w_init, tol=tol, random_state=random_state).fit_transform(X)
+
     # Final output reduced data to be saved in Dataframe
-    reduced_data = pd.DataFrame(data = reduced_data)
-    reduced_data = pd.concat([reduced_data, y], axis = 1) 
-        
+    reduced_data = pd.DataFrame(data=reduced_data)
+    reduced_data = pd.concat([reduced_data, y], axis=1)
+
     return reduced_data
 
 
-def non_linear_reduction(dataframe,target_variable=None,method=None,n_components=None,perplexity=30.0,early_exaggeration=12.0,
-                         learning_rate=200.0, n_iter=1000,n_iter_without_progress=300, min_grad_norm=1e-07,
-                         init='random', verbose=0,random_state=None,tsne_method='barnes_hut', angle=0.5, n_jobs=None,
-                         square_distances=True,n_neighbors=5, eigen_solver='auto', tol=0, max_iter=None,
-                         path_method='auto',neighbors_algorithm='auto',metric='minkowski', p=2,target_metric='categorical',
-                         metric_params=None,min_dist=0.1,output_metric='euclidean',transform_seed=42,repulsion_strength=1.0,
-                         set_op_mix_ratio=1.0, spread=1.0,):
-
+def non_linear_reduction(dataframe, target_variable=None, method=None, n_components=None, perplexity=30.0,
+                         early_exaggeration=12.0,
+                         learning_rate=200.0, n_iter=1000, n_iter_without_progress=300, min_grad_norm=1e-07,
+                         init='random', verbose=0, random_state=None, tsne_method='barnes_hut', angle=0.5, n_jobs=None,
+                         square_distances=True, n_neighbors=5, eigen_solver='auto', tol=0, max_iter=None,
+                         path_method='auto', neighbors_algorithm='auto', metric='minkowski', p=2,
+                         target_metric='categorical',
+                         metric_params=None, min_dist=0.1, output_metric='euclidean', transform_seed=42,
+                         repulsion_strength=1.0,
+                         set_op_mix_ratio=1.0, spread=1.0, ):
     """
     This function is used for reducing Dimensionality of given Dataframe using non-linear dimensionality techniques.
 
     Parameters:
     dataframe: Dataset in the form of Dataframe as input.
     target_variable: The name of target variable in the dataset
-    technique: Method for Non-Linear Reduction techniques; 
+    technique: Method for Non-Linear Reduction techniques;
             Valid parameter:['tsne','isomap','umap']
     n_components: Number of components to take by algorithm, default:2
-    perplexity: The perplexity is related to the number of nearest neighbors that is used in other manifold learning algorithms. 
+    perplexity: The perplexity is related to the number of nearest neighbors that is used in other manifold learning algorithms.
                 Larger datasets usually require a larger perplexity. Consider selecting a value between 5 and 50; default:30.0
-    early_exaggeration: Controls how tight natural clusters in the original space are in the embedded space and how much space will 
+    early_exaggeration: Controls how tight natural clusters in the original space are in the embedded space and how much space will
     be between them. For larger values, the space between natural clusters will be larger in the embedded space; default:12.0
     learning_rate: The initial learning rate for the embedding optimization used in tsnne and umap method.
                    The learning rate for t-SNE is usually in the range [10.0, 1000.0]; default:200.0
@@ -1013,7 +1022,7 @@ def non_linear_reduction(dataframe,target_variable=None,method=None,n_components
     init: Initialization of embedding; default:'random'
           Valid parameter:['random', 'pca','spectral']
     verbose: Integer value, Verbosity level; default:0
-    random_state: If integer, random_state is the seed used by the random number generator and if If None, the random number 
+    random_state: If integer, random_state is the seed used by the random number generator and if If None, the random number
                   generator is the RandomState instance used by np.random; default:None
     method: gradient calculation algorithm for tsne algorithm; default: 'barnes_hut'
             Valid parameter:['exact', 'barnes_hut']
@@ -1031,72 +1040,77 @@ def non_linear_reduction(dataframe,target_variable=None,method=None,n_components
     neighbors_algorithm: Algorithm to use for nearest neighbors search, passed to neighbors.NearestNeighbors instance; default:'auto'
                          Valid parameter: ['auto', 'FW', 'D']
     metric: The metric to use to compute distances in high dimensional space used for isomap and umap method; default:'minkowski'
-            Most used metric; ['euclidean','manhattan','chebyshev','minkowski','hamming','jaccard','cosine']   
+            Most used metric; ['euclidean','manhattan','chebyshev','minkowski','hamming','jaccard','cosine']
     p: used for metric in isomap method; default:2
-       When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. 
+       When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2.
        For arbitrary p, minkowski_distance (l_p) is used.
     target_metric: The metric used to measure distance for a target array is using supervised dimension reduction in umap method;
                    default:'categorical'
     metric_params: Additional keyword arguments for the metric function in isomap method; default:None
-    min_dist: The effective minimum distance between embedded points. Smaller values will result in a more clustered/clumped 
-              embedding where nearby points on the manifold are drawn closer together, while larger values will result on 
+    min_dist: The effective minimum distance between embedded points. Smaller values will result in a more clustered/clumped
+              embedding where nearby points on the manifold are drawn closer together, while larger values will result on
               a more even dispersal of points; default:0.1
     output_metric: Key word arguments to be passed to the output_metric function; default:'euclidean'
-    transform_seed: Random seed used for the stochastic aspects of the transform operation. 
+    transform_seed: Random seed used for the stochastic aspects of the transform operation.
                     This ensures consistency in transform operations; default:42
     repulsion_strength: Weighting applied to negative samples in low dimensional embedding optimization; default:1.0
-                        Values higher than one will result in greater weight being given to negative samples. 
-    set_op_mix_ratio: Interpolate between (fuzzy) union and intersection as the set operation used to combine local fuzzy simplicial 
+                        Values higher than one will result in greater weight being given to negative samples.
+    set_op_mix_ratio: Interpolate between (fuzzy) union and intersection as the set operation used to combine local fuzzy simplicial
                       sets to obtain a global fuzzy simplicial sets.The value of this parameter should be between 0.0 and 1.0;
                       a value of 1.0 will use a pure fuzzy union, while 0.0 will use a pure fuzzy intersection; default:1.0
-    spread: The effective scale of embedded points. In combination with min_dist this determines how clustered/clumped 
-            the embedded points are; default:1.0             
-                 
+    spread: The effective scale of embedded points. In combination with min_dist this determines how clustered/clumped
+            the embedded points are; default:1.0
+
     Return:
     Reduced form of Dataframe using selected technique.
 
-    """   
-    
-    # To check if columns dataframe is not empty list 
+    """
+
+    # To check if columns dataframe is not empty list
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
-    # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+
+    # To make sure that input provided with Pandas Dataframe
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['tsne','isomap','umap']
+    allowed_method = ['tsne', 'isomap', 'umap']
     method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    X= dataframe.drop(target_variable,axis=1)
-    y= dataframe[target_variable]
-    
+
+    X = dataframe.drop(target_variable, axis=1)
+    y = dataframe[target_variable]
+
     X_train, y_train = data_preparation(X, y)
     X = StandardScaler().fit_transform(X_train)
 
-    if method=='tsne':
-        
-        reduced_data = TSNE(n_components=n_components,perplexity=perplexity,early_exaggeration=early_exaggeration,
-                    learning_rate=learning_rate,n_iter=n_iter,n_iter_without_progress=n_iter_without_progress,
-                    min_grad_norm=min_grad_norm,metric=metric,init=init,verbose=verbose,random_state=random_state,
-                    method=tsne_method,angle=angle,n_jobs=n_jobs,square_distances=square_distances).fit_transform(X)
-    
-    elif method=='isomap':
-        
-        reduced_data = manifold.Isomap(n_neighbors=n_neighbors,n_components=n_components,eigen_solver=eigen_solver,tol=tol,
-                              max_iter=max_iter,path_method=path_method,neighbors_algorithm=neighbors_algorithm,n_jobs=None,
-                              metric=metric,p=p,metric_params=metric_params).fit_transform(X)
-    
-    elif method=='umap':
-        
-        reduced_data = umap.UMAP(n_components=n_components,metric=metric,n_neighbors=n_neighbors,min_dist=min_dist,
-                                 random_state=random_state,target_metric=target_metric,output_metric=output_metric,
-                                 transform_seed=transform_seed,learning_rate=learning_rate,repulsion_strength=repulsion_strength,
-                                 set_op_mix_ratio=set_op_mix_ratio,spread=spread,init=init).fit_transform(X)
-        
-    reduced_data = pd.DataFrame(data = reduced_data)
-    reduced_data = pd.concat([reduced_data,y], axis = 1)
-    
-    
-    return reduced_data  
+    if method == 'tsne':
+
+        reduced_data = TSNE(n_components=n_components, perplexity=perplexity, early_exaggeration=early_exaggeration,
+                            learning_rate=learning_rate, n_iter=n_iter, n_iter_without_progress=n_iter_without_progress,
+                            min_grad_norm=min_grad_norm, metric=metric, init=init, verbose=verbose,
+                            random_state=random_state,
+                            method=tsne_method, angle=angle, n_jobs=n_jobs,
+                            square_distances=square_distances).fit_transform(X)
+
+    elif method == 'isomap':
+
+        reduced_data = manifold.Isomap(n_neighbors=n_neighbors, n_components=n_components, eigen_solver=eigen_solver,
+                                       tol=tol,
+                                       max_iter=max_iter, path_method=path_method,
+                                       neighbors_algorithm=neighbors_algorithm, n_jobs=None,
+                                       metric=metric, p=p, metric_params=metric_params).fit_transform(X)
+
+    elif method == 'umap':
+
+        reduced_data = umap.UMAP(n_components=n_components, metric=metric, n_neighbors=n_neighbors, min_dist=min_dist,
+                                 random_state=random_state, target_metric=target_metric, output_metric=output_metric,
+                                 transform_seed=transform_seed, learning_rate=learning_rate,
+                                 repulsion_strength=repulsion_strength,
+                                 set_op_mix_ratio=set_op_mix_ratio, spread=spread, init=init).fit_transform(X)
+
+    reduced_data = pd.DataFrame(data=reduced_data)
+    reduced_data = pd.concat([reduced_data, y], axis=1)
+
+    return reduced_data
+
 
