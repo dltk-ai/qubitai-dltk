@@ -160,7 +160,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
             input_value = user_input_params[key]
 
             expected_datatype = algorithm_params[key]['datatype']
-            print(key)
+
             # None input flag
             if algorithm_params[key]['default'] == None:
                 if input_value == None:
@@ -172,7 +172,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 assert input_value in values, "Please select {} from {}".format(key, values)
 
             # datatype - int or float
-            if expected_datatype == "int" or expected_datatype == "float":
+            elif expected_datatype == "int" or expected_datatype == "float":
 
                 # datatype - int
                 if expected_datatype == "int":
@@ -206,20 +206,26 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                     assert algorithm_params[key]['range'][0] <= input_value <= algorithm_params[key]['range'][1], "{} should be in range {}".format(key, algorithm_params[key]['range'])
 
             # hybrid datatype
-            if expected_datatype == "hybrid":
+            elif expected_datatype == "hybrid":
                 algo_param_value = algorithm_params[key]['condition']['value']
                 algo_condition_symbol = algorithm_params[key]['condition']['symbol']
                 range_lower = algorithm_params[key]['range'][0]
                 range_upper = algorithm_params[key]['range'][1]
 
-                if algo_condition_symbol == ">":
-                    condition_flag = input_value > algo_param_value
-                elif algo_condition_symbol == ">=":
-                    condition_flag = input_value >= algo_param_value
-                elif algo_condition_symbol == "<=>":
-                    condition_flag = input_value <= algo_param_value or input_value >= \
-                                     algo_param_value, "{} should be <=> to {}".format(key,algo_param_value)
-                assert (condition_flag or range_lower >= input_value <= range_upper), "{} should be in range {} or {} to {}".format(key, algorithm_params[key]['range'], algo_condition_symbol, algo_param_value)
+                if type(user_input) == int or type(user_input) == float:
+
+                    if algo_condition_symbol == ">":
+                        condition_flag = input_value > algo_param_value
+                    elif algo_condition_symbol == ">=":
+                        condition_flag = input_value >= algo_param_value
+                    elif algo_condition_symbol == "<=>":
+                        condition_flag = input_value <= algo_param_value or input_value >= \
+                                         algo_param_value, "{} should be <=> to {}".format(key,algo_param_value)
+
+                    assert (condition_flag or range_lower >= input_value <= range_upper), "{} should be in range {} or {} to {}".format(key, algorithm_params[key]['range'], algo_condition_symbol, algo_param_value)
+
+                else:
+                    print(key)
 
     except AssertionError as msg:
         print(msg)
