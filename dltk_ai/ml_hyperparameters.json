@@ -157,7 +157,7 @@
 						"default": null,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"min_impurity_decrease": {
 						"default": 0.0,
@@ -203,13 +203,13 @@
 					},
 					"min_weight_fraction_leaf": {
 						"default": 0.0,
-						"datatype": "\"float\"",
+						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
-						"datatype": "\"int\"",
+						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
 							"symbol": ">",
@@ -222,7 +222,7 @@
 					},
 					"oob_score": {
 						"default": false,
-						"datatype": "\"str\"",
+						"datatype": "str",
 						"value": [
 							true,
 							false
@@ -412,7 +412,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
@@ -481,8 +481,7 @@
 							"minkowski",
 							"wminkowski",
 							"seuclidean",
-							"mahalanobis",
-							""
+							"mahalanobis"
 						]
 					},
 					"metric_params": {
@@ -695,7 +694,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
@@ -723,7 +722,7 @@
 						"default": 1.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"tol": {
 						"default": 0.0001,
@@ -738,7 +737,7 @@
 						"default": 0.1,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"verbose": {
 						"default": 0,
@@ -757,7 +756,7 @@
 						"default": 0.5,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"booster": {
 						"default": "gbtree",
@@ -772,13 +771,13 @@
 						"default": 1,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"colsample_bytree": {
 						"default": 1,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"gamma": {
 						"default": 0,
@@ -897,7 +896,7 @@
 						"default": 1,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					}
 				}
 			},
@@ -1216,7 +1215,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"random_state": {
 						"default": null,
@@ -1282,7 +1281,7 @@
 						"default": null,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"min_impurity_decrease": {
 						"default": 0.0,
@@ -1330,7 +1329,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
@@ -1440,7 +1439,7 @@
 						"default": 0.9,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"ccp_alpha": {
 						"default": 0.0,
@@ -1551,7 +1550,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
@@ -1579,7 +1578,7 @@
 						"default": 1.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"tol": {
 						"default": 0.0001,
@@ -1594,7 +1593,7 @@
 						"default": 0.1,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 1.0"
+						"range": [0.0, 1.0]
 					},
 					"verbose": {
 						"default": 0,
@@ -1706,7 +1705,7 @@
 						"default": 0.0,
 						"datatype": "float",
 						"compare_type": "range",
-						"range": "0.0 0.5"
+						"range": [0.0, 0.5]
 					},
 					"n_estimators": {
 						"default": 100,
@@ -2065,7 +2064,7 @@
 						"default": 100,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "64 128"
+						"range": [64, 128]
 					},
 					"-num-slots": {
 						"default": 1,
@@ -2173,13 +2172,13 @@
 						"default": 0,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 4"
+						"range": [0, 4]
 					},
 					"-K": {
 						"default": 2,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 3"
+						"range": [0, 3]
 					},
 					"-D": {
 						"default": false,
@@ -2285,7 +2284,7 @@
 						"default": 100,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 100"
+						"range": [0, 100]
 					},
 					"-Q": {
 						"default": false,
@@ -2512,7 +2511,7 @@
 						"default": 20,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 100"
+						"range": [0, 100]
 					},
 					"-E": {
 						"default": false,
@@ -2572,7 +2571,7 @@
 						"default": 1,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 2"
+						"range": [0, 2]
 					},
 					"-N": {
 						"default": 5,
@@ -2718,7 +2717,7 @@
 						"default": 0,
 						"datatype": "int",
 						"compare_type": "range",
-						"range": "0 2"
+						"range": [0, 2]
 					},
 					"-L": {
 						"default": 0.001,
@@ -2966,9 +2965,7 @@
 						"value": [
 							"auto",
 							"random",
-							"",
 							"modulo",
-							"",
 							"stratified"
 						]
 					},
@@ -3101,9 +3098,7 @@
 						"datatype": "str",
 						"value": [
 							"mean_imputation",
-							"",
 							"skip",
-							"",
 							"plug_values"
 						]
 					},
@@ -4050,9 +4045,8 @@
 					}
 				}
 			}
-		}
-	},
-	"classification": {
+		},
+		"classification": {
 		"NaiveBayesBinomial": {
 			"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/naive_bayes.html",
 			"params": {
@@ -4873,5 +4867,6 @@
 				}
 			}
 		}
+	}
 	}
 }
