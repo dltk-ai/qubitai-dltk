@@ -2489,7 +2489,7 @@
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
-							"symbol": ">",
+							"symbol": ">=",
 							"value": -1
 						}
 					},

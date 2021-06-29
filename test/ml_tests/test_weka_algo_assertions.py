@@ -81,7 +81,7 @@ class TestWekaAlgo(unittest.TestCase):
         service = "classification"
         params = {'-P': 50, '-O': True, '-print': False,
                   '-store-out-of-bag-predictions': False, '-output-out-of-bag-complexity-statistics': True, '-represent-copies-using-weights': True, '-S': 2, '-num-slots': 1, '-I': 2,
-                  '-D': False, '-W': 'weka.classifiers.trees.REPTree', '-M': 1, '-V': 0.1,'-N':1,'-L':-2,'-R':False}
+                  '-D': False, '-W': 'weka.classifiers.trees.REPTree', '-M': 1, '-V': 0.1,'-N':1,'-L':-1,'-R':False}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
@@ -90,7 +90,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_kstar_1(self):
         algorithm = "KStar"
         service = "classification"
-        params = {'-B': 50, '-E': True, '-M': 'X'}
+        params = {'-B': 50, '-E': True, '-M': 'a'}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
