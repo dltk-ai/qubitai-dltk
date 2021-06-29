@@ -182,7 +182,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -191,15 +191,12 @@
 					},
 					"min_samples_split": {
 						"default": 2,
-						"datatype": "hybrid",
+						"datatype": "float",
+						"compare_type": "condition",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
-						},
-						"range": [
-							0.0,
-							1.0
-						]
+							"value": 1
+						}
 					},
 					"min_weight_fraction_leaf": {
 						"default": 0.0,
@@ -389,7 +386,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -398,15 +395,12 @@
 					},
 					"min_samples_split": {
 						"default": 2,
-						"datatype": "hybrid",
+						"datatype": "float",
+						"compare_type": "condition",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
-						},
-						"range": [
-							0.0,
-							1.0
-						]
+							"value": 0
+						}
 					},
 					"min_weight_fraction_leaf": {
 						"default": 0.0,
@@ -671,7 +665,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -683,7 +677,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -749,157 +743,215 @@
 					}
 				}
 			},
-			"XGradientBoosting": {
-				"reference_link": "",
-				"params": {
-					"base_score": {
-						"default": 0.5,
-						"datatype": "float",
-						"compare_type": "range",
-						"range": [0.0, 1.0]
-					},
-					"booster": {
-						"default": "gbtree",
-						"datatype": "str",
-						"value": [
-							"gbtree",
-							"gblinear",
-							"dart"
-						]
-					},
-					"colsample_bylevel": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "range",
-						"range": [0.0, 1.0]
-					},
-					"colsample_bytree": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "range",
-						"range": [0.0, 1.0]
-					},
-					"gamma": {
-						"default": 0,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"learning_rate": {
-						"default": 0.1,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"max_delta_step": {
-						"default": 0,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"max_depth": {
-						"default": 3,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"min_child_weight": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"missing": {
-						"default": null,
-						"datatype": "except"
-					},
-					"n_estimators": {
-						"default": 100,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"n_jobs": {
-						"default": 1,
-						"datatype": "except"
-					},
-					"nthread": {
-						"default": null,
-						"datatype": "except"
-					},
-					"objective": {
-						"default": "binary:logistic",
-						"datatype": "except"
-					},
-					"random_state": {
-						"default": 0,
-						"datatype": "except"
-					},
-					"reg_alpha": {
-						"default": 0,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"reg_lambda": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"scale_pos_weight": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 0.0
-						}
-					},
-					"seed": {
-						"default": null,
-						"datatype": "except"
-					},
-					"silent": {
-						"default": true,
-						"datatype": "str",
-						"value": [
-							true,
-							false
-						]
-					},
-					"subsample": {
-						"default": 1,
-						"datatype": "float",
-						"compare_type": "range",
-						"range": [0.0, 1.0]
-					}
-				}
-			},
+			"XGradientBoosting": {"reference_link": "" ,"params":{
+		"objective": {
+			"default": "binary:logistic",
+			"datatype": "except"
+		},
+		"use_label_encoder": {
+			"default": true,
+			"datatype": "str",
+			"value": [
+				"true",
+				"false"
+			]
+		},
+		"base_score": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": "<=>",
+				"value": 0.0
+			}
+		},
+		"booster": {
+			"default": null,
+			"datatype": "str",
+			"value": [
+				"gbtree",
+				"gblinear",
+				"dart"
+			]
+		},
+		"colsample_bylevel": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"colsample_bynode": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"colsample_bytree": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"gamma": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"gpu_id": {
+			"default": null,
+			"datatype": "except"
+		},
+		"importance_type": {
+			"default": "gain",
+			"datatype": "str",
+			"value": [
+				"gain",
+				"weight",
+				"cover",
+				"total_gain",
+				"total_co"
+			]
+		},
+		"interaction_constraints": {
+			"default": null,
+			"datatype": "except"
+		},
+		"learning_rate": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"max_delta_step": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"max_depth": {
+			"default": null,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"min_child_weight": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"missing": {
+			"default": null,
+			"datatype": "except"
+		},
+		"monotone_constraints": {
+			"default": null,
+			"datatype": "except"
+		},
+		"n_estimators": {
+			"default": 100,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"n_jobs": {
+			"default": null,
+			"datatype": "except"
+		},
+		"num_parallel_tree": {
+			"default": null,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 1
+			}
+		},
+		"random_state": {
+			"default": null,
+			"datatype": "except"
+		},
+		"reg_alpha": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"reg_lambda": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"scale_pos_weight": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"subsample": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"tree_method": {
+			"default": null,
+			"datatype": "except"
+		},
+		"validate_parameters": {
+			"default": null,
+			"datatype": "str",
+			"value": [
+				"true",
+				"false"
+			]
+		},
+		"verbosity": {
+			"default": null,
+			"datatype": "except"
+		}
+	}},
 			"SupportVectorMachines": {
 				"reference_link": "",
 				"params": {
@@ -1192,7 +1244,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1204,7 +1256,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1306,7 +1358,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1318,7 +1370,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1527,7 +1579,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1539,7 +1591,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1682,7 +1734,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -1694,7 +1746,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							0.0,
@@ -3723,7 +3775,6 @@
 					"col_sample_rate_change_per_level": {
 						"default": 1,
 						"datatype": "float",
-						"compare_type": "hybrid",
 						"condition": {
 							"symbol": ">",
 							"value": 0
@@ -3859,7 +3910,7 @@
 						"datatype": "hybrid",
 						"condition": {
 							"symbol": ">=",
-							"value": "1"
+							"value": 1
 						},
 						"range": [
 							-1.0,
