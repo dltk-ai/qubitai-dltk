@@ -1305,7 +1305,8 @@
 					},
 					"criterion": {
 						"default": "mse",
-						"datatype": "mse mae"
+						"datatype": "str",
+						"value": ["mse","mae"]
 					},
 					"max_depth": {
 						"default": null,
@@ -1388,7 +1389,7 @@
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
-							"symbol": ">0",
+							"symbol": ">=",
 							"value": 0
 						}
 					},
@@ -1637,7 +1638,7 @@
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
-							"symbol": ">=0",
+							"symbol": ">=",
 							"value": 0.0
 						}
 					},

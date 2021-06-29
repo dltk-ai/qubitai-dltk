@@ -700,7 +700,7 @@ class TestScikitRegressionAlgo(unittest.TestCase):
         self.service = "regression"
         pass
 
-#----------------- DecisionTrees -------------------#
+    # ----------------- DecisionTrees -------------------#
     def test_decisiontree_1(self):
         algorithm = "DecisionTree"
         params = {'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
@@ -708,6 +708,36 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_decisiontree_2(self):
+        algorithm = "DecisionTree"
+        params = {'ccp_alpha': -0.3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_decisiontree_3(self):
+        algorithm = "DecisionTree"
+        params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': -1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_decisiontree_4(self):
+        algorithm = "DecisionTree"
+        params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 0.5,
+                  'min_samples_split': -2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_decisiontree_5(self):
+        algorithm = "DecisionTree"
+        params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 0.5,
+                  'min_samples_split': 0.3, 'min_weight_fraction_leaf': 0.4, 'random_state': None, 'splitter': 'best'}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+
+    # ----------------- RandomForest -------------------#
     def test_randomforest_1(self):
         algorithm = "RandomForest"
         params = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
@@ -716,6 +746,55 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_randomforest_2(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': -34.789, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_randomforest_3(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': -1.3, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_randomforest_4(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': -0.2, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_randomforest_5(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': -100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_randomforest_6(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': "radom", 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_randomforest_7(self):
+        algorithm = "RandomForest"
+        params = {'bootstrap': True, 'ccp_alpha': 5, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 1.67, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 6, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- Bagging -------------------#
     def test_bagging_1(self):
         algorithm = "Bagging"
         params = {'base_estimator': None, 'bootstrap': True, 'bootstrap_features': False, 'max_features': 1.0,
@@ -723,6 +802,28 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_bagging_2(self):
+        algorithm = "Bagging"
+        params = {'base_estimator': None, 'bootstrap': False, 'bootstrap_features': False, 'max_features': -3565,
+                  'max_samples': 345, 'n_estimators': 10, 'n_jobs': None, 'oob_score': False, 'random_state': None,
+                  'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_bagging_3(self):
+        algorithm = "Bagging"
+        params = {'base_estimator': None, 'bootstrap': True, 'bootstrap_features': False, 'max_features': 1.0,
+                  'max_samples': 1.0, 'n_estimators': 10, 'n_jobs': None, 'oob_score': False, 'random_state': None,
+                  'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_bagging_4(self):
+        algorithm = "Bagging"
+        params = {'base_estimator': None, 'bootstrap': True, 'bootstrap_features': False, 'max_features': 1.0,
+                  'max_samples': 1.0, 'n_estimators': 10, 'n_jobs': None, 'oob_score': False, 'random_state': None,
+                  'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- GradientBoostingMachine -------------------#
     def test_gradientboostingmachine_1(self):
         algorithm = "GradientBoostingMachine"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
@@ -733,6 +834,77 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_gradientboostingmachine_2(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': -0.9, 'ccp_alpha': 0.06, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
+                  'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': 0.0001,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_3(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': -0.1,
+                  'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': 0.0001,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_4(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 56,
+                  'loss': 'ls', 'max_depth': -3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': 0.0001,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_5(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
+                  'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': -2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': 0.0001,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_6(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
+                  'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': 0.0001,
+                  'validation_fraction': -0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_7(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
+                  'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 1.0, 'tol': -15,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_gradientboostingmachine_8(self):
+        algorithm = "GradientBoostingMachine"
+        params = {'alpha': 0.9, 'ccp_alpha': 6, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 56,
+                  'loss': 'ls', 'max_depth': 39, 'max_features': None, 'max_leaf_nodes': None,
+                  'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
+                  'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_iter_no_change': None, 'random_state': None, 'subsample': 0.9, 'tol': 6,
+                  'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- ExtraTrees -------------------#
     def test_extratrees_1(self):
         algorithm = "ExtraTrees"
         params = {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
@@ -741,17 +913,82 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_extratrees_2(self):
+        algorithm = "ExtraTrees"
+        params = {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': 3.6, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_extratrees_3(self):
+        algorithm = "ExtraTrees"
+        params = {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': -2.89, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_extratrees_4(self):
+        algorithm = "ExtraTrees"
+        params = {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': -0.89, 'n_estimators': 100,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_extratrees_5(self):
+        algorithm = "ExtraTrees"
+        params = {'bootstrap': False, 'ccp_alpha': 78, 'criterion': 'mse', 'max_depth': None, 'max_features': 'auto',
+                  'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None,
+                  'min_samples_leaf': 1.8, 'min_samples_split': 2.9, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 78,
+                  'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- AdaBoost -------------------#
     def test_adaboost_1(self):
         algorithm = "AdaBoost"
         params = {'base_estimator': None, 'learning_rate': 1.0, 'loss': 'linear', 'n_estimators': 50,
                   'random_state': None}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+    def test_adaboost_2(self):
+        algorithm = "AdaBoost"
+        params = {'base_estimator': None, 'learning_rate': -1.0, 'loss': 'linear', 'n_estimators': -50,
+                  'random_state': None}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_adaboost_3(self):
+        algorithm = "AdaBoost"
+        params = {'base_estimator': None, 'learning_rate': 1.0, 'loss': 'linear', 'n_estimators': -50,
+                  'random_state': None}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- SupportVectorMachines -------------------#
     def test_supportvectormachines_1(self):
         algorithm = "SupportVectorMachines"
         params = {'C': 1.0, 'cache_size': 200, 'coef0': 0.0, 'degree': 3, 'epsilon': 0.1, 'gamma': 'scale',
                   'kernel': 'rbf', 'max_iter': -1, 'shrinking': True, 'tol': 0.001, 'verbose': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_supportvectormachines_2(self):
+        algorithm = "SupportVectorMachines"
+        params = {'C': 1.0, 'cache_size': -200, 'coef0': -0.8, 'degree': -3, 'epsilon': -0.1, 'gamma': 'scale',
+                  'kernel': 'rbf', 'max_iter': -1, 'shrinking': True, 'tol': -0.001, 'verbose': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_supportvectormachines_3(self):
+        algorithm = "SupportVectorMachines"
+        params = {'C': 1.0, 'cache_size': 200, 'coef0': 0.0, 'degree': 3, 'epsilon': -0.1, 'gamma': 'scale',
+                  'kernel': 'rbf', 'max_iter': -1, 'shrinking': True, 'tol': 0.001, 'verbose': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_supportvectormachines_3(self):
+        algorithm = "SupportVectorMachines"
+        params = {'C': 1.0, 'cache_size': 200, 'coef0': 0.0, 'degree': 3, 'epsilon': 0.1, 'gamma': 'scale',
+                  'kernel': 'rbf', 'max_iter': -1, 'shrinking': True, 'tol': -0.001, 'verbose': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
 
 
 if __name__ == '__main__':
