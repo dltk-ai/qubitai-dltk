@@ -190,6 +190,12 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                     if algo_condition_symbol == ">":
                         assert input_value > algo_param_value, f"{key} should be greater than {algo_param_value}"
 
+                    elif algo_condition_symbol == "<":
+                        assert input_value < algo_param_value, f"{key} should be less than {algo_param_value}"
+
+                    elif algo_condition_symbol == "<=":
+                        assert input_value <= algo_param_value, f"{key} should be less than or equal to {algo_param_value}"
+
                     elif algo_condition_symbol == ">=":
                         assert input_value >= algo_param_value, f"{key} should be greater than or equal to {algo_param_value}"
 

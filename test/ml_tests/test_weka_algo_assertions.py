@@ -174,7 +174,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_additive_regression_1(self):
         algorithm = "AdditiveRegression"
         service = "regression"
-        params = {'-S': 0.5, '-I': 5, '-A': False, '-D': False, '-W': 'weka.classifiers.trees.DecisionStump'}
+        params = {'-S': 1.4, '-I': 5, '-A': False, '-D': False, '-W': 'weka.classifiers.trees.DecisionStump'}
         if hyper_parameter_check(self.library, service, algorithm, params):
             self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
         else:
