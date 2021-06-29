@@ -4,6 +4,7 @@ os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file
 from dltk_ai.assertions import hyper_parameter_check
 
 
+
 class TestH2OClassificationAlgo(unittest.TestCase):
 
     def setUp(self):
@@ -59,6 +60,7 @@ class TestH2OClassificationAlgo(unittest.TestCase):
                   'export_checkpoints_dir': None, 'ignore_const_cols': None, 'ignored_columns': None, 'model_id': None,
                   'offset_column': None, 'response_column': None, 'sample_rate_per_class': None, 'seed': None,
                   'weights_column': None}
+
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
 
