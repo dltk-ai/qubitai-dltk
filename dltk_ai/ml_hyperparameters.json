@@ -1875,7 +1875,7 @@
 	"weka": {
 		"classification":{
 			"Logistic": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/Logistic.html",
 				"params": {
 					"-D": {
 						"default": false,
@@ -1901,7 +1901,7 @@
 				}
 			},
 			"MultilayerPerceptron": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/MultilayerPerceptron.html",
 				"params": {
 					"-L": {
 						"default": 0.3,
@@ -1998,7 +1998,7 @@
 				}
 			},
 			"NaiveBayesMultinomial": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/bayes/NaiveBayesMultinomial.html",
 				"params": {
 					"-output-debug-info": {
 						"default": false,
@@ -2029,7 +2029,7 @@
 				}
 			},
 			"RandomForest": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/trees/RandomForest.html",
 				"params": {
 					"-P": {
 						"default": 100,
@@ -2166,7 +2166,7 @@
 				}
 			},
 			"LibSVM": {
-				"reference_link": "",
+				"reference_link": "https://weka.sourceforge.io/doc.packages/LibSVM/weka/classifiers/functions/LibSVM.html",
 				"params": {
 					"-S": {
 						"default": 0,
@@ -2278,7 +2278,7 @@
 				}
 			},
 			"AdaBoostM1": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AdaBoostM1.html",
 				"params": {
 					"-P": {
 						"default": 100,
@@ -2319,7 +2319,7 @@
 				}
 			},
 			"AttributeSelectedClassifier": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AttributeSelectedClassifier.html",
 				"params": {
 					"-E": {
 						"default": "weka.attributeSelection.CfsSubsetEval",
@@ -2396,7 +2396,7 @@
 				}
 			},
 			"Bagging": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/Bagging.html",
 				"params": {
 					"-P": {
 						"default": false,
@@ -2494,7 +2494,7 @@
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
-							"symbol": ">",
+							"symbol": "<",
 							"value": 0
 						}
 					},
@@ -2505,7 +2505,7 @@
 				}
 			},
 			"KStar": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/lazy/KStar.html",
 				"params": {
 					"-B": {
 						"default": 20,
@@ -2530,7 +2530,7 @@
 				}
 			},
 			"DecisionTable": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/rules/DecisionTable.html",
 				"params": {
 					"-S": {
 						"default": "weka.attributeSelection.BestFirst",
@@ -2564,7 +2564,7 @@
 						"datatype": "except"
 					},
 					"-P": {
-						"default": null,
+						"default": false,
 						"datatype": "except"
 					},
 					"-D": {
@@ -2580,14 +2580,14 @@
 				}
 			},
 			"IBk": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/lazy/IBk.html",
 				"params": {
 					"-I": {
-						"default": null,
+						"default": false,
 						"datatype": "except"
 					},
 					"-F": {
-						"default": null,
+						"default": false,
 						"datatype": "except"
 					},
 					"-K": {
@@ -2608,7 +2608,7 @@
 						"datatype": "except"
 					},
 					"-X": {
-						"default": null,
+						"default": false,
 						"datatype": "except"
 					},
 					"-A": {
@@ -2617,9 +2617,8 @@
 					}
 				}
 			},
-
  			"RandomTree": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/trees/RandomTree.html",
 				"params": {
 					"-K": {
 						"default": 0,
@@ -2698,7 +2697,7 @@
 				}
 			},
 			"SMO": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/SMO.html",
 				"params": {
 					"-no-checks": {
 						"default": false,
@@ -2789,7 +2788,7 @@
 		},
 		"regression": {
 			"LinearRegression": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/LinearRegression.html",
 				"params": {
 					"-S": {
 						"default": 0,
@@ -2832,7 +2831,7 @@
 				}
 			},
 			"AdditiveRegression": {
-				"reference_link": "",
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AdditiveRegression.html",
 				"params": {
 					"-S": {
 						"default": 1.0,
