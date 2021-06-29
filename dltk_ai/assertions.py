@@ -160,7 +160,7 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
             input_value = user_input_params[key]
 
             expected_datatype = algorithm_params[key]['datatype']
-            print(key)
+
             # None input flag
             if algorithm_params[key]['default'] == None:
                 if input_value == None:
