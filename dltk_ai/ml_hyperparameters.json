@@ -1724,7 +1724,8 @@
 						"default": false,
 						"datatype": "str",
 						"value": [
-							true
+							true,
+							false
 						]
 					},
 					"random_state": {
@@ -1855,7 +1856,7 @@
 						"default": 0.001,
 						"datatype": "float",
 						"compare_type": "condition",
-						"conditiṀon": {
+						"condition": {
 							"symbol": ">=",
 							"value": 0.0
 						}
@@ -3041,7 +3042,7 @@
 						"compare_type": "condition",
 						"condition": {
 							"symbol": ">=",
-							"value": 0
+							"value": -1
 						}
 					},
 					"max_after_balance_size": {
@@ -3667,7 +3668,7 @@
 					"balance_classes": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3675,7 +3676,7 @@
 					"binomial_double_trees": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3683,7 +3684,7 @@
 					"build_tree_one_node": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3691,7 +3692,7 @@
 					"calibrate_model": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3714,7 +3715,7 @@
 					"check_constant_response": {
 						"default": true,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3778,7 +3779,7 @@
 					"keep_cross_validation_fold_assignment": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3786,7 +3787,7 @@
 					"keep_cross_validation_models": {
 						"default": true,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3794,7 +3795,7 @@
 					"keep_cross_validation_predictions": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -3907,7 +3908,7 @@
 					},
 					"r2_stopping": {
 						"default": -1.7976,
-						"datatype": "int",
+						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
 							"symbol": "<=>",
@@ -3926,7 +3927,7 @@
 					"score_each_iteration": {
 						"default": false,
 						"datatype": "str",
-						"values": [
+						"value": [
 							true,
 							false
 						]
@@ -4052,7 +4053,7 @@
 				"balance_classes": {
 					"default": false,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4060,7 +4061,7 @@
 				"compute_metrics": {
 					"default": true,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4105,7 +4106,7 @@
 				"ignore_const_cols": {
 					"default": true,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4113,7 +4114,7 @@
 				"keep_cross_validation_fold_assignment": {
 					"default": false,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4121,7 +4122,7 @@
 				"keep_cross_validation_models": {
 					"default": true,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4129,7 +4130,7 @@
 				"keep_cross_validation_predictions": {
 					"default": false,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
@@ -4187,7 +4188,7 @@
 				"score_each_iteration": {
 					"default": false,
 					"datatype": "str",
-					"values": [
+					"value": [
 						true,
 						false
 					]
