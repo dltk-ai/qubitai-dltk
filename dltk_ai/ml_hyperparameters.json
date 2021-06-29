@@ -4597,7 +4597,7 @@
 					]
 				},
 				"quantile_alpha": {
-					"default": 5,
+					"default": 0.5,
 					"datatype": "float",
 					"compare_type": "range",
 					"range": [
