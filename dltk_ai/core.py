@@ -351,16 +351,6 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-
-    def get_default_params(self,service,algorithm):
-        
-        with open('dltk_ai\ml_hyperparameters.json') as file:
-            hyperparameters = json.load(file)
-    
-        params = list(hyperparameters[service][algorithm].keys())
-        default_values = [hyperparameters[service][algorithm][i]['default'] for i in list(hyperparameters[service][algorithm].keys())]
-        return dict(zip(params,default_values))
-
     def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
 
         """
