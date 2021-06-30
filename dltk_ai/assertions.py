@@ -181,7 +181,6 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                 if expected_datatype == "float":
                     assert type(input_value) == float or type(input_value) == int, "{} should be a integer".format(key)
 
-                print(key)
                 compare_type = algorithm_params[key]['compare_type']
 
                 if compare_type == 'condition':
