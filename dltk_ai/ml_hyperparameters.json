@@ -1,7 +1,7 @@
 {
 	"scikit": {
 		"classification": {
-			"DecisionTree": {
+			"DecisionTrees": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html",
 				"params": {
 					"ccp_alpha": {
@@ -281,7 +281,7 @@
 					},
 					"n_jobs": {
 						"default": null,
-						"datatype": "exceot"
+						"datatype": "except"
 					},
 					"oob_score": {
 						"default": false,
@@ -578,7 +578,7 @@
 					}
 				}
 			},
-			"GradientBoostingMachine": {
+			"GradientBoostingMachines": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html",
 				"params": {
 					"ccp_alpha": {
@@ -1182,7 +1182,7 @@
 			}
 		},
 		"regression": {
-			"DecisionTree": {
+			"DecisionTrees": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html",
 				"params": {
 					"ccp_alpha": {
@@ -1485,7 +1485,7 @@
 					}
 				}
 			},
-			"GradientBoostingMachine": {
+			"GradientBoostingMachines": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html",
 				"params": {
 					"alpha": {

@@ -15,48 +15,48 @@ class TestScikitClassificationAlgo(unittest.TestCase):
 
     def test_decision_tree_1(self):
         # default params
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 0.0,'class_weight': None,'criterion':'gini','max_depth': None,'max_features': None, 'max_leaf_nodes': None,'min_impurity_decrease': 0.0,'min_samples_leaf': 1,'min_samples_split': 2,'min_weight_fraction_leaf': 0.0,'splitter': 'best'}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_2(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 0.5,'criterion': 'gun'}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_3(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'max_depth': 0.5,'max_features': 'gun','max_leaf_nodes': 1.0}
         # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_4(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'max_depth': 5,'max_features': 'gun','max_leaf_nodes': 2}
         # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_5(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'min_impurity_decrease': -0.5,'min_samples_leaf': 'gun','min_samples_split': 1}
         # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_6(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'min_impurity_decrease': 0.5,'min_samples_leaf': 0.7,'min_samples_split': 1}
         # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_7(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'min_impurity_decrease': 0.5,'min_samples_leaf': 0.3,'min_samples_split': 1}
         # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_decision_tree_8(self):
-        algorithm = "DecisionTree"
+        algorithm = "DecisionTrees"
         params = {'min_weight_fraction_leaf': 0.5,'splitter': 'best'}
         # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
@@ -384,106 +384,106 @@ class TestScikitClassificationAlgo(unittest.TestCase):
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-# ------------- GradientBoostingMachines -------------------- #
+# ------------- GradientBoostingMachiness -------------------- #
 
     def test_gbm_1(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 0.0,'criterion': 'friedman_mse','init': None,'learning_rate': 0.1,'loss': 'deviance','max_depth': 3,'max_features': None,'max_leaf_nodes': None,'min_impurity_decrease': 0.0,'min_impurity_split': None,'min_samples_leaf': 1,'min_samples_split': 2,'min_weight_fraction_leaf': 0.0,'n_estimators': 100,'n_iter_no_change': None,'random_state': None,'subsample': 1.0,'tol': 0.0001,'validation_fraction': 0.1,'verbose': 0,'warm_start': False}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_2(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': -1.9}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_3(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'somethingrandom'}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_4(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential'}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_5(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 0}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_6(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 2.3}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_7(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":-3}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_8(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":-3}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_8(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":3, "min_samples_leaf":0.5}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_9(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":3, "min_samples_leaf":0.5,"min_samples_split":4}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_10(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":3, "min_samples_leaf":0.7,"min_samples_split":0}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_11(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "min_impurity_split":3, "min_samples_leaf":1,"min_samples_split":-10}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_12(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "n_iter_no_change":0}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_13(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "n_iter_no_change":1,"subsample":2.6}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_14(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,'criterion': 'mse', 'loss': 'exponential','max_depth': 2,'max_leaf_nodes': 5, "min_impurity_decrease":2.3, "n_iter_no_change":1,"subsample":0.6}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_15(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,"validation_fraction":30}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_gbm_15(self):
-        algorithm = "GradientBoostingMachine"
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 1.3,"validation_fraction":0.5}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
@@ -533,8 +533,8 @@ class TestScikitClassificationAlgo(unittest.TestCase):
         params = {'alpha': 1.0, 'class_prior': None, 'fit_prior': True}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachines_1(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachiness_1(self):
+        algorithm = "GradientBoostingMachines"
         params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1, 'loss': 'deviance',
                   'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0,
                   'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2,
@@ -700,37 +700,37 @@ class TestScikitRegressionAlgo(unittest.TestCase):
         self.service = "regression"
         pass
 
-    # ----------------- DecisionTrees -------------------#
-    def test_decisiontree_1(self):
-        algorithm = "DecisionTree"
+    # ----------------- DecisionTreess -------------------#
+    def test_DecisionTrees_1(self):
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 0.0, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
                   'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_decisiontree_2(self):
-        algorithm = "DecisionTree"
+    def test_DecisionTrees_2(self):
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': -0.3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
                   'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_decisiontree_3(self):
-        algorithm = "DecisionTree"
+    def test_DecisionTrees_3(self):
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': -1,
                   'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_decisiontree_4(self):
-        algorithm = "DecisionTree"
+    def test_DecisionTrees_4(self):
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 0.5,
                   'min_samples_split': -2, 'min_weight_fraction_leaf': 0.0, 'random_state': None, 'splitter': 'best'}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_decisiontree_5(self):
-        algorithm = "DecisionTree"
+    def test_DecisionTrees_5(self):
+        algorithm = "DecisionTrees"
         params = {'ccp_alpha': 3, 'criterion': 'mse', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 0.5,
                   'min_samples_split': 0.3, 'min_weight_fraction_leaf': 0.4, 'random_state': None, 'splitter': 'best'}
@@ -823,9 +823,9 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    # ----------------- GradientBoostingMachine -------------------#
-    def test_gradientboostingmachine_1(self):
-        algorithm = "GradientBoostingMachine"
+    # ----------------- GradientBoostingMachines -------------------#
+    def test_GradientBoostingMachines_1(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -834,8 +834,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_2(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_2(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': -0.9, 'ccp_alpha': 0.06, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -844,8 +844,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_3(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_3(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': -0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -854,8 +854,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_4(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_4(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 56,
                   'loss': 'ls', 'max_depth': -3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -864,8 +864,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_5(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_5(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -874,8 +874,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_6(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_6(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -884,8 +884,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': -0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_7(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_7(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1,
                   'loss': 'ls', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
@@ -894,8 +894,8 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
-    def test_gradientboostingmachine_8(self):
-        algorithm = "GradientBoostingMachine"
+    def test_GradientBoostingMachines_8(self):
+        algorithm = "GradientBoostingMachines"
         params = {'alpha': 0.9, 'ccp_alpha': 6, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 56,
                   'loss': 'ls', 'max_depth': 39, 'max_features': None, 'max_leaf_nodes': None,
                   'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1,
