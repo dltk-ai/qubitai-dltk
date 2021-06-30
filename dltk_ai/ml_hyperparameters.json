@@ -78,7 +78,7 @@
 							0.0,
 							0.1
 						],
-						"default": 1
+						"default": 2
 					},
 					"min_weight_fraction_leaf": {
 						"datatype": "float",
