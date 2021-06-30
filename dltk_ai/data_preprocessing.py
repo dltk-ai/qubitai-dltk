@@ -271,101 +271,91 @@ def impute_missing_value(dataframe, columns, imputer="univariate_imputation", me
         raise ValueError("Select method for Missing-value to be applied on given Dataset")
 
 
-def treat_outliers(dataframe, column, **kwargs):
+def treat_outliers(dataframe, columns, method, value, **kwargs):
     """
     Parameters:
 
     dataframe: Pandas DataFrame
-    column: list of columns/column to treat outliers
+    columns: list of columnss/columns to treat outliers
     **kwrags - Default - Statistic - mean
         select any one of the below parameters - statistic/value/remove
         remove : True/False - flag to delete the rows with outliers
         statistic - min/max/mean/median/quantilevalue
         value - replaces outliers with user specified value
     """
-    dataframe_duplicate = dataframe.copy()
-    # params in kwargs
-    function_args_list = ['remove', 'value', 'statistic', 'higher', 'lower']
-    user_input_args_list = list(kwargs.keys())
-    args_check_flag = all(elem in function_args_list for elem in user_input_args_list)
 
-    if args_check_flag == False:
-        raise ValueError('please choose a valid argument')
-    datatype_check_flag = all(
-        [True if (dataframe_duplicate[i].dtypes == 'int64' or dataframe_duplicate[i].dtypes == 'float64') else False for
-         i in column])
-    if not datatype_check_flag:
-        raise Exception('function not applicable for columns of type category')
+    assert method in ["remove", "statistic", "value"], "method should be remove/statistic/value"
 
-    missing_value_check_flag = all([True if dataframe_duplicate[i].isnull().sum() > 1 else False for i in column])
-    if missing_value_check_flag:
-        raise ValueError('Contains missing values - please use missing_data function to fill missing values')
+    # To check if columns list provided  by user exists in the dataframe
+    if type(columns) == str:
+        columns = [columns]
+    for column in columns:
+        assert column in dataframe.columns, "Please enter valid column name from the DataFrame"
 
-    remove = kwargs.get('remove', False)  # takes the given value of remove flag
+    for variable in columns:
+        assert (dataframe[variable].dtypes == 'int64' or dataframe[
+            variable].dtypes == 'float64'), "function not applicable for columnss of type category"
+        assert dataframe[
+                   variable].isnull().sum() == 0, "Contains missing values - please use impute_missing_value function to fill missing values"
 
-    upper = kwargs.get('upper', True)
+    upper = kwargs.get('higher', True)
 
     lower = kwargs.get('lower', True)
 
-    new_column = []
-    for i in column:
+    for column in columns:
 
-        higher_outlier = dataframe_duplicate[i].quantile(0.75) + 1.5 * (
-                dataframe_duplicate[i].quantile(0.75) - dataframe_duplicate[i].quantile(0.25))
+        higher_outlier = dataframe[column].quantile(0.75) + 1.5 * (
+                dataframe[column].quantile(0.75) - dataframe[column].quantile(0.25))
 
-        lower_outlier = dataframe_duplicate[i].quantile(0.25) - 1.5 * (
-                dataframe_duplicate[i].quantile(0.75) - dataframe_duplicate[i].quantile(0.25))
+        lower_outlier = dataframe[column].quantile(0.25) - 1.5 * (
+                dataframe[column].quantile(0.75) - dataframe[column].quantile(0.25))
 
-        if remove:
+        if method == "remove":
 
-            if kwargs['remove'] not in [True, False]: raise ValueError('remove should be either True/False')
+            assert value in [True, False], "value should be True or False"
 
             if upper:
-                dataframe_duplicate = dataframe_duplicate[dataframe_duplicate[i] <= higher_outlier]
+                dataframe = dataframe[dataframe[column] <= higher_outlier]
             if lower:
-                dataframe_duplicate = dataframe_duplicate[dataframe_duplicate[i] >= lower_outlier]
+                dataframe = dataframe[dataframe[column] >= lower_outlier]
         else:
-            if 'value' in kwargs:
+            if method == 'value':
 
-                if type(kwargs['value']) == str:
-                    raise ValueError('value should be a integer or float')
-                value = kwargs['value']
-            elif 'statistic' in kwargs:
-                if kwargs['statistic'] in ['min', 'max', 'mean', 'median'] or type(kwargs['statistic']) == int or type(
-                        kwargs['statistic']) == float:
-                    pass
-                else:
-                    raise ValueError('statistic should be min/max/mean/median or a quantile value between 0 and 1')
-                minimum = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].min()
-                maximum = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].max()
-                mean = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].mean()
-                median = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].median()
-                quantile_value = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].quantile(
-                    kwargs['statistic']) if (
-                        type(kwargs['statistic']) == int or type(kwargs['statistic']) == float) else 0
+                assert type(value) == int, "value should be a number"
 
-                value = minimum if kwargs['statistic'] == 'min' else maximum if kwargs[
-                                                                                    'statistic'] == 'maximum' else mean if \
-                    kwargs['statistic'] == 'mean' else median if kwargs[
-                                                                     'statistic'] == 'median' else quantile_value if type(
-                    kwargs['statistic']) == int or type(kwargs['statistic']) == float else 0
+                replace_value = value
+
+            elif method == 'statistic':
+
+                assert (value in ['min', 'max', 'mean',
+                                  'median'] or 0 <= value <= 1), "statistic should be min/max/mean/median or a quantile value between 0 and 1"
+
+                minimum = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].min()
+                maximum = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].max()
+                mean = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].mean()
+                median = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].median()
+                quantile_value = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].quantile(
+                    value) if type(value) == int or type(value) == float else 0
+
+                replace_value = minimum if value == 'min' else maximum if value == 'maximum' else mean if value == 'mean' else median if value == 'median' else quantile_value if type(
+                    value) == int or type(value) == float else 0
             else:
-                value = dataframe_duplicate[i][
-                    (dataframe_duplicate[i] > lower_outlier) & (dataframe_duplicate[i] < higher_outlier)].mean()
+                value = dataframe[column][
+                    (dataframe[column] > lower_outlier) & (dataframe[column] < higher_outlier)].mean()
 
             if upper:
-                dataframe_duplicate[i] = np.where(dataframe_duplicate[i] >= higher_outlier, value,
-                                                  dataframe_duplicate[i])
+                dataframe[column] = np.where(dataframe[column] >= higher_outlier, replace_value,
+                                                  dataframe[column])
             if lower:
-                dataframe_duplicate[i] = np.where(dataframe_duplicate[i] <= lower_outlier, value,
-                                                  dataframe_duplicate[i])
+                dataframe[column] = np.where(dataframe[column] <= lower_outlier, replace_value,
+                                                  dataframe[column])
 
-    return dataframe_duplicate
+    return dataframe
 
 
 # Function for Converting datatype of the dataset
