@@ -281,7 +281,7 @@
 					},
 					"n_jobs": {
 						"default": null,
-						"datatype": "exceot"
+						"datatype": "except"
 					},
 					"oob_score": {
 						"default": false,
