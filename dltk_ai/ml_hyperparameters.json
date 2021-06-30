@@ -2011,10 +2011,6 @@
 							"value": 0
 						}
 					},
-					"-G": {
-						"default": false,
-						"datatype": "except"
-					},
 					"-A": {
 						"default": false,
 						"datatype": "except"

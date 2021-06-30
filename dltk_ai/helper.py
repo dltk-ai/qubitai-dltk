@@ -37,9 +37,9 @@ def get_ml_model_info(info_about, library=None, task=None, algorithm=None):
             supported_hyperparameters_info = model_info[library][task][algorithm]['params']
 
             print(f"Supported hyperparameters for {algorithm.upper()} algorithm in {library.upper()} library are: \n ")
-            print('%-55s%-30s%-6s' % ("Parameter", "Default Value", "Data Type"))
+            print('%-55s%-30s' % ("Parameter", "Default Value"))
             for param_name, param_info in supported_hyperparameters_info.items():
-                print('%-55s%-30s%-6s' % (param_name, param_info['default'], param_info['datatype']))
+                print('%-55s%-30s' % (param_name, param_info['default']))
 
             print(f"\nfor more info please refer {model_info[library][task][algorithm]['reference_link']}")
 

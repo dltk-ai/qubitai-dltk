@@ -24,7 +24,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_multilayer_perceptron_1(self):
         algorithm = "MultilayerPerceptron"
         service = "classification"
-        params = {'-L': 0.4,'-M': 0.5,'-N': 200,'-V': 50,'-S': 1,'-E': 21,'-G': False,'-A': False,'-B': False,'-H': "a",'-C': False,'-I': False,'-R': False,'-D': False}
+        params = {'-L': 0.4,'-M': 0.5,'-N': 200,'-V': 50,'-S': 1,'-E': 21,'-A': False,'-B': False,'-H': "a",'-C': False,'-I': False,'-R': False,'-D': False}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
