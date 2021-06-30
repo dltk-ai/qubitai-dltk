@@ -2236,10 +2236,6 @@
 							"value": 0
 						}
 					},
-					"-G": {
-						"default": "1/k",
-						"datatype": "except"
-					},
 					"-R": {
 						"default": 0,
 						"datatype": "float",
@@ -2358,30 +2354,19 @@
 					"-D": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.DecisionStump",
-						"datatype": "except"
 					}
 				}
 			},
 			"AttributeSelectedClassifier": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AttributeSelectedClassifier.html",
 				"params": {
-					"-E": {
-						"default": "weka.attributeSelection.CfsSubsetEval",
-						"datatype": "except"
-					},
+
 					"-S": {
 						"default": false,
 						"datatype": "except"
 					},
 					"-D": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.J48",
 						"datatype": "except"
 					},
 					"-U": {
@@ -2502,10 +2487,6 @@
 						"default": false,
 						"datatype": "except"
 					},
-					"-W": {
-						"default": "weka.classifiers.trees.REPTree",
-						"datatype": "except"
-					},
 					"-M": {
 						"default": 2,
 						"datatype": "int",
@@ -2576,10 +2557,7 @@
 			"DecisionTable": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/rules/DecisionTable.html",
 				"params": {
-					"-S": {
-						"default": "weka.attributeSelection.BestFirst",
-						"datatype": "except"
-					},
+
 					"-X": {
 						"default": 1,
 						"datatype": "int",
@@ -2653,10 +2631,6 @@
 					},
 					"-X": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-A": {
-						"default": "weka.core.neighboursearch.LinearNNSearch",
 						"datatype": "except"
 					}
 				}
@@ -2802,14 +2776,6 @@
 							"value": 0
 						}
 					},
-					"-K": {
-						"default": "weka.classifiers.functions.supportVector.PolyKernel",
-						"datatype": "except"
-					},
-					"-claibrator": {
-						"default": "weka.classifiers.functions.Logistic",
-						"datatype": "except"
-					},
 					"-output-debug-info": {
 						"default": false,
 						"datatype": "except"
@@ -2895,10 +2861,6 @@
 					},
 					"-D": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.DecisionStump",
 						"datatype": "except"
 					}
 				}
