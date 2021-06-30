@@ -28,7 +28,7 @@ def get_ml_model_info(info_about, library=None, task=None, algorithm=None):
             assert task in model_info[library], f"Please provide 'task' name out of {list(model_info[library].keys())}"
             print(f"Supported algorithms for {task.upper()} task in {library.upper()} library are:")
             for algo_name, _ in model_info[library][task].items():
-                print(f"\n algorithm : {algo_name},\n 'reference link': {model_info[library][task][algo_name]['reference_link']}")
+                print(f"\n algorithm : {algo_name},\n reference link: {model_info[library][task][algo_name]['reference_link']}")
 
         elif info_about == "hyperparameters":
             assert library in model_info, f"Please provide 'library' name out of {list(model_info.keys())}"

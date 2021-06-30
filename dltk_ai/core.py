@@ -372,13 +372,13 @@ class DltkAiClient:
         
         """
 
-
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label, train_percentage)
 
-        hyper_parameter_flag = hyper_parameter_check(library,service,algorithm, params)
-
-        assert hyper_parameter_flag == True, "Please check the params, training failed due to incorrect values"
+        # if additional parameters passed, check whether those are valid or not
+        if params is not None:
+            hyper_parameter_flag = hyper_parameter_check(library, service, algorithm, params)
+            assert hyper_parameter_flag, "Please check the params, training failed due to incorrect values"
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}

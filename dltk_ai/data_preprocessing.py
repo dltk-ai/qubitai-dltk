@@ -9,6 +9,7 @@ from sklearn import manifold
 from sklearn.decomposition import FactorAnalysis, TruncatedSVD, PCA, FastICA
 from sklearn.ensemble import ExtraTreesRegressor, ExtraTreesClassifier, RandomForestClassifier, RandomForestRegressor
 from sklearn.feature_selection import SequentialFeatureSelector
+from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import SimpleImputer, IterativeImputer, KNNImputer
 from sklearn.linear_model import BayesianRidge, LinearRegression, LogisticRegression
 # Importing libraries for Non-Linear Dimensionality Reduction
@@ -20,7 +21,6 @@ from sklearn.preprocessing import MinMaxScaler, MaxAbsScaler, RobustScaler, Norm
     OrdinalEncoder, StandardScaler, QuantileTransformer, PowerTransformer, FunctionTransformer
 from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, ExtraTreeRegressor
 from xgboost import XGBClassifier, XGBRegressor
-
 
 # Importing Sklearn modules for Missing Value Imputation
 # Importing Sklearn module for Feature Selection
