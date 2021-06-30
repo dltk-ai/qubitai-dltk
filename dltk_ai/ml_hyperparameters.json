@@ -578,7 +578,7 @@
 					}
 				}
 			},
-			"GradientBoostingMachine": {
+			"GradientBoostingMachines": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html",
 				"params": {
 					"ccp_alpha": {
@@ -1485,7 +1485,7 @@
 					}
 				}
 			},
-			"GradientBoostingMachine": {
+			"GradientBoostingMachines": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html",
 				"params": {
 					"alpha": {
