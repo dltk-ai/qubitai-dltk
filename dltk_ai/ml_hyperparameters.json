@@ -2,7 +2,7 @@
 	"scikit": {
 		"classification": {
 			"DecisionTree": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html",
 				"params": {
 					"ccp_alpha": {
 						"datatype": "float",
@@ -100,7 +100,7 @@
 				}
 			},
 			"RandomForest": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html",
 				"params": {
 					"bootstrap": {
 						"default": true,
@@ -240,7 +240,7 @@
 				}
 			},
 			"Bagging": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html",
 				"params": {
 					"base_estimator": {
 						"default": null,
@@ -306,7 +306,7 @@
 				}
 			},
 			"ExtraTrees": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html",
 				"params": {
 					"bootstrap": {
 						"default": false,
@@ -444,7 +444,7 @@
 				}
 			},
 			"KNearestNeighbors": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html",
 				"params": {
 					"algorithm": {
 						"default": "auto",
@@ -514,7 +514,7 @@
 				}
 			},
 			"AdaBoost": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html",
 				"params": {
 					"algorithm": {
 						"default": "SAMME.R",
@@ -553,7 +553,7 @@
 				}
 			},
 			"NaiveBayesMultinomial": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html",
 				"params": {
 					"alpha": {
 						"default": 1.0,
@@ -579,7 +579,7 @@
 				}
 			},
 			"GradientBoostingMachine": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html",
 				"params": {
 					"ccp_alpha": {
 						"default": 0.0,
@@ -743,7 +743,7 @@
 					}
 				}
 			},
-			"XGradientBoosting": {"reference_link": "" ,"params":{
+			"XGradientBoosting": {"reference_link": "https://xgboost.readthedocs.io/en/latest/python/python_api.html#" ,"params":{
 		"objective": {
 			"default": "binary:logistic",
 			"datatype": "except"
@@ -953,7 +953,7 @@
 		}
 	}},
 			"SupportVectorMachines": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html",
 				"params": {
 					"C": {
 						"default": 1.0,
@@ -1065,7 +1065,7 @@
 				}
 			},
 			"LogisticRegression": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html",
 				"params": {
 					"C": {
 						"default": 1.0,
@@ -1183,7 +1183,7 @@
 		},
 		"regression": {
 			"DecisionTree": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html",
 				"params": {
 					"ccp_alpha": {
 						"default": 0.0,
@@ -1284,7 +1284,7 @@
 				}
 			},
 			"RandomForest": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html",
 				"params": {
 					"bootstrap": {
 						"default": true,
@@ -1420,7 +1420,7 @@
 				}
 			},
 			"Bagging": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html",
 				"params": {
 					"base_estimator": {
 						"default": null,
@@ -1486,7 +1486,7 @@
 				}
 			},
 			"GradientBoostingMachine": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html",
 				"params": {
 					"alpha": {
 						"default": 0.9,
@@ -1659,7 +1659,7 @@
 				}
 			},
 			"ExtraTrees": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html",
 				"params": {
 					"bootstrap": {
 						"default": false,
@@ -1796,7 +1796,7 @@
 				}
 			},
 			"AdaBoost": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html",
 				"params": {
 					"base_estimator": {
 						"default": null,
@@ -1836,7 +1836,7 @@
 				}
 			},
 			"SupportVectorMachines": {
-				"reference_link": "",
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html",
 				"params": {
 					"C": {
 						"default": 1.0,
