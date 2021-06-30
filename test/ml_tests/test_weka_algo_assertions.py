@@ -15,7 +15,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_logistic_1(self):
         algorithm = "Logistic"
         service = "classification"
-        params = {'-D': True, '-S': False, '-R': True, '-M': 2}
+        params = { '-S': False, '-M': 2}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
@@ -68,7 +68,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_attribute_selected_classifier_1(self):
         algorithm = "AttributeSelectedClassifier"
         service = "classification"
-        params = { '-S': True, '-D': False,'-U':False,'-C':0.20,'-M':1,'-R':False,'-N':2,'-B':False,'-L':False,'-A':False,'-Q':1}
+        params = {  '-D': False,'-U':False,'-R':False,'-B':False,'-L':False,'-A':False}
         if hyper_parameter_check(self.library, service, algorithm, params):
             self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
         else:
@@ -81,7 +81,7 @@ class TestWekaAlgo(unittest.TestCase):
         service = "classification"
         params = {'-P': 50, '-O': True, '-print': False,
                   '-store-out-of-bag-predictions': False, '-output-out-of-bag-complexity-statistics': True, '-represent-copies-using-weights': True, '-S': 2, '-num-slots': 1, '-I': 2,
-                  '-D': False, '-M': 1, '-V': 0.1,'-N':1,'-L':-1,'-R':False}
+                  '-D': False, '-R':False}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 
@@ -99,7 +99,7 @@ class TestWekaAlgo(unittest.TestCase):
     def test_decision_table_1(self):
         algorithm = "DecisionTable"
         service = "classification"
-        params = {'-X': 2, '-E': 'mae','-I':True,'-R':True,'-P':False,'-D':0,'-N':3}
+        params = {'-X': 2, '-E': 'mae','-I':True,'-R':True,'-P':False}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
 

@@ -1931,15 +1931,7 @@
 			"Logistic": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/Logistic.html",
 				"params": {
-					"-D": {
-						"default": false,
-						"datatype": "except"
-					},
 					"-S": {
-						"default": false,
-						"datatype": "except"
-					},
-					"-R": {
 						"default": false,
 						"datatype": "except"
 					},
@@ -2360,11 +2352,6 @@
 			"AttributeSelectedClassifier": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AttributeSelectedClassifier.html",
 				"params": {
-
-					"-S": {
-						"default": false,
-						"datatype": "except"
-					},
 					"-D": {
 						"default": false,
 						"datatype": "except"
@@ -2373,36 +2360,9 @@
 						"default": false,
 						"datatype": "except"
 					},
-					"-C": {
-						"default": 0.25,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0.0
-						}
-					},
-					"-M": {
-						"default": 2,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
 					"-R": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-N": {
-						"default": 3,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 1
-						}
 					},
 					"-B": {
 						"default": false,
@@ -2415,16 +2375,9 @@
 					"-A": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-Q": {
-						"default": 1,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
 					}
+
+
 				}
 			},
 			"Bagging": {
@@ -2486,42 +2439,6 @@
 					"-D": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-M": {
-						"default": 2,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"-V": {
-						"default": 0.001,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0.0
-						}
-					},
-					"-N": {
-						"default": 3,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"-L": {
-						"default": -1,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": -1
-						}
 					},
 					"-R": {
 						"default": false,
@@ -2587,16 +2504,6 @@
 					},
 					"-P": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-D": {
-						"default": 1,
-						"datatype": "int",
-						"compare_type": "range",
-						"range": [0, 2]
-					},
-					"-N": {
-						"default": 5,
 						"datatype": "except"
 					}
 				}
