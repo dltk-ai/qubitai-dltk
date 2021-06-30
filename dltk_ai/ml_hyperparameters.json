@@ -3904,10 +3904,6 @@
 							"value": 1
 						}
 					},
-					"nfolds": {
-						"default": 0,
-						"datatype": "except"
-					},
 					"ntrees": {
 						"default": 50,
 						"datatype": "int",
@@ -3990,55 +3986,11 @@
 							"value": 0.0
 						}
 					},
-					"calibration_frame": {
-						"default": null,
-						"datatype": "except"
-					},
-					"checkpoint": {
-						"default": null,
-						"datatype": "except"
-					},
 					"class_sampling_factors": {
 						"default": null,
 						"datatype": "except"
 					},
-					"custom_metric_func": {
-						"default": null,
-						"datatype": "except"
-					},
-					"export_checkpoints_dir": {
-						"default": null,
-						"datatype": "except"
-					},
-					"ignore_const_cols": {
-						"default": null,
-						"datatype": "except"
-					},
-					"ignored_columns": {
-						"default": null,
-						"datatype": "except"
-					},
-					"model_id": {
-						"default": null,
-						"datatype": "except"
-					},
-					"offset_column": {
-						"default": null,
-						"datatype": "except"
-					},
-					"response_column": {
-						"default": null,
-						"datatype": "except"
-					},
 					"sample_rate_per_class": {
-						"default": null,
-						"datatype": "except"
-					},
-					"seed": {
-						"default": null,
-						"datatype": "except"
-					},
-					"weights_column": {
 						"default": null,
 						"datatype": "except"
 					}
