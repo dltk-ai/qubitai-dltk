@@ -1,49 +1,36 @@
 # Importing Libraries for performing Exploratory Data Analysis on dataset
-import pandas as pd
-from pandas_profiling import ProfileReport
 import dtale
-
-# Importing Sklearn modules for Feature Scaling 
-from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler, RobustScaler, Normalizer, QuantileTransformer, PowerTransformer, FunctionTransformer, normalize, LabelEncoder, OrdinalEncoder, StandardScaler
-
-# Importing Sklearn modules for Feature Transformation 
-from sklearn.preprocessing import QuantileTransformer
-from sklearn.preprocessing import PowerTransformer
-from sklearn.preprocessing import FunctionTransformer
-
-# Importing Sklearn modules for Missing Value Imputation
-
-from sklearn.experimental import enable_iterative_imputer
-from sklearn.impute import SimpleImputer, IterativeImputer, KNNImputer
-from sklearn.experimental import enable_iterative_imputer
-
-from sklearn.linear_model import BayesianRidge, LinearRegression, LogisticRegression
-from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, ExtraTreeRegressor
-from sklearn.ensemble import ExtraTreesRegressor, ExtraTreesClassifier, RandomForestClassifier, RandomForestRegressor
-from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
-
 import numpy as np
-
-# Importing Sklearn module for Feature Selection
-
-from sklearn.feature_selection import SequentialFeatureSelector
-from xgboost import XGBClassifier, XGBRegressor
-from sklearn.metrics import roc_auc_score, mean_squared_error
-
+import pandas as pd
+import umap
+from pandas_profiling import ProfileReport
+from sklearn import manifold
 # Importing Sklearn modules for Linear Dimensionality Reduction
 from sklearn.decomposition import FactorAnalysis, TruncatedSVD, PCA, FastICA
-
+from sklearn.ensemble import ExtraTreesRegressor, ExtraTreesClassifier, RandomForestClassifier, RandomForestRegressor
+from sklearn.feature_selection import SequentialFeatureSelector
+from sklearn.impute import SimpleImputer, IterativeImputer, KNNImputer
+from sklearn.linear_model import BayesianRidge, LinearRegression, LogisticRegression
 # Importing libraries for Non-Linear Dimensionality Reduction
 from sklearn.manifold import TSNE
-from sklearn import manifold 
-import umap
+from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
+# Importing Sklearn modules for Feature Scaling
+# Importing Sklearn modules for Feature Transformation
+from sklearn.preprocessing import MinMaxScaler, MaxAbsScaler, RobustScaler, Normalizer, normalize, LabelEncoder, \
+    OrdinalEncoder, StandardScaler, QuantileTransformer, PowerTransformer, FunctionTransformer
+from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, ExtraTreeRegressor
+from xgboost import XGBClassifier, XGBRegressor
 
 
+# Importing Sklearn modules for Missing Value Imputation
+# Importing Sklearn module for Feature Selection
 
-def read_data(file_name,header=0,sep=',',names=None,index_col=None,usecols=None,squeeze=False,mangle_dupe_cols=True,
-              dtype=None,engine=None,converters=None,true_values=None,false_values=None,skiprows=None,
-              skipfooter=0,nrows=None,na_values=None,keep_default_na=True,na_filter=True,verbose=False,
-              parse_dates=False,date_parser=None,thousands=None,comment=None):
+
+def read_data(file_name, header=0, sep=',', names=None, index_col=None, usecols=None, squeeze=False,
+              mangle_dupe_cols=True,
+              dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None,
+              skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False,
+              parse_dates=False, date_parser=None, thousands=None, comment=None):
     """
     Parameters:
     file_name: Complete path of the data file
@@ -72,26 +59,33 @@ def read_data(file_name,header=0,sep=',',names=None,index_col=None,usecols=None,
     comment: Indicates remainder of line should not be parsed. str, optional.
 
     """
-    file_type = 'csv' if file_name.endswith('.csv') else 'excel' if (file_name.endswith('.xlsx') or file_name.endswith('.xls')) else None
+    file_type = 'csv' if file_name.endswith('.csv') else 'excel' if (
+            file_name.endswith('.xlsx') or file_name.endswith('.xls')) else None
     if file_type == 'csv':
-        return pd.read_csv(filepath_or_buffer=file_name,sep= sep,header=header,names=names,index_col=index_col,usecols=usecols, 
-                           squeeze=squeeze,mangle_dupe_cols=mangle_dupe_cols,dtype=dtype,engine=engine,converters=converters,
-                           true_values=true_values,false_values=false_values,skiprows=skiprows,skipfooter=skipfooter,nrows=nrows,
-                           na_values=na_values,keep_default_na=keep_default_na,na_filter=na_filter,verbose=verbose,
-                           parse_dates=parse_dates,date_parser=date_parser,thousands=thousands,comment=comment)
-    elif file_type=='excel':
+        return pd.read_csv(filepath_or_buffer=file_name, sep=sep, header=header, names=names, index_col=index_col,
+                           usecols=usecols,
+                           squeeze=squeeze, mangle_dupe_cols=mangle_dupe_cols, dtype=dtype, engine=engine,
+                           converters=converters,
+                           true_values=true_values, false_values=false_values, skiprows=skiprows, skipfooter=skipfooter,
+                           nrows=nrows,
+                           na_values=na_values, keep_default_na=keep_default_na, na_filter=na_filter, verbose=verbose,
+                           parse_dates=parse_dates, date_parser=date_parser, thousands=thousands, comment=comment)
+    elif file_type == 'excel':
         if file_name.endswith('.xlsx'):
             engine = 'openpyxl'
-        return pd.read_excel(io=file_name,header=header,names=names,index_col=index_col,usecols=usecols, squeeze=squeeze,
-                             mangle_dupe_cols=mangle_dupe_cols,dtype=dtype,engine=engine,converters=converters,true_values=true_values,
-                             false_values=false_values,skiprows=skiprows,skipfooter=skipfooter,nrows=nrows,na_values=na_values,
-                             keep_default_na=keep_default_na,na_filter=na_filter,verbose=verbose,parse_dates=parse_dates,
-                             date_parser=date_parser,thousands=thousands,comment=comment)
+        return pd.read_excel(io=file_name, header=header, names=names, index_col=index_col, usecols=usecols,
+                             squeeze=squeeze,
+                             mangle_dupe_cols=mangle_dupe_cols, dtype=dtype, engine=engine, converters=converters,
+                             true_values=true_values,
+                             false_values=false_values, skiprows=skiprows, skipfooter=skipfooter, nrows=nrows,
+                             na_values=na_values,
+                             keep_default_na=keep_default_na, na_filter=na_filter, verbose=verbose,
+                             parse_dates=parse_dates,
+                             date_parser=date_parser, thousands=thousands, comment=comment)
 
 
 # Function for performing Exploratory Data Analysis on given dataset
-def data_profile(dataframe,library="dtale",save_html=False,html_path=None):
-
+def data_profile(dataframe, library="dtale", save_html=False, html_path=None):
     """
     This function is used for performing Exploratory Data Analysis for given dataset.
 
@@ -105,168 +99,176 @@ def data_profile(dataframe,library="dtale",save_html=False,html_path=None):
     
     Returns:
     Data Profiling report for given dataset
-    """ 
+    """
 
-   # To check if columns dataframe is not empty list 
+    # To check if columns dataframe is not empty list
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
 
-    
     # To make sure user provide with Pandas Dataframe for EDA Libraries to execute
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
-    
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported libraries
     allowed_libraries = ["pandas-profiling", "autoviz", "dtale"]
     library = library.lower()
     assert library in allowed_libraries, f"Please select *Library* from {allowed_libraries}"
 
-    if library =="pandas-profiling":
-        if save_html==True:
-            design_report= ProfileReport(dataframe)
+    if library == "pandas-profiling":
+        if save_html:
+            design_report = ProfileReport(dataframe)
             return design_report.to_file(output_file=html_path)
-        elif save_html== False:
-            design_report= ProfileReport(dataframe)
+        elif not save_html:
+            design_report = ProfileReport(dataframe)
             return design_report.to_notebook_iframe()
         else:
             raise ValueError("Please provide required parameters")
 
-
     elif library == "autoviz":
         from autoviz.AutoViz_Class import AutoViz_Class
         AV = AutoViz_Class()
-        return AV.AutoViz(filename="",dfte= dataframe)
+        return AV.AutoViz(filename="", dfte=dataframe)
 
     elif library == "dtale":
-        return dtale.show(dataframe,ignore_duplicate=True)
+        return dtale.show(dataframe, ignore_duplicate=True)
 
     else:
         # If library is not chosen for performing EDA, function raise error
         raise ValueError("Please Select libraries from {allowed_libraries} for creating Data Profile of your Dataset")
 
 
-# Function for Missing Value Imputation with given imputers: "Univariate_Imputation" and "Multivariate_Impuation" and in Multivariate Imputation two different method can be taken method=="Iterative Imputer" or method== KNN Imputer"
+# Function for Missing Value Imputation with given imputers: "Univariate_Imputation" and "Multivariate_Impuation" and
+# in Multivariate Imputation two different method can be taken method=="Iterative Imputer" or method== KNN Imputer"
 
-def impute_missing_value(dataframe,columns,imputer="univariate_imputation",method="iterative_imputer",inplace=True,strategy='mean',
-                        missing_values=np.nan,fill_value=None, verbose=0,copy=True, add_indicator=False,estimator=None,
-                        sample_posterior=False,max_iter=10,tol=0.001,n_nearest_features=None,initial_strategy='mean',
-                        imputation_order='ascending',skip_complete=False,min_value=None,max_value=None,random_state=None,
-                        n_neighbors=5,weights='uniform',metric='nan_euclidean'):
-  
-  """
-  This function is used for imputing Missing values of independent columns in the given dataset.
+def impute_missing_value(dataframe, columns, imputer="univariate_imputation", method="iterative_imputer", inplace=True,
+                         strategy='mean',
+                         missing_values=np.nan, fill_value=None, verbose=0, copy=True, add_indicator=False,
+                         estimator=None,
+                         sample_posterior=False, max_iter=10, tol=0.001, n_nearest_features=None,
+                         initial_strategy='mean',
+                         imputation_order='ascending', skip_complete=False, min_value=None, max_value=None,
+                         random_state=None,
+                         n_neighbors=5, weights='uniform', metric='nan_euclidean'):
+    """
+    This function is used for imputing Missing values of independent columns in the given dataset.
 
-    Parameters:
+      Parameters:
 
-    dataframe : dataset in the form of pandas Dataframe.
-    columns : List of selected features from dataset for Imputing Missing Values.
-    imputer : Imputers from sklearn-library for Missing Value Imputation;
-              valid values: {"univariate_imputation","multivariate_Imputation"}.
-    method :  Method for Multivariate Imputation; valid values: {"Iterative Imputer" and "KNN Imputer"}
-    inplace : Boolean parameter; if True replace original values with Dataframe and if False then transformed selected column
-    missing_values: The placeholder for the missing values assigned to be np.nan as default for SimpleImputer function.
-    strategy: The imputation strategy; it can be mean,median,most_frequent or constant value for SimpleImputer function.
-    fill_value: When strategy == “constant”, fill_value is used to replace all occurrences of missing_values for SimpleImputer function.
-    verbose: Controls the verbosity of the imputer.
-    copy: boolean parameter, if True, a copy of X will be created. If False, imputation will be done in-place whenever possible.
-    add_indicator: If True, a MissingIndicator transform will stack onto output of the imputer’s transform. 
-    estimator: The estimator to use at each step of the round-robin imputation where for IterativeImputer,by default None.
-              valid values: {"BayesianRidge","DecisionTreeRegressor","ExtraTreesRegressor","KNeighborsRegressor","RandomForestRegressor"}
-    sample_posterior: Boolean parameter to check whether to sample from the (Gaussian) predictive posterior of the fitted estimator for each imputation for IterativeImputer.
-    max_iter: Maximum number of imputation rounds to perform before returning the imputations computed during the final round for IterativeImputer.
-    tol: Tolerance of the stopping condition for IterativeImputer. 
-    n_nearest_features: Number of other features to use to estimate the missing values of each feature column for IterativeImputer.
-    initial_strategy: Which strategy to use to initialize the missing values for IterativeImputer;Valid values: {“mean”, “median”, “most_frequent”, or “constant”}
-    imputation_order: The order in which the features will be imputed for IterativeImputer;Valid values: {“ascending”, “descending”, “roman”,"arabic" or “random”}
-    skip_complete: Boolean parameter, if True then features with missing values during transform which did not have any missing values during fit will be imputed with the initial imputation method only for IterativeImputer.
-    min_value: Minimum possible imputed value for IterativeImputer. 
-    max_value: Maximum possible imputed value for IterativeImputer.
-    random_state: The seed of the pseudo random number generator to use for IterativeImputer.
-    n_neighbors: Number of neighboring samples to use for imputation for KNNImputer.
-    weights: Weight function used in prediction for KNNImputer ;Valid values: {"uniform", "distance" or "callable"- a user-defined function which accepts an array of distances}
-    metric: Distance metric for searching neighbors for KNNImputer; Possible values:{'nan_euclidean','callable'}
-
-
-    Returns:
-    Dataframe with Imputed Missing values.
-  """
-
-  assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-
-  # To check if columns list is not empty list 
-  assert len(columns) > 0, "Please ensure column names is not an empty list, select atleast 1 feature"
-            
-  # To check if columns list provided  by user exists in the dataframe
-  for column in columns:
-      assert column in dataframe.columns, "Please enter valid column name from the DataFrame"
-            
-  # Check supported imputers
-  allowed_imputers = ["univariate_imputation","multivariate_imputation"]
-  imputer  = imputer.lower()
-  assert imputer  in allowed_imputers, f"Please select *Imputer* from {allowed_imputers}"
+      dataframe : dataset in the form of pandas Dataframe.
+      columns : List of selected features from dataset for Imputing Missing Values.
+      imputer : Imputers from sklearn-library for Missing Value Imputation;
+                valid values: {"univariate_imputation","multivariate_Imputation"}.
+      method :  Method for Multivariate Imputation; valid values: {"Iterative Imputer" and "KNN Imputer"}
+      inplace : Boolean parameter; if True replace original values with Dataframe and if False then transformed selected column
+      missing_values: The placeholder for the missing values assigned to be np.nan as default for SimpleImputer function.
+      strategy: The imputation strategy; it can be mean,median,most_frequent or constant value for SimpleImputer function.
+      fill_value: When strategy == “constant”, fill_value is used to replace all occurrences of missing_values for SimpleImputer function.
+      verbose: Controls the verbosity of the imputer.
+      copy: boolean parameter, if True, a copy of X will be created. If False, imputation will be done in-place whenever possible.
+      add_indicator: If True, a MissingIndicator transform will stack onto output of the imputer’s transform.
+      estimator: The estimator to use at each step of the round-robin imputation where for IterativeImputer,by default None.
+                valid values: {"BayesianRidge","DecisionTreeRegressor","ExtraTreesRegressor","KNeighborsRegressor","RandomForestRegressor"}
+      sample_posterior: Boolean parameter to check whether to sample from the (Gaussian) predictive posterior of the fitted estimator for each imputation for IterativeImputer.
+      max_iter: Maximum number of imputation rounds to perform before returning the imputations computed during the final round for IterativeImputer.
+      tol: Tolerance of the stopping condition for IterativeImputer.
+      n_nearest_features: Number of other features to use to estimate the missing values of each feature column for IterativeImputer.
+      initial_strategy: Which strategy to use to initialize the missing values for IterativeImputer;Valid values: {“mean”, “median”, “most_frequent”, or “constant”}
+      imputation_order: The order in which the features will be imputed for IterativeImputer;Valid values: {“ascending”, “descending”, “roman”,"arabic" or “random”}
+      skip_complete: Boolean parameter, if True then features with missing values during transform which did not have any missing values during fit will be imputed with the initial imputation method only for IterativeImputer.
+      min_value: Minimum possible imputed value for IterativeImputer.
+      max_value: Maximum possible imputed value for IterativeImputer.
+      random_state: The seed of the pseudo random number generator to use for IterativeImputer.
+      n_neighbors: Number of neighboring samples to use for imputation for KNNImputer.
+      weights: Weight function used in prediction for KNNImputer ;Valid values: {"uniform", "distance" or "callable"- a user-defined function which accepts an array of distances}
+      metric: Distance metric for searching neighbors for KNNImputer; Possible values:{'nan_euclidean','callable'}
 
 
-  if imputer == "univariate_imputation":
-    imputer1 = SimpleImputer(strategy=strategy, missing_values= missing_values, fill_value=fill_value,
-                            verbose=verbose, copy= copy, add_indicator=add_indicator) 
-    imputer1.fit_transform(dataframe[columns])
-    dataframe[columns] = imputer1.transform(dataframe[columns])
-    if inplace==True:
-        final_df= dataframe
-    else:
-        final_df= dataframe[columns]
-    return final_df
+      Returns:
+      Dataframe with Imputed Missing values.
+    """
 
-  elif imputer == "multivariate_imputation":
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
 
-    # Check supported methods
-    allowed_method = ["iterative_imputer","knn_imputer"]
-    method  = method.lower()
-    assert method in allowed_method, f"Please select *Method* from {allowed_method}"
+    # To check if columns list is not empty list
+    assert len(columns) > 0, "Please ensure column names is not an empty list, select atleast 1 feature"
 
-    # Check supported estimators
-    allowed_estimator = ["BayesianRidge","DecisionTreeRegressor","ExtraTreesRegressor","KNeighborsRegressor","RandomForestRegressor",None]
-    assert estimator in allowed_estimator, f"Please select *Estimator* from {allowed_estimator}"
+    # To check if columns list provided  by user exists in the dataframe
+    if type(columns) == str:
+        columns = [columns]
+    for column in columns:
+        assert column in dataframe.columns, "Please enter valid column name from the DataFrame"
 
-    if method=="iterative_imputer":
-        if (estimator == "BayesianRidge" or estimator == None):
-            imputer_estimator = BayesianRidge()
-        elif estimator == "DecisionTreeRegressor":
-            imputer_estimator = DecisionTreeRegressor()
-        elif estimator == "ExtraTreesRegressor":
-            imputer_estimator = ExtraTreesRegressor()
-        elif estimator == "KNeighborsRegressor":
-            imputer_estimator = KNeighborsRegressor()
-        elif estimator == "RandomForestRegressor":
-            imputer_estimator = RandomForestRegressor()
+    # Check supported imputers
+    allowed_imputers = ["univariate_imputation", "multivariate_imputation"]
+    imputer = imputer.lower()
+    assert imputer in allowed_imputers, f"Please select *Imputer* from {allowed_imputers}"
+
+    if imputer == "univariate_imputation":
+        imputer1 = SimpleImputer(strategy=strategy, missing_values=missing_values, fill_value=fill_value,
+                                 verbose=verbose, copy=copy, add_indicator=add_indicator)
+        imputer1.fit_transform(dataframe[columns])
+        dataframe[columns] = imputer1.transform(dataframe[columns])
+        if inplace:
+            final_df = dataframe
         else:
-            raise ValueError("Select estimator for Multivariate Missing value Imputation to be applied on given Dataset")
-            
-        imputer2 = IterativeImputer(estimator=imputer_estimator,missing_values= missing_values,sample_posterior=sample_posterior,max_iter=max_iter,
-        tol=tol,n_nearest_features=n_nearest_features,initial_strategy=initial_strategy,imputation_order=imputation_order,skip_complete=skip_complete,min_value=min_value,max_value=max_value,verbose=verbose,random_state=random_state,add_indicator=add_indicator)
-        imputer2.fit_transform(dataframe[columns])
-        dataframe[columns] = imputer2.transform(dataframe[columns])
-        if inplace==True:
-            final_df= dataframe
-        else:
-            final_df= dataframe[columns]
+            final_df = dataframe[columns]
         return final_df
-      
-    elif method=="knn_imputer":
-      imputer3 = KNNImputer(missing_values=missing_values,n_neighbors=n_neighbors,weights=weights,metric=metric,copy=copy,add_indicator=add_indicator)
-      imputer3.fit_transform(dataframe[columns])
-      dataframe[columns] = imputer3.transform(dataframe[columns])
-      if inplace==True:
-        final_df= dataframe
-      else:
-          final_df= dataframe[columns]
-      return final_df
-        
+
+    elif imputer == "multivariate_imputation":
+
+        # Check supported methods
+        allowed_method = ["iterative_imputer", "knn_imputer"]
+        method = method.lower()
+        assert method in allowed_method, f"Please select *Method* from {allowed_method}"
+
+        # Check supported estimators
+        allowed_estimator = ["BayesianRidge", "DecisionTreeRegressor", "ExtraTreesRegressor", "KNeighborsRegressor",
+                             "RandomForestRegressor", None]
+        assert estimator in allowed_estimator, f"Please select *Estimator* from {allowed_estimator}"
+
+        if method == "iterative_imputer":
+            if (estimator == "BayesianRidge" or estimator == None):
+                imputer_estimator = BayesianRidge()
+            elif estimator == "DecisionTreeRegressor":
+                imputer_estimator = DecisionTreeRegressor()
+            elif estimator == "ExtraTreesRegressor":
+                imputer_estimator = ExtraTreesRegressor()
+            elif estimator == "KNeighborsRegressor":
+                imputer_estimator = KNeighborsRegressor()
+            elif estimator == "RandomForestRegressor":
+                imputer_estimator = RandomForestRegressor()
+            else:
+                raise ValueError(
+                    "Select estimator for Multivariate Missing value Imputation to be applied on given Dataset")
+
+            imputer2 = IterativeImputer(estimator=imputer_estimator, missing_values=missing_values,
+                                        sample_posterior=sample_posterior, max_iter=max_iter,
+                                        tol=tol, n_nearest_features=n_nearest_features,
+                                        initial_strategy=initial_strategy, imputation_order=imputation_order,
+                                        skip_complete=skip_complete, min_value=min_value, max_value=max_value,
+                                        verbose=verbose, random_state=random_state, add_indicator=add_indicator)
+            imputer2.fit_transform(dataframe[columns])
+            dataframe[columns] = imputer2.transform(dataframe[columns])
+            if inplace:
+                final_df = dataframe
+            else:
+                final_df = dataframe[columns]
+            return final_df
+
+        elif method == "knn_imputer":
+            imputer3 = KNNImputer(missing_values=missing_values, n_neighbors=n_neighbors, weights=weights,
+                                  metric=metric, copy=copy, add_indicator=add_indicator)
+            imputer3.fit_transform(dataframe[columns])
+            dataframe[columns] = imputer3.transform(dataframe[columns])
+            if inplace:
+                final_df = dataframe
+            else:
+                final_df = dataframe[columns]
+            return final_df
+
+        else:
+            raise ValueError("Select method for Multivariate Missing value Imputation to be applied on given Dataset")
+
     else:
-        raise ValueError("Select method for Multivariate Missing value Imputation to be applied on given Dataset")
-
-  else:
-    raise ValueError("Select method for Missing-value to be applied on given Dataset")
-
+        raise ValueError("Select method for Missing-value to be applied on given Dataset")
 
 
 def treat_outliers(dataframe, column, **kwargs):
@@ -324,12 +326,13 @@ def treat_outliers(dataframe, column, **kwargs):
                 dataframe_duplicate = dataframe_duplicate[dataframe_duplicate[i] >= lower_outlier]
         else:
             if 'value' in kwargs:
-        
-                if type(kwargs['value']) == str: 
+
+                if type(kwargs['value']) == str:
                     raise ValueError('value should be a integer or float')
                 value = kwargs['value']
             elif 'statistic' in kwargs:
-                if kwargs['statistic'] in ['min', 'max', 'mean', 'median'] or type(kwargs['statistic']) == int or type(kwargs['statistic']) == float:
+                if kwargs['statistic'] in ['min', 'max', 'mean', 'median'] or type(kwargs['statistic']) == int or type(
+                        kwargs['statistic']) == float:
                     pass
                 else:
                     raise ValueError('statistic should be min/max/mean/median or a quantile value between 0 and 1')
@@ -365,10 +368,8 @@ def treat_outliers(dataframe, column, **kwargs):
     return dataframe_duplicate
 
 
-
 # Function for Converting datatype of the dataset
-def convert_dtypes(dataframe,column_datatypes):
-
+def convert_dtypes(dataframe, column_datatypes):
     """
     This function is used for converting Datatype as per user requirement for given dataset.
 
@@ -380,29 +381,28 @@ def convert_dtypes(dataframe,column_datatypes):
 
     Returns:
     Changed Datatype of Dataframe columns
-    """ 
+    """
 
     # To make sure user provide with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
 
-    # To check if columns dctionary is not empty list 
-    assert len(column_datatypes) > 0, "Please ensure that key-value pair is not empty dictionary, select atleast 1 key-value pair"
-
+    # To check if columns dctionary is not empty list
+    assert len(
+        column_datatypes) > 0, "Please ensure that key-value pair is not empty dictionary, select atleast 1 key-value pair"
 
     column_names = list(column_datatypes.keys())
     for column in column_names:
         dataframe[column] = dataframe[column].astype(column_datatypes[column])
-    print("Changed datatypes of Dataframe columns \n",dataframe.dtypes)
-    #return dataframe
+    print("Changed datatypes of Dataframe columns \n", dataframe.dtypes)
+    # return dataframe
 
 
+# Function for Feature Scaling with given methods:
+# "MinMaxScaler","StandardScaler","MaxAbsScaler","RobustScaler"and "Normalizer"
 
-
-# Function for Feature Scaling with given methods:"MinMaxScaler","StandardScaler","MaxAbsScaler","RobustScaler",and "Normalizer"
-
-def feature_scaling(dataframe,column_names,method="minmaxscaler",inplace=True,feature_range=(0,1),copy=True,clip=False,use_mean=True,
-                    use_std=True,use_centering=True, use_scaling=True, quantile_range=(25.0, 75.0),unit_variance=False,norm='l2'):
-    
+def feature_scaling(dataframe, column_names, method="minmaxscaler", inplace=True, feature_range=(0, 1), copy=True,
+                    clip=False, use_mean=True, use_std=True, use_centering=True, use_scaling=True,
+                    quantile_range=(25.0, 75.0), unit_variance=False, norm='l2'):
     """
     This function is used to normalize the range of independent features in dataset.
 
@@ -428,84 +428,90 @@ def feature_scaling(dataframe,column_names,method="minmaxscaler",inplace=True,fe
     """
 
     # To make sure user provide with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
 
     # To check if columns list is not empty list 
     assert len(column_names) > 0, "Please ensure column names is not an empty list, select atleast 1 feature"
-    
+
     # To check if columns list provided  by user exists in the dataframe
+    if type(column_names) == str:
+        column_names = [column_names]
     for column in column_names:
         assert column in dataframe.columns, "Please enter valid column name from the DataFrame"
-      
+
     # Check supported methods
-    allowed_methods = ["minmaxscaler","standardscaler","maxabsscaler","robustscaler","normalizer"]
+    allowed_methods = ["minmaxscaler", "standardscaler", "maxabsscaler", "robustscaler", "normalizer"]
     method = method.lower()
     assert method in allowed_methods, f"Please select *Scaling_Method* from {allowed_methods}"
 
     # Assertion for normalizer
-    allowed_norm = ["l1","l2"]
+    allowed_norm = ["l1", "l2"]
     norm = norm.lower()
     assert norm in allowed_norm, f"Please select *norm* from {allowed_norm}"
 
     df_scaled = dataframe.copy()
     features = df_scaled[column_names]
-    
-    if method=="minmaxscaler":
-        scaler1 = MinMaxScaler(feature_range,copy=copy)
+
+    if method == "minmaxscaler":
+        scaler1 = MinMaxScaler(feature_range, copy=copy)
         df_scaled[column_names] = scaler1.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    elif method=="standardscaler": 
-        scaler2 = StandardScaler(copy=copy, with_mean= use_mean, with_std= use_std)
+    elif method == "standardscaler":
+        scaler2 = StandardScaler(copy=copy, with_mean=use_mean, with_std=use_std)
         df_scaled[column_names] = scaler2.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    elif method=="maxabsscaler": 
+    elif method == "maxabsscaler":
         scaler3 = MaxAbsScaler(copy=copy)
         df_scaled[column_names] = scaler3.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    elif method=="robustscaler": 
-        scaler4 = RobustScaler(with_centering= use_centering, with_scaling= use_scaling, quantile_range=quantile_range, copy=copy)
+    elif method == "robustscaler":
+        scaler4 = RobustScaler(with_centering=use_centering, with_scaling=use_scaling, quantile_range=quantile_range,
+                               copy=copy)
         df_scaled[column_names] = scaler4.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    elif method=="normalizer":
-        scaler5 = Normalizer(copy=copy,norm=norm)
+    elif method == "normalizer":
+        scaler5 = Normalizer(copy=copy, norm=norm)
         df_scaled[column_names] = scaler5.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
     else:
         raise ValueError("Please select method from {allowed_methods} for Feature scaling")
 
 
-# Function for Feature Transformation with given methods:"Quantile Transformer","Power Transformation" and "Custom Transformation"
+# Function for Feature Transformation with given methods:
+# "Quantile Transformer","Power Transformation" and "Custom Transformation"
 
-def feature_transformation(dataframe,column_names,transformer="quantile_transformer",copy=True,output_distribution='uniform',n_quantiles=1000,
-                            ignore_implicit_zeros=False,subsample=1e5,random_state=None,method='yeo-johnson',standardize=True,func=None,
-                            inverse_func=None, validate=False, accept_sparse=False,check_inverse=True, kw_args=None, inv_kw_args=None,
-                            inplace=True):
-      
+def feature_transformation(dataframe, column_names, transformer="quantile_transformer", copy=True,
+                           output_distribution='uniform', n_quantiles=1000,
+                           ignore_implicit_zeros=False, subsample=1e5, random_state=None, method='yeo-johnson',
+                           standardize=True, func=None,
+                           inverse_func=None, validate=False, accept_sparse=False, check_inverse=True, kw_args=None,
+                           inv_kw_args=None,
+                           inplace=True):
     """
     This function is used for transforming set of independent feature in given dataset.
 
@@ -537,54 +543,57 @@ def feature_transformation(dataframe,column_names,transformer="quantile_transfor
     """
 
     # To make sure user provide with Pandas Dataframe
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
 
     # To check if columns list is not empty list 
     assert len(column_names) > 0, "Please ensure column names is not an empty list, select atleast 1 feature"
-    
+
     # To check if columns list provided  by user exists in the dataframe
     for column in column_names:
         assert column in dataframe.columns, "Please enter valid column name from the DataFrame"
 
     # Check supported transformers
-    allowed_transformer = ["quantile_transformer","power_transformer","custom_transformer"]
-    transformer  = transformer.lower()
+    allowed_transformer = ["quantile_transformer", "power_transformer", "custom_transformer"]
+    transformer = transformer.lower()
     assert transformer in allowed_transformer, f"Please select *Transformation_Method* from {allowed_transformer}"
 
     df_scaled = dataframe.copy()
     features = df_scaled[column_names]
 
-    if transformer=="quantile_transformer":
-        transformer1 = QuantileTransformer(n_quantiles=n_quantiles, output_distribution=output_distribution, 
+    if transformer == "quantile_transformer":
+        transformer1 = QuantileTransformer(n_quantiles=n_quantiles, output_distribution=output_distribution,
                                            ignore_implicit_zeros=ignore_implicit_zeros,
-                                           subsample=subsample, random_state=random_state, copy= copy)
+                                           subsample=subsample, random_state=random_state, copy=copy)
         df_scaled[column_names] = transformer1.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    if transformer=="power_transformer": 
-        transformer2 = PowerTransformer(method=method,standardize=standardize)
+    if transformer == "power_transformer":
+        transformer2 = PowerTransformer(method=method, standardize=standardize)
         df_scaled[column_names] = transformer2.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
-    elif transformer=="custom_transformer":
-        transformer3 = FunctionTransformer(func, inverse_func=inverse_func, validate=validate, accept_sparse=accept_sparse, check_inverse=check_inverse, kw_args=kw_args, inv_kw_args=inv_kw_args)
+    elif transformer == "custom_transformer":
+        transformer3 = FunctionTransformer(func, inverse_func=inverse_func, validate=validate,
+                                           accept_sparse=accept_sparse, check_inverse=check_inverse, kw_args=kw_args,
+                                           inv_kw_args=inv_kw_args)
         df_scaled[column_names] = transformer3.fit_transform(features.values)
-        if inplace==True:
-            final_df= df_scaled
+        if inplace:
+            final_df = df_scaled
         else:
-            final_df= df_scaled[column_names]
+            final_df = df_scaled[column_names]
         return final_df
 
     else:
         raise ValueError("Please select Transformer from {allowed_transformer} for Feature Transformation")
+
 
 def feature_creation(dataframe, feature_method, binning_column=None, bins=10, binning_right=True, binning_labels=None,
                      binning_retbins=False, binning_precision=3, binning_include_lowest=False,
@@ -710,20 +719,20 @@ def data_transformation(dataframe, transform_method, pivot_index=None, pivot_col
             return pd.crosstab(dataframe[crosstab_rows], dataframe[crosstab_columns])
 
 
-
-def data_preparation(X,y):
+def data_preparation(X, y):
     ordinal_encoder = OrdinalEncoder()
     ordinal_encoder.fit(X)
     X_encoded = ordinal_encoder.transform(X)
-    
+
     label_encoder = LabelEncoder()
     label_encoder.fit(y)
     y_encoded = label_encoder.transform(y)
-    return X_encoded, y_encoded   
+    return X_encoded, y_encoded
 
-def feature_selection(dataframe,method,missing_value_threshold=60,variance_threshold=0,correlation_threshold=0.75,target_variable=None,
-                    task=None,algorithm='RandomForest',n_features_to_select=5,scoring=None,cv=5,n_jobs=None):
 
+def feature_selection(dataframe, method, missing_value_threshold=60, variance_threshold=0, correlation_threshold=0.75,
+                      target_variable=None,
+                      task=None, algorithm='RandomForest', n_features_to_select=5, scoring=None, cv=5, n_jobs=None):
     """
     This function is used for selecting set of important Independent features for given dataset.
 
@@ -747,39 +756,39 @@ def feature_selection(dataframe,method,missing_value_threshold=60,variance_thres
 
     
     :rtype: Modified data wirh respect to the input method.
-    """ 
-    
+    """
+
     # To check if columns dataframe is not empty list 
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
+
     # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['missing_value_filter','low_variance_filter','feature_importance','high_correlation_filter',
-                      'forward','backward']
-    method= method.lower()
+    allowed_method = ['missing_value_filter', 'low_variance_filter', 'feature_importance', 'high_correlation_filter',
+                      'forward', 'backward']
+    method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    if method=='missing_value_filter':
-        
+
+    if method == 'missing_value_filter':
+
         # Calculate missing ratio percentage of each column in dataframe
-        missing_value = dataframe.isnull().sum()/len(dataframe)
+        missing_value = dataframe.isnull().sum() / len(dataframe)
         # Checking of Missing value Threshold
-        missing_value_imputed =  missing_value[missing_value<=missing_value_threshold]
+        missing_value_imputed = missing_value[missing_value <= missing_value_threshold]
         reduced_data = dataframe[missing_value_imputed.index]
-        
-    elif method=='low_variance_filter': 
-        
+
+    elif method == 'low_variance_filter':
+
         df = dataframe.select_dtypes([np.number])
         data_scaled = normalize(df)
         data_scaled = pd.DataFrame(data_scaled)
         variance = data_scaled.var()
         # Checking of Variance Threshold
-        high_variance_columns = list(variance[variance>=variance_threshold].index)
-        reduced_data = dataframe.iloc[:,high_variance_columns]
+        high_variance_columns = list(variance[variance >= variance_threshold].index)
+        reduced_data = dataframe.iloc[:, high_variance_columns]
 
-    elif method=='high_correlation_filter':
+    elif method == 'high_correlation_filter':
 
         df_corr = dataframe.corr()
         # Retrieving upper triangle correlation coefficient from correlation grid
@@ -787,98 +796,100 @@ def feature_selection(dataframe,method,missing_value_threshold=60,variance_thres
 
         # Checking of Correlation threshold 
         if correlation_threshold > 0:
-            reduced_data = df_corr[df_corr>=correlation_threshold].stack().reset_index()
+            reduced_data = df_corr[df_corr >= correlation_threshold].stack().reset_index()
 
         else:
-            reduced_data = df_corr[df_corr<=correlation_threshold].stack().reset_index()
-        
-        reduced_data = reduced_data.rename(columns = {"level_0":'Feature_1',"level_1":'Feature_2',0:'correlation_coefficient'})
+            reduced_data = df_corr[df_corr <= correlation_threshold].stack().reset_index()
 
-    elif method=='feature_importance':
+        reduced_data = reduced_data.rename(
+            columns={"level_0": 'Feature_1', "level_1": 'Feature_2', 0: 'correlation_coefficient'})
 
-        if target_variable==None:
+    elif method == 'feature_importance':
+
+        if target_variable is None:
             raise ValueError("Please enter a valid target_variable")
-        
+
         # Check supported models
-        allowed_task = ['classification','regression']
-        if task==None:
+        allowed_task = ['classification', 'regression']
+        if task is None:
             raise ValueError(f"Please select *task* from {allowed_task}")
-        task  = task.lower()
+        task = task.lower()
         assert task in allowed_task, f"Please select *task* from {allowed_task}"
-       
-    
+
         # Check supported models
-        allowed_algorithm = ["RandomForest","XGradientBoosting","DecisionTrees","ExtraTrees"]
+        allowed_algorithm = ["RandomForest", "XGradientBoosting", "DecisionTrees", "ExtraTrees"]
         assert algorithm in allowed_algorithm, f"Please select *algorithm* from {allowed_algorithm}"
-        
-        X= dataframe.drop(target_variable,axis=1)
-        y= dataframe[target_variable]
-        #preparation of dataset
+
+        X = dataframe.drop(target_variable, axis=1)
+        y = dataframe[target_variable]
+        # preparation of dataset
         X_train, y_train = data_preparation(X, y)
 
         # Checking for algorithm and fitting of algorithm 
-        if task==None:
+        if task is None:
             raise ValueError("Please select Classification or Regression for 'task'")
-        X = dataframe.drop(target_variable,axis=1)
+        X = dataframe.drop(target_variable, axis=1)
         if algorithm == "RandomForest":
-            model = RandomForestClassifier() if task=='classification' else RandomForestRegressor()
-        elif algorithm =="XGradientBoosting":
-            model = XGBClassifier() if task=='classification' else XGBRegressor()
+            model = RandomForestClassifier() if task == 'classification' else RandomForestRegressor()
+        elif algorithm == "XGradientBoosting":
+            model = XGBClassifier() if task == 'classification' else XGBRegressor()
         elif algorithm == "DecisionTrees":
-            model = DecisionTreeClassifier() if task=='classification' else DecisionTreeRegressor()
+            model = DecisionTreeClassifier() if task == 'classification' else DecisionTreeRegressor()
         elif algorithm == "ExtraTrees":
-            model = ExtraTreesClassifier() if task=='classification' else ExtraTreeRegressor()
+            model = ExtraTreesClassifier() if task == 'classification' else ExtraTreeRegressor()
 
-        #Model-fitting
+        # Model-fitting
         model.fit(X_train, y_train)
-        reduced_data = pd.DataFrame({'Features': X.columns,'Importance': model.feature_importances_})
+        reduced_data = pd.DataFrame({'Features': X.columns, 'Importance': model.feature_importances_})
         reduced_data = reduced_data.sort_values(by='Importance', ascending=False)
-        
 
-    elif method =="forward" or method=="backward":
+    elif method == "forward" or method == "backward":
 
-        if target_variable==None:
+        if target_variable is None:
             raise ValueError("Please enter a valid target_variable")
 
         direction = 'forward' if method == 'forward' else 'backward'
-                
+
         # Check supported models
-        allowed_task = ['classification','regression']
-        if task==None:
+        allowed_task = ['classification', 'regression']
+        if task is None:
             raise ValueError(f"Please select *task* from {allowed_task}")
-        task  = task.lower()
+        task = task.lower()
         assert task in allowed_task, f"Please select *task* from {allowed_task}"
-        
+
         # Check supported models
-        allowed_algorithm = ["RandomForest","XGradientBoosting","DecisionTrees","ExtraTrees"]
-        
-        allowed_algorithm = allowed_algorithm+["KNearestNeighbour"] if task=='classification' else allowed_algorithm+["LogisticRegression","LinearRegression"]
+        allowed_algorithm = ["RandomForest", "XGradientBoosting", "DecisionTrees", "ExtraTrees"]
+
+        allowed_algorithm = allowed_algorithm + [
+            "KNearestNeighbour"] if task == 'classification' else allowed_algorithm + ["LogisticRegression",
+                                                                                       "LinearRegression"]
         assert algorithm in allowed_algorithm, f"Please select *algorithm* from {allowed_algorithm}"
-        
-        X= dataframe.drop(target_variable,axis=1)
-        y= dataframe[target_variable]
+
+        X = dataframe.drop(target_variable, axis=1)
+        y = dataframe[target_variable]
         # prepare input data
         X_train, y_train = data_preparation(X, y)
-        
+
         # Checking for algorithm and fitting of algorithm
         if algorithm == "RandomForest":
-            estimator = RandomForestClassifier() if task=='classification' else RandomForestRegressor()
-        elif algorithm =="XGradientBoosting":
-            estimator = XGBClassifier() if task=='classification' else XGBRegressor()
+            estimator = RandomForestClassifier() if task == 'classification' else RandomForestRegressor()
+        elif algorithm == "XGradientBoosting":
+            estimator = XGBClassifier() if task == 'classification' else XGBRegressor()
         elif algorithm == "DecisionTrees":
-            estimator = DecisionTreeClassifier() if task=='classification' else DecisionTreeRegressor()
-        elif algorithm== "ExtraTrees":
-            estimator = ExtraTreesClassifier() if task=='classification' else ExtraTreeRegressor()
-        elif algorithm== "KNearestNeighbour":
-            estimator = KNeighborsClassifier() 
+            estimator = DecisionTreeClassifier() if task == 'classification' else DecisionTreeRegressor()
+        elif algorithm == "ExtraTrees":
+            estimator = ExtraTreesClassifier() if task == 'classification' else ExtraTreeRegressor()
+        elif algorithm == "KNearestNeighbour":
+            estimator = KNeighborsClassifier()
         elif algorithm == "LinearRegression":
-            estimator = LinearRegression() 
+            estimator = LinearRegression()
         elif algorithm == "LogisticRegression":
             estimator = LogisticRegression()
 
         # Fitting of Sequential Feature Selector
-        feature_selector = SequentialFeatureSelector(estimator=estimator, n_features_to_select=n_features_to_select, direction=direction, 
-                           scoring=scoring, cv=cv, n_jobs=n_jobs).fit(X_train,y_train) 
+        feature_selector = SequentialFeatureSelector(estimator=estimator, n_features_to_select=n_features_to_select,
+                                                     direction=direction,
+                                                     scoring=scoring, cv=cv, n_jobs=n_jobs).fit(X_train, y_train)
         feature_names = X.columns.values
         reduced_data = pd.DataFrame()
         reduced_data['Features_selected'] = feature_names[feature_selector.get_support()]
@@ -886,11 +897,11 @@ def feature_selection(dataframe,method,missing_value_threshold=60,variance_thres
     return reduced_data
 
 
-def linear_reduction(dataframe,target_variable=None,method='pca',n_components=2,tol=0.01,copy=True,max_iter=1000,
-                     noise_variance_init=None,svd_method='randomized',iterated_power='auto',rotation=None, random_state=0,
-                     solver='randomized',n_iter=5,whitens=False,svd_solver='auto',algorithm='parallel',whiten=True,fun='logcosh', 
-                     fun_args=None,w_init=None):
-
+def linear_reduction(dataframe, target_variable=None, method='pca', n_components=2, tol=0.01, copy=True, max_iter=1000,
+                     noise_variance_init=None, svd_method='randomized', iterated_power='auto', rotation=None,
+                     random_state=0, solver='randomized', n_iter=5, whitens=False, svd_solver='auto',
+                     algorithm='parallel', whiten=True, fun='logcosh',
+                     fun_args=None, w_init=None):
     """
     This function is used for reducing Dimensionality of given Dataframe using linear dimensionality techniques.
 
@@ -930,67 +941,71 @@ def linear_reduction(dataframe,target_variable=None,method='pca',n_components=2,
     Return:
     Reduced form of Dataframe using selected method.
 
-    """ 
+    """
     # To check if columns dataframe is not empty list 
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
+
     # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['factor_analysis','svd','pca','ica']
-    method= method.lower()
+    allowed_method = ['factor_analysis', 'svd', 'pca', 'ica']
+    method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    X= dataframe.drop(target_variable,axis=1)
-    y= dataframe[target_variable]
-    
-    #Input data preparation
+
+    X = dataframe.drop(target_variable, axis=1)
+    y = dataframe[target_variable]
+
+    # Input data preparation
     X_train, y_train = data_preparation(X, y)
-    #Standardization applied to input data
+    # Standardization applied to input data
     X = StandardScaler().fit_transform(X_train)
 
     # Linear Dimensionality method for Factor Analysis
-    if method=='factor_analysis':
-        
-        reduced_data = FactorAnalysis(n_components=n_components,tol=tol,copy=copy, max_iter=max_iter,
-                            noise_variance_init=noise_variance_init,svd_method=svd_method,iterated_power=iterated_power,
-                            rotation=rotation,random_state=random_state).fit_transform(X)
+    if method == 'factor_analysis':
+
+        reduced_data = FactorAnalysis(n_components=n_components, tol=tol, copy=copy, max_iter=max_iter,
+                                      noise_variance_init=noise_variance_init, svd_method=svd_method,
+                                      iterated_power=iterated_power,
+                                      rotation=rotation, random_state=random_state).fit_transform(X)
 
     # Linear Dimensionality method for Single Value Decomposition 
-    elif method=='svd':
-        
-        reduced_data = TruncatedSVD(n_components=n_components,algorithm=solver,n_iter=n_iter,random_state=random_state,
-                                    tol=tol).fit_transform(X)
-    
-    # Linear Dimensionality method for Principal Component Analysis
-    elif method=='pca':
-        
-        reduced_data = PCA(n_components=n_components,copy=copy,whiten=whitens,svd_solver=svd_solver,tol=tol,
-                           iterated_power=iterated_power,
-                  random_state=random_state).fit_transform(X)
+    elif method == 'svd':
 
-    # Linear Dimensionality method for Independent Component Analysis        
-    elif method=='ica':
-        
-        reduced_data = FastICA(n_components=n_components,algorithm=algorithm,whiten=whiten,fun=fun,fun_args=fun_args,
-                               max_iter=max_iter,w_init=w_init,tol=tol,random_state=random_state).fit_transform(X)
-    
+        reduced_data = TruncatedSVD(n_components=n_components, algorithm=solver, n_iter=n_iter,
+                                    random_state=random_state,
+                                    tol=tol).fit_transform(X)
+
+    # Linear Dimensionality method for Principal Component Analysis
+    elif method == 'pca':
+
+        reduced_data = PCA(n_components=n_components, copy=copy, whiten=whitens, svd_solver=svd_solver, tol=tol,
+                           iterated_power=iterated_power,
+                           random_state=random_state).fit_transform(X)
+
+    # Linear Dimensionality method for Independent Component Analysis
+    elif method == 'ica':
+
+        reduced_data = FastICA(n_components=n_components, algorithm=algorithm, whiten=whiten, fun=fun,
+                               fun_args=fun_args,
+                               max_iter=max_iter, w_init=w_init, tol=tol, random_state=random_state).fit_transform(X)
+
     # Final output reduced data to be saved in Dataframe
-    reduced_data = pd.DataFrame(data = reduced_data)
-    reduced_data = pd.concat([reduced_data, y], axis = 1) 
-        
+    reduced_data = pd.DataFrame(data=reduced_data)
+    reduced_data = pd.concat([reduced_data, y], axis=1)
+
     return reduced_data
 
 
-def non_linear_reduction(dataframe,target_variable=None,method=None,n_components=None,perplexity=30.0,early_exaggeration=12.0,
-                         learning_rate=200.0, n_iter=1000,n_iter_without_progress=300, min_grad_norm=1e-07,
-                         init='random', verbose=0,random_state=None,tsne_method='barnes_hut', angle=0.5, n_jobs=None,
-                         square_distances=True,n_neighbors=5, eigen_solver='auto', tol=0, max_iter=None,
-                         path_method='auto',neighbors_algorithm='auto',metric='minkowski', p=2,target_metric='categorical',
-                         metric_params=None,min_dist=0.1,output_metric='euclidean',transform_seed=42,repulsion_strength=1.0,
-                         set_op_mix_ratio=1.0, spread=1.0,):
-
+def non_linear_reduction(dataframe, target_variable=None, method=None, n_components=None, perplexity=30.0,
+                         early_exaggeration=12.0, learning_rate=200.0, n_iter=1000, n_iter_without_progress=300,
+                         min_grad_norm=1e-07, init='random', verbose=0, random_state=None, tsne_method='barnes_hut',
+                         angle=0.5, n_jobs=None, square_distances=True, n_neighbors=5, eigen_solver='auto', tol=0,
+                         max_iter=None,
+                         path_method='auto', neighbors_algorithm='auto', metric='minkowski', p=2,
+                         target_metric='categorical', metric_params=None, min_dist=0.1, output_metric='euclidean',
+                         transform_seed=42,
+                         repulsion_strength=1.0, set_op_mix_ratio=1.0, spread=1.0, ):
     """
     This function is used for reducing Dimensionality of given Dataframe using non-linear dimensionality techniques.
 
@@ -1031,9 +1046,9 @@ def non_linear_reduction(dataframe,target_variable=None,method=None,n_components
     neighbors_algorithm: Algorithm to use for nearest neighbors search, passed to neighbors.NearestNeighbors instance; default:'auto'
                          Valid parameter: ['auto', 'FW', 'D']
     metric: The metric to use to compute distances in high dimensional space used for isomap and umap method; default:'minkowski'
-            Most used metric; ['euclidean','manhattan','chebyshev','minkowski','hamming','jaccard','cosine']   
+            Most used metric; ['euclidean','manhattan','chebyshev','minkowski','hamming','jaccard','cosine']
     p: used for metric in isomap method; default:2
-       When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. 
+       When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2.
        For arbitrary p, minkowski_distance (l_p) is used.
     target_metric: The metric used to measure distance for a target array is using supervised dimension reduction in umap method;
                    default:'categorical'
@@ -1055,48 +1070,51 @@ def non_linear_reduction(dataframe,target_variable=None,method=None,n_components
     Return:
     Reduced form of Dataframe using selected technique.
 
-    """   
-    
+    """
+
     # To check if columns dataframe is not empty list 
     assert len(dataframe) > 0, "Please ensure that Dataframe is not empty"
-    
+
     # To make sure that input provided with Pandas Dataframe 
-    assert (isinstance(dataframe, pd.DataFrame)),"Make sure Input is DataFrame"
-    
+    assert (isinstance(dataframe, pd.DataFrame)), "Make sure Input is DataFrame"
+
     # Check supported methods
-    allowed_method = ['tsne','isomap','umap']
+    allowed_method = ['tsne', 'isomap', 'umap']
     method = method.lower()
     assert method in allowed_method, f"Please select *method* from {allowed_method}"
-    
-    X= dataframe.drop(target_variable,axis=1)
-    y= dataframe[target_variable]
-    
+
+    X = dataframe.drop(target_variable, axis=1)
+    y = dataframe[target_variable]
+
     X_train, y_train = data_preparation(X, y)
     X = StandardScaler().fit_transform(X_train)
 
-    if method=='tsne':
-        
-        reduced_data = TSNE(n_components=n_components,perplexity=perplexity,early_exaggeration=early_exaggeration,
-                    learning_rate=learning_rate,n_iter=n_iter,n_iter_without_progress=n_iter_without_progress,
-                    min_grad_norm=min_grad_norm,metric=metric,init=init,verbose=verbose,random_state=random_state,
-                    method=tsne_method,angle=angle,n_jobs=n_jobs,square_distances=square_distances).fit_transform(X)
-    
-    elif method=='isomap':
-        
-        reduced_data = manifold.Isomap(n_neighbors=n_neighbors,n_components=n_components,eigen_solver=eigen_solver,tol=tol,
-                              max_iter=max_iter,path_method=path_method,neighbors_algorithm=neighbors_algorithm,n_jobs=None,
-                              metric=metric,p=p,metric_params=metric_params).fit_transform(X)
-    
-    elif method=='umap':
-        
-        reduced_data = umap.UMAP(n_components=n_components,metric=metric,n_neighbors=n_neighbors,min_dist=min_dist,
-                                 random_state=random_state,target_metric=target_metric,output_metric=output_metric,
-                                 transform_seed=transform_seed,learning_rate=learning_rate,repulsion_strength=repulsion_strength,
-                                 set_op_mix_ratio=set_op_mix_ratio,spread=spread,init=init).fit_transform(X)
-        
-    reduced_data = pd.DataFrame(data = reduced_data)
-    reduced_data = pd.concat([reduced_data,y], axis = 1)
-    
-    
-    return reduced_data  
+    if method == 'tsne':
 
+        reduced_data = TSNE(n_components=n_components, perplexity=perplexity, early_exaggeration=early_exaggeration,
+                            learning_rate=learning_rate, n_iter=n_iter, n_iter_without_progress=n_iter_without_progress,
+                            min_grad_norm=min_grad_norm, metric=metric, init=init, verbose=verbose,
+                            random_state=random_state,
+                            method=tsne_method, angle=angle, n_jobs=n_jobs,
+                            square_distances=square_distances).fit_transform(X)
+
+    elif method == 'isomap':
+
+        reduced_data = manifold.Isomap(n_neighbors=n_neighbors, n_components=n_components, eigen_solver=eigen_solver,
+                                       tol=tol,
+                                       max_iter=max_iter, path_method=path_method,
+                                       neighbors_algorithm=neighbors_algorithm, n_jobs=None,
+                                       metric=metric, p=p, metric_params=metric_params).fit_transform(X)
+
+    elif method == 'umap':
+
+        reduced_data = umap.UMAP(n_components=n_components, metric=metric, n_neighbors=n_neighbors, min_dist=min_dist,
+                                 random_state=random_state, target_metric=target_metric, output_metric=output_metric,
+                                 transform_seed=transform_seed, learning_rate=learning_rate,
+                                 repulsion_strength=repulsion_strength,
+                                 set_op_mix_ratio=set_op_mix_ratio, spread=spread, init=init).fit_transform(X)
+
+    reduced_data = pd.DataFrame(data=reduced_data)
+    reduced_data = pd.concat([reduced_data, y], axis=1)
+
+    return reduced_data
