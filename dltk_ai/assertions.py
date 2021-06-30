@@ -207,14 +207,12 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
 
             # hybrid datatype
             elif expected_datatype == "hybrid":
-                print("in hybrid")
                 algo_param_value = algorithm_params[key]['condition']['value']
                 algo_condition_symbol = algorithm_params[key]['condition']['symbol']
                 range_lower = algorithm_params[key]['range'][0]
                 range_upper = algorithm_params[key]['range'][1]
 
                 if type(input_value) == int or type(input_value) == float:
-                    print("inside if")
                     if algo_condition_symbol == ">":
                         condition_flag = input_value > algo_param_value
                     elif algo_condition_symbol == ">=":
@@ -222,8 +220,6 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
                     elif algo_condition_symbol == "<=>":
                         condition_flag = input_value <= algo_param_value or input_value >= algo_param_value, "{} should be <=> to {}".format(key, algo_param_value)
 
-                    print("inside int float")
-                    print(key, condition_flag, range_lower <= input_value <= range_upper)
                     assert (condition_flag or range_lower <= input_value <= range_upper), "{} should be in range {} or {} to {}".format(key, algorithm_params[key]['range'], algo_condition_symbol, algo_param_value)
 
                 else:
