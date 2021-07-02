@@ -98,13 +98,10 @@ class TestH2ORegressionAlgo(unittest.TestCase):
                   'keep_cross_validation_fold_assignment': False, 'keep_cross_validation_models': True,
                   'keep_cross_validation_predictions': False, 'max_after_balance_size': 1.0, 'max_confusion_matrix_size': 0,
                   'max_depth': 0, 'max_runtime_secs': 0, 'min_rows': 1, 'min_split_improvement': 1e-05, 'mtries': -1,
-                  'nbins': 2, 'nbins_cats': 1024, 'nbins_top_level': 1024, 'nfolds': 0, 'ntrees': 50,
+                  'nbins': 2, 'nbins_cats': 1024, 'nbins_top_level': 1024, 'ntrees': 50,
                   'r2_stopping': -1.7976, 'sample_rate': 0.632, 'score_each_iteration': False, 'score_tree_interval': 10,
-                  'stopping_metric': 'auto', 'stopping_rounds': 10, 'stopping_tolerance': 0.001, 'calibration_frame': None,
-                  'checkpoint': None, 'class_sampling_factors': None, 'custom_metric_func': None,
-                  'export_checkpoints_dir': None, 'ignore_const_cols': None, 'ignored_columns': None, 'model_id': None,
-                  'offset_column': None, 'response_column': None, 'sample_rate_per_class': None, 'seed': None,
-                  'weights_column': None}
+                  'stopping_metric': 'auto', 'stopping_rounds': 10, 'stopping_tolerance': 0.001,
+                  'class_sampling_factors': None, 'sample_rate_per_class': None}
 
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 

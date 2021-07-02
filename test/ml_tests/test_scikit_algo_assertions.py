@@ -989,6 +989,27 @@ class TestScikitRegressionAlgo(unittest.TestCase):
                   'kernel': 'rbf', 'max_iter': -1, 'shrinking': True, 'tol': -0.001, 'verbose': False}
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+#----------------- LinearRegression --------------------#
+
+    def test_linearrregression_1(self):
+        algorithm = "LinearRegression"
+        params = {'copy_X': 1.0, 'fit_intercept': 200, 'normalize': 0.0, 'positive': 3}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_linearrregression_2(self):
+        algorithm = "LinearRegression"
+        params = {'copy_X': True, 'fit_intercept': True, 'normalize': False, 'positive': False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_linearrregression_3(self):
+        algorithm = "LinearRegression"
+        params = {'copy_X': "randomvalue", 'fit_intercept': True, 'normalize': False, 'positive': False}
+        self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    def test_xgradientboosting_1(self):
+        algorithm = "XGradientBoosting"
+        params = {'objective': 'binary:logistic','base_score': 123,'booster': None,'colsample_bylevel': None,'colsample_bynode': None, 'colsample_bytree': None,'gamma': None,'learning_rate': None,'max_delta_step': None,'max_depth': None, 'min_child_weight': None,'missing': None,'n_estimators': 100,'n_jobs': None,'random_state': None,'reg_alpha': None,'reg_lambda': None,'scale_pos_weight': None, 'subsample': None,'tree_method': None}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
 
 if __name__ == '__main__':
