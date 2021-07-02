@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension
+from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension, hyper_parameter_check
 from dltk_ai.dataset_types import Dataset
 
 
@@ -351,10 +351,10 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, service, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
+    def train(self, task, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
 
         """
-        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param task: Training task to perform. Valid parameter values are classification, regression.
         :param algorithm: Algorithm used for training the model.
         :param dataset: dataset file location in DLTK storage.
         :param label: Target variable.
@@ -372,11 +372,15 @@ class DltkAiClient:
         
         """
 
+        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+            task, lib, algorithm, features, label, train_percentage)
 
-        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label, train_percentage)
+        # if additional parameters passed, check whether those are valid or not
+        if params is not None:
+            hyper_parameter_flag = hyper_parameter_check(library, task, algorithm, params)
+            assert hyper_parameter_flag, "Please check the params, training failed due to incorrect values"
 
-        url = self.base_url + '/machine/' + service + '/train/'
+        url = self.base_url + '/machine/' + task + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
         if params is None:
             params = {}
@@ -425,10 +429,10 @@ class DltkAiClient:
         response = response.json()
         return response
 
-    def feedback(self, service, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
+    def feedback(self, task, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
                  model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None, evaluation_plots=False):
         """
-        :param service: Training task to perform. Valid parameter values are classification, regression.
+        :param task: Training task to perform. Valid parameter values are classification, regression.
         :param algorithm: Algorithm used for training the model.
         :param train_data: dataset file location in DLTK storage.
         :param feedback_data: dataset file location in DLTK storage.
@@ -446,9 +450,9 @@ class DltkAiClient:
 
         :rtype: A json object containing the file path in storage.
         """
-        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm, features, label)
-        url = self.base_url + '/machine/' + service + '/feedback'
+        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+            task, lib, algorithm, features, label)
+        url = self.base_url + '/machine/' + task + '/feedback'
 
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
 
@@ -460,7 +464,7 @@ class DltkAiClient:
 
         body = {
             'library': lib,
-            'service': service,
+            'service': task,
             'task': 'FEEDBACK',
             'config': {
                 'jobId': job_id,
@@ -483,10 +487,10 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers)
         return response.json()
 
-    def predict(self, service, dataset, model_url, features, lib='weka', params=None, dataset_source=None):
+    def predict(self, task, dataset, model_url, features, lib='weka', params=None, dataset_source=None):
         """
         :param lib: Library for training the model. Currently we are supporting DLTK and weka libraries.
-        :param service: Valid parameter values are classification, regression.
+        :param task: Valid parameter values are classification, regression.
         :param dataset: dataset file location in DLTK storage.
         :param model_url: trained model location in DLTK storage.
         :param features: list of features used for training
@@ -501,13 +505,13 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
-        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
-            service, lib, algorithm=None,
+        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+            task, lib, algorithm=None,
             features=features,
             label=None,
             cluster=True,
             predict=True)
-        url = self.base_url + '/machine/' + service + '/predict'
+        url = self.base_url + '/machine/' + task + '/predict'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
             params = {}
