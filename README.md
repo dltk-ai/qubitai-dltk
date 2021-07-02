@@ -1,7 +1,7 @@
 
 <p align="center">
 <a href="https://dltk.ai/">
-  <img src="dltk.png" alt="DLTK logo">
+  <img src="https://github.com/dltk-ai/qubitai-dltk/blob/master/dltk.png?raw=true" alt="DLTK logo">
 </a>
 </p>
 
