@@ -12,7 +12,7 @@ supported_algorithm = {'regression':
                                        'SupportVectorMachines'],
                             'h2o': ['LinearRegression', 'GradientBoostingMachines', 'RandomForest',
                                     'GradientBoostingMachine'],
-                            'weka': ['LinearRegression', 'RandomForest', 'AdditiveRegression']
+                            'weka': ['LinearRegression', 'AdditiveRegression']
                             },
 
                        'classification': {
@@ -22,7 +22,7 @@ supported_algorithm = {'regression':
                            'h2o': ['NaiveBayesBinomial', 'DeepLearning'],
                            'weka': ['LibSVM', 'NaiveBayesMultinomial', 'KStar', 'AdaBoostM1',
                                     'AttributeSelectedClassifier', 'Bagging', 'DecisionTable', 'RandomTree', 'SMO',
-                                    'Logistic', 'MultilayerPerceptron']
+                                    'Logistic', 'MultilayerPerceptron','RandomForest']
                        },
 
                        'clustering': {

@@ -1658,6 +1658,215 @@
 					}
 				}
 			},
+			"XGradientBoosting": {"reference_link": "https://xgboost.readthedocs.io/en/latest/python/python_api.html#" ,"params":{
+		"objective": {
+			"default": "binary:logistic",
+			"datatype": "except"
+		},
+		"use_label_encoder": {
+			"default": true,
+			"datatype": "str",
+			"value": [
+				"true",
+				"false"
+			]
+		},
+		"base_score": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": "<=>",
+				"value": 0.0
+			}
+		},
+		"booster": {
+			"default": null,
+			"datatype": "str",
+			"value": [
+				"gbtree",
+				"gblinear",
+				"dart"
+			]
+		},
+		"colsample_bylevel": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"colsample_bynode": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"colsample_bytree": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"gamma": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"gpu_id": {
+			"default": null,
+			"datatype": "except"
+		},
+		"importance_type": {
+			"default": "gain",
+			"datatype": "str",
+			"value": [
+				"gain",
+				"weight",
+				"cover",
+				"total_gain",
+				"total_co"
+			]
+		},
+		"interaction_constraints": {
+			"default": null,
+			"datatype": "except"
+		},
+		"learning_rate": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"max_delta_step": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"max_depth": {
+			"default": null,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"min_child_weight": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"missing": {
+			"default": null,
+			"datatype": "except"
+		},
+		"monotone_constraints": {
+			"default": null,
+			"datatype": "except"
+		},
+		"n_estimators": {
+			"default": 100,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"n_jobs": {
+			"default": null,
+			"datatype": "except"
+		},
+		"num_parallel_tree": {
+			"default": null,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 1
+			}
+		},
+		"random_state": {
+			"default": null,
+			"datatype": "except"
+		},
+		"reg_alpha": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"reg_lambda": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"scale_pos_weight": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"subsample": {
+			"default": null,
+			"datatype": "float",
+			"compare_type": "range",
+			"range": [
+				0,
+				1
+			]
+		},
+		"tree_method": {
+			"default": null,
+			"datatype": "except"
+		},
+		"validate_parameters": {
+			"default": null,
+			"datatype": "str",
+			"value": [
+				"true",
+				"false"
+			]
+		},
+		"verbosity": {
+			"default": null,
+			"datatype": "except"
+		}
+	}},
 			"ExtraTrees": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html",
 				"params": {
@@ -1923,7 +2132,30 @@
 						]
 					}
 				}
-			}
+			},
+			"LinearRegression": {"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html","params":{"copy_X": {
+						"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]
+					},"fit_intercept":{"default": true,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]},"normalize": {"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]},"positive": {"default": false,
+						"datatype": "str",
+						"value": [
+							true,
+							false
+						]}}}
 		}
 	},
 	"weka": {
@@ -1931,15 +2163,7 @@
 			"Logistic": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/Logistic.html",
 				"params": {
-					"-D": {
-						"default": false,
-						"datatype": "except"
-					},
 					"-S": {
-						"default": false,
-						"datatype": "except"
-					},
-					"-R": {
 						"default": false,
 						"datatype": "except"
 					},
@@ -2236,10 +2460,6 @@
 							"value": 0
 						}
 					},
-					"-G": {
-						"default": "1/k",
-						"datatype": "except"
-					},
 					"-R": {
 						"default": 0,
 						"datatype": "float",
@@ -2358,66 +2578,23 @@
 					"-D": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.DecisionStump",
-						"datatype": "except"
 					}
 				}
 			},
 			"AttributeSelectedClassifier": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AttributeSelectedClassifier.html",
 				"params": {
-					"-E": {
-						"default": "weka.attributeSelection.CfsSubsetEval",
-						"datatype": "except"
-					},
-					"-S": {
-						"default": false,
-						"datatype": "except"
-					},
 					"-D": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.J48",
 						"datatype": "except"
 					},
 					"-U": {
 						"default": false,
 						"datatype": "except"
 					},
-					"-C": {
-						"default": 0.25,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0.0
-						}
-					},
-					"-M": {
-						"default": 2,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
 					"-R": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-N": {
-						"default": 3,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": 1
-						}
 					},
 					"-B": {
 						"default": false,
@@ -2430,16 +2607,9 @@
 					"-A": {
 						"default": false,
 						"datatype": "except"
-					},
-					"-Q": {
-						"default": 1,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
 					}
+
+
 				}
 			},
 			"Bagging": {
@@ -2502,46 +2672,6 @@
 						"default": false,
 						"datatype": "except"
 					},
-					"-W": {
-						"default": "weka.classifiers.trees.REPTree",
-						"datatype": "except"
-					},
-					"-M": {
-						"default": 2,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"-V": {
-						"default": 0.001,
-						"datatype": "float",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0.0
-						}
-					},
-					"-N": {
-						"default": 3,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">",
-							"value": 0
-						}
-					},
-					"-L": {
-						"default": -1,
-						"datatype": "int",
-						"compare_type": "condition",
-						"condition": {
-							"symbol": ">=",
-							"value": -1
-						}
-					},
 					"-R": {
 						"default": false,
 						"datatype": "except"
@@ -2576,10 +2706,7 @@
 			"DecisionTable": {
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/rules/DecisionTable.html",
 				"params": {
-					"-S": {
-						"default": "weka.attributeSelection.BestFirst",
-						"datatype": "except"
-					},
+
 					"-X": {
 						"default": 1,
 						"datatype": "int",
@@ -2609,16 +2736,6 @@
 					},
 					"-P": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-D": {
-						"default": 1,
-						"datatype": "int",
-						"compare_type": "range",
-						"range": [0, 2]
-					},
-					"-N": {
-						"default": 5,
 						"datatype": "except"
 					}
 				}
@@ -2653,10 +2770,6 @@
 					},
 					"-X": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-A": {
-						"default": "weka.core.neighboursearch.LinearNNSearch",
 						"datatype": "except"
 					}
 				}
@@ -2802,14 +2915,6 @@
 							"value": 0
 						}
 					},
-					"-K": {
-						"default": "weka.classifiers.functions.supportVector.PolyKernel",
-						"datatype": "except"
-					},
-					"-claibrator": {
-						"default": "weka.classifiers.functions.Logistic",
-						"datatype": "except"
-					},
 					"-output-debug-info": {
 						"default": false,
 						"datatype": "except"
@@ -2895,10 +3000,6 @@
 					},
 					"-D": {
 						"default": false,
-						"datatype": "except"
-					},
-					"-W": {
-						"default": "weka.classifiers.trees.DecisionStump",
 						"datatype": "except"
 					}
 				}
@@ -3942,10 +4043,6 @@
 							"value": 1
 						}
 					},
-					"nfolds": {
-						"default": 0,
-						"datatype": "except"
-					},
 					"ntrees": {
 						"default": 50,
 						"datatype": "int",
@@ -4028,55 +4125,11 @@
 							"value": 0.0
 						}
 					},
-					"calibration_frame": {
-						"default": null,
-						"datatype": "except"
-					},
-					"checkpoint": {
-						"default": null,
-						"datatype": "except"
-					},
 					"class_sampling_factors": {
 						"default": null,
 						"datatype": "except"
 					},
-					"custom_metric_func": {
-						"default": null,
-						"datatype": "except"
-					},
-					"export_checkpoints_dir": {
-						"default": null,
-						"datatype": "except"
-					},
-					"ignore_const_cols": {
-						"default": null,
-						"datatype": "except"
-					},
-					"ignored_columns": {
-						"default": null,
-						"datatype": "except"
-					},
-					"model_id": {
-						"default": null,
-						"datatype": "except"
-					},
-					"offset_column": {
-						"default": null,
-						"datatype": "except"
-					},
-					"response_column": {
-						"default": null,
-						"datatype": "except"
-					},
 					"sample_rate_per_class": {
-						"default": null,
-						"datatype": "except"
-					},
-					"seed": {
-						"default": null,
-						"datatype": "except"
-					},
-					"weights_column": {
 						"default": null,
 						"datatype": "except"
 					}
