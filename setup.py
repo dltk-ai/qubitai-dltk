@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="qubitai-dltk",
-    version="1.0.5",
+    version="1.0.6",
     author="DLTK",
     install_requires=[
         "pandas==1.2.3",
