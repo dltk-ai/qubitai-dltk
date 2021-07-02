@@ -7,7 +7,7 @@ from time import sleep, time
 
 import requests
 
-from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension
+from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension, hyper_parameter_check
 from dltk_ai.dataset_types import Dataset
 
 
@@ -372,9 +372,13 @@ class DltkAiClient:
         
         """
 
-
         service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
             service, lib, algorithm, features, label, train_percentage)
+
+        # if additional parameters passed, check whether those are valid or not
+        if params is not None:
+            hyper_parameter_flag = hyper_parameter_check(library, service, algorithm, params)
+            assert hyper_parameter_flag, "Please check the params, training failed due to incorrect values"
 
         url = self.base_url + '/machine/' + service + '/train/'
         headers = {"ApiKey": self.api_key, "Content-type": "application/json"}
