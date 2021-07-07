@@ -1,4 +1,4 @@
-{
+hyperparameter_dictionary = {
 	"scikit": {
 		"classification": {
 			"DecisionTrees": {
@@ -15,7 +15,7 @@
 					},
 					"class_weight": {
 						"datatype": "except",
-						"default": null
+						"default": None
 					},
 					"criterion": {
 						"datatype": "str",
@@ -32,11 +32,11 @@
 							"symbol": ">",
 							"value": 0
 						},
-						"default": null
+						"default": None
 					},
 					"max_features": {
 						"datatype": "except",
-						"default": null
+						"default": None
 					},
 					"max_leaf_nodes": {
 						"datatype": "int",
@@ -45,7 +45,7 @@
 							"symbol": ">",
 							"value": 1
 						},
-						"default": null
+						"default": None
 					},
 					"min_impurity_decrease": {
 						"datatype": "float",
@@ -103,11 +103,11 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html",
 				"params": {
 					"bootstrap": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"ccp_alpha": {
@@ -120,7 +120,7 @@
 						}
 					},
 					"class_weight": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"criterion": {
@@ -132,7 +132,7 @@
 						]
 					},
 					"max_depth": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -145,7 +145,7 @@
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -154,7 +154,7 @@
 						}
 					},
 					"max_samples": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "range",
 						"range": [0.0, 1.0]
@@ -169,7 +169,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -214,19 +214,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -234,7 +234,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -243,23 +243,23 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html",
 				"params": {
 					"base_estimator": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"bootstrap": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"bootstrap_features": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"max_features": {
@@ -280,19 +280,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -300,7 +300,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -309,11 +309,11 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html",
 				"params": {
 					"bootstrap": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"ccp_alpha": {
@@ -326,7 +326,7 @@
 						}
 					},
 					"class_weight": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"criterion": {
@@ -338,7 +338,7 @@
 						]
 					},
 					"max_depth": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -351,7 +351,7 @@
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -360,7 +360,7 @@
 						}
 					},
 					"max_samples": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"min_impurity_decrease": {
@@ -373,7 +373,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -418,19 +418,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -438,7 +438,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -479,11 +479,11 @@
 						]
 					},
 					"metric_params": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"n_neighbors": {
@@ -525,7 +525,7 @@
 						]
 					},
 					"base_estimator": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"learning_rate": {
@@ -547,7 +547,7 @@
 						}
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					}
 				}
@@ -565,15 +565,15 @@
 						}
 					},
 					"class_prior": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"fit_prior": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					}
 				}
@@ -600,7 +600,7 @@
 						]
 					},
 					"init": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"learning_rate": {
@@ -630,11 +630,11 @@
 						}
 					},
 					"max_features": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -652,7 +652,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -700,7 +700,7 @@
 						}
 					},
 					"n_iter_no_change": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -709,7 +709,7 @@
 						}
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"subsample": {
@@ -738,7 +738,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -749,15 +749,15 @@
 			"datatype": "except"
 		},
 		"use_label_encoder": {
-			"default": true,
+			"default": True,
 			"datatype": "str",
 			"value": [
-				"true",
-				"false"
+				"True",
+				"False"
 			]
 		},
 		"base_score": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -766,7 +766,7 @@
 			}
 		},
 		"booster": {
-			"default": null,
+			"default": None,
 			"datatype": "str",
 			"value": [
 				"gbtree",
@@ -775,7 +775,7 @@
 			]
 		},
 		"colsample_bylevel": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -784,7 +784,7 @@
 			]
 		},
 		"colsample_bynode": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -793,7 +793,7 @@
 			]
 		},
 		"colsample_bytree": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -802,7 +802,7 @@
 			]
 		},
 		"gamma": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -811,7 +811,7 @@
 			}
 		},
 		"gpu_id": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"importance_type": {
@@ -826,11 +826,11 @@
 			]
 		},
 		"interaction_constraints": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"learning_rate": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -839,7 +839,7 @@
 			}
 		},
 		"max_delta_step": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -848,7 +848,7 @@
 			}
 		},
 		"max_depth": {
-			"default": null,
+			"default": None,
 			"datatype": "int",
 			"compare_type": "condition",
 			"condition": {
@@ -857,7 +857,7 @@
 			}
 		},
 		"min_child_weight": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -866,11 +866,11 @@
 			}
 		},
 		"missing": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"monotone_constraints": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"n_estimators": {
@@ -883,11 +883,11 @@
 			}
 		},
 		"n_jobs": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"num_parallel_tree": {
-			"default": null,
+			"default": None,
 			"datatype": "int",
 			"compare_type": "condition",
 			"condition": {
@@ -896,11 +896,11 @@
 			}
 		},
 		"random_state": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"reg_alpha": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -909,7 +909,7 @@
 			}
 		},
 		"reg_lambda": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -918,7 +918,7 @@
 			}
 		},
 		"scale_pos_weight": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -927,7 +927,7 @@
 			}
 		},
 		"subsample": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -936,19 +936,19 @@
 			]
 		},
 		"tree_method": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"validate_parameters": {
-			"default": null,
+			"default": None,
 			"datatype": "str",
 			"value": [
-				"true",
-				"false"
+				"True",
+				"False"
 			]
 		},
 		"verbosity": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		}
 	}},
@@ -965,11 +965,11 @@
 						}
 					},
 					"break_ties": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"cache_size": {
@@ -977,7 +977,7 @@
 						"datatype": "except"
 					},
 					"class_weight": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"coef0": {
@@ -1026,23 +1026,23 @@
 						"compare_type": "<=>"
 					},
 					"probability": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"shrinking": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"tol": {
@@ -1055,11 +1055,11 @@
 						}
 					},
 					"verbose": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					}
 				}
@@ -1077,23 +1077,23 @@
 						}
 					},
 					"class_weight": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"dual": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"fit_intercept": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"intercept_scaling": {
@@ -1106,7 +1106,7 @@
 						}
 					},
 					"l1_ratio": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -1133,7 +1133,7 @@
 						]
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"penalty": {
@@ -1147,7 +1147,7 @@
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"solver": {
@@ -1175,7 +1175,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -1205,7 +1205,7 @@
 						]
 					},
 					"max_depth": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1214,11 +1214,11 @@
 						}
 					},
 					"max_features": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1236,7 +1236,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"min_samples_leaf": {
@@ -1270,7 +1270,7 @@
 						"range": [0.0, 0.5]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"splitter": {
@@ -1287,11 +1287,11 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html",
 				"params": {
 					"bootstrap": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"ccp_alpha": {
@@ -1309,7 +1309,7 @@
 						"value": ["mse","mae"]
 					},
 					"max_depth": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1322,7 +1322,7 @@
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1331,7 +1331,7 @@
 						}
 					},
 					"max_samples": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "range",
 						"range": [0.0, 1.0]
@@ -1346,7 +1346,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -1394,19 +1394,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -1414,7 +1414,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -1423,23 +1423,23 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html",
 				"params": {
 					"base_estimator": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"bootstrap": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"bootstrap_features": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"max_features": {
@@ -1460,19 +1460,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -1480,7 +1480,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -1513,7 +1513,7 @@
 						]
 					},
 					"init": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"learning_rate": {
@@ -1545,11 +1545,11 @@
 						}
 					},
 					"max_features": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1567,7 +1567,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -1615,7 +1615,7 @@
 						}
 					},
 					"n_iter_no_change": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -1624,7 +1624,7 @@
 						}
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"subsample": {
@@ -1653,7 +1653,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -1664,15 +1664,15 @@
 			"datatype": "except"
 		},
 		"use_label_encoder": {
-			"default": true,
+			"default": True,
 			"datatype": "str",
 			"value": [
-				"true",
-				"false"
+				"True",
+				"False"
 			]
 		},
 		"base_score": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1681,7 +1681,7 @@
 			}
 		},
 		"booster": {
-			"default": null,
+			"default": None,
 			"datatype": "str",
 			"value": [
 				"gbtree",
@@ -1690,7 +1690,7 @@
 			]
 		},
 		"colsample_bylevel": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -1699,7 +1699,7 @@
 			]
 		},
 		"colsample_bynode": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -1708,7 +1708,7 @@
 			]
 		},
 		"colsample_bytree": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -1717,7 +1717,7 @@
 			]
 		},
 		"gamma": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1726,7 +1726,7 @@
 			}
 		},
 		"gpu_id": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"importance_type": {
@@ -1741,11 +1741,11 @@
 			]
 		},
 		"interaction_constraints": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"learning_rate": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1754,7 +1754,7 @@
 			}
 		},
 		"max_delta_step": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1763,7 +1763,7 @@
 			}
 		},
 		"max_depth": {
-			"default": null,
+			"default": None,
 			"datatype": "int",
 			"compare_type": "condition",
 			"condition": {
@@ -1772,7 +1772,7 @@
 			}
 		},
 		"min_child_weight": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1781,11 +1781,11 @@
 			}
 		},
 		"missing": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"monotone_constraints": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"n_estimators": {
@@ -1798,11 +1798,11 @@
 			}
 		},
 		"n_jobs": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"num_parallel_tree": {
-			"default": null,
+			"default": None,
 			"datatype": "int",
 			"compare_type": "condition",
 			"condition": {
@@ -1811,11 +1811,11 @@
 			}
 		},
 		"random_state": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"reg_alpha": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1824,7 +1824,7 @@
 			}
 		},
 		"reg_lambda": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1833,7 +1833,7 @@
 			}
 		},
 		"scale_pos_weight": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "condition",
 			"condition": {
@@ -1842,7 +1842,7 @@
 			}
 		},
 		"subsample": {
-			"default": null,
+			"default": None,
 			"datatype": "float",
 			"compare_type": "range",
 			"range": [
@@ -1851,19 +1851,19 @@
 			]
 		},
 		"tree_method": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		},
 		"validate_parameters": {
-			"default": null,
+			"default": None,
 			"datatype": "str",
 			"value": [
-				"true",
-				"false"
+				"True",
+				"False"
 			]
 		},
 		"verbosity": {
-			"default": null,
+			"default": None,
 			"datatype": "except"
 		}
 	}},
@@ -1871,11 +1871,11 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html",
 				"params": {
 					"bootstrap": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"ccp_alpha": {
@@ -1896,7 +1896,7 @@
 						]
 					},
 					"max_depth": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1909,7 +1909,7 @@
 						"datatype": "except"
 					},
 					"max_leaf_nodes": {
-						"default": null,
+						"default": None,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -1918,7 +1918,7 @@
 						}
 					},
 					"max_samples": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"min_impurity_decrease": {
@@ -1931,7 +1931,7 @@
 						}
 					},
 					"min_impurity_split": {
-						"default": null,
+						"default": None,
 						"datatype": "float",
 						"compare_type": "condition",
 						"condition": {
@@ -1979,19 +1979,19 @@
 						}
 					},
 					"n_jobs": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"oob_score": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"verbose": {
@@ -1999,7 +1999,7 @@
 						"datatype": "except"
 					},
 					"warm_start": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2008,7 +2008,7 @@
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html",
 				"params": {
 					"base_estimator": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"learning_rate": {
@@ -2039,7 +2039,7 @@
 						}
 					},
 					"random_state": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					}
 				}
@@ -2107,11 +2107,11 @@
 						"compare_type": "<=>"
 					},
 					"shrinking": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"tol": {
@@ -2124,37 +2124,37 @@
 						}
 					},
 					"verbose": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					}
 				}
 			},
 			"LinearRegression": {"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html","params":{"copy_X": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
-					},"fit_intercept":{"default": true,
+					},"fit_intercept":{"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
-						]},"normalize": {"default": false,
+							True,
+							False
+						]},"normalize": {"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
-						]},"positive": {"default": false,
+							True,
+							False
+						]},"positive": {"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]}}}
 		}
 	},
@@ -2164,7 +2164,7 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/Logistic.html",
 				"params": {
 					"-S": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-M": {
@@ -2236,11 +2236,11 @@
 						}
 					},
 					"-A": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-B": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-H": {
@@ -2254,19 +2254,19 @@
 						]
 					},
 					"-C": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-I": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-R": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2275,11 +2275,11 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/bayes/NaiveBayesMultinomial.html",
 				"params": {
 					"-output-debug-info": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-do-not-check-capabilities": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-num-decimal-places": {
@@ -2312,23 +2312,23 @@
 						"range": [0, 100]
 					},
 					"-O": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-store-out-of-bag-predictions": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-output-out-of-bag-complexity-statistics": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-print": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-attribute-importance": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-I": {
@@ -2401,19 +2401,19 @@
 						}
 					},
 					"-U": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-B": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-output-debug-info": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-do-not-check-capabilities": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-num-decimal-places": {
@@ -2452,7 +2452,7 @@
 						"range": [0, 3]
 					},
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -2488,15 +2488,15 @@
 						}
 					},
 					"-Z": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-J": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-V": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-P": {
@@ -2527,7 +2527,7 @@
 						}
 					},
 					"-H": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-W": {
@@ -2535,7 +2535,7 @@
 						"datatype": "except"
 					},
 					"-B": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-seed": {
@@ -2554,7 +2554,7 @@
 						"range": [0, 100]
 					},
 					"-Q": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-S": {
@@ -2576,7 +2576,7 @@
 						}
 					},
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2585,27 +2585,27 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/meta/AttributeSelectedClassifier.html",
 				"params": {
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-U": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-R": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-B": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-L": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-A": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 
@@ -2622,23 +2622,23 @@
 						"range": [0, 100]
 					},
 					"-O": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-print": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-store-out-of-bag-predictions": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-output-out-of-bag-complexity-statistics": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-represent-copies-using-weights": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-S": {
@@ -2669,11 +2669,11 @@
 						}
 					},
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-R": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2688,7 +2688,7 @@
 						"range": [0, 100]
 					},
 					"-E": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-M": {
@@ -2727,15 +2727,15 @@
 						]
 					},
 					"-I": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-R": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-P": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2744,11 +2744,11 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/lazy/IBk.html",
 				"params": {
 					"-I": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-F": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-K": {
@@ -2761,15 +2761,15 @@
 						}
 					},
 					"-E": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-W": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-X": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2827,19 +2827,19 @@
 						}
 					},
 					"-U": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-B": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-output-debug-info": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-do-not-check-capabilities": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-num-decimal-places": {
@@ -2857,7 +2857,7 @@
 				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/classifiers/functions/SMO.html",
 				"params": {
 					"-no-checks": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-C": {
@@ -2894,11 +2894,11 @@
 						}
 					},
 					"-M": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-V": {
-						"default": false,
+						"default": False,
 						"datatype": "int",
 						"compare_type": "condition",
 						"condition": {
@@ -2916,11 +2916,11 @@
 						}
 					},
 					"-output-debug-info": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-do-not-check-capabilities": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-num-decimal-places": {
@@ -2946,7 +2946,7 @@
 						"range": [0, 100]
 					},
 					"-C": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-R": {
@@ -2959,19 +2959,19 @@
 						}
 					},
 					"-minimal": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-additional-stats": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-output-debug-info": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-do-not-check-capabilities": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -2995,11 +2995,11 @@
 						}
 					},
 					"-A": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					},
 					"-D": {
-						"default": false,
+						"default": False,
 						"datatype": "except"
 					}
 				}
@@ -3012,11 +3012,11 @@
 				"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/glm.html#H2OGeneralizedLinearEstimator",
 				"params": {
 					"HGLM": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"auc_type": {
@@ -3032,11 +3032,11 @@
 						]
 					},
 					"balance_classes": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"beta_epsilon": {
@@ -3049,35 +3049,35 @@
 						}
 					},
 					"calc_like": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"cold_start": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"compute_p_values": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"early_stopping": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"family": {
@@ -3117,43 +3117,43 @@
 						}
 					},
 					"ignore_const_cols": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"intercept": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_fold_assignment": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_models": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_predictions": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"lambda_min_ratio": {
@@ -3166,11 +3166,11 @@
 						}
 					},
 					"lambda_search": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"link": {
@@ -3250,11 +3250,11 @@
 						}
 					},
 					"non_negative": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"obj_reg": {
@@ -3281,19 +3281,19 @@
 						"compare_type": "check"
 					},
 					"remove_collinear_columns": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"score_each_iteration": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"score_iteration_interval": {
@@ -3328,11 +3328,11 @@
 						]
 					},
 					"standardize": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"stopping_metric": {
@@ -3418,27 +3418,27 @@
 						]
 					},
 					"balance_classes": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"build_tree_one_node": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"calibrate_model": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"categorical_encoding": {
@@ -3457,11 +3457,11 @@
 						]
 					},
 					"check_constant_response": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"col_sample_rate": {
@@ -3545,35 +3545,35 @@
 						"compare_type": "check"
 					},
 					"ignore_const_cols": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_fold_assignment": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_models": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_predictions": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"learn_rate": {
@@ -3726,11 +3726,11 @@
 						]
 					},
 					"score_each_iteration": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"score_tree_interval": {
@@ -3816,35 +3816,35 @@
 						]
 					},
 					"balance_classes": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"binomial_double_trees": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"build_tree_one_node": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"calibrate_model": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"categorical_encoding": {
@@ -3863,11 +3863,11 @@
 						]
 					},
 					"check_constant_response": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"col_sample_rate_change_per_level": {
@@ -3927,27 +3927,27 @@
 						]
 					},
 					"keep_cross_validation_fold_assignment": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_models": {
-						"default": true,
+						"default": True,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"keep_cross_validation_predictions": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"max_after_balance_size": {
@@ -4071,11 +4071,11 @@
 						]
 					},
 					"score_each_iteration": {
-						"default": false,
+						"default": False,
 						"datatype": "str",
 						"value": [
-							true,
-							false
+							True,
+							False
 						]
 					},
 					"score_tree_interval": {
@@ -4126,11 +4126,11 @@
 						}
 					},
 					"class_sampling_factors": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					},
 					"sample_rate_per_class": {
-						"default": null,
+						"default": None,
 						"datatype": "except"
 					}
 				}
@@ -4153,19 +4153,19 @@
 					]
 				},
 				"balance_classes": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"compute_metrics": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"eps_prob": {
@@ -4206,35 +4206,35 @@
 					}
 				},
 				"ignore_const_cols": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"keep_cross_validation_fold_assignment": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"keep_cross_validation_models": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"keep_cross_validation_predictions": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"laplace": {
@@ -4288,11 +4288,11 @@
 					}
 				},
 				"score_each_iteration": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"seed": {
@@ -4317,11 +4317,11 @@
 					]
 				},
 				"adaptive_rate": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"auc_type": {
@@ -4337,11 +4337,11 @@
 					]
 				},
 				"autoencoder": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"average_activation": {
@@ -4354,11 +4354,11 @@
 					}
 				},
 				"balance_classes": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"categorical_encoding": {
@@ -4386,19 +4386,19 @@
 					}
 				},
 				"col_major": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"diagnostics": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"distribution": {
@@ -4418,11 +4418,11 @@
 					]
 				},
 				"elastic_averaging": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"elastic_averaging_moving_rate": {
@@ -4462,19 +4462,19 @@
 					}
 				},
 				"export_weights_and_biases": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"fast_mode": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"fold_assignment": {
@@ -4488,11 +4488,11 @@
 					]
 				},
 				"force_load_balance": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"huber_alpha": {
@@ -4505,11 +4505,11 @@
 					}
 				},
 				"ignore_const_cols": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"initial_weight_distribution": {
@@ -4540,27 +4540,27 @@
 					]
 				},
 				"keep_cross_validation_fold_assignment": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"keep_cross_validation_models": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"keep_cross_validation_predictions": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"l1": {
@@ -4683,19 +4683,19 @@
 					}
 				},
 				"nesterov_accelerated_gradient": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"overwrite_with_best_model": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"quantile_alpha": {
@@ -4708,11 +4708,11 @@
 					]
 				},
 				"quiet_mode": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"rate": {
@@ -4752,19 +4752,19 @@
 					}
 				},
 				"replicate_training_data": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"reproducible": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"rho": {
@@ -4786,11 +4786,11 @@
 					]
 				},
 				"score_each_iteration": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"score_interval": {
@@ -4838,27 +4838,27 @@
 					}
 				},
 				"shuffle_training_data": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"single_node_mode": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"sparse": {
-					"default": false,
+					"default": False,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"sparsity_beta": {
@@ -4867,11 +4867,11 @@
 					"compare_type": "check"
 				},
 				"standardize": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"stopping_metric": {
@@ -4940,19 +4940,19 @@
 					]
 				},
 				"use_all_factor_levels": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				},
 				"variable_importances": {
-					"default": true,
+					"default": True,
 					"datatype": "str",
 					"value": [
-						true,
-						false
+						True,
+						False
 					]
 				}
 			}
