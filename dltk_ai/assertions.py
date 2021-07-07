@@ -2,8 +2,7 @@ import re
 import json
 import numpy as np
 import os
-
-script_dir = os.path.dirname(__file__)
+from dltk_ai.ml_hyperparameters import hyperparameter_dictionary
 
 supported_algorithm = {'regression':
 
@@ -144,11 +143,8 @@ def hyper_parameter_check(library, service, algorithm, user_input_params):
 
     try:
 
-        with open(os.path.join(script_dir, './ml_hyperparameters.json'), 'r') as file:
-            hyper_parameters = json.load(file)
-
         user_input = list(user_input_params.keys())
-        algorithm_params = hyper_parameters[library][service][algorithm]['params']
+        algorithm_params = hyperparameter_dictionary[library][service][algorithm]['params']
         algorithm_parameters = list(algorithm_params.keys())
 
         main_list = np.setdiff1d(user_input, algorithm_parameters)
