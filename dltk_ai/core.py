@@ -172,7 +172,7 @@ class DltkAiClient:
             task_status = "PENDING"
 
             start_time = time()
-            while task_status != "SUCCESS":
+            while task_status == "PENDING":
                 task_status_response = requests.get(task_url + task_creation_response['job_id'], headers=headers).json()
                 task_status = task_status_response["task_status"]
                 # wait for some time before checking status of the job again
@@ -351,7 +351,7 @@ class DltkAiClient:
             raise Exception('Error while checking the query list. Got ' + str(response.status_code))
         return response
 
-    def train(self, task, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80, save_model=True, folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
+    def train(self, task, algorithm, dataset, label, features, model_name=None, lib="weka", train_percentage=80,  folds=5, cross_validation=False, params=None, dataset_source=None, evaluation_plots=False):
 
         """
         :param task: Training task to perform. Valid parameter values are classification, regression.
@@ -362,7 +362,6 @@ class DltkAiClient:
         :param model_name: Model will be saved with the name specified in this parameter.
         :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
         :param train_percentage: Percentage of data used for training the model. Rest of the data will be used to test the model.
-        :param save_model: If True, the model will be saved in the DLTK Storage.
         :param dataset_source: To specify data source,
                 None: Dataset file from DLTK storage will be used
                 database: Query from connected database will be used
@@ -372,7 +371,7 @@ class DltkAiClient:
         
         """
 
-        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+        task, library, algorithm, features, label, train_percentage = validate_parameters(
             task, lib, algorithm, features, label, train_percentage)
 
         # if additional parameters passed, check whether those are valid or not
@@ -399,7 +398,6 @@ class DltkAiClient:
                     "label": label,
                     "trainPercentage": train_percentage,
                     "features": features,
-                    "saveModel": save_model,
                     "params": params,
                     "folds" : folds,
                     "crossValidation" : cross_validation,
@@ -417,7 +415,6 @@ class DltkAiClient:
                     "label": label,
                     "trainPercentage": train_percentage,
                     "features": features,
-                    "saveModel": save_model,
                     "params": params,
                     "folds" : folds,
                     "crossValidation" : cross_validation,
@@ -430,7 +427,7 @@ class DltkAiClient:
         return response
 
     def feedback(self, task, algorithm, train_data, feedback_data, job_id, model_url, label, features, lib='weka',
-                 model_name=None, split_perc=80,save_model=True, folds=5, cross_validation=False, params=None, evaluation_plots=False):
+                 model_name=None, split_perc=80, folds=5, cross_validation=False, params=None, evaluation_plots=False):
         """
         :param task: Training task to perform. Valid parameter values are classification, regression.
         :param algorithm: Algorithm used for training the model.
@@ -443,14 +440,13 @@ class DltkAiClient:
         :param lib: Library for training the model. Currently we are supporting scikit, h2o and weka.
         :param model_name: Model will be saved with the name specified in this parameter.
         :param split_perc: Percentage of data to use for training the model. Rest of the data will be used to test the model.
-        :param save_model: If True, the model will be saved in DLTK Storage.
         :param params: additional parameters.
         :param folds: number of folds for cross validation
         :param cross_validation: Evaluates model using crossvalidation if set to True.
 
         :rtype: A json object containing the file path in storage.
         """
-        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+        task, library, algorithm, features, label, train_percentage = validate_parameters(
             task, lib, algorithm, features, label)
         url = self.base_url + '/machine/' + task + '/feedback'
 
@@ -477,7 +473,6 @@ class DltkAiClient:
                 'trainPercentage': split_perc,
                 'features': features,
                 'params': params,
-                'saveModel': save_model,
                 "folds" : folds,
                 "crossValidation" : cross_validation,
                 "evalPlots": evaluation_plots
@@ -505,7 +500,7 @@ class DltkAiClient:
                 database: Query from connected database will be used
 
         """
-        task, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+        task, library, algorithm, features, label, train_percentage= validate_parameters(
             task, lib, algorithm=None,
             features=features,
             label=None,
@@ -543,7 +538,7 @@ class DltkAiClient:
         return response
 
     def cluster(self, service, algorithm, dataset, features, lib='weka', number_of_clusters=2, model_name=None,
-                save_model=True, params=None, dataset_source=None):
+                 params=None, dataset_source=None):
         """
         :param lib: Library for clustering the model. Currently we are supporting DLTK, weka, H2O, scikit-learn
                     libraries. Valid values for this parameter: DLTK, weka, h2o, scikit
@@ -553,7 +548,6 @@ class DltkAiClient:
         :param dataset: dataset file location in DLTK storage.
         :param features: column name list which is used to train classification model.
         :param number_of_clusters: the dataset will be clustered into number of clusters.
-        :param save_model: If true model will saved
         :param dataset_source : metabase address for dataset
         :param params:
         :return:
@@ -567,9 +561,9 @@ class DltkAiClient:
                 None: Dataset file will from DLTK storage will be used
                 database: Query from connected database will be used
         """
-        service, library, algorithm, features, label, train_percentage, save_model = validate_parameters(
+        service, library, algorithm, features, label, train_percentage = validate_parameters(
             service, lib, algorithm, features,
-            save_model, cluster=True)
+             cluster=True)
         url = self.base_url + '/machine/cluster/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
@@ -589,7 +583,6 @@ class DltkAiClient:
                     'numOfClusters': int(number_of_clusters),
                     'epsilon': 0.1,
                     'features': features,
-                    'saveModel': save_model,
                     'params': params
                 }
             }
@@ -605,7 +598,6 @@ class DltkAiClient:
                     'numOfClusters': int(number_of_clusters),
                     'epsilon': 0.1,
                     'features': features,
-                    'saveModel': save_model,
                     'params': params
                 }
             }
@@ -614,9 +606,10 @@ class DltkAiClient:
         response = response.json()
         return response
 
-    def job_status(self, job_id):
+    def job_status(self, job_id, wait_time = 20):
         """
         :param job_id: jobId from the train api response.
+        :param wait_time: wait time for server to return response
         :return:
             obj: A json obj containing the status details.
         """
@@ -627,9 +620,15 @@ class DltkAiClient:
         response = requests.get(url=url, headers=headers)
         if response.status_code == 200:
             response = response.json()
+            start_time = time()
             while response[STATE] == 'RUN':
                 sleep(JOB_STATUS_CHECK_INTERVAL)
                 response = requests.get(url=url, headers=headers).json()
+                if time() - start_time > wait_time:
+                    job_id = response.json()["jobId"]
+                    print("It's taking too long than expected!!",
+                          f"Use job_status('{job_id}') to check status of your request")
+                    break
             if response[STATE] == 'FAIL':
                 raise Exception('Prediction job failed!')
         else:

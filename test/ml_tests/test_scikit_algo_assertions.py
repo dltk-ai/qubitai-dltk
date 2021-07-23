@@ -278,44 +278,44 @@ class TestScikitClassificationAlgo(unittest.TestCase):
     # ------------- KNN -------------------- #
 
     def test_knn_1(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': None, 'n_neighbors': 5, 'p': 2, 'weights': 'uniform'}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knn_2(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'randomname'}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knn_3(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'kd_tree', 'leaf_size': -30}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knn_4(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'ball_tree', 'leaf_size': 30, 'metric': 'minkowski'}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knn_5(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'ball_tree', 'leaf_size': 30, 'metric':"chebyshev", 'metric_params': None,'n_neighbors': -5.0}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knn_6(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'ball_tree', 'leaf_size': 30, 'metric':"chebyshev", 'metric_params': None,'n_neighbors': 5, 'p':1}
        # assertion should fail
         self.assertFalse(hyper_parameter_check(self.library, self.service, algorithm, params))
 
 
     def test_knn_7(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'ball_tree', 'leaf_size': 30, 'metric':"chebyshev", 'metric_params': None,'n_neighbors': 5, 'p':3}
        # assertion should fail
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
@@ -517,7 +517,7 @@ class TestScikitClassificationAlgo(unittest.TestCase):
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
     def test_knearestneighbors_1(self):
-        algorithm = "KNearestNeighbors"
+        algorithm = "KNearestNeighbour"
         params = {'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': None,
                   'n_neighbors': 5, 'p': 2, 'weights': 'uniform'}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))

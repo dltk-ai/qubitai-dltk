@@ -34,7 +34,7 @@ supported_algorithm = {'regression':
 
 def validate_parameters(service: str, library: str, algorithm: str, features: list, label: str,
                         train_percentage: int = 0.80,
-                        save_model=True, cluster=False, predict=False):
+                        cluster=False, predict=False):
     # check service names
     allowed_service = ['regression', 'classification', 'clustering']
     service = service.lower()
@@ -56,14 +56,7 @@ def validate_parameters(service: str, library: str, algorithm: str, features: li
     # Check whether features list is not empty
     assert len(features) > 0, "Please ensure features is not an empty list, select atleast 1 feature"
 
-    # if library is scikit or h2o, convert save_model to string
-    if (library == 'scikit' or library == 'h2o') and save_model == True:
-        save_model = 'true'
-
-    if not save_model:
-        print("NOTE: we wont save model, so you can't do prediction")
-
-    return service, library, algorithm, features, label, train_percentage, save_model
+    return service, library, algorithm, features, label, train_percentage
 
 
 def validate_dataset(dataset_df, service, library, algorithm, features, target_variable):
