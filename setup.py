@@ -5,16 +5,18 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="qubitai-dltk",
-    version="1.0.7",
+    version="1.0.8",
     author="DLTK",
     install_requires=[
         "pandas==1.2.3",
         "xlrd==2.0.1",
+        "matplotlib==3.3.2",
         "numpy==1.20.2",
         "requests==2.25.1",
         "openpyxl==3.0.7",
         "certifi==2020.12.5",
         "pandas-profiling==2.11.0",
+        "seaborn==0.11.1",
         "scikit-learn==0.24.1",
         "autoviz==0.0.81",
         "dtale==1.41.1",

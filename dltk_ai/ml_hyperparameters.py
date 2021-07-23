@@ -443,7 +443,7 @@ hyperparameter_dictionary = {
 					}
 				}
 			},
-			"KNearestNeighbors": {
+			"KNearestNeighbour": {
 				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html",
 				"params": {
 					"algorithm": {
