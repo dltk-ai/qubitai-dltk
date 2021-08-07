@@ -149,9 +149,9 @@ The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-
 
 ### Team
 
-|[![](https://github.com/sridharseshadri.png?size=50)](https://github.com/sridharseshadri)|[![](https://github.com/shreeramiyer.png?size=50)](https://github.com/shreeramiyer)| [![](https://github.com/GHub4Naveen.png?size=50)](https://github.com/GHub4Naveen) [![](https://github.com/alamcta.png?size=50)](https://github.com/alamcta) |[![](https://github.com/SivaramVeluri15.png?size=50)](https://github.com/SivaramVeluri15) [![](https://github.com/vishnupeesapati.png?size=50)](https://github.com/vishnupeesapati) [![](https://github.com/appareddyraja.png?size=50)](https://github.com/appareddyraja) [![](https://github.com/kavyavelagapudi252.png?size=50)](https://github.com/kavyavelagapudi252) [![](https://github.com/vivekkya.png?size=50)](https://github.com/vivekkya)
+|[![](https://github.com/shreeramiyer.png?size=50)](https://github.com/shreeramiyer)|[![](https://github.com/sridharseshadri.png?size=50)](https://github.com/sridharseshadri)| [![](https://github.com/GHub4Naveen.png?size=50)](https://github.com/GHub4Naveen) [![](https://github.com/alamcta.png?size=50)](https://github.com/alamcta) |[![](https://github.com/SivaramVeluri15.png?size=50)](https://github.com/SivaramVeluri15) [![](https://github.com/vishnupeesapati.png?size=50)](https://github.com/vishnupeesapati) [![](https://github.com/appareddyraja.png?size=50)](https://github.com/appareddyraja) [![](https://github.com/kavyavelagapudi252.png?size=50)](https://github.com/kavyavelagapudi252) [![](https://github.com/vivekkya.png?size=50)](https://github.com/vivekkya)
 |:--:|:--:|:--:|:--:|
-|Mentor|Founding Member|Lead Maintainer|Core Contributor|
+|Founding Member|Mentor|Lead Maintainer|Core Contributor|
 
 <br />
 
