@@ -3,7 +3,7 @@
 __author__ = 'DLTK'
 __email__ = 'connect@qubitai.tech'
 __copyright__ = 'Copyright (c) 2019-2020 The QubitAI Technologies LLC'
-__version__ = '1.0.8'
+__version__ = '1.0.9'
 __url__ = 'https://github.com/dltk-ai/qubitai-dltk'
 __download_url__ = ''
 __description__ = 'A Python wrapper around the DLTK API'
