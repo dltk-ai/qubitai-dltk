@@ -2156,7 +2156,830 @@ hyperparameter_dictionary = {
 							True,
 							False
 						]}}}
+		},
+		"clustering": {
+			"KMeansClustering": {
+        		"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html",
+				"params": {
+				  "algorithm": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+					  "auto",
+					  "full",
+					  "elkan"
+					]
+				  },
+				  "copy_x": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "init": {
+					"default": "k-means++",
+					"datatype": "str",
+					"value": [
+					  "k-means++",
+					  "random"
+					]
+				  },
+				  "max_iter": {
+					"default": 300,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_clusters": {
+					"default": 8,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_init": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "tol": {
+					"default": 0.0001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "verbose": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  }
+				}
+			  },
+			"MiniBatchKMeans": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html",
+				"params": {
+					"batch_size": {
+			"default": 100,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"compute_labels": {
+			"default": True,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"init": {
+			"default": "k-means++",
+			"datatype": "str",
+			"value": [
+				"k-means++",
+				"random"
+			]
+		},
+		"init_size": {
+			"default": None,
+			"datatype": "except"
+		},
+		"max_iter": {
+			"default": 100,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.5
+			}
+		},
+		"max_no_improvement": {
+			"default": 10,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"n_clusters": {
+			"default": 8,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"n_init": {
+			"default": 3,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 0
+			}
+		},
+		"random_state": {
+			"default": None,
+			"datatype": "except"
+		},
+		"reassignment_ratio": {
+			"default": 0.01,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"tol": {
+			"default": 0.0,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": "<=>",
+				"value": 0.0
+			}
+		},
+		"verbose": {
+			"default": 0.0,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": "<=>",
+				"value": 0.0
+			}
 		}
+
+		}
+	},
+			"AffinityPropagation": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AffinityPropagation.html",
+				"params": {
+				  "affinity": {
+					"default": "euclidean",
+					"datatype": "str",
+					"value": [
+					  "euclidean"
+					]
+				  },
+				  "convergence_iter": {
+					"default": 15,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "copy": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "damping": {
+					"default": 0.5,
+					"datatype": "float",
+					"compare_type": "range",
+					"range": [
+					  0.5,
+					  1
+					]
+				  },
+				  "max_iter": {
+					"default": 200,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "preference": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "verbose": {
+					"default": False,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  }
+				}
+			  },
+			"MeanShift": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MeanShift.html",
+				"params": {
+				  "bandwidth": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0.0
+					}
+				  },
+				  "bin_seeding": {
+					"default": False,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "cluster_all": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "max_iter": {
+					"default": 300,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "min_bin_freq": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "n_jobs": {
+					"default": None,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<>",
+					  "value": 0
+					}
+				  }
+				}
+			  },
+			"Birch": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html",
+				"params": {
+				  "branching_factor": {
+					"default": 50,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 1
+					}
+				  },
+				  "compute_labels": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "copy": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "n_clusters": {
+					"default": 3,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "threshold": {
+					"default": 0.5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  }
+				}
+			  },
+			"SpectralClustering": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html",
+				"params": {
+				  "affinity": {
+					"default": "rbf",
+					"datatype": "str",
+					"value": [
+					  "rbf",
+					  "nearest_neighbors"
+					]
+				  },
+				  "assign_labels": {
+					"default": "kmeans",
+					"datatype": "str",
+					"value": [
+					  "kmeans",
+					  "discretize"
+					]
+				  },
+				  "coef0": {
+					"default": 1,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "degree": {
+					"default": 3,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "eigen_solver": {
+					"default": None,
+					"datatype": "str",
+					"value": [
+					  "arpack",
+					  "lobpcg"
+					]
+				  },
+				  "eigen_tol": {
+					"default": 0.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "gamma": {
+					"default": 1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 0.0
+					}
+				  },
+				  "n_clusters": {
+					"default": 8,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_components": {
+					"default": None,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_init": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_jobs": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "n_neighbors": {
+					"default": 10,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "verbose": {
+					"default": False,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  }
+				}
+			  },
+			"AgglomerativeClustering": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html",
+				"params": {
+				  "affinity": {
+					"default": "euclidean",
+					"datatype": "str",
+					"value": [
+					  "euclidean",
+					  "l1",
+					  "l2",
+					  "manhattan",
+					  "cosine"
+					]
+				  },
+				  "compute_distances": {
+					"default": False,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "compute_full_tree": {
+					"default": False,
+					"datatype": " str",
+					"value": [
+					  True,
+					  False
+					]
+				  },
+				  "distance_threshold": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "linkage": {
+					"default": "ward",
+					"datatype": "str",
+					"value": [
+					  "ward",
+					  "complete",
+					  "average",
+					  "single"
+					]
+				  },
+				  "n_clusters": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  }
+				}
+			  },
+			"DBScan": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html",
+				"params": {
+				  "algorithm": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+					  "auto",
+					  "ball_tree",
+					  "kd_tree",
+					  "brute"
+					]
+				  },
+				  "eps": {
+					"default": 0.5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0.0
+					}
+				  },
+				  "leaf_size": {
+					"default": 30,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "metric": {
+					"default": "euclidean",
+					"datatype": "str",
+					"value": [
+					  "euclidean"
+					]
+				  },
+				  "min_samples": {
+					"default": 5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "n_jobs": {
+					"default": None,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<>",
+					  "value": 0
+					}
+				  },
+				  "p": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  }
+				}
+			  },
+			"Optics": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html",
+				"params": {
+				  "algorithm": {
+					"default": "auto",
+					"datatype": "str",
+					"value": [
+					  "auto",
+					  "ball_tree",
+					  "kd_tree",
+					  "brute"
+					]
+				  },
+				  "cluster_method": {
+					"default": "xi",
+					"datatype": "str",
+					"value": [
+					  "xi",
+					  "dbscan"
+					]
+				  },
+				  "eps": {
+					"default": None,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "leaf_size": {
+					"default": 30,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					}
+				  },
+				  "max_eps": {
+					"default": "inf",
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  },
+				  "metric": {
+					"default": "minkowski",
+					"datatype": "str",
+					"value": ["cityblock",
+					  "cosine",
+					  "euclidean",
+					  "l1",
+					  "l2",
+					  "manhattan",
+					  "braycurtis",
+					  "canberra",
+					  "chebyshev",
+					  "correlation",
+					  "dice",
+					  "hamming",
+					  "jaccard",
+					  "kulsinski",
+					  "minkowski",
+					  "rogerstanimoto",
+					  "russellrao",
+					  "sokalmichener",
+					  "sokalsneath",
+					  "sqeuclidean",
+					  "yule"
+					]
+				  },
+				  "min_cluster_size": {
+					"default": None,
+					"datatype": "hybrid",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					},
+					"range": [
+					  0.0,
+					  1.0
+					]
+				  },
+				  "min_samples": {
+					"default": 5,
+					"datatype": "hybrid",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					},
+					"range": [
+					  0.0,
+					  1.0
+					]
+				  },
+				  "n_jobs": {
+					"default": None,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<>",
+					  "value": 0
+					}
+				  },
+				  "p": {
+					"default": 2,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 1
+					}
+				  },
+				  "predecessor_correction": {
+					"default": True,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+
+				  },
+				  "xi": {
+					"default": 0.05,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0.0
+					}
+				  }
+				}
+			  },
+			"GaussianMixtures": {
+				"reference_link": "https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html",
+				"params": {
+				  "covariance_type": {
+					"default": "full",
+					"datatype": "str",
+					"value": [
+					  "full",
+					  "tied",
+					  "diag",
+					  "spherical"
+					]
+				  },
+				  "init_params": {
+					"default": "kmeans",
+					"datatype": "str",
+					"value": [
+					  "kmeans",
+					  "random"
+					]
+				  },
+				  "max_iter": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_components": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "n_init": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0
+					}
+				  },
+				  "reg_covar": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 0.0
+					}
+				  },
+				  "tol": {
+					"default": 0.001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 0.0
+					}
+				  },
+				  "verbose": {
+					"default": 0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "verbose_interval": {
+					"default": 10,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<>",
+					  "value": 0
+					}
+				  },
+				  "warm_start": {
+					"default": False,
+					"datatype": "str",
+					"value": [
+					  True,
+					  False
+					]
+				  }
+				}
+			  }
+			}
 	},
 	"weka": {
 		"classification":{
@@ -3004,7 +3827,369 @@ hyperparameter_dictionary = {
 					}
 				}
 			}
-		}
+		},
+		"clustering": {
+			"MakeDensityBasedClusterer": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/MakeDensityBasedClusterer.html",
+				"params": {
+				  "-M": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-S": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-V": {
+					"default": False,
+					"datatype": "except"
+				  }
+				}
+			  },
+			"HierarchicalClusterer": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/HierarchicalClusterer.html",
+				"params": {
+				  "-L": {
+					"default": "SINGLE",
+					"datatype": "str",
+					"value": [
+					  "SINGLE",
+					  "COMPLETE",
+					  "AVERAGE",
+					  "MEAN",
+					  "CENTROID",
+					  "WARD",
+					  "ADJCOMPLETE",
+					  "NEIGHBOR_JOINING"
+					]
+				  },
+				  "-P": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-D": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-B": {
+					"default": False,
+					"datatype": "except"
+				  }
+				}
+			  },
+			"EM": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/EM.html",
+				"params": {
+				  "-X": {
+					"default": 5,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-K": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					}
+				  },
+				  "-max": {
+					"default": -1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-ll-cv": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-I": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					}
+				  },
+				  "-ll-iter": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-V": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-M": {
+					"default": 0.000001,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-O": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-num-slots": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					}
+				  },
+				  "-S": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-output-debug-info": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-do-not-check-capabilities": {
+					"default": False,
+					"datatype": "except"
+				  }
+				}
+			  },
+			"FarthestFirst": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/FarthestFirst.html",
+				"params": {
+				  "-S": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  }
+				}
+			  },
+			"Canopy": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/Canopy.html",
+				"params": {
+				  "-max-candidates": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">",
+					  "value": 1
+					}
+				  },
+				  "-periodic-pruning": {
+					"default": 10000,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<>",
+					  "value": 0
+					}
+				  },
+				  "-min-density": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-t2": {
+					"default": -1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-t1": {
+					"default": -1.5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-M": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-S": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+				  "-output-debug-info": {
+					"default": False,
+					"datatype": "except"
+				  },
+				  "-do-not-check-capabilities": {
+					"default": False,
+					"datatype": "except"
+				  }
+				}
+			  },
+			"SimpleKMeans": {
+				"reference_link": "https://javadoc.io/static/nz.ac.waikato.cms.weka/weka-stable/3.8.3/weka/clusterers/SimpleKMeans.html",
+				"params": {
+				  "-init": {
+					"default": 0,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=",
+					  "value": 3
+					}
+				  },
+					"-C": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-max-candidates": {
+					"default": 100,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-periodic-pruning": {
+					"default": 10000,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value":  0
+					}
+				  },
+					"-min-density": {
+					"default": 2,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-t2": {
+					"default": -1.0,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-t1": {
+					"default": -1.5,
+					"datatype": "float",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-V": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-M": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-I": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-O": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-fast": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-num-slots": {
+					"default": 1,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": ">=",
+					  "value": 1
+					}
+				  },
+					"-S": {
+					"default": 10,
+					"datatype": "int",
+					"compare_type": "condition",
+					"condition": {
+					  "symbol": "<=>",
+					  "value": 0
+					}
+				  },
+					"-output-debug-info": {
+					"default": False,
+					"datatype": "except"
+				  },
+					"-do-not-check-capabilities": {
+					"default": False,
+					"datatype": "except"
+
+				  }
+				}
+			  }
+			}
 	},
 	"h2o": {
 		"regression": {
@@ -4957,6 +6142,167 @@ hyperparameter_dictionary = {
 				}
 			}
 		}
-	}
+	},
+		"clustering":{
+	"KMeansClustering": {"reference_link": "https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/_modules/h2o/estimators/kmeans.html",
+		"params":{"categorical_encoding": {
+			"default": "auto",
+			"datatype": "str",
+			"value": [
+				"auto",
+				"enum",
+				"one_hot_internal",
+				"one_hot_explicit",
+				"binary",
+				"eigen",
+				"label_encoder",
+				"sort_by_response",
+				"enum_limited"
+			]
+		},
+		"cluster_size_constraints": {
+			"default": None,
+			"datatype": "except"
+		},
+		"estimate_k": {
+			"default": False,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"export_checkpoints_dir": {
+			"default": None,
+			"datatype": "except"
+		},
+		"fold_assignment": {
+			"default": "auto",
+			"datatype": "str",
+			"value": [
+				"auto",
+				"random",
+				"modulo",
+				"stratified"
+			]
+		},
+		"fold_column": {
+			"default": None,
+			"datatype": "except"
+		},
+		"ignore_const_cols": {
+			"default": True,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"ignored_columns": {
+			"default": None,
+			"datatype": "except"
+		},
+		"init": {
+			"default": "furthest",
+			"datatype": "str",
+			"value": [
+				"random",
+				"plus_plus",
+				"furthest",
+				"user"
+			]
+		},
+		"k": {
+			"default": 1,
+			"datatype": "int",
+			"compare_type": "range",
+			"range": [
+				1,
+				1e7
+			]
+		},
+		"keep_cross_validation_fold_assignment": {
+			"default": False,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"keep_cross_validation_models": {
+			"default": True,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"keep_cross_validation_predictions": {
+			"default": False,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"max_iterations": {
+			"default": 10,
+			"datatype": "int",
+			"compare_type": "range",
+			"range": [
+				1,
+				0.000001
+			]
+		},
+		"max_runtime_secs": {
+			"default": 0,
+			"datatype": "float",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">=",
+				"value": 0.0
+			}
+		},
+		"nfolds": {
+			"default": 0,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": ">",
+				"value": 1
+			}
+		},
+		"score_each_iteration": {
+			"default": False,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"seed": {
+			"default": -1,
+			"datatype": "int",
+			"compare_type": "condition",
+			"condition": {
+				"symbol": "<=>",
+				"value": 0
+			}
+		},
+		"standardize": {
+			"default": True,
+			"datatype": "str",
+			"value": [
+				True,
+				False
+			]
+		},
+		"user_points": {
+			"default": None,
+			"datatype": "except"
+		}
 	}
 }
+		}
+	}
+	}

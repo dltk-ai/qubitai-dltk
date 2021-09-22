@@ -1,11 +1,15 @@
 from __future__ import print_function
 
+import os
 import base64
 import json
 import time
 from time import sleep, time
 
 import requests
+
+from IPython.display import display
+from PIL import Image
 
 from dltk_ai.assertions import validate_parameters, is_url_valid, allowed_file_extension, hyper_parameter_check
 from dltk_ai.dataset_types import Dataset
@@ -537,7 +541,7 @@ class DltkAiClient:
         response = requests.post(url=url, data=body, headers=headers).json()
         return response
 
-    def cluster(self, service, algorithm, dataset, features, lib='weka', number_of_clusters=2, model_name=None,
+    def cluster(self, service, algorithm, dataset, features, lib='weka', number_of_clusters=2, cluster_type="Centroid", model_name=None,
                  params=None, dataset_source=None):
         """
         :param lib: Library for clustering the model. Currently we are supporting DLTK, weka, H2O, scikit-learn
@@ -562,8 +566,13 @@ class DltkAiClient:
                 database: Query from connected database will be used
         """
         service, library, algorithm, features, label, train_percentage = validate_parameters(
-            service, lib, algorithm, features,
-             cluster=True)
+            service, lib, algorithm, features, "None", cluster=True)
+
+        # if additional parameters passed, check whether those are valid or not
+        if params is not None:
+            hyper_parameter_flag = hyper_parameter_check(library, service, algorithm, params)
+            assert hyper_parameter_flag, "Please check the params, training failed due to incorrect values"
+
         url = self.base_url + '/machine/cluster/'
         headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
         if params is None:
@@ -583,6 +592,136 @@ class DltkAiClient:
                     'numOfClusters': int(number_of_clusters),
                     'epsilon': 0.1,
                     'features': features,
+                    'params': params,
+                    'clusterType':cluster_type
+                }
+            }
+        else:
+            body = {
+                'library': lib,
+                'task': 'CLUSTER',
+                'service': service,
+                'config': {
+                    'name': model_name,
+                    'algorithm': algorithm,
+                    'datasetUrl': dataset,
+                    'numOfClusters': int(number_of_clusters),
+                    'epsilon': 0.1,
+                    'features': features,
+                    'params': params,
+                    'clusterType': cluster_type
+                }
+            }
+        body = json.dumps(body)
+        response = requests.post(url=url, data=body, headers=headers)
+        response = response.json()
+        return response
+
+    def clusterRecommendation(self, file_url, features, algorithm):
+
+        allowed_algorithms = ["SimpleKMeans", "FarthestFirst", "Canopy", "Cobweb", "HierarchicalClusterer", "KMeansClustering", "MiniBatchKMeans", "Birch", "AgglomerativeClustering", "SpectralClustering","DBScan", "Optics", "GaussianMixtures"]
+
+        assert algorithm in allowed_algorithms, "Please select algorithm from {}".format(allowed_algorithms)
+
+        url = self.base_url + '/dltk-ml-recommendation/cluster/cluster-recommendation'
+        data = {"fileUrl": file_url, "features": features, "algorithm": algorithm}
+        data = json.dumps(data)
+
+
+        if algorithm in ["SimpleKMeans", "FarthestFirst", "Canopy"]:
+            algorithm = "KMeansClustering"
+        if algorithm in ["Cobweb", "HierarchicalClusterer"]:
+            algorithm = "AgglomerativeClustering"
+
+        headers = {
+            'ApiKey': self.api_key,
+            'Content-Type': 'application/json'
+        }
+
+        response = requests.request("POST", url, headers=headers, data=data)
+        response = json.loads(response.text)
+        if response['success'] ==  True:
+
+            if algorithm not in ['DBScan','Optics']:
+
+                imgdata = base64.b64decode(response['response'])
+                filename = 'recommendation.jpg'
+                with open(filename, 'wb') as f:
+                    f.write(imgdata)
+                display(Image.open('recommendation.jpg'))
+                os.remove('recommendation.jpg')
+
+            else:
+
+                imgdata_epsilon = base64.b64decode(response['response']['epsilon'])
+                filename = 'recommendation_epsilon.jpg'
+                with open(filename, 'wb') as f:
+                    f.write(imgdata_epsilon)
+                display(Image.open('recommendation_epsilon.jpg'))
+
+                imgdata_min_samples = base64.b64decode(response['response']['min_samples'])
+                filename = 'recommendation_min_samples.jpg'
+                with open(filename, 'wb') as f:
+                    f.write(imgdata_min_samples)
+                display(Image.open('recommendation_min_samples.jpg'))
+                os.remove('recommendation_epsilon.jpg')
+                os.remove('recommendation_min_samples.jpg')
+
+        else:
+            return response.text
+
+
+
+
+    def clusterPredict(self, service, algorithm, dataset, features, model_url, lib='weka', number_of_clusters=2, model_name=None,
+                 params=None, dataset_source=None):
+        """
+        :param lib: Library for clustering the model. Currently we are supporting DLTK, weka, H2O, scikit-learn
+                    libraries. Valid values for this parameter: DLTK, weka, h2o, scikit
+        :param service: Valid parameter values are CLUSTER.
+        :param model_name: Model name and with this name model will be saved.
+        :param algorithm: algorithm by which model will be trained.
+        :param dataset: dataset file location in DLTK storage.
+        :param features: column name list which is used to train classification model.
+        :param model_url: model file location in DLTK storage.
+        :param number_of_clusters: the dataset will be clustered into number of clusters.
+        :param dataset_source : metabase address for dataset
+        :param params:
+        :return:
+            obj: A json obj containing model info.
+
+        Args:
+            dataset_source:
+            dataset_source:
+            features: Feature list used while model training
+            dataset_source: To specify data source,
+                None: Dataset file will from DLTK storage will be used
+                database: Query from connected database will be used
+        """
+        service, library, algorithm, features, label, train_percentage = validate_parameters(
+            service, lib, algorithm, features, "None",
+             cluster=True)
+
+        url = self.base_url + '/machine/cluster/predict'
+        headers = {'ApiKey': self.api_key, 'Content-type': 'application/json'}
+        if params is None:
+            params = {}
+        if model_name is None:
+            model_name = algorithm
+        if dataset_source == "database":
+            body = {
+                'library': lib,
+                'task': 'CLUSTER',
+                'service': service,
+                "jobType": "DATABASE",
+                "queryId": dataset,
+                'config': {
+                    'name': model_name,
+                    'algorithm': algorithm,
+                    'modelUrl': model_url,
+                    'numOfClusters': int(number_of_clusters),
+                    'epsilon': 0.1,
+                    'features': features,
                     'params': params
                 }
             }
@@ -594,6 +733,7 @@ class DltkAiClient:
                 'config': {
                     'name': model_name,
                     'algorithm': algorithm,
+                    'modelUrl': model_url,
                     'datasetUrl': dataset,
                     'numOfClusters': int(number_of_clusters),
                     'epsilon': 0.1,

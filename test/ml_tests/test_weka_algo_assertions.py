@@ -146,6 +146,55 @@ class TestWekaAlgo(unittest.TestCase):
         params = {'-S': 0.4, '-I': 5, '-A': False, '-D': False}
         self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
 
+    # ------------- HierarchicalClusterer --------------------
+
+    def test_hierarchical_clusterer_1(self):
+        algorithm = "HierarchicalClusterer"
+        service = "clustering"
+        params = {'-L':'SINGLE','-P':False,'-D':False,'-B':False}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+    # ------------- EM --------------------
+
+    def test_em_1(self):
+        algorithm = "EM"
+        service = "clustering"
+        params = {'-X':5,'-K':10,'-max':-1,'-ll-cv':1e-06,'-I':100,'-ll-iter':1e-06,'-V':False,'-M':1e-06,'-O':False,'-num-slots':1,'-S':100,'-output-debug-info':False,'-do-not-check-capabilities':False}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+    # ------------- K-MEANS --------------------
+
+    def test_kmeans_1(self):
+        algorithm = "SimpleKMeans"
+        service = "clustering"
+        params = {'-init':0,'-C':False,'-max-candidates':100,'-periodic-pruning':10000,'-min-density':2,'-t2':-1.0,'-t1':-1.5,'-V':False,'-M':False,'-I':1,'-O':False,'-fast':False,'-num-slots':1,'-S':10,'-output-debug-info':False,'-do-not-check-capabilities':False}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+    # ------------- MakeDensityBasedClusterer --------------------
+
+    def test_make_density_based_clusterer_1(self):
+        algorithm = "MakeDensityBasedClusterer"
+        service = "clustering"
+        params = {'-M':1e-06,'-S':10,'-V':False}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+    # ------------- FarthestFirst --------------------
+
+    def test_farthest_first_1(self):
+        algorithm = "FarthestFirst"
+        service = "clustering"
+        params = {'-S':1}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+    # ------------- Canopy --------------------
+
+    def test_canopy_1(self):
+        algorithm = "Canopy"
+        service = "clustering"
+        params = {'-max-candidates':100,'-periodic-pruning':10000,'-min-density':2,'-t2':-1.0,'-t1':-1.5,'-M':False,'-S':1,'-output-debug-info':False,'-do-not-check-capabilities':False}
+        self.assertTrue(hyper_parameter_check(self.library, service, algorithm, params))
+
+
 
 if __name__ == '__main__':
     unittest.main()

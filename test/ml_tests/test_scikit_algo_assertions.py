@@ -1011,6 +1011,68 @@ class TestScikitRegressionAlgo(unittest.TestCase):
         params = {'objective': 'binary:logistic','base_score': 123,'booster': None,'colsample_bylevel': None,'colsample_bynode': None, 'colsample_bytree': None,'gamma': None,'learning_rate': None,'max_delta_step': None,'max_depth': None, 'min_child_weight': None,'missing': None,'n_estimators': 100,'n_jobs': None,'random_state': None,'reg_alpha': None,'reg_lambda': None,'scale_pos_weight': None, 'subsample': None,'tree_method': None}
         self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
 
+class TestScikitClusteringAlgo(unittest.TestCase):
+
+    def setUp(self):
+        self.library = "scikit"
+        self.service = "clustering"
+        pass
+
+    # ----------------- KMeans -------------------#
+    def test_kmeans_1(self):
+        algorithm = "KMeansClustering"
+        params = {"algorithm":"auto","copy_x":True,"init":"k-means++","max_iter":300,"n_clusters":8,"n_init":10,"tol":0.0001,"verbose":0}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- AffinityPropagation -------------------#
+    def test_affinity_propagation_1(self):
+        algorithm = "AffinityPropagation"
+        params = {'affinity':"euclidean","convergence_iter":15,"copy":True,"damping":0.5,"max_iter":200,"preference":None,"verbose":False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- MeanShift -------------------#
+    def test_mean_shift_1(self):
+        algorithm = "MeanShift"
+        params = {'bandwidth':None,'bin_seeding':False,'cluster_all':True,'max_iter':300,'min_bin_freq':1,'n_jobs':None}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- Birch -------------------#
+    def test_Birch_1(self):
+        algorithm = "Birch"
+        params = {'branching_factor':50,'compute_labels':True,'copy':True,'n_clusters':3,'threshold':0.5}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- SpectralClustering -------------------#
+    def test_spectral_clustering_1(self):
+        algorithm = "SpectralClustering"
+        params = {'affinity':"rbf","assign_labels":"kmeans","coef0":1,"degree":3,"eigen_solver":None,"eigen_tol":0.0,"gamma":1.0,"n_clusters":8,"n_components":None,"n_init":10,"n_jobs":None,"n_neighbors":10,"verbose":False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- AgglomerativeClustering -------------------#
+    def test_agglomerative_clustering_1(self):
+        algorithm = "AgglomerativeClustering"
+        params = {'affinity':"euclidean",'compute_distances':False,'compute_full_tree':False,"distance_threshold":None,"linkage":"single","n_clusters":2}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- DBSCAN -------------------#
+    def test_dbscan_1(self):
+        algorithm = "DBScan"
+        params = {'algorithm':'brute','eps':0.5,'leaf_size':30,'metric':"euclidean",'min_samples':5,'n_jobs':None,'p':2}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- OPTICS -------------------#
+    def test_optics_1(self):
+        algorithm = "Optics"
+        params = {'algorithm':'auto','cluster_method':'xi','eps':None,'leaf_size':30,'max_eps':23,'metric':'minkowski','min_cluster_size':None,'min_samples':5,'n_jobs':None,'p':2,'predecessor_correction':True,'xi':0.05}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+    # ----------------- GaussianMixture -------------------#
+    def test_gaussian_mixture_1(self):
+        algorithm = "GaussianMixtures"
+        params = {'covariance_type':"full",'init_params':"kmeans",'max_iter':100,'n_components':1,'n_init':1,'reg_covar':0.000001,'tol':0.001,'verbose':0,'verbose_interval':10,'warm_start':False}
+        self.assertTrue(hyper_parameter_check(self.library, self.service, algorithm, params))
+
+
 
 if __name__ == '__main__':
     unittest.main()
