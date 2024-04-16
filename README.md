@@ -144,7 +144,7 @@ For more detail on DLTK features & usage please refer [DLTK SDK Client Documenta
 
 ### License
 
-The content of this project itself is licensed under [GNU LGPL, Version 3 (LGPL-3)](https://github.com/dltk-ai/qubitai-dltk/blob/master/LICENSE)
+The content of this project itself is licensed under Apache License 2.0 (https://github.com/dltk-ai/qubitai-dltk/blob/master/LICENSE)
 
 
 ### Team
